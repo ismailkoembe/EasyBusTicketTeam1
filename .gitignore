@@ -22,3 +22,17 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
+build/
+lib/*.jar
+target
+.target
+.idea
+.idea_modules
+.settings
+.project
+.classpath
+.cache
+atlassian-ide-plugin.xml
+*.iml
+.java-version
+out
