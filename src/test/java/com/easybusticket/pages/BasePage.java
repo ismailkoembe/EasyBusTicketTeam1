@@ -3,8 +3,13 @@ package com.easybusticket.pages;
 import com.easybusticket.utilities.Driver;
 import com.easybusticket.utilities.Environments;
 import com.easybusticket.utilities.PropManager;
+import com.github.javafaker.Faker;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 
@@ -13,6 +18,7 @@ import java.time.Duration;
 /**
  * @author Ismail Koembe
  */
+@Slf4j
 public abstract class BasePage {
 
     public static final String env = Environments.PRODUCTION.name();
@@ -21,4 +27,13 @@ public abstract class BasePage {
             .withTimeout(Duration.ofMillis(Long.parseLong(PropManager.getProperties(env,"duration"))))
             .pollingEvery(Duration.ofMillis(1000))
             .ignoring(NoSuchElementException.class);
+    public Actions actions=new Actions(Driver.get(env));
+    public Faker faker=new Faker();
+
+
+    public void waitAndClick(WebElement element){
+        long start = System.currentTimeMillis();
+        wait.until(ExpectedConditions.elementToBeClickable(element)).click();
+        log.info("Clicked in {}ms", System.currentTimeMillis() - start);
+    }
 }

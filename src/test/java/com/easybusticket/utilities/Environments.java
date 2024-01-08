@@ -4,7 +4,12 @@ package com.easybusticket.utilities;
  * @author Ismail Koembe
  */
 public enum Environments {
-    PRODUCTION,
-    STAGE,
-    TEST;
+    PRODUCTION("production"),
+    STAGE("stage");
+
+    public final String name;
+
+    Environments(String name) {
+        this.name = name;
+    }
 }
