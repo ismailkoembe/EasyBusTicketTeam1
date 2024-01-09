@@ -14,6 +14,7 @@ public class HomePage extends BasePage{
         PageFactory.initElements(Driver.get("stage"),this);
     }
 
+
     @FindBy(xpath = "//a[text()='Allow']")
     public WebElement cookies;
 
@@ -31,13 +32,19 @@ public class HomePage extends BasePage{
     @FindBy(xpath = "//button[text()='Sign Up']")
     public WebElement buttonOfSignUp;
 
+    public RegisterPage register=new RegisterPage();
+
     public void acceptCookies(){
         waitAndClick(cookies);
     }
 
-    public Register clickSignUp (){
+    public RegisterPage clickSignUp (){
             waitAndClick(signUpLink);
-            return new Register();
+        String expectedText="Sign Up your Account";
+        String actualText= register.textOfSignUpyourAccount.getText();
+        softAssert.assertEquals(expectedText,actualText);
+
+        return new RegisterPage();
     }
 
 }

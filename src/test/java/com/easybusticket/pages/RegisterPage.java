@@ -11,9 +11,9 @@ import org.openqa.selenium.support.PageFactory;
  * @author Ismail Koembe
  */
 @Slf4j
-public class Register extends BasePage {
+public class RegisterPage extends BasePage {
 
-    public Register(){
+    public RegisterPage(){
         PageFactory.initElements(Driver.get("stage"),this);
     }
 
@@ -31,11 +31,10 @@ public class Register extends BasePage {
 
 
 
-    public UserDashboard fillTheSignUpForm(){
+    public UserDashboard signUp(){
 
 
         String fakePassword="06Feriha&";
-        String username="Crazyyy";
         waitAndClick(textBoxOfFirstName);
 
 
@@ -60,6 +59,11 @@ public class Register extends BasePage {
        buttonOfAcceptingall.click();
 
        buttonOfSignUp.click();
+
+        String expectedTitle="Easy Bus Ticket - Dashboard";
+        String actualTitle=Driver.get(env).getTitle();
+        softAssert.assertEquals(expectedTitle,actualTitle);
+        softAssert.assertAll();
 
 
         return new UserDashboard();
