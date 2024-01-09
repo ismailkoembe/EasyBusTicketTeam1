@@ -8,10 +8,10 @@ import org.openqa.selenium.support.PageFactory;
 /**
  * @author Ismail Koembe
  */
-public class HomePage extends BasePage{
+public class HomePage extends BasePage {
 
-    public HomePage(){
-        PageFactory.initElements(Driver.get("stage"),this);
+    public HomePage() {
+        PageFactory.initElements(Driver.get("stage"), this);
     }
 
 
@@ -21,7 +21,8 @@ public class HomePage extends BasePage{
     @FindBy(xpath = "//*[@class='sign-up']")
     public WebElement signUpLink;
 
-
+    @FindBy(xpath = "//*[text()='Sign In']")
+    public WebElement link_SignIn;
 
     @FindBy(xpath = "//input[@id='firstname']")
     public WebElement textBoxOfFirstName;
@@ -32,19 +33,26 @@ public class HomePage extends BasePage{
     @FindBy(xpath = "//button[text()='Sign Up']")
     public WebElement buttonOfSignUp;
 
-    public RegisterPage register=new RegisterPage();
+    public RegisterPage register = new RegisterPage();
 
-    public void acceptCookies(){
+    public void acceptCookies() {
         waitAndClick(cookies);
     }
 
-    public RegisterPage clickSignUp (){
-            waitAndClick(signUpLink);
-        String expectedText="Sign Up your Account";
-        String actualText= register.textOfSignUpyourAccount.getText();
-        softAssert.assertEquals(expectedText,actualText);
+    public RegisterPage clickSignUp() {
+        waitAndClick(signUpLink);
+        String expectedText = "Sign Up your Account";
+        String actualText = register.textOfSignUpyourAccount.getText();
+        softAssert.assertEquals(expectedText, actualText);
 
         return new RegisterPage();
+    }
+
+    public UserLoginPage clickToSignIn() {
+        //kusura bakmayin ilerleyebilmek icin buna ihtiyacim vardi sorgusunu yapmadim
+        waitAndClick(link_SignIn);
+
+        return new UserLoginPage();
     }
 
 }
