@@ -1,4 +1,4 @@
 package com.easybusticket.pages;
 
-public class AdminDashboardPage {
+public class AdminDashboardPage extends BasePage{
 }

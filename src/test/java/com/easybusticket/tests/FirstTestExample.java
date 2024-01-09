@@ -1,7 +1,7 @@
 package com.easybusticket.tests;
 
 import com.easybusticket.pages.HomePage;
-import com.easybusticket.pages.SignUpPage;
+import com.easybusticket.pages.Register;
 import com.easybusticket.pages.TermsAndConditions;
 import com.easybusticket.utilities.Driver;
 import com.easybusticket.utilities.PropManager;
@@ -23,18 +23,18 @@ public class FirstTestExample extends BaseTest{
         log.info("Navigating {} environment {}", PropManager.getProperties(env,"url"), env);
 
         //3)Visitor clicks on the "Sign Up" link in the placeholder in the header section of the home page to register
-        SignUpPage signUpPage = new HomePage().clickSignUp();
+        Register register = new HomePage().clickSignUp();
 
 
         //4)When the visitor enters the Sign Up page, they see the text "Sign Up your Account"
 
         String expectedText="Sign Up your Account";
-        String actualText= signUpPage.textOfSignUpyourAccount.getText();
+        String actualText= register.textOfSignUpyourAccount.getText();
         softAssert.assertEquals(expectedText,actualText);
         softAssert.assertAll();
 
         //Just an example
-        TermsAndConditions termsAndConditions = signUpPage.fillTheSignUpForm();
+        TermsAndConditions termsAndConditions = register.fillTheSignUpForm();
         //Add asertion
     }
 }
