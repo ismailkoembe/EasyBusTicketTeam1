@@ -68,7 +68,7 @@ public class HomePage extends BasePage{
     @FindBy(xpath = "(//a[text()=Blog])")
     public WebElement blogTitle;
 
-    // Contact Title Button
+    // Contact Title Button.
     @FindBy(xpath = "(//a[text()='Contact'])")
     public WebElement contactTitle;
 
