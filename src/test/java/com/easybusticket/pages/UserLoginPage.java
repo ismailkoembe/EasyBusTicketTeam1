@@ -28,4 +28,11 @@ public class UserLoginPage extends BasePage{
     @FindBy(xpath = "//a[text()='Sign Up']")
     public WebElement button_SignUp;
 
+//    public UserDashboardPage login(){
+//        username_login.sendKeys("ceylingenc");
+//        password_login.sendKeys("Ceylin.1232");
+//        waitAndClick(button_login);
+//        return new UserDashboardPage();
+//    }
+
 }
