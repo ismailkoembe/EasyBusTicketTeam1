@@ -11,9 +11,9 @@ import org.openqa.selenium.support.PageFactory;
  * @author Ismail Koembe
  */
 @Slf4j
-public class SignUpPage extends BasePage {
+public class Register extends BasePage {
 
-    public SignUpPage(){
+    public Register(){
         PageFactory.initElements(Driver.get("stage"),this);
     }
 

@@ -35,9 +35,9 @@ public class HomePage extends BasePage{
         waitAndClick(cookies);
     }
 
-    public SignUpPage clickSignUp (){
+    public Register clickSignUp (){
             waitAndClick(signUpLink);
-            return new SignUpPage();
+            return new Register();
     }
 
 }
