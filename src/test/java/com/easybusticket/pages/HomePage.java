@@ -22,7 +22,7 @@ public class HomePage extends BasePage{
     @FindBy(xpath = "//a[@href=''][1]")
     public WebElement phoneLink;
 
-    //Twitter Icon Button
+    //Twitter Icon Button.
     @FindBy(xpath = "//a[@href='https://www.twitter.com']")
     public WebElement twitterIcon;
 
