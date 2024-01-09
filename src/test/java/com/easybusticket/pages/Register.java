@@ -11,30 +11,44 @@ import org.openqa.selenium.support.PageFactory;
  * @author Ismail Koembe
  */
 @Slf4j
-public class SignUpPage extends BasePage {
+public class Register extends BasePage {
 
-    public SignUpPage(){
+    public Register(){
         PageFactory.initElements(Driver.get("stage"),this);
     }
 
     @FindBy(xpath = "//span[text()='Sign Up your Account']")
     public WebElement textOfSignUpyourAccount;
 
+    @FindBy(xpath = "//input[@id='firstname']")
+    public WebElement textBoxOfFirstName;
 
-    public TermsAndConditions fillTheSignUpForm(){
+    @FindBy(xpath = "//input[@type='checkbox']")
+    public WebElement buttonOfAcceptingall;
+
+    @FindBy(xpath = "//button[text()='Sign Up']")
+    public WebElement buttonOfSignUp;
 
 
-        String fakePassword=faker.internet().password();
 
-        actions.sendKeys(faker.name().firstName())
+    public UserDashboard fillTheSignUpForm(){
+
+
+        String fakePassword="06Feriha&";
+        String username="Crazyyy";
+        waitAndClick(textBoxOfFirstName);
+
+
+        actions.click(textBoxOfFirstName)
+                .sendKeys(faker.name().firstName())
                 .sendKeys(Keys.TAB)
                 .sendKeys(faker.name().lastName())
                 .sendKeys(Keys.TAB)
                 .sendKeys(faker.country().name())
                 .sendKeys(Keys.TAB)
-                .sendKeys("789674923")
+                .sendKeys(faker.phoneNumber().subscriberNumber())
                 .sendKeys(Keys.TAB)
-                .sendKeys(faker.name().username())
+                .sendKeys(faker.name().username().replaceAll("\\W","").concat("canim"))
                 .sendKeys(Keys.TAB)
                 .sendKeys(faker.internet().emailAddress())
                 .sendKeys(Keys.TAB)
@@ -43,7 +57,17 @@ public class SignUpPage extends BasePage {
                 .sendKeys(fakePassword)
                 .perform();
 
-        return new TermsAndConditions();
+       buttonOfAcceptingall.click();
+
+       buttonOfSignUp.click();
+
+
+        return new UserDashboard();
+
+
+
 
     }
+
+
 }

@@ -31,9 +31,13 @@ public abstract class BasePage {
     public Faker faker=new Faker();
 
 
+
     public void waitAndClick(WebElement element){
         long start = System.currentTimeMillis();
         wait.until(ExpectedConditions.elementToBeClickable(element)).click();
         log.info("Clicked in {}ms", System.currentTimeMillis() - start);
     }
+
+
+
 }

@@ -6,8 +6,11 @@ import org.openqa.selenium.support.PageFactory;
 /**
  * @author Ismail Koembe
  */
-public class TermsAndConditions extends BasePage {
-    public TermsAndConditions(){
+public class UserDashboard extends BasePage {
+    public UserDashboard(){
         PageFactory.initElements(Driver.get("stage"),this);
     }
+
+
+
 }
