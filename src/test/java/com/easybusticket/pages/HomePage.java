@@ -55,7 +55,7 @@ public class HomePage extends BasePage{
 
     //About Title Button
     @FindBy(xpath = "(//a[text()='About'])")
-    public WebElement aboutTitle;
+    public WebElement aboutButton;
 
     //FAQs Title Button
     @FindBy(xpath = "(//a[text()='FAQs'])")
@@ -94,7 +94,11 @@ public class HomePage extends BasePage{
         return new UserLoginPage();
     }
 
-
+    public AboutPage clickToAboutButton(){
+        acceptCookies();
+        waitAndClick(aboutButton);
+        return new AboutPage();
     }
+}
 
 
