@@ -24,6 +24,7 @@ public abstract class BasePage {
 
     public static final String env = Environments.PRODUCTION.name();
     public static final WebDriver driver = Driver.get(env);
+
     public static final Wait<WebDriver> wait = new FluentWait<>(driver)
             .withTimeout(Duration.ofMillis(Long.parseLong(PropManager.getProperties(env,"duration"))))
             .pollingEvery(Duration.ofMillis(1000))
