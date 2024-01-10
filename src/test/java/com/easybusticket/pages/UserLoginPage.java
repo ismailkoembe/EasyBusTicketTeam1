@@ -44,6 +44,15 @@ public class UserLoginPage extends BasePage {
         return new UserDashboard();
     }
 
+    public UserDashboard loginWithRememberMe() {
+        username_login.sendKeys("asliekm");
+        password_login.sendKeys("243085Asd.");
+        waitAndClick(checkbox_rememberMe);
+        waitAndClick(button_login);
+
+        return new UserDashboard();
+    }
+
     public UserPasswordResetPage clickToForgotPassword() {
         waitAndClick(link_forgotPassword);
 
@@ -56,9 +65,7 @@ public class UserLoginPage extends BasePage {
     }
 
     public RegisterPage clickToSignUp() {
-
         waitAndClick(button_SignUp);
-
         return new RegisterPage();
     }
 
