@@ -5,9 +5,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class UserLoginPage extends BasePage{
-    public UserLoginPage(){
-        PageFactory.initElements(Driver.get("stage"),this);
+public class UserLoginPage extends BasePage {
+    public UserLoginPage() {
+        PageFactory.initElements(Driver.get("stage"), this);
     }
 
     @FindBy(xpath = "//input[@id='username']")
@@ -28,11 +28,36 @@ public class UserLoginPage extends BasePage{
     @FindBy(xpath = "//a[text()='Sign Up']")
     public WebElement button_SignUp;
 
-//    public UserDashboardPage login(){
-//        username_login.sendKeys("ceylingenc");
-//        password_login.sendKeys("Ceylin.1232");
-//        waitAndClick(button_login);
-//        return new UserDashboardPage();
-//    }
+    public UserDashboard login() {
+
+        username_login.sendKeys("ceylingenc");
+        password_login.sendKeys("Ceylin.1232");
+        waitAndClick(button_login);
+
+        String expectedTitle = "Easy Bus Ticket - Dashboard";
+        String actualTitle = Driver.get(env).getTitle();
+        softAssert.assertEquals(expectedTitle, actualTitle);
+        softAssert.assertAll();
+
+        return new UserDashboard();
+    }
+
+    public UserPasswordResetPage clickToForgotPassword() {
+        waitAndClick(link_forgotPassword);
+
+        String expectedTitle = "Easy Bus Ticket - Forgot Password";
+        String actualTitle = Driver.get(env).getTitle();
+        softAssert.assertEquals(expectedTitle, actualTitle);
+        softAssert.assertAll();
+
+        return new UserPasswordResetPage();
+    }
+
+    public RegisterPage clickToSignUp() {
+
+        waitAndClick(button_SignUp);
+
+        return new RegisterPage();
+    }
 
 }
