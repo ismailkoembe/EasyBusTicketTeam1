@@ -121,4 +121,19 @@ public class UserDashboard extends BasePage {
     @FindBy(xpath = "(//*[@class='action-button-wrapper'])[1]")
     public WebElement actionButton;
 
+
+    public UserLoginPage logout(){
+
+        waitAndClick(dropDownProfile);
+        waitAndClick(logoutOption);
+        String expectedTitle ="Easy Bus Ticket - Sign In";
+        String actualTitle = Driver.get(env).getTitle();
+        softAssert.assertEquals(actualTitle, expectedTitle);
+        softAssert.assertAll();
+        return new UserLoginPage();
+
+
+
+    }
+
 }
