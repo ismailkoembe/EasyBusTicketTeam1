@@ -103,7 +103,6 @@ public class RegisterPage extends BasePage {
         softAssert.assertFalse(labelDashboard.isDisplayed());//dashboard title'i gozukmemeli
         return new UserDashboard();
 
-
     }
 
 
