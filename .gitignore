@@ -36,3 +36,4 @@ atlassian-ide-plugin.xml
 *.iml
 .java-version
 out
+.DS_Store
