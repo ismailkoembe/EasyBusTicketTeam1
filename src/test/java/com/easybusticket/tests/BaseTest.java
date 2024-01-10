@@ -62,6 +62,7 @@ public class BaseTest {
     @BeforeMethod
     public void setup(){
         Driver.get(env).get(PropManager.getProperties(env,"url"));
+        Driver.get(env).manage().window().maximize();
         log.info("Navigating {} environment {}", PropManager.getProperties(env,"url"), env);
     }
 
