@@ -1,12 +1,10 @@
 package com.easybusticket.tests;
 
+import com.easybusticket.utilities.Driver;
 import com.easybusticket.utilities.Environments;
 import com.easybusticket.utilities.PropManager;
 import lombok.extern.slf4j.Slf4j;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Optional;
-import org.testng.annotations.Parameters;
+import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
 
 import java.lang.reflect.Method;
@@ -59,6 +57,24 @@ public class BaseTest {
          * enabled = false because it is not implemented
          * */
 
+    }
+
+    @BeforeMethod
+    public void setup(){
+        Driver.get(env).get(PropManager.getProperties(env,"url"));
+        Driver.get(env).manage().window().maximize();
+        log.info("Navigating {} environment {}", PropManager.getProperties(env,"url"), env);
+    }
+
+
+    @AfterMethod
+    public void teardown(){
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        Driver.closeDriver();
     }
 
 }

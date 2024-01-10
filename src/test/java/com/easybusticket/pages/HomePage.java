@@ -8,10 +8,10 @@ import org.openqa.selenium.support.PageFactory;
 /**
  * @author Ismail Koembe
  */
-public class HomePage extends BasePage{
+public class HomePage extends BasePage {
 
-    public HomePage(){
-        PageFactory.initElements(Driver.get("stage"),this);
+    public HomePage() {
+        PageFactory.initElements(Driver.get("stage"), this);
     }
 
     //Cookie Allow Button
@@ -30,7 +30,6 @@ public class HomePage extends BasePage{
     @FindBy(xpath = "//a[@href='https://www.facebook.com']")
     public WebElement facebookIcon;
 
-
     //Youtube Icon Button
     @FindBy(xpath = "//a[@href='https://www.youtube.com']")
     public WebElement youtubeIcon;
@@ -39,18 +38,17 @@ public class HomePage extends BasePage{
     @FindBy(xpath = "//a[@href='https://www.instagram.com']")
     public WebElement instagramIcon;
 
-    //SignIn Button
-    @FindBy(xpath = "//*[@class='sign-in']")
-    public WebElement signInLink;
-
     //SignUp Button
     @FindBy(xpath = "//*[@class='sign-up']")
     public WebElement signUpLink;
 
-
     //Logo ButtonLink
     @FindBy(xpath = "//div[@class='logo']")
     public WebElement logoButton;
+
+   //SignIn Button
+    @FindBy(xpath = "//*[text()='Sign In']")
+    public WebElement link_SignIn;
 
     //Home Title Button
     @FindBy(xpath = "(//a[text()='Home'])")
@@ -77,14 +75,32 @@ public class HomePage extends BasePage{
     public WebElement buyTicketButtonLink;
 
 
+    public RegisterPage register = new RegisterPage();
 
-    public void acceptCookies(){
+    public void acceptCookies() {
         waitAndClick(cookies);
     }
+
 
     public Register clickSignUp (){
             waitAndClick(signUpLink);
             return new Register();
+
+
+    public RegisterPage clickSignUp() {
+        waitAndClick(signUpLink);
+        String expectedText = "Sign Up your Account";
+        String actualText = register.textOfSignUpyourAccount.getText();
+        softAssert.assertEquals(expectedText, actualText);
+
+        return new RegisterPage();
+    }
+
+    public UserLoginPage clickToSignIn() {
+        //kusura bakmayin ilerleyebilmek icin buna ihtiyacim vardi sorgusunu yapmadim
+        waitAndClick(link_SignIn);
+
+        return new UserLoginPage();
 
     }
 
