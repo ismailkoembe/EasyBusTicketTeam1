@@ -1,4 +1,35 @@
 package com.easybusticket.pages;
 
-public class AdminPage extends  BasePage{
+import com.easybusticket.utilities.Driver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class AdminPage {
+    public AdminPage(){
+        PageFactory.initElements(Driver.get("stage"),this);
+    }
+
+    //Username box for Admin
+    @FindBy(xpath = "//*[@name='username']")
+    public WebElement AdminUsernameBox;
+
+    //Password box for Admin
+    @FindBy(xpath = "//*[@name='password']")
+    public WebElement AdminPasswordBox;
+
+    //Login Button for Admin
+    @FindBy(xpath = "//*[@type='submit']")
+    public WebElement ButtonAdminLogin;
+
+
+    //WelcomeToEasyBusTicket text
+    @FindBy(xpath = "//*[@class='logo-text mb-15']")
+    public WebElement WelcomeToEasyBusTicket;
+
+    //Forgot Password Button
+    @FindBy(xpath = "//*[@class='text-muted text--small']")
+    public WebElement LinkForgotPassword;
+
+
 }
