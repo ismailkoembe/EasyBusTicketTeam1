@@ -29,6 +29,9 @@ public class RegisterPage extends BasePage {
     @FindBy(xpath = "//button[text()='Sign Up']")
     public WebElement buttonOfSignUp;
 
+    @FindBy(xpath = "//h2[text()='Dashboard']")
+    public WebElement labelDashboard;
+
 
 
     public UserDashboard signUp(){
@@ -67,8 +70,38 @@ public class RegisterPage extends BasePage {
 
 
         return new UserDashboard();
+    }
+
+    public UserDashboard fillTheSignUpForm(){
+
+        String fakePassword="06Feriha&";
+        waitAndClick(textBoxOfFirstName);
 
 
+        actions.click(textBoxOfFirstName)
+                .sendKeys(faker.name().firstName())
+                .sendKeys(Keys.TAB)
+                .sendKeys("")
+                .sendKeys(Keys.TAB)
+                .sendKeys(faker.country().name())
+                .sendKeys(Keys.TAB)
+                .sendKeys(faker.phoneNumber().subscriberNumber())
+                .sendKeys(Keys.TAB)
+                .sendKeys(faker.name().username().replaceAll("\\W","").concat("canim"))
+                .sendKeys(Keys.TAB)
+                .sendKeys("")
+                .sendKeys(Keys.TAB)
+                .sendKeys(fakePassword)
+                .sendKeys(Keys.TAB)
+                .sendKeys(fakePassword)
+                .perform();
+
+        buttonOfAcceptingall.click();
+
+        buttonOfSignUp.click();
+
+        softAssert.assertFalse(labelDashboard.isDisplayed());//dashboard title'i gozukmemeli
+        return new UserDashboard();
 
 
     }
