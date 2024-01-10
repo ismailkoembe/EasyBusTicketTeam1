@@ -81,7 +81,7 @@ public class RegisterPage extends BasePage {
         return new UserDashboard();
     }
 
-    public UserDashboard fillTheSignUpForm(){
+    public UserDashboard withoutLastnameAndEmailSignUp(){
 
         String fakePassword="06Feriha&";
 
@@ -112,7 +112,7 @@ public class RegisterPage extends BasePage {
         return new UserDashboard();
 
     }
-    public UserDashboard fillTheSignUpForm2(){
+    public UserDashboard withExistingUsernameAndEmailSignUp(){
 
         String username="celinpicard";
         String email="picardcelin06@gmail.com";

@@ -73,12 +73,13 @@ public class HomePage extends BasePage{
     @FindBy(xpath = "//div[@class='d-flex flex-wrap algin-items-center']")
     public WebElement buyTicketButtonLink;
 
-    public RegisterPage register = new RegisterPage();
+
 
     public void acceptCookies() {
         waitAndClick(cookies);
     }
 
+    public RegisterPage register = new RegisterPage();
     public RegisterPage clickSignUp() {
         waitAndClick(signUpLink);
         String expectedText = "Sign Up your Account";
