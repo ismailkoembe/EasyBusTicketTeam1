@@ -29,8 +29,6 @@ public class HomePage extends BasePage{
     //Facebook Icon Button
     @FindBy(xpath = "//a[@href='https://www.facebook.com']")
     public WebElement facebookIcon;
-
-
     //Youtube Icon Button
     @FindBy(xpath = "//a[@href='https://www.youtube.com']")
     public WebElement youtubeIcon;
@@ -41,12 +39,11 @@ public class HomePage extends BasePage{
 
     //SignIn Button
     @FindBy(xpath = "//*[@class='sign-in']")
-    public WebElement signInLink;
+    public WebElement linkSignIn;
 
     //SignUp Button
     @FindBy(xpath = "//*[@class='sign-up']")
     public WebElement signUpLink;
-
 
     //Logo ButtonLink
     @FindBy(xpath = "//div[@class='logo']")
@@ -76,16 +73,28 @@ public class HomePage extends BasePage{
     @FindBy(xpath = "//div[@class='d-flex flex-wrap algin-items-center']")
     public WebElement buyTicketButtonLink;
 
+    public RegisterPage register = new RegisterPage();
 
-
-    public void acceptCookies(){
+    public void acceptCookies() {
         waitAndClick(cookies);
     }
 
-    public Register clickSignUp (){
-            waitAndClick(signUpLink);
-            return new Register();
+    public RegisterPage clickSignUp() {
+        waitAndClick(signUpLink);
+        String expectedText = "Sign Up your Account";
+        String actualText = register.textOfSignUpyourAccount.getText();
+        softAssert.assertEquals(actualText,expectedText);
+
+        return new RegisterPage();
+    }
+
+    public UserLoginPage clickToSignIn() {
+        waitAndClick(linkSignIn);
+
+        return new UserLoginPage();
+    }
+
 
     }
 
-}
+
