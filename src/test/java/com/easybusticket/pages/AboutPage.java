@@ -19,7 +19,10 @@ public class AboutPage extends BasePage{
         String expectedAboutTitle = "Easy Bus Ticket - About";
         String actualAboutTitle = Driver.get(env).getTitle();
         softAssert.assertEquals(actualAboutTitle,expectedAboutTitle);
+
         softAssert.assertAll();
+
+
 
     }
 

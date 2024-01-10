@@ -13,5 +13,6 @@ public class US05_TC01 extends BaseTest
         AboutPage aboutPage = new HomePage().clickToAboutButton();
 
         new AboutPage().titleCheckTest();
+        log.info(" About page sayfası yüklendi " + env);
     }
 }
