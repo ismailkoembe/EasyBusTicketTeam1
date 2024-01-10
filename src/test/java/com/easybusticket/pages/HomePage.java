@@ -73,6 +73,50 @@ public class HomePage extends BasePage{
     @FindBy(xpath = "//div[@class='d-flex flex-wrap algin-items-center']")
     public WebElement buyTicketButtonLink;
 
+    //Footer Twitter Icon Link
+    @FindBy(xpath = "/html/body/section[6]/div/div/div/div[1]/div/ul/li[1]/a/svg")
+    public  WebElement getTwitterIconFooter;
+
+    //Footer Facebook Icon Link
+    @FindBy(xpath = "/html/body/section[6]/div/div/div/div[1]/div/ul/li[2]/a/svg")
+    public WebElement getFacebookIconFooter;
+
+    //Footer Youtube Icon Link
+    @FindBy(xpath = "/html/body/section[6]/div/div/div/div[1]/div/ul/li[3]/a/svg")
+    public WebElement getYoutubeIconFooter;
+
+    //Footer Instagram Icon Link
+    @FindBy(xpath = "/html/body/section[6]/div/div/div/div[1]/div/ul/li[4]/a")
+    public WebElement getInstagramIconFooter;
+
+    //Footer About Title Link
+    @FindBy(xpath = "/html/body/section[6]/div/div/div/div[2]/div/ul/li[1]/a")
+    public  WebElement  getAboutTitleFooter;
+
+    //Footer FAQs Title Link
+    @FindBy(xpath = "/html/body/section[6]/div/div/div/div[2]/div/ul/li[2]/a")
+    public WebElement getFaqsTitleFooter;
+
+    //Footer Blog Title Link
+    @FindBy(xpath = "/html/body/section[6]/div/div/div/div[2]/div/ul/li[3]/a")
+    public WebElement getBlogTitleFooter;
+
+    //Footer Contact Title Link
+    @FindBy(xpath = "/html/body/section[6]/div/div/div/div[2]/div/ul/li[4]/a")
+    public WebElement getContactTitleFooter;
+
+    //Footer Privacy Policy Title Link
+    @FindBy(xpath = "/html/body/section[6]/div/div/div/div[3]/div/ul/li[1]/a")
+    public WebElement getPrivacyPolicyTitleFooter;
+
+    //Footer Terms and Conditions Title Link
+    @FindBy (xpath = "/html/body/section[6]/div/div/div/div[3]/div/ul/li[2]/a")
+    public WebElement getTermsAndConditionsTitleFooter;
+
+    //Footer Ticket Policies Title Link
+    @FindBy(xpath ="/html/body/section[6]/div/div/div/div[3]/div/ul/li[3]/a")
+    public  WebElement getTicketPoliciesFooter;
+
     public RegisterPage register = new RegisterPage();
 
     public void acceptCookies() {
