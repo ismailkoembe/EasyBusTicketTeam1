@@ -4,6 +4,7 @@ import com.easybusticket.utilities.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
 public class UserLoginPage extends BasePage {
     public UserLoginPage() {
@@ -30,14 +31,15 @@ public class UserLoginPage extends BasePage {
 
     public UserDashboard login() {
 
-        username_login.sendKeys("ceylingenc");
-        password_login.sendKeys("Ceylin.1232");
+        username_login.sendKeys("asliekm");
+        password_login.sendKeys("243085Asd.");
         waitAndClick(button_login);
 
         String expectedTitle = "Easy Bus Ticket - Dashboard";
         String actualTitle = Driver.get(env).getTitle();
-        softAssert.assertEquals(expectedTitle, actualTitle);
+        softAssert.assertEquals(actualTitle, expectedTitle);
         softAssert.assertAll();
+
 
         return new UserDashboard();
     }
@@ -47,7 +49,7 @@ public class UserLoginPage extends BasePage {
 
         String expectedTitle = "Easy Bus Ticket - Forgot Password";
         String actualTitle = Driver.get(env).getTitle();
-        softAssert.assertEquals(expectedTitle, actualTitle);
+        softAssert.assertEquals(actualTitle, expectedTitle);
         softAssert.assertAll();
 
         return new UserPasswordResetPage();
