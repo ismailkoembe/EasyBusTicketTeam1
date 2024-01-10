@@ -39,7 +39,4 @@ public abstract class BasePage {
         wait.until(ExpectedConditions.elementToBeClickable(element)).click();
         log.info("Clicked in {}ms", System.currentTimeMillis() - start);
     }
-
-
-
 }
