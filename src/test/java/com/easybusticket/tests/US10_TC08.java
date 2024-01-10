@@ -6,7 +6,6 @@ import com.easybusticket.pages.UserLoginPage;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
 
 @Slf4j
 public class US10_TC08 extends BaseTest{
