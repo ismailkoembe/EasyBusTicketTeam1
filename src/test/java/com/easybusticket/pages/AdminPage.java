@@ -15,6 +15,7 @@ public class AdminPage extends BasePage {
 
     //Username box for Admin
     @FindBy(xpath = "//*[@name='username']")
+
     public WebElement adminUsernameBox;
 
     //Password box for Admin
@@ -25,15 +26,14 @@ public class AdminPage extends BasePage {
     @FindBy(xpath = "//*[@type='submit']")
     public WebElement buttonAdminLogin;
 
-
     //WelcomeToEasyBusTicket text
     @FindBy(xpath = "//*[text()='Admin Login to Easy Bus Ticket dashboard']")
+
     public WebElement adminLoginToEasyBusTicketDashboard;
 
     //Forgot Password Button
     @FindBy(xpath = "//*[@class='text-muted text--small']")
     public WebElement linkForgotPassword;
-
 
     public void AdminPage(String url) {
         Driver.get("stage").get("AdminUrl");
@@ -41,21 +41,19 @@ public class AdminPage extends BasePage {
 
 
 
-
-
-
     public AdminDashboardPage adminLogin() {
+
         waitAndClick(adminUsernameBox);
         adminUsernameBox.sendKeys("admin07");
         adminPasswordBox.sendKeys("123123123");
         waitAndClick(buttonAdminLogin);
+
 
         String expectedText = "Admin Login to Easy Bus Ticket dashboard";
         String actualText = Driver.get(env).getTitle();
         softAssert.assertEquals(actualText, expectedText);
 
         return new AdminDashboardPage();
-
 
     }
 
