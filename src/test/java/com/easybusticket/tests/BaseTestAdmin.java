@@ -74,6 +74,8 @@ public class BaseTestAdmin {
             throw new RuntimeException(e);
         }
         Driver.closeDriver();
+
+        //deneme
     }
 
 }
