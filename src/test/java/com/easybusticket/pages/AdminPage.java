@@ -15,24 +15,24 @@ public class AdminPage extends BasePage {
 
     //Username box for Admin
     @FindBy(xpath = "//*[@name='username']")
-    public WebElement AdminUsernameBox;
+    public WebElement adminUsernameBox;
 
     //Password box for Admin
     @FindBy(xpath = "//*[@name='password']")
-    public WebElement AdminPasswordBox;
+    public WebElement adminPasswordBox;
 
     //Login Button for Admin
     @FindBy(xpath = "//*[@type='submit']")
-    public WebElement ButtonAdminLogin;
+    public WebElement buttonAdminLogin;
 
 
     //WelcomeToEasyBusTicket text
     @FindBy(xpath = "//*[text()='Admin Login to Easy Bus Ticket dashboard']")
-    public WebElement AdminLoginToEasyBusTicketDashboard;
+    public WebElement adminLoginToEasyBusTicketDashboard;
 
     //Forgot Password Button
     @FindBy(xpath = "//*[@class='text-muted text--small']")
-    public WebElement LinkForgotPassword;
+    public WebElement linkForgotPassword;
 
 
     public void AdminPage(String url) {
@@ -45,10 +45,10 @@ public class AdminPage extends BasePage {
 
 
     public AdminDashboardPage adminLogin() {
-        //waitAndClick(AdminUsernameBox);
-        AdminUsernameBox.sendKeys("admin07");
-        AdminPasswordBox.sendKeys("123123123");
-        waitAndClick(ButtonAdminLogin);
+        waitAndClick(adminUsernameBox);
+        adminUsernameBox.sendKeys("admin07");
+        adminPasswordBox.sendKeys("123123123");
+        waitAndClick(buttonAdminLogin);
 
         String expectedText = "Admin Login to Easy Bus Ticket dashboard";
         String actualText = Driver.get(env).getTitle();
