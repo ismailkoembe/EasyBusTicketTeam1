@@ -62,7 +62,7 @@ public class HomePage extends BasePage{
     public WebElement faqsTitle;
 
     //Blog Title Button
-    @FindBy(xpath = "(//a[text()=Blog])")
+    @FindBy(xpath = "(//a[text()='Blog'])")
     public WebElement blogTitle;
 
     // Contact Title Button.
@@ -147,7 +147,32 @@ public class HomePage extends BasePage{
         acceptCookies();
         waitAndClick(contactTitle);
         return new ContactPage();
+
     }
+
+    public HomePage clickToFAQsTitle(){
+        acceptCookies();
+        waitAndClick(faqsTitle);
+        return new HomePage();
+
 }
+
+    public HomePage clickToBlogTitle(){
+        acceptCookies();
+        waitAndClick(blogTitle);
+        return new HomePage();
+
+    }
+
+    public HomePage clickToHomeTitle(){
+        acceptCookies();
+        waitAndClick(homeTitle);
+        return new HomePage();
+
+    }
+
+    }
+
+
 
 
