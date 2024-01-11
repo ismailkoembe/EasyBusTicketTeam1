@@ -143,6 +143,11 @@ public class HomePage extends BasePage{
         waitAndClick(aboutButton);
         return new AboutPage();
     }
+    public ContactPage clickToContactTitle(){
+        acceptCookies();
+        waitAndClick(contactTitle);
+        return new ContactPage();
+    }
 }
 
 
