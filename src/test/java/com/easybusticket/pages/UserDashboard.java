@@ -29,12 +29,14 @@ public class UserDashboard extends BasePage {
     public HomePage logoEasybusticket() {
         waitAndClick(logoEasybusticket);
         softAssert.assertTrue(linkDashboard.isDisplayed());
+        softAssert.assertAll();
         return new HomePage();
     }
 
     public void linkDashboard(){
         waitAndClick(linkDashboard);
         softAssert.assertTrue(titleDashboard.isDisplayed());
+        softAssert.assertAll();
     }
 
 
