@@ -73,6 +73,11 @@ public class HomePage extends BasePage{
     @FindBy(xpath = "//div[@class='d-flex flex-wrap algin-items-center']")
     public WebElement buyTicketButtonLink;
 
+    //Footer Section
+    @FindBy (xpath = "/html/body/section[6]")
+    public WebElement footerSection;
+
+
     //Footer Twitter Icon Link
     @FindBy(xpath = "/html/body/section[6]/div/div/div/div[1]/div/ul/li[1]/a/svg")
     public  WebElement getTwitterIconFooter;
