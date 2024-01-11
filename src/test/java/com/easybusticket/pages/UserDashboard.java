@@ -22,7 +22,7 @@ public class UserDashboard extends BasePage {
     @FindBy(xpath = "//a[text()='Dashboard']")
     public WebElement linkDashboard;
 
-    //Title Dashborad
+    //Title Dashboard
    @FindBy(xpath = "//h2[text()='Dashboard']")
    public WebElement titleDashboard;
 
@@ -111,9 +111,6 @@ public class UserDashboard extends BasePage {
     @FindBy(xpath ="//a[@href='https://easybusticket.com']" )
     public WebElement linkHomepage;
 
-    // Dashboard label
-    @FindBy(xpath = "(//*[@class='title'])[1]")
-    public WebElement titleDashboard;
 
     // Total Booked Ticket label
     @FindBy(xpath = "//p[text()='Total Booked Ticket']")
