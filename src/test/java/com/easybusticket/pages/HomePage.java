@@ -125,8 +125,6 @@ public class HomePage extends BasePage{
     public void acceptCookies() {
         waitAndClick(cookies);
     }
-
-    public RegisterPage register = new RegisterPage();
     public RegisterPage clickSignUp() {
         waitAndClick(signUpLink);
         String expectedText = "Sign Up your Account";
@@ -158,6 +156,6 @@ public class HomePage extends BasePage{
 }
 
 
-}
+
 
 
