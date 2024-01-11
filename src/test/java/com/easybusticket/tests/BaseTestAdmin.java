@@ -75,7 +75,6 @@ public class BaseTestAdmin {
         }
         Driver.closeDriver();
 
-        //deneme
     }
 
 }
