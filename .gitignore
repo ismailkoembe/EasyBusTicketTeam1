@@ -36,3 +36,7 @@ atlassian-ide-plugin.xml
 *.iml
 .java-version
 out
+### Mac OS ###
+.DS_Store
+*.html
+*.png
