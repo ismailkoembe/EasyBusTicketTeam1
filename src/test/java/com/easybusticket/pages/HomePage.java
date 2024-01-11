@@ -73,6 +73,8 @@ public class HomePage extends BasePage{
     @FindBy(xpath = "//div[@class='d-flex flex-wrap algin-items-center']")
     public WebElement buyTicketButtonLink;
 
+
+
     //Footer Twitter Icon Link
     @FindBy(xpath = "/html/body/section[6]/div/div/div/div[1]/div/ul/li[1]/a/svg")
     public  WebElement getTwitterIconFooter;
@@ -119,10 +121,12 @@ public class HomePage extends BasePage{
 
     public RegisterPage register = new RegisterPage();
 
+
     public void acceptCookies() {
         waitAndClick(cookies);
     }
 
+    public RegisterPage register = new RegisterPage();
     public RegisterPage clickSignUp() {
         waitAndClick(signUpLink);
         String expectedText = "Sign Up your Account";
@@ -142,12 +146,18 @@ public class HomePage extends BasePage{
         acceptCookies();
         waitAndClick(aboutButton);
         return new AboutPage();
+
+
     }
     public ContactPage clickToContactTitle(){
         acceptCookies();
         waitAndClick(contactTitle);
         return new ContactPage();
+
     }
+}
+
+
 }
 
 

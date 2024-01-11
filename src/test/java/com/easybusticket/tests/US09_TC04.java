@@ -14,6 +14,6 @@ public class US09_TC04 extends BaseTest{
         //Visitor clicks on the "Sign Up" link in the placeholder in the header section of the home page to register
         RegisterPage register = new HomePage().clickSignUp();
         //Negatif register test
-        UserDashboard userDashboard = register.fillTheSignUpForm2();
+        UserDashboard userDashboard = register.withExistingUsernameAndEmailSignUp();
     }
 }
