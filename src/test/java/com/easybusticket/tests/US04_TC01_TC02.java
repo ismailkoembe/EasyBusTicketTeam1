@@ -38,8 +38,6 @@ public class US04_TC01_TC02 extends BaseTest {
         homePage.getInstagramIconFooter.isDisplayed();
         log.info(" Social Media and social media icons are displayed " + env);
 
-
-
         //verify the visibility of Useful Links section
         homePage.footerUsefulLinks.isDisplayed();
         homePage.getAboutTitleFooter.isDisplayed();
