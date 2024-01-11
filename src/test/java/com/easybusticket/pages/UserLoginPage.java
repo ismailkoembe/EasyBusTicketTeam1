@@ -4,7 +4,6 @@ import com.easybusticket.utilities.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
 
 public class UserLoginPage extends BasePage {
     public UserLoginPage() {
@@ -44,6 +43,15 @@ public class UserLoginPage extends BasePage {
         return new UserDashboard();
     }
 
+    public UserDashboard loginWithRememberMe() {
+        username_login.sendKeys("asliekm");
+        password_login.sendKeys("243085Asd.");
+        waitAndClick(checkbox_rememberMe);
+        waitAndClick(button_login);
+
+        return new UserDashboard();
+    }
+
     public UserPasswordResetPage clickToForgotPassword() {
         waitAndClick(link_forgotPassword);
 
@@ -56,9 +64,7 @@ public class UserLoginPage extends BasePage {
     }
 
     public RegisterPage clickToSignUp() {
-
         waitAndClick(button_SignUp);
-
         return new RegisterPage();
     }
 
