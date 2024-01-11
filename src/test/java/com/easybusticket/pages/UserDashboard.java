@@ -159,4 +159,13 @@ public class UserDashboard extends BasePage {
 
     }
 
+    public SupportTicketPage requestHistory() {
+        waitAndClick(dropDownSupportRequest);
+        waitAndClick(requestsOption);
+        String expectedTitle = "Easy Bus Ticket - Support Tickets";
+        String actualTitle = Driver.get(env).getTitle();
+        softAssert.assertEquals(actualTitle, expectedTitle);
+        softAssert.assertAll();
+        return new SupportTicketPage();
+    }
 }
