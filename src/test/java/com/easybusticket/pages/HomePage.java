@@ -90,19 +90,19 @@ public class HomePage extends BasePage{
     public WebElement footerSocialMediaIkons;
 
     //Footer Twitter Icon Link
-    @FindBy(xpath = "")
+    @FindBy(xpath = "(//a[@href='https://www.twitter.com'])[2]")
     public  WebElement getTwitterIconFooter;
 
     //Footer Facebook Icon Link
-    @FindBy(xpath = "//a[@href='https://www.facebook.com']")
+    @FindBy(xpath = "(//a[@href='https://www.facebook.com'])[2]")
     public WebElement getFacebookIconFooter;
 
     //Footer Youtube Icon Link
-    @FindBy(xpath = "/html/body/section[6]/div/div/div/div[1]/div/ul/li[3]/a/svg")
+    @FindBy(xpath = "//a[@href='https://www.youtube.com']")
     public WebElement getYoutubeIconFooter;
 
     //Footer Instagram Icon Link
-    @FindBy(xpath = "/html/body/section[6]/div/div/div/div[1]/div/ul/li[4]/a")
+    @FindBy(xpath = "(//a[@href='https://www.instagram.com'])[2]")
     public WebElement getInstagramIconFooter;
 
     //Footer About Title Link
