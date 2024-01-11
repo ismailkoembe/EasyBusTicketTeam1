@@ -85,12 +85,16 @@ public class HomePage extends BasePage{
     @FindBy(xpath = "/html/body/section[6]/div/div/div/div[4]/div/h4")
     public WebElement footerContactInfo;
 
+    //Social Media Ikons on Footer
+    @FindBy (xpath = "/html/body/section[6]/div/div/div/div[1]/div/ul")
+    public WebElement footerSocialMediaIkons;
+
     //Footer Twitter Icon Link
-    @FindBy(xpath = "/html/body/section[6]/div/div/div/div[1]/div/ul/li[1]/a/svg")
+    @FindBy(xpath = "")
     public  WebElement getTwitterIconFooter;
 
     //Footer Facebook Icon Link
-    @FindBy(xpath = "/html/body/section[6]/div/div/div/div[1]/div/ul/li[2]/a/svg")
+    @FindBy(xpath = "//a[@href='https://www.facebook.com']")
     public WebElement getFacebookIconFooter;
 
     //Footer Youtube Icon Link
