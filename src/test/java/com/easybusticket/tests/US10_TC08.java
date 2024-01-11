@@ -15,10 +15,14 @@ public class US10_TC08 extends BaseTest{
         UserLoginPage userLoginPage = new HomePage().clickToSignIn();
         UserDashboard userDashboard = userLoginPage.loginWithRememberMe();
         userDashboard.logout();
-        Assert.assertTrue(userLoginPage.checkbox_rememberMe.isSelected());
+
         String expectedResult = userLoginPage.username_login.getText();
-//        Assert.assertTrue(expectedResult != "");
+        log.info("Username is empty" + env);
         Assert.assertFalse(expectedResult.isEmpty());
+        Assert.assertTrue(userLoginPage.checkbox_rememberMe.isSelected());
+
+
+
 
     }
 }
