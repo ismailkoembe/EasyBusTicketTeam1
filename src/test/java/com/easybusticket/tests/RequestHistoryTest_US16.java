@@ -24,7 +24,7 @@ public class RequestHistoryTest_US16 extends BaseTest{
 
         //navigate to the request detail view and return requests page
         supportTicketPage.requestHistoryPageVerifyTest();
-        log.info(" Request Detail Page loaded ");
+        log.info(" Request Detail Page loaded and Returned to request history page");
 
     }
 

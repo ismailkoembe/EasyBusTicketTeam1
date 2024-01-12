@@ -149,4 +149,26 @@ public class AdminDashboardPage extends BasePage{
     @FindBy(xpath = "//*[text()='Login By Country']")
     public WebElement labelLoginByCountry;
 
+    //========================SIDE BAR===========================//
+    @FindBy(xpath = "//*[text()='Payment Gateways']")
+    public WebElement paymentGatewaysButton;
+
+    @FindBy(xpath = "//*[text()='Automatic Gateways']")
+    public WebElement automaticGatewaysButton;
+
+    @FindBy(xpath = "//*[text()='Manual Gateways']")
+    public WebElement manualGatewaysButton;
+
+    public GatewayPage clickToAutomaticGateway(){
+        //softAssert.assertTrue(paymentGatewaysButton.isDisplayed());
+        waitAndClick(paymentGatewaysButton);
+        //softAssert.assertTrue(automaticGatewaysButton.isDisplayed());
+        waitAndClick(automaticGatewaysButton);
+        //softAssert.assertAll();
+    return new GatewayPage();
+
+    }
+
+
+
 }                                              
