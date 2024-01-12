@@ -26,27 +26,14 @@ public class US17_TC_01_02_03 extends BaseTest {
         ProfilePage profilePage = new ProfilePage();
         Faker faker = new Faker();
 
-        String username= "pacal63";
-        String password= "omerfarukP5*";
-
-        userLoginPage.username_login.sendKeys(username);
-        userLoginPage.password_login.sendKeys(password);
-        userLoginPage.waitAndClick(userLoginPage.button_login);
-
-        String expectedTitle = "Easy Bus Ticket - Dashboard";
-        String actualTitle = Driver.get(env).getTitle();
-        softAssert.assertEquals(actualTitle, expectedTitle);
-        softAssert.assertAll();
-
-        //Asli'nin credentials lari ile giris
-        //userLoginPage.login();
+        userLoginPage.login();
 
         UserDashboard userDashboard = new UserDashboard();
 
         userDashboard.dropDownProfile.click();
-        wait(2000);
 
-        userDashboard.dropDownProfileOption.click();
+
+        userDashboard.profileOption.click();
         wait(2000);
 
         //Clear address input
