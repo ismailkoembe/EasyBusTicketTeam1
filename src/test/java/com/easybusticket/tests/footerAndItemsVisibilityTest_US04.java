@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 import static com.easybusticket.pages.BasePage.env;
 
 @Slf4j
-public class footerAndItemsVisibilityTest_US04 extends BaseTest{
+public class FooterAndItemsVisibilityTest_US04 extends BaseTest{
 
     @Test
     public void footerAndItemsVisibilityTest() {
