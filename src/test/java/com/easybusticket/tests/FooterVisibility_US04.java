@@ -5,12 +5,9 @@ import com.easybusticket.utilities.Driver;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
-
-import static com.easybusticket.pages.BasePage.env;
 
 @Slf4j
-public class FooterVisilibility_US04 extends BaseTest {
+public class FooterVisibility_US04 extends BaseTest {
 
     @Test
     public void testName() {
