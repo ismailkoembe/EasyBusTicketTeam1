@@ -2,8 +2,6 @@ package com.easybusticket.pages;
 
 import com.easybusticket.utilities.Driver;
 import lombok.extern.slf4j.Slf4j;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -17,6 +15,7 @@ public class ContactPage extends BasePage {
     // Contact Us title
     @FindBy(xpath = "//h2[@class='title']")
     public WebElement titleContactUs;
+
     //Our Adress
     @FindBy(xpath = "//div[@class='info-item active']")
     public WebElement titleOurAdres;
@@ -65,6 +64,7 @@ public class ContactPage extends BasePage {
         String actualContactTitle = Driver.get(env).getTitle();
         softAssert.assertEquals(actualContactTitle,expectedContactTitle);
         softAssert.assertAll();
+
 
     }
     public  void clickToEmailUs(){
