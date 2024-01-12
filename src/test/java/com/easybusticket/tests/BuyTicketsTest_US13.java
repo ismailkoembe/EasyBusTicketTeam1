@@ -4,7 +4,7 @@ import com.easybusticket.pages.HomePage;
 import com.easybusticket.pages.UserDashboard;
 import org.testng.annotations.Test;
 
-public class US13_TC03 extends BaseTest{
+public class BuyTicketsTest_US13 extends BaseTest{
 
     //Click on the "Buy tickets" link on the Dashboard page.
     //The user is successfully directed to the ticket purchase screen.
