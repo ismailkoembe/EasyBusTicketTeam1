@@ -6,13 +6,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-/**
- * @author Ismail Koembe
- */
 @Slf4j
-public class UserDashboard extends BasePage {
-    public UserDashboard(){
-        PageFactory.initElements(Driver.get("stage"),this);
+public class UserDashboardPage extends BasePage {
+
+    public UserDashboardPage() {
+        PageFactory.initElements(Driver.get("stage"), this);
     }
     //EasyBusTicket logosu
     @FindBy(xpath = "(//img[@*='Logo'])[1]")
@@ -26,7 +24,7 @@ public class UserDashboard extends BasePage {
    @FindBy(xpath = "//h2[text()='Dashboard']")
    public WebElement titleDashboard;
 
-    public HomePage logoEasybusticket() {
+    public HomePage logoEasyBusTicket() {
         waitAndClick(logoEasybusticket);
         softAssert.assertTrue(linkDashboard.isDisplayed());
         softAssert.assertAll();
@@ -48,7 +46,7 @@ public class UserDashboard extends BasePage {
     public WebElement dropDownBooking;
 
     // Buy ticket option
-    @FindBy(xpath = "//a[text()='Buy Ticket']" )
+    @FindBy(xpath = "//a[text()='Buy Ticket']")
     public WebElement buyTicketOption;
 
     // Booking history option
@@ -81,7 +79,7 @@ public class UserDashboard extends BasePage {
 
     // Logout option
     @FindBy(xpath = "//a[text()='Logout']")
-    public  WebElement logoutOption;
+    public WebElement logoutOption;
 
     // Buy tickets button
     @FindBy(xpath = "//*[@*='cmn--btn btn--sm']")
@@ -108,7 +106,7 @@ public class UserDashboard extends BasePage {
     public WebElement logoEasyBusTicket;
 
     // Link Easy bus ticket logo link-homepage link
-    @FindBy(xpath ="//a[@href='https://easybusticket.com']" )
+    @FindBy(xpath = "//a[@href='https://easybusticket.com']")
     public WebElement linkHomepage;
 
 
@@ -136,6 +134,46 @@ public class UserDashboard extends BasePage {
     @FindBy(xpath = "(//h3[@class='title'])[3]")
     public WebElement numberOfTotalPendingTicket;
 
+    // PNR number label
+    @FindBy(xpath = "//table/thead/tr/th[1]")
+    public WebElement labelPNRnumber;
+
+    // AC/Non-Ac label
+    @FindBy(xpath = "//table/thead/tr/th[2]")
+    public WebElement labelAcNonAc;
+
+    // Starting point label
+    @FindBy(xpath = "//table/thead/tr/th[3]")
+    public WebElement labelStartingPoint;
+
+    // Dropping point label
+    @FindBy(xpath = "//table/thead/tr/th[4]")
+    public WebElement labelDroppingPoint;
+
+    // Journey date label
+    @FindBy(xpath = "//table/thead/tr/th[5]")
+    public WebElement labelJourneyDate;
+
+    // Pickup time label
+    @FindBy(xpath = "//table/thead/tr/th[6]")
+    public WebElement labelPickupTime;
+
+    // Booked seats label
+    @FindBy(xpath = "//table/thead/tr/th[7]")
+    public WebElement labelBookedSeats;
+
+    // Status label
+    @FindBy(xpath = "//table/thead/tr/th[8]")
+    public WebElement labelStatus;
+
+    // Fare label
+    @FindBy(xpath = "//table/thead/tr/th[9]")
+    public WebElement labelFare;
+
+    // Action label
+    @FindBy(xpath = "//table/thead/tr/th[10]")
+    public WebElement labelAction;
+
     // Ticket No1
     @FindBy(xpath = "(//*[@class='ticket-no'])[1]")
     public WebElement ticketNo1;
@@ -143,6 +181,22 @@ public class UserDashboard extends BasePage {
     // Action button 1
     @FindBy(xpath = "(//*[@class='action-button-wrapper'])[1]")
     public WebElement actionButton;
+
+
+    public BuyTicketsPage clickToBuyTicketsButton() {
+        waitAndClick(dropDownBooking);
+        waitAndClick(buyTicketOption);
+        String expectedAboutTitle = "Easy Bus Ticket - Search Result";
+        String actualAboutTitle = Driver.get(env).getTitle();
+        softAssert.assertEquals(actualAboutTitle,expectedAboutTitle);
+
+        softAssert.assertAll();
+
+
+        return new BuyTicketsPage();
+
+
+    }
 
 
     public UserLoginPage logout(){
@@ -154,7 +208,6 @@ public class UserDashboard extends BasePage {
         softAssert.assertEquals(actualTitle, expectedTitle);
         softAssert.assertAll();
         return new UserLoginPage();
-
 
 
     }
@@ -169,3 +222,4 @@ public class UserDashboard extends BasePage {
         return new SupportTicketPage();
     }
 }
+

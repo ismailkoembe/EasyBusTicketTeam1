@@ -12,9 +12,7 @@ import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.safari.SafariDriver;
 
-/**
- * @author Ismail Koembe
- */
+
 @Slf4j
 public class Driver {
         private Driver(){}
