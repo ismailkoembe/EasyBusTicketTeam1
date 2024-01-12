@@ -9,7 +9,6 @@ import org.openqa.selenium.support.PageFactory;
  * @author Ismail Koembe
  */
 public class UserDashboard extends BasePage {
-
     public UserDashboard() {
         PageFactory.initElements(Driver.get("stage"), this);
     }
@@ -163,12 +162,36 @@ public class UserDashboard extends BasePage {
     public WebElement actionButton;
 
 
+    public UserLoginPage logout() {
+
+        waitAndClick(dropDownProfile);
+        waitAndClick(logoutOption);
+        String expectedTitle = "Easy Bus Ticket - Sign In";
+        String actualTitle = Driver.get(env).getTitle();
+        softAssert.assertEquals(actualTitle, expectedTitle);
+        softAssert.assertAll();
+        return new UserLoginPage();
+
+
+    }
+
+    public SupportTicketPage requestHistory() {
+        waitAndClick(dropDownSupportRequest);
+        waitAndClick(requestsOption);
+        String expectedTitle = "Easy Bus Ticket - Support Tickets";
+        String actualTitle = Driver.get(env).getTitle();
+        softAssert.assertEquals(actualTitle, expectedTitle);
+        softAssert.assertAll();
+        return new SupportTicketPage();
+    }
+
+
     public BuyTicketsPage clickToBuyTicketsButton() {
         waitAndClick(dropDownBooking);
         waitAndClick(buyTicketOption);
         String expectedAboutTitle = "Easy Bus Ticket - Search Result";
         String actualAboutTitle = Driver.get(env).getTitle();
-        softAssert.assertEquals(actualAboutTitle,expectedAboutTitle);
+        softAssert.assertEquals(actualAboutTitle, expectedAboutTitle);
 
         softAssert.assertAll();
 
@@ -177,6 +200,4 @@ public class UserDashboard extends BasePage {
 
 
     }
-
-
 }
