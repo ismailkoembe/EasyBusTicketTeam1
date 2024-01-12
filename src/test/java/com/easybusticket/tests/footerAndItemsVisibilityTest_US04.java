@@ -6,14 +6,17 @@ import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.annotations.Test;
 
+import static com.easybusticket.pages.BasePage.env;
+
 @Slf4j
-public class FooterVisibityTest_US04 extends BaseTest {
-    HomePage homePage = new HomePage();
+public class FooterAndItemsVisibilityTest_US04 extends BaseTest{
 
     @Test
     public void footerAndItemsVisibilityTest() {
 
         //As a visitor, I should be able to view the footer when I enter the homepage.
+        HomePage homePage = new HomePage();
+
         //accept the cookies.
         homePage.acceptCookies();
 
@@ -55,5 +58,6 @@ public class FooterVisibityTest_US04 extends BaseTest {
         log.info(" Contact Info are displayed " + env);
 
     }
+
 
 }
