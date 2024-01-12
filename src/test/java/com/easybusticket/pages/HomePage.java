@@ -62,7 +62,7 @@ public class HomePage extends BasePage{
     public WebElement faqsTitle;
 
     //Blog Title Button
-    @FindBy(xpath = "((//a[text()=Blog])[1])")
+    @FindBy(xpath = "(//a[text()=Blog])")
     public WebElement blogTitle;
 
     // Contact Title Button.
@@ -86,15 +86,15 @@ public class HomePage extends BasePage{
     public WebElement footerContactInfo;
 
     //Footer Twitter Icon Link
-    @FindBy(xpath = "/html/body/section[6]/div/div/div/div[1]/div/ul/li[1]/a/svg")
+    @FindBy(xpath = "(//a[@href='https://www.twitter.com'])[2]")
     public  WebElement getTwitterIconFooter;
 
     //Footer Facebook Icon Link
-    @FindBy(xpath = "/html/body/section[6]/div/div/div/div[1]/div/ul/li[2]/a/svg")
+    @FindBy(xpath = "(//a[@href='https://www.facebook.com'])[2]")
     public WebElement getFacebookIconFooter;
 
     //Footer Youtube Icon Link
-    @FindBy(xpath = "/html/body/section[6]/div/div/div/div[1]/div/ul/li[3]/a/svg")
+    @FindBy(xpath = "//a[@href='https://www.youtube.com']")
     public WebElement getYoutubeIconFooter;
 
     //Footer Instagram Icon Link
@@ -115,7 +115,7 @@ public class HomePage extends BasePage{
 
     //Footer Contact Title Link
     @FindBy(xpath = "/html/body/section[6]/div/div/div/div[2]/div/ul/li[4]/a")
-    public WebElement getContactTitleFooter;
+    public WebElement footerContactUsefulLinks;
 
     //Footer Privacy Policy Title Link
     @FindBy(xpath = "/html/body/section[6]/div/div/div/div[3]/div/ul/li[1]/a")
@@ -144,6 +144,7 @@ public class HomePage extends BasePage{
     public void acceptCookies() {
         waitAndClick(cookies);
     }
+
     public RegisterPage clickSignUp() {
         waitAndClick(signUpLink);
         String expectedText = "Sign Up your Account";
@@ -164,12 +165,97 @@ public class HomePage extends BasePage{
         waitAndClick(aboutButton);
         return new AboutPage();
 
-
     }
     public ContactPage clickToContactTitle(){
         acceptCookies();
         waitAndClick(contactTitle);
         return new ContactPage();
+
+    }
+    public TwitterPage clickToFooterTwitterLink(){
+        acceptCookies();
+        waitAndClick(getTwitterIconFooter);
+        return new TwitterPage();
+
+    }
+    public FacebookPage clickToFoterFacebookLink(){
+        acceptCookies();
+        waitAndClick(getFacebookIconFooter);
+        return new FacebookPage();
+
+    }
+
+    public YoutubePage clickToFooterYoutubeLink() {
+        acceptCookies();
+        waitAndClick(getYoutubeIconFooter);
+        return new YoutubePage();
+    }
+
+    public InstagramPage clickToFooterInstagramLink(){
+        acceptCookies();
+        waitAndClick(getInstagramIconFooter);
+        return new InstagramPage();
+
+    }
+    public AboutPage clickToFooterAboutLink(){
+        acceptCookies();
+        waitAndClick(getAboutTitleFooter);
+        return new AboutPage();
+
+    }
+    public FAQPage clickToFooterFaqLink(){
+        acceptCookies();
+        waitAndClick(getFaqsTitleFooter);
+        return new FAQPage();
+
+    }
+
+    public ContactPage clickToFooterContactLink(){
+        acceptCookies();
+        waitAndClick(footerContactUsefulLinks);
+        return new ContactPage();
+
+    }public PrivacyPolicy clickToFooterPrivacyPolicyLink(){
+        acceptCookies();
+        waitAndClick(getPrivacyPolicyTitleFooter);
+        return new PrivacyPolicy();
+
+    }
+    public TermsAndConditionsPage clickToFooterTermsAndConditionsLink(){
+        acceptCookies();
+        waitAndClick(getTermsAndConditionsTitleFooter);
+        return new TermsAndConditionsPage();
+
+    }
+    public TicketAndPoliciesPage clickToFooterTicketPoliciesLink(){
+        acceptCookies();
+        waitAndClick(getTicketPoliciesFooter);
+        return new TicketAndPoliciesPage();
+
+    }
+
+    private class TwitterPage {
+    }
+
+    private class FacebookPage {
+    }
+
+    private class YoutubePage {
+    }
+
+    private class InstagramPage {
+    }
+
+    private class PrivacyPolicy {
+    }
+
+    private class TermsAndConditionsPage {
+    }
+
+    private class TicketAndPoliciesPage {
+    }
+
+    private class FAQPage {
 
     }
 
