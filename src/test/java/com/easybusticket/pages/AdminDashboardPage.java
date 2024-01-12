@@ -149,4 +149,16 @@ public class AdminDashboardPage extends BasePage{
     @FindBy(xpath = "//*[text()='Login By Country']")
     public WebElement labelLoginByCountry;
 
+
+    @FindBy (xpath = "//*[@id=\"sidebar__menuWrapper\"]/ul/li[3]/a/span")
+    public WebElement paymentHistoryDropdownDashboard;
+
+    @FindBy(xpath = "//*[@id=\"sidebar__menuWrapper\"]/ul/li[3]/div/ul/li[1]/a/span")
+    public WebElement pendingPaymentOption;
+
+    @FindBy
+
+
+
+
 }                                              
