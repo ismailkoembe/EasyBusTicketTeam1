@@ -6,7 +6,7 @@ import com.easybusticket.pages.UserLoginPage;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.Test;
 @Slf4j
-public class US19_TC01 extends BaseTest{
+public class UserLogoutTest_US19 extends BaseTest{
 
     @Test
     public void userLogoutTest(){
