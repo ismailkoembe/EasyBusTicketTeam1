@@ -13,4 +13,8 @@ public class JustForFun {
 
     }
 
+    public void giveSmth(){
+
+    }
+
 }
