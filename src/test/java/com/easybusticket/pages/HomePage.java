@@ -172,10 +172,9 @@ public class HomePage extends BasePage{
 
     }
 
-    public HomePage clickToFAQsTitle(){
+    public void clickToFAQsTitle(){
         acceptCookies();
         waitAndClick(faqsTitle);
-        return new HomePage();
 
     }
     public TwitterPage clickToFooterTwitterLink(){
@@ -275,7 +274,6 @@ public class HomePage extends BasePage{
         acceptCookies();
         waitAndClick(homeTitle);
     }
-
 }
 
 
