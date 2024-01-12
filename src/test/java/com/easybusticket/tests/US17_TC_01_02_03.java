@@ -19,47 +19,20 @@ import static com.easybusticket.pages.BasePage.driver;
 public class US17_TC_01_02_03 extends BaseTest {
 
     @Test
-    public void LoginPage() throws InterruptedException {
+    public void LoginPage(){
 
         // navigate to the login page
         UserLoginPage userLoginPage = new HomePage().clickToSignIn();
+
         ProfilePage profilePage = new ProfilePage();
-        Faker faker = new Faker();
 
         userLoginPage.login();
 
-        UserDashboard userDashboard = new UserDashboard();
+        profilePage.profileSetting();
 
-        userDashboard.dropDownProfile.click();
+        profilePage.updateProfileSettings();
 
-
-        userDashboard.profileOption.click();
-        wait(2000);
-
-        //Clear address input
-        profilePage.address.clear();
-
-        String fakeAddress ="Exocet" + faker.letterify("??");
-        profilePage.address.sendKeys(fakeAddress);
-        wait(2000);
-
-
-        //Scrolling down
-        Actions action =new Actions(driver);
-
-        action.sendKeys(Keys.PAGE_DOWN).perform();
-
-        wait(2000);
-        profilePage.buttonUpdateProfile.click();
-
-
-
-        /*JavascriptExecutor js = (JavascriptExecutor) driver;
-
-        js.executeScript("window.scrollTodocument.body.scrollHeight");
-
-         */
-
+        profilePage.updateProfileSettings();
 
     }
 }
