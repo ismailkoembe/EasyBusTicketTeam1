@@ -23,7 +23,6 @@ public class FooterVisibility_US04 extends BaseTest {
         jse.executeScript("arguments[0].scrollIntoViewIfNeeded(true);", homePage.footerSection);
 
         //verify the visibility of the footer
-
         softAssert.assertTrue(homePage.footerSection.isDisplayed());
         log.info(" Footer section is displayed " + env);
 
