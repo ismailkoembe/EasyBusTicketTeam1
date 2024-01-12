@@ -15,7 +15,7 @@ public class BlogPage extends BasePage{
         BlogPage blogPage = new HomePage().clickToBlogTitle();
         blogPage.titleBlogPage();
 
-        log.info("Blog page pages downloaded ");
+
     }
 
     public void titleBlogPage(){
@@ -24,7 +24,7 @@ public class BlogPage extends BasePage{
         String actualBlogTitle = Driver.get(env).getTitle();
         softAssert.assertEquals(actualBlogTitle,expectedBlogTitle);
         softAssert.assertAll();
-
+        log.info("Blog page pages downloaded ");
     }
 
 }
