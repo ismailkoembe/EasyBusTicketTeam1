@@ -7,7 +7,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.testng.annotations.Test;
 
 @Slf4j
-public class US04_TC01_TC02 extends BaseTest {
+public class US04_TC01 extends BaseTest {
     HomePage homePage = new HomePage();
 
     @Test
@@ -57,4 +57,3 @@ public class US04_TC01_TC02 extends BaseTest {
     }
 
 }
-
