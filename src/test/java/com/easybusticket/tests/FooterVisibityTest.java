@@ -7,7 +7,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.testng.annotations.Test;
 
 @Slf4j
-public class US04_TC01 extends BaseTest {
+public class FooterVisibityTest_US04 extends BaseTest {
     HomePage homePage = new HomePage();
 
     @Test
