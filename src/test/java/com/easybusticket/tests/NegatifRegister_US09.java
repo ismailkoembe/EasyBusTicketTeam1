@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 
 @Slf4j
-public class US09_TC03 extends BaseTest {
+public class NegatifRegister_US09 extends BaseTest {
 
     @Test
     public void negatifSignUpTest(){
