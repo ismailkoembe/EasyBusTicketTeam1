@@ -5,9 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-/**
- * @author Ismail Koembe
- */
+
 public class HomePage extends BasePage{
 
     public HomePage(){
@@ -273,25 +271,12 @@ public class HomePage extends BasePage{
         return new BlogPage();
     }
 
-
-
-}
-
-    public HomePage clickToBlogTitle(){
-        acceptCookies();
-        waitAndClick(blogTitle);
-        return new HomePage();
-
-    }
-
-    public HomePage clickToHomeTitle(){
+    public void clickToHomeTitle(){
         acceptCookies();
         waitAndClick(homeTitle);
-        return new HomePage();
-
     }
 
-    }
+}
 
 
 

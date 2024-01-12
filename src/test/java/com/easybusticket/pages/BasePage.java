@@ -16,13 +16,11 @@ import org.testng.asserts.SoftAssert;
 
 import java.time.Duration;
 
-/**
- * @author Ismail Koembe
- */
+
 @Slf4j
 public abstract class BasePage {
 
-    public static final String env = Environments.PRODUCTION.name();
+    public static final String env = Environments.STAGE.name();
     public static final WebDriver driver = Driver.get(env);
 
     public static final Wait<WebDriver> wait = new FluentWait<>(driver)
