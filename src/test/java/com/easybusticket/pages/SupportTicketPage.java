@@ -34,8 +34,30 @@ public class SupportTicketPage extends BasePage{
     public WebElement rowFirstRequest;
 
     //detail button for the first request
-    @FindBy(xpath = "//i[@class='fa fa-desktop']")
+    @FindBy(xpath = "//*[@class='fa fa-desktop']")
     public WebElement actionButton;
+
+    @FindBy(xpath = "//*[@class='card-title m-0 text-white']")
+    public WebElement labelOpenedRequestTitle;
+    @FindBy(xpath = "//*[@id='inputAttachments']")
+    public WebElement selectFileButton;
+
+    @FindBy(xpath = "//*[@class='btn btn--base mt-md-4 mt-2 h-40']")
+    public WebElement replyButton;
+
+    @FindBy(xpath = "//*[@class='form-control form--control shadow-none']")
+    public WebElement yourReplyBox;
+
+    @FindBy(xpath = "//*[@class='col-md-9 ps-2']")
+    public WebElement labelLastRequestMessage;
+
+    @FindBy(xpath = "//a[text()='Support Request']")
+    public WebElement dropDownSupportRequest;
+
+    @FindBy(xpath = "//a[text()='Requests']")
+    public WebElement requestsOption;
+
+
 
     public void requestHistoryPageVerifyTest(){
         columnSubject.isDisplayed();
@@ -46,7 +68,16 @@ public class SupportTicketPage extends BasePage{
         newTicketButton.isDisplayed();
         rowFirstRequest.isDisplayed();
         actionButton.isDisplayed();
+
         waitAndClick(actionButton);
+        log.info("Request Detail Page loaded");
+        labelOpenedRequestTitle.isDisplayed();
+        selectFileButton.isDisplayed();
+        replyButton.isDisplayed();
+        yourReplyBox.isDisplayed();
+        labelLastRequestMessage.isDisplayed();
+        waitAndClick(dropDownSupportRequest);
+        waitAndClick(requestsOption);
 
 
     }
