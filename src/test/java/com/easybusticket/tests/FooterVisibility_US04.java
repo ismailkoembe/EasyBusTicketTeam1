@@ -54,7 +54,7 @@ public class FooterVisibility_US04 extends BaseTest {
         softAssert.assertTrue(homePage.footerPhoneLink.isDisplayed());
         softAssert.assertTrue(homePage.footerEmailAdresseLink.isDisplayed());
         log.info(" Contact Info are displayed " + env);
-
+        softAssert.assertAll();
 
     }
 }
