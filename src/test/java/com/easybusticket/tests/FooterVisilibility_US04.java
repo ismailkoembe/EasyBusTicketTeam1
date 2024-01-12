@@ -5,11 +5,12 @@ import com.easybusticket.utilities.Driver;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import static com.easybusticket.pages.BasePage.env;
 
 @Slf4j
-public class FooterVisilibility_US04 extends BaseTest{
+public class FooterVisilibility_US04 extends BaseTest {
 
     @Test
     public void testName() {
@@ -25,41 +26,38 @@ public class FooterVisilibility_US04 extends BaseTest{
         jse.executeScript("arguments[0].scrollIntoViewIfNeeded(true);", homePage.footerSection);
 
         //verify the visibility of the footer
-        homePage.footerSection.isDisplayed();
+
+        softAssert.assertTrue(homePage.footerSection.isDisplayed());
         log.info(" Footer section is displayed " + env);
 
         // verify the visibility of the social media items
-        homePage.getTwitterIconFooter.isDisplayed();
-        homePage.getFacebookIconFooter.isDisplayed();
-        homePage.getYoutubeIconFooter.isDisplayed();
-        homePage.getInstagramIconFooter.isDisplayed();
+        softAssert.assertTrue(homePage.getTwitterIconFooter.isDisplayed());
+        softAssert.assertTrue(homePage.getFacebookIconFooter.isDisplayed());
+        softAssert.assertTrue(homePage.getYoutubeIconFooter.isDisplayed());
+        softAssert.assertTrue(homePage.getInstagramIconFooter.isDisplayed());
         log.info(" Social Media and social media icons are displayed " + env);
 
         //verify the visibility of Useful Links section
-        homePage.footerUsefulLinks.isDisplayed();
-        homePage.getAboutTitleFooter.isDisplayed();
-        homePage.getFaqsTitleFooter.isDisplayed();
-        homePage.getBlogTitleFooter.isDisplayed();
-        homePage.footerContactUsefulLinks.isDisplayed();
+        softAssert.assertTrue(homePage.footerUsefulLinks.isDisplayed());
+        softAssert.assertTrue(homePage.getAboutTitleFooter.isDisplayed());
+        softAssert.assertTrue(homePage.getFaqsTitleFooter.isDisplayed());
+        softAssert.assertTrue(homePage.getBlogTitleFooter.isDisplayed());
+        softAssert.assertTrue(homePage.footerContactUsefulLinks.isDisplayed());
         log.info("Useful Links are displayed " + env);
 
         //verify the visibility of footer policies section
-        homePage.footerPolicies.isDisplayed();
-        homePage.getPrivacyPolicyTitleFooter.isDisplayed();
-        homePage.getTermsAndConditionsTitleFooter.isDisplayed();
-        homePage.getTicketPoliciesFooter.isDisplayed();
+        softAssert.assertTrue(homePage.footerPolicies.isDisplayed());
+        softAssert.assertTrue(homePage.getPrivacyPolicyTitleFooter.isDisplayed());
+        softAssert.assertTrue(homePage.getTermsAndConditionsTitleFooter.isDisplayed());
+        softAssert.assertTrue(homePage.getTicketPoliciesFooter.isDisplayed());
         log.info("Policies Section are displayed " + env);
 
         //verify the visibility of contact Info section
-        homePage.footerContactUsefulLinks.isDisplayed();
-        homePage.footerContactInfoAdresse.isDisplayed();
-        homePage.footerPhoneLink.isDisplayed();
-        homePage.footerEmailAdresseLink.isDisplayed();
+        softAssert.assertTrue(homePage.footerContactInfo.isDisplayed());
+        softAssert.assertTrue(homePage.footerContactInfoAdresse.isDisplayed());
+        softAssert.assertTrue(homePage.footerPhoneLink.isDisplayed());
+        softAssert.assertTrue(homePage.footerEmailAdresseLink.isDisplayed());
         log.info(" Contact Info are displayed " + env);
-
-
-
-
 
 
     }
