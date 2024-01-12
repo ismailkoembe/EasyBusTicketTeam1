@@ -2,6 +2,7 @@ package com.easybusticket.pages;
 
 import com.easybusticket.utilities.Driver;
 import lombok.extern.slf4j.Slf4j;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -69,7 +70,8 @@ public class RegisterPage extends BasePage {
                 .perform();
 
        buttonOfAcceptingall.click();
-
+        JavascriptExecutor javascriptExecutor= (JavascriptExecutor) Driver.get(env);
+        javascriptExecutor.executeScript("arguments[0].scrollIntoViewIfNeeded(true);",buttonOfSignUp);
        buttonOfSignUp.click();
 
         String expectedTitle="Easy Bus Ticket - Dashboard";
@@ -81,7 +83,7 @@ public class RegisterPage extends BasePage {
         return new UserDashboard();
     }
 
-    public UserDashboard fillTheSignUpForm(){
+    public UserDashboard withoutLastnameAndEmailSignUp(){
 
         String fakePassword="06Feriha&";
 
@@ -112,7 +114,7 @@ public class RegisterPage extends BasePage {
         return new UserDashboard();
 
     }
-    public UserDashboard fillTheSignUpForm2(){
+    public UserDashboard withExistingUsernameAndEmailSignUp(){
 
         String username="celinpicard";
         String email="picardcelin06@gmail.com";
