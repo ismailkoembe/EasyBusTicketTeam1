@@ -32,7 +32,5 @@ public class US17_TC_01_02_03 extends BaseTest {
 
         profilePage.updateProfileSettings();
 
-        profilePage.updateProfileSettings();
-
     }
 }
