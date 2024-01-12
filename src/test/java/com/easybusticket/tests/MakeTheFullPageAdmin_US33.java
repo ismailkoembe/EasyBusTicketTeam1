@@ -15,9 +15,8 @@ public class MakeTheFullPageAdmin_US33 extends BaseTestAdmin{
         AdminDashboardPage adminDashboardPage = new AdminPage().adminLogin();
         log.info("Admin logged in admin dashboars");
 
-
-
-
-
+        //Makes the dashboard screen full screen and brings it back to normal
+        adminDashboardPage.clickButtonFullScreenPage();
+        log.info("Makes the dashboard screen full screen and brings it back to normal");
     }
 }
