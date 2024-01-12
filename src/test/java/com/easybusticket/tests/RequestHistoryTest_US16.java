@@ -8,7 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.Test;
 
 @Slf4j
-public class RequestHistory_US16 extends BaseTest{
+public class RequestHistoryTest_US16 extends BaseTest{
     @Test
     public void requestCheckTest(){
         // navigate to the login page
