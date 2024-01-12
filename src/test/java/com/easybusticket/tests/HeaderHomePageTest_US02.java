@@ -17,14 +17,14 @@ public class HeaderHomePageTest_US02 extends BaseTest {
 
         //Phone button click and check
         Assert.assertTrue(homePage.phoneLink.isDisplayed());
-        log.info("phone displayed " + env);
+        log.info("phone displayed " );
 
         //Twitter icon click and check
         homePage.twitterIcon.click();
         String expectedTitle ="https://twitter.com/";
         String actualTitle = Driver.get(env).getTitle();
         softAssert.assertEquals(actualTitle, expectedTitle);
-        log.info("twitter displayed "+ env);
+        log.info("twitter displayed ");
         Driver.get(env).navigate().back();
 
         //Facebook icon click and check
@@ -32,7 +32,7 @@ public class HeaderHomePageTest_US02 extends BaseTest {
         expectedTitle ="Facebook - Giriş Yap veya Kaydol";
         actualTitle = Driver.get(env).getTitle();
         softAssert.assertEquals(actualTitle, expectedTitle);
-        log.info("facebook displayed  "+ env);
+        log.info("facebook displayed  ");
         Driver.get(env).navigate().back();
 
         //İnstagram icon click and check
@@ -41,47 +41,47 @@ public class HeaderHomePageTest_US02 extends BaseTest {
         actualTitle = Driver.get(env).getTitle();
         softAssert.assertEquals(actualTitle, expectedTitle);
         //homePage.instagramCookie.click();
-        log.info("instagram displayed  "+ env);
+        log.info("instagram displayed  ");
         Driver.get(env).navigate().back();
 
         //Sign in check
         Assert.assertTrue(homePage.linkSignIn.isDisplayed());
-        log.info(" signın displayed " + env);
+        log.info(" signın displayed ");
 
         //Sign up check
         Assert.assertTrue(homePage.signUpLink.isDisplayed());
-        log.info(" signup displayed " + env);
+        log.info(" signup displayed " );
 
         //Home check
         Assert.assertTrue(homePage.homeTitle.isDisplayed());
-        log.info(" Home Title displayed " + env);
+        log.info(" Home Title displayed " );
 
         //About check
         Assert.assertTrue(homePage.aboutButton.isDisplayed());
-        log.info(" about Title displayed " + env);
+        log.info(" about Title displayed " );
 
         //FAQs check
         Assert.assertTrue(homePage.faqsTitle.isDisplayed());
-        log.info(" faqs title displayed " + env);
+        log.info(" faqs title displayed " );
 
         //Blog check
         Assert.assertTrue(homePage.blogTitle.isDisplayed());
-        log.info(" blog title displayed " + env);
+        log.info(" blog title displayed " );
 
         //Contact check
         Assert.assertTrue(homePage.contactTitle.isDisplayed());
-        log.info(" contact title displayed " + env);
+        log.info(" contact title displayed " );
 
         //Buy Ticket click and check
         Assert.assertTrue(homePage.buyTicketButtonLink.isDisplayed());
-        log.info(" Buy Ticket buttonLink displayed " + env);
+        log.info(" Buy Ticket buttonLink displayed " );
 
         //Youtube icon click and check
         homePage.youtubeIcon.click();
         expectedTitle ="https://www.youtube.com/";
         actualTitle = Driver.get(env).getTitle();
         softAssert.assertEquals(actualTitle, expectedTitle);
-        log.info("youtube displayed  "+ env);
+        log.info("youtube displayed  ");
         Driver.get(env).navigate().back();
 
     }
