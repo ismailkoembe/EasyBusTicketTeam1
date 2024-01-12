@@ -9,13 +9,12 @@ import org.testng.asserts.SoftAssert;
 
 import java.lang.reflect.Method;
 import java.util.Objects;
-import java.util.Random;
 
 /**
- * @author Ismail Koembe
+ * @author Reyhan
  */
 @Slf4j
-public class BaseTest {
+public class BaseTestAdmin {
     public String env = Environments.STAGE.name;
     public final Integer timeout = Integer.valueOf(Objects.requireNonNull(PropManager.getProperties(env, "timeout")));
     public final SoftAssert softAssert=new SoftAssert();
@@ -61,9 +60,9 @@ public class BaseTest {
 
     @BeforeMethod
     public void setup(){
-        Driver.get(env).get(PropManager.getProperties(env,"url"));
+        Driver.get(env).get(PropManager.getProperties(env,"AdminUrl"));
         Driver.get(env).manage().window().maximize();
-        log.info("Navigating {} environment {}", PropManager.getProperties(env,"url"), env);
+        log.info("Navigating {} environment {}", PropManager.getProperties(env,"AdminUrl"), env);
     }
 
 
@@ -75,6 +74,8 @@ public class BaseTest {
             throw new RuntimeException(e);
         }
         Driver.closeDriver();
+
     }
 
 }
+

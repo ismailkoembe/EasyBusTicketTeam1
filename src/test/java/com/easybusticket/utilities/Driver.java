@@ -23,7 +23,7 @@ public class Driver {
          * This method returns desired WebDriver which is designated in <environment>.properties file.
          * That's why constructor is private, only one instance of web driver runs during whole process.
          * */
-        public static WebDriver get(String env){
+        public static WebDriver get(String env) throws WebDriverException {
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--remote-allow-origins=*");
             if (driver == null) {
@@ -84,7 +84,6 @@ public class Driver {
                         log.error("No such a browser type");
                         break;
                 }
-
 
             }
 
