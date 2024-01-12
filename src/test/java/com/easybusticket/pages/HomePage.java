@@ -62,7 +62,7 @@ public class HomePage extends BasePage{
     public WebElement faqsTitle;
 
     //Blog Title Button
-    @FindBy(xpath = "(//a[text()='Blog'])")
+    @FindBy(xpath = "((//a[text()=Blog])[1])")
     public WebElement blogTitle;
 
     // Contact Title Button.
@@ -72,6 +72,18 @@ public class HomePage extends BasePage{
     //Buy Ticket ButtonLink
     @FindBy(xpath = "//div[@class='d-flex flex-wrap algin-items-center']")
     public WebElement buyTicketButtonLink;
+
+    @FindBy (xpath = "/html/body/section[6]")
+    public WebElement footerSection;
+
+    @FindBy(xpath = "/html/body/section[6]/div/div/div/div[2]/div/h4")
+    public WebElement footerUsefulLinks;
+
+    @FindBy(xpath = "/html/body/section[6]/div/div/div/div[3]/div/h4")
+    public WebElement footerPolicies;
+
+    @FindBy(xpath = "/html/body/section[6]/div/div/div/div[4]/div/h4")
+    public WebElement footerContactInfo;
 
     //Footer Twitter Icon Link
     @FindBy(xpath = "/html/body/section[6]/div/div/div/div[1]/div/ul/li[1]/a/svg")
@@ -117,12 +129,21 @@ public class HomePage extends BasePage{
     @FindBy(xpath ="/html/body/section[6]/div/div/div/div[3]/div/ul/li[3]/a")
     public  WebElement getTicketPoliciesFooter;
 
+    @FindBy(xpath = "/html/body/section[6]/div/div/div/div[4]/div/ul/li[1]")
+    public WebElement footerContactInfoAdresse;
+
+    @FindBy(xpath = "/html/body/section[6]/div/div/div/div[4]/div/ul/li[2]/a")
+    public WebElement footerPhoneLink;
+
+    @FindBy(xpath = "/html/body/section[6]/div/div/div/div[4]/div/ul/li[3]/a")
+    public WebElement footerEmailAdresseLink;
+
     public RegisterPage register = new RegisterPage();
+
 
     public void acceptCookies() {
         waitAndClick(cookies);
     }
-
     public RegisterPage clickSignUp() {
         waitAndClick(signUpLink);
         String expectedText = "Sign Up your Account";
@@ -142,6 +163,8 @@ public class HomePage extends BasePage{
         acceptCookies();
         waitAndClick(aboutButton);
         return new AboutPage();
+
+
     }
     public ContactPage clickToContactTitle(){
         acceptCookies();
@@ -150,28 +173,15 @@ public class HomePage extends BasePage{
 
     }
 
-    public HomePage clickToFAQsTitle(){
+    public BlogPage clickToBlogTitle(){
         acceptCookies();
-        waitAndClick(faqsTitle);
-        return new HomePage();
+        waitAndClick(blogTitle);
+        return new BlogPage();
+    }
+
 
 }
 
-    public HomePage clickToBlogTitle(){
-        acceptCookies();
-        waitAndClick(blogTitle);
-        return new HomePage();
-
-    }
-
-    public HomePage clickToHomeTitle(){
-        acceptCookies();
-        waitAndClick(homeTitle);
-        return new HomePage();
-
-    }
-
-    }
 
 
 
