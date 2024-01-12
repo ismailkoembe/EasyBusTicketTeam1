@@ -6,13 +6,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-/**
- * @author Ismail Koembe
- */
 @Slf4j
-public class UserDashboard extends BasePage {
+public class UserDashboardPage extends BasePage {
 
-    public UserDashboard() {
+    public UserDashboardPage() {
         PageFactory.initElements(Driver.get("stage"), this);
     }
     //EasyBusTicket logosu
@@ -27,7 +24,7 @@ public class UserDashboard extends BasePage {
    @FindBy(xpath = "//h2[text()='Dashboard']")
    public WebElement titleDashboard;
 
-    public HomePage logoEasybusticket() {
+    public HomePage logoEasyBusTicket() {
         waitAndClick(logoEasybusticket);
         softAssert.assertTrue(linkDashboard.isDisplayed());
         softAssert.assertAll();
@@ -186,7 +183,6 @@ public class UserDashboard extends BasePage {
     public WebElement actionButton;
 
 
-    feature/US13_TC03_BuyTickets
     public BuyTicketsPage clickToBuyTicketsButton() {
         waitAndClick(dropDownBooking);
         waitAndClick(buyTicketOption);
@@ -203,8 +199,6 @@ public class UserDashboard extends BasePage {
     }
 
 
-}
-
     public UserLoginPage logout(){
 
         waitAndClick(dropDownProfile);
@@ -214,7 +208,6 @@ public class UserDashboard extends BasePage {
         softAssert.assertEquals(actualTitle, expectedTitle);
         softAssert.assertAll();
         return new UserLoginPage();
-
 
 
     }

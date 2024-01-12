@@ -10,30 +10,30 @@ public class US13_TC01_TC02 extends BaseTest{
     // The reservation menu and the items below are displayed on the User Dashboard page.
     @Test
     public void BookingTest(){
-        UserDashboard userDashboard = new HomePage().clickToSignIn().login();
+        UserDashboardPage userDashboardPage = new HomePage().clickToSignIn().login();
 
-        userDashboard.dashboardButton.isDisplayed();
-        userDashboard.dropDownBooking.isDisplayed();
-        userDashboard.dropDownSupportRequest.isDisplayed();
-        userDashboard.dropDownProfile.isDisplayed();
-        userDashboard.labelTotalBookedTicket.isDisplayed();
-        userDashboard.labelTotalRejectedTicket.isDisplayed();
-        userDashboard.labelTotalPendingTicket.isDisplayed();
-        userDashboard.numberOfTotalBookedTicket.isDisplayed();
-        userDashboard.numberOfTotalRejectedTicket.isDisplayed();
-        userDashboard.numberOfTotalPendingTicket.isDisplayed();
-        userDashboard.labelPNRnumber.isDisplayed();
-        userDashboard.labelAcNonAc.isDisplayed();
-        userDashboard.labelStartingPoint.isDisplayed();
-        userDashboard.labelDroppingPoint.isDisplayed();
-        userDashboard.labelJourneyDate.isDisplayed();
-        userDashboard.labelPickupTime.isDisplayed();
-        userDashboard.labelBookedSeats.isDisplayed();
-        userDashboard.labelStatus.isDisplayed();
-        userDashboard.labelFare.isDisplayed();
-        userDashboard.labelAction.isDisplayed();
+        userDashboardPage.dashboardButton.isDisplayed();
+        userDashboardPage.dropDownBooking.isDisplayed();
+        userDashboardPage.dropDownSupportRequest.isDisplayed();
+        userDashboardPage.dropDownProfile.isDisplayed();
+        userDashboardPage.labelTotalBookedTicket.isDisplayed();
+        userDashboardPage.labelTotalRejectedTicket.isDisplayed();
+        userDashboardPage.labelTotalPendingTicket.isDisplayed();
+        userDashboardPage.numberOfTotalBookedTicket.isDisplayed();
+        userDashboardPage.numberOfTotalRejectedTicket.isDisplayed();
+        userDashboardPage.numberOfTotalPendingTicket.isDisplayed();
+        userDashboardPage.labelPNRnumber.isDisplayed();
+        userDashboardPage.labelAcNonAc.isDisplayed();
+        userDashboardPage.labelStartingPoint.isDisplayed();
+        userDashboardPage.labelDroppingPoint.isDisplayed();
+        userDashboardPage.labelJourneyDate.isDisplayed();
+        userDashboardPage.labelPickupTime.isDisplayed();
+        userDashboardPage.labelBookedSeats.isDisplayed();
+        userDashboardPage.labelStatus.isDisplayed();
+        userDashboardPage.labelFare.isDisplayed();
+        userDashboardPage.labelAction.isDisplayed();
 
-        userDashboard.clickToBuyTicketsButton();
+        userDashboardPage.clickToBuyTicketsButton();
         log.info("bilet alma sayfasina yonlendirildi "+env);
     }
 

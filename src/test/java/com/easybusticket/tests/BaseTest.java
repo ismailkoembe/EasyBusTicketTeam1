@@ -11,9 +11,6 @@ import java.lang.reflect.Method;
 import java.util.Objects;
 import java.util.Random;
 
-/**
- * @author Ismail Koembe
- */
 @Slf4j
 public class BaseTest {
     public String env = Environments.STAGE.name;

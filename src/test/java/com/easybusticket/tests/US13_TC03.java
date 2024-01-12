@@ -1,7 +1,7 @@
 package com.easybusticket.tests;
 
 import com.easybusticket.pages.HomePage;
-import com.easybusticket.pages.UserDashboard;
+import com.easybusticket.pages.UserDashboardPage;
 import org.testng.annotations.Test;
 
 public class US13_TC03 extends BaseTest{
@@ -17,8 +17,8 @@ public class US13_TC03 extends BaseTest{
     @Test
     public void BuyTicketTest(){
 
-        UserDashboard userDashboard = new HomePage().clickToSignIn().login();
-        userDashboard.clickToBuyTicketsButton();
+        UserDashboardPage userDashboardPage = new HomePage().clickToSignIn().login();
+        userDashboardPage.clickToBuyTicketsButton();
 
     }
 }
