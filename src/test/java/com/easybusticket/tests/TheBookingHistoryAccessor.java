@@ -15,19 +15,24 @@ public class TheBookingHistoryAccessor extends BaseTest {
 
         // navigate to the login page
         UserLoginPage userLoginPage = new HomePage().clickToSignIn();
+        log.info("Signed in " + env);
 
         //navigate to the dashboard page
         UserDashboardPage userDashboardPage = userLoginPage.login();
+        log.info("Dashboard opened " + env);
 
         //Locate and hover over the "Booking" menu option.
         userDashboardPage.dropDownBooking.isEnabled();
+        log.info("Booking drop menu is enabled " + env);
 
         //From the drop-down menu, click on the "Booking History" option.
         userDashboardPage.clickToBookingHistory();
+        log.info("Booking History Page is enabled " + env);
 
+        //Verify that the Booking History Page is able to access from the Dashboard page.
         BookingHistoryPage bookingHistoryPage = new BookingHistoryPage();
         bookingHistoryPage.titleCheckTestBookingHistory();
-
+        log.info("Booking History Page is displayed " + env);
 
     }
 }
