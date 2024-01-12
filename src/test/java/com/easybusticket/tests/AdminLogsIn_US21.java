@@ -1,15 +1,12 @@
 package com.easybusticket.tests;
 
 import com.easybusticket.pages.*;
-import com.easybusticket.utilities.Driver;
-import com.easybusticket.utilities.PropManager;
 import lombok.extern.slf4j.Slf4j;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 @Slf4j
 
-public class US21_TC01_TC02 extends BaseTestAdmin {
+public class AdminLogsIn_US21 extends BaseTestAdmin {
 
     @Test
 
