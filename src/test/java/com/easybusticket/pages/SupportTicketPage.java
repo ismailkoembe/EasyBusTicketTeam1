@@ -138,7 +138,6 @@ public class SupportTicketPage extends BasePage{
         softAssert.assertEquals(actualRequestHistoryPageUrl,expectedRequestHistoryPageUrl);
         softAssert.assertAll();
         softAssert.assertEquals("Lost Suitcase",rowFirstRequest.getText());
-        softAssert.assertAll();
 
     }
 }
