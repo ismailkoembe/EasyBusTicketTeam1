@@ -12,6 +12,7 @@ public class UserDashboardPage extends BasePage {
     public UserDashboardPage() {
         PageFactory.initElements(Driver.get("stage"), this);
     }
+
     //EasyBusTicket logosu
     @FindBy(xpath = "(//img[@*='Logo'])[1]")
     public WebElement logoEasybusticket;
@@ -21,8 +22,8 @@ public class UserDashboardPage extends BasePage {
     public WebElement linkDashboard;
 
     //Title Dashboard
-   @FindBy(xpath = "//h2[text()='Dashboard']")
-   public WebElement titleDashboard;
+    @FindBy(xpath = "//h2[text()='Dashboard']")
+    public WebElement titleDashboard;
 
     public HomePage logoEasyBusTicket() {
         waitAndClick(logoEasybusticket);
@@ -31,7 +32,7 @@ public class UserDashboardPage extends BasePage {
         return new HomePage();
     }
 
-    public void linkDashboard(){
+    public void linkDashboard() {
         waitAndClick(linkDashboard);
         softAssert.assertTrue(titleDashboard.isDisplayed());
         softAssert.assertAll();
@@ -50,7 +51,7 @@ public class UserDashboardPage extends BasePage {
     public WebElement buyTicketOption;
 
     // Booking history option
-    @FindBy(xpath = "//a[text()='Booking History']")
+    @FindBy(xpath = "/html/body/div[4]/div/div/ul/li[2]/ul/li[2]/a")
     public WebElement bookingHistory;
 
     // Support Request dropdown menu
@@ -188,7 +189,7 @@ public class UserDashboardPage extends BasePage {
         waitAndClick(buyTicketOption);
         String expectedAboutTitle = "Easy Bus Ticket - Search Result";
         String actualAboutTitle = Driver.get(env).getTitle();
-        softAssert.assertEquals(actualAboutTitle,expectedAboutTitle);
+        softAssert.assertEquals(actualAboutTitle, expectedAboutTitle);
 
         softAssert.assertAll();
 
@@ -199,11 +200,11 @@ public class UserDashboardPage extends BasePage {
     }
 
 
-    public UserLoginPage logout(){
+    public UserLoginPage logout() {
 
         waitAndClick(dropDownProfile);
         waitAndClick(logoutOption);
-        String expectedTitle ="Easy Bus Ticket - Sign In";
+        String expectedTitle = "Easy Bus Ticket - Sign In";
         String actualTitle = Driver.get(env).getTitle();
         softAssert.assertEquals(actualTitle, expectedTitle);
         softAssert.assertAll();
@@ -222,14 +223,12 @@ public class UserDashboardPage extends BasePage {
         return new SupportTicketPage();
     }
 
-    public BookingHistoryPage clickToBookingHistory(){
+    public BookingHistoryPage clickToBookingHistory() {
+        waitAndClick(dropDownBooking);
         waitAndClick(bookingHistory);
         return new BookingHistoryPage();
-
-
-
-
-
-
     }
+
+
+}
 
