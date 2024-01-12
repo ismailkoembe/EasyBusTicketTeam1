@@ -5,9 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-/**
- * @author Ismail Koembe
- */
+
 public class HomePage extends BasePage{
 
     public HomePage(){
@@ -62,7 +60,7 @@ public class HomePage extends BasePage{
     public WebElement faqsTitle;
 
     //Blog Title Button
-    @FindBy(xpath = "(//a[text()=Blog])")
+    @FindBy(xpath = "(//a[text()='Blog'])")
     public WebElement blogTitle;
 
     // Contact Title Button.
@@ -171,6 +169,14 @@ public class HomePage extends BasePage{
         waitAndClick(contactTitle);
         return new ContactPage();
 
+
+    }
+
+    public HomePage clickToFAQsTitle(){
+        acceptCookies();
+        waitAndClick(faqsTitle);
+        return new HomePage();
+
     }
     public TwitterPage clickToFooterTwitterLink(){
         acceptCookies();
@@ -265,8 +271,14 @@ public class HomePage extends BasePage{
         return new BlogPage();
     }
 
+    public void clickToHomeTitle(){
+        acceptCookies();
+        waitAndClick(homeTitle);
+    }
 
 }
+
+
 
 
 
