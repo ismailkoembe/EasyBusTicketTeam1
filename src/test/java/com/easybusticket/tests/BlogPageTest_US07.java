@@ -11,6 +11,7 @@ public class BlogPageTest_US07 extends BaseTest{
 
     @Test
     public void blogPageTest(){
+
         //com.easybusticket.pages.BlogPage blogPage = new BlogPage();
         BlogPage blogPage = new HomePage().clickToBlogTitle();
 
