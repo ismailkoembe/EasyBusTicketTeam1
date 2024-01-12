@@ -9,4 +9,8 @@ public class JustForFun {
 
     }
 
+    public void saySmth(){
+
+    }
+
 }
