@@ -221,5 +221,15 @@ public class UserDashboardPage extends BasePage {
         softAssert.assertAll();
         return new SupportTicketPage();
     }
-}
+
+    public BookingHistoryPage clickToBookingHistory(){
+        waitAndClick(bookingHistory);
+        return new BookingHistoryPage();
+
+
+
+
+
+
+    }
 
