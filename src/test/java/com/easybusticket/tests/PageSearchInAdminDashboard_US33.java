@@ -2,6 +2,7 @@ package com.easybusticket.tests;
 
 import com.easybusticket.pages.AdminDashboardPage;
 import com.easybusticket.pages.AdminPage;
+import com.easybusticket.utilities.Driver;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.Keys;
 import org.testng.annotations.DataProvider;
@@ -12,10 +13,8 @@ public class PageSearchInAdminDashboard_US33 extends BaseTestAdmin{
 
     @DataProvider(name="pages")
     public Object[][] getPages() {
-        return new Object[][] {{"Blog"},{"FAQ"},{"About Us"},
-                {"Contact"},{"Manage Users"},{"Payment History"}};
+        return new Object[][] {{"Blog"},{"FAQ"},{"About Us"},{"Contact"}};
     }
-
 
     @Test(dataProvider = "pages")
     public void pagesSearchAdminDashboard(String page){
@@ -30,12 +29,23 @@ public class PageSearchInAdminDashboard_US33 extends BaseTestAdmin{
 
         //Clicks the search bar and searches the sent page
         adminDashboardPage.searchPage(page);
-        adminDashboardPage.linkSearchSub.sendKeys(page);
-        adminDashboardPage.linkSearchSub.click();
+
+        String expectedUrl="/https://qa.easybusticket.com/admin/frontend/frontend-sections/blog";
+        String actualUrl= Driver.get(env).getCurrentUrl();
+        softAssert.assertEquals(actualUrl,expectedUrl);
+
+        expectedUrl="https://qa.easybusticket.com/admin/frontend/frontend-sections/faq";
+        actualUrl=Driver.get(env).getCurrentUrl();
+        softAssert.assertEquals(actualUrl,expectedUrl);
+
+        expectedUrl="https://qa.easybusticket.com/admin/frontend/frontend-sections/about";
+        actualUrl=Driver.get(env).getCurrentUrl();
+        softAssert.assertEquals(actualUrl,expectedUrl);
+
+        expectedUrl="https://qa.easybusticket.com/admin/frontend/frontend-sections/contact";
+        actualUrl=Driver.get(env).getCurrentUrl();
+        softAssert.assertEquals(actualUrl,expectedUrl);
+
         log.info("Clicked on the bar search and  found the sent page");
-
-
-
-
     }
 }

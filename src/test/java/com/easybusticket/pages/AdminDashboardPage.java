@@ -182,11 +182,19 @@ public class AdminDashboardPage extends BasePage{
         waitAndClick(linkSearch);
     }
 
-    public void searchPage(String pages){
+    public Object searchPage(String pages){
         linkSearch.sendKeys(pages);
         waitAndClick(linkSearchSub);
+        switch(pages){
+            case "Blog":
+                return new BlogPage();
+            case "FAQ":
+                return new FaqsPage();
+            case "About Us":
+                return new AboutPage();
+            case "Contact":
+                return new ContactPage();
+        }
+        return null;
     }
-
-
-
 }                                              
