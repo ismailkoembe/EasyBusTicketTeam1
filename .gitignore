@@ -37,3 +37,4 @@ atlassian-ide-plugin.xml
 .java-version
 out
 .DS_Store
+allure-results
