@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.Test;
 
 import javax.xml.xpath.XPath;
 
@@ -222,6 +223,7 @@ public class UserDashboardPage extends BasePage {
         softAssert.assertAll();
         return new SupportTicketPage();
     }
+
     //Home Title Button
     @FindBy(xpath = "(//a[text()='Home'])")
     public WebElement homeTitle;
@@ -365,6 +367,17 @@ public class UserDashboardPage extends BasePage {
     //Footer Adress Link
     @FindBy(xpath = "/html/body/section[6]/div/div/div/div[4]/div/ul/li[3]/a")
     public WebElement footerEmailAdreseLink;
+
+
+    public SupportTicketPage createNewHistory() {
+        waitAndClick(dropDownSupportRequest);
+        waitAndClick(createNewOption);
+        String expectedTitle = "Easy Bus Ticket - Support Tickets";
+        String actualTitle = Driver.get(env).getTitle();
+        softAssert.assertEquals(actualTitle, expectedTitle);
+        softAssert.assertAll();
+        return new SupportTicketPage();
+    }
 
 }
 
