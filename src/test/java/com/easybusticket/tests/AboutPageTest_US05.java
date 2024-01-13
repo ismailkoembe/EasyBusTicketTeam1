@@ -6,12 +6,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.Test;
 
 @Slf4j
-public class AboutPageTest extends BaseTest
+public class AboutPageTest_US05 extends BaseTest
 {
     @Test
     public void AboutPageTest(){
-        com.easybusticket.pages.AboutPage aboutPage = new HomePage().clickToAboutButton();
+        AboutPage aboutPage = new HomePage().clickToAboutButton();
         aboutPage.titleCheckTest();
-        log.info(" About page sayfası yüklendi " + env);
+        log.info(" About page sayfası yüklendi ");
     }
 }
