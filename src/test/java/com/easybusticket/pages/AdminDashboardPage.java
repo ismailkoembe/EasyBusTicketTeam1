@@ -172,7 +172,8 @@ public class AdminDashboardPage extends BasePage{
         bookedTicketOnderTheSidebar.isDisplayed();
         rejectedTicketOnderTheSidebar.isDisplayed();
         allTicketOnderTheSidebar.isDisplayed();
-        bookingHistorySidebar.click();
+        waitAndClick(bookingHistorySidebar);
+
 
     }
 
