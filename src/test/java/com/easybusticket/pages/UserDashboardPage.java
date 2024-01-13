@@ -5,6 +5,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.Test;
+
+import javax.xml.xpath.XPath;
 
 @Slf4j
 public class UserDashboardPage extends BasePage {
@@ -12,7 +15,6 @@ public class UserDashboardPage extends BasePage {
     public UserDashboardPage() {
         PageFactory.initElements(Driver.get("stage"), this);
     }
-
     //EasyBusTicket logosu
     @FindBy(xpath = "(//img[@*='Logo'])[1]")
     public WebElement logoEasybusticket;
@@ -22,8 +24,8 @@ public class UserDashboardPage extends BasePage {
     public WebElement linkDashboard;
 
     //Title Dashboard
-    @FindBy(xpath = "//h2[text()='Dashboard']")
-    public WebElement titleDashboard;
+   @FindBy(xpath = "//h2[text()='Dashboard']")
+   public WebElement titleDashboard;
 
     public HomePage logoEasyBusTicket() {
         waitAndClick(logoEasybusticket);
@@ -32,7 +34,7 @@ public class UserDashboardPage extends BasePage {
         return new HomePage();
     }
 
-    public void linkDashboard() {
+    public void linkDashboard(){
         waitAndClick(linkDashboard);
         softAssert.assertTrue(titleDashboard.isDisplayed());
         softAssert.assertAll();
@@ -51,7 +53,7 @@ public class UserDashboardPage extends BasePage {
     public WebElement buyTicketOption;
 
     // Booking history option
-    @FindBy(xpath = "/html/body/div[4]/div/div/ul/li[2]/ul/li[2]/a")
+    @FindBy(xpath = "//a[text()='Booking History']")
     public WebElement bookingHistory;
 
     // Support Request dropdown menu
@@ -189,7 +191,7 @@ public class UserDashboardPage extends BasePage {
         waitAndClick(buyTicketOption);
         String expectedAboutTitle = "Easy Bus Ticket - Search Result";
         String actualAboutTitle = Driver.get(env).getTitle();
-        softAssert.assertEquals(actualAboutTitle, expectedAboutTitle);
+        softAssert.assertEquals(actualAboutTitle,expectedAboutTitle);
 
         softAssert.assertAll();
 
@@ -200,11 +202,11 @@ public class UserDashboardPage extends BasePage {
     }
 
 
-    public UserLoginPage logout() {
+    public UserLoginPage logout(){
 
         waitAndClick(dropDownProfile);
         waitAndClick(logoutOption);
-        String expectedTitle = "Easy Bus Ticket - Sign In";
+        String expectedTitle ="Easy Bus Ticket - Sign In";
         String actualTitle = Driver.get(env).getTitle();
         softAssert.assertEquals(actualTitle, expectedTitle);
         softAssert.assertAll();
@@ -212,7 +214,6 @@ public class UserDashboardPage extends BasePage {
 
 
     }
-
     public SupportTicketPage requestHistory() {
         waitAndClick(dropDownSupportRequest);
         waitAndClick(requestsOption);
@@ -229,6 +230,162 @@ public class UserDashboardPage extends BasePage {
         return new BookingHistoryPage();
     }
 
+
+
+    //Home Title Button
+    @FindBy(xpath = "(//a[text()='Home'])")
+    public WebElement homeTitle;
+
+    //About Title Button
+    @FindBy(xpath = "(//a[text()='About'])")
+    public WebElement aboutTitle;
+
+    //FAQs Title Button
+    @FindBy(xpath = "(//a[text()='FAQs'])")
+    public WebElement faqsTitle;
+
+    //Blog Title Button
+    @FindBy(xpath = "(//a[text()='Blog'])")
+    public WebElement blogTitle;
+
+    // Contact Title Button.
+    @FindBy(xpath = "(//a[text()='Contact'])")
+    public WebElement contactTitle;
+
+    //FindTicketsButton
+    @FindBy(xpath = "//button[text()='Find Tickets']")
+    public WebElement findTicketsButton;
+
+    //Get Ticket Now ButtonLink
+    @FindBy(xpath = "//a[@class='cmn--btn ']")
+    public WebElement getTicketNowButton;
+
+    //Pickup Point Dropdown
+    @FindBy(xpath ="//div[@class='col-md-6'][1]")
+    public WebElement pickUpPointButton;
+
+    //Cookie Allow Button
+    @FindBy(xpath = "//a[text()='Allow']")
+    public WebElement cookies;
+
+    //Dropping Point Dropdown
+    @FindBy(xpath ="//div[@class='col-md-6'][2]")
+    public WebElement droppingPointButton;
+
+    //'In Just 3 Simple Steps, Get Your Bus Ticket' Title
+    @FindBy(xpath = "//div[@class='col-lg-6 col-md-10'][1]")
+    public WebElement bodyFirstTitle;
+
+    //'Offered Facilities' Title
+    @FindBy(xpath = "//div[@class='col-lg-6 col-md-10'][2]")
+    public WebElement offeredFacilitiesTitle;
+
+    //'Our Testimonials' Title
+    @FindBy(xpath = "//div[@class='col-lg-6 col-md-10'][3]")
+    public WebElement ourTestimonialsTitle;
+
+    //'Recent Blog Post' Title
+    @FindBy(xpath = "//div[@class='col-lg-6 col-md-10'][4]")
+    public WebElement recentBlogPostTitle;
+
+    //'Looking For a Bus' Title
+    @FindBy(xpath = "(//div[@class='col-lg-4 col-md-6 col-sm-10'])[1]")
+    public WebElement lookingForaBusTitle;
+
+    //'Select your Ticket' Title
+    @FindBy(xpath = "(//div[@class='col-lg-4 col-md-6 col-sm-10'])[2]")
+    public WebElement selectYourTicketTitle;
+
+    //'Pay your Bill' Title
+    @FindBy(xpath = "(//div[@class='col-lg-4 col-md-6 col-sm-10'])[3]")
+    public WebElement payYourBillTitle;
+
+    //Travel Trends Blog Page Link
+    @FindBy(xpath = "(//div[@class='col-lg-4 col-md-6 col-sm-10'])[4]")
+    public WebElement travelTrendsBlogTitle;
+
+    //Travel Technology Blog Page Link
+    @FindBy(xpath = "(//div[@class='col-lg-4 col-md-6 col-sm-10'])[5]")
+    public WebElement travelTechnologyBlogTitle;
+
+    //Safety Mesaures Blog Page Link
+    @FindBy(xpath = "(//div[@class='col-lg-4 col-md-6 col-sm-10'])[6]")
+    public WebElement safetyMeasuresBlogTitle;
+
+    //Facilities Items
+    @FindBy(xpath = "(//div[@class='slick-list draggable'])[1]")
+    public WebElement facilitiesItems;
+
+    //Customer Comments
+    @FindBy(xpath = "(//div[@class='slick-list draggable'])[2]")
+    public WebElement customerComments;
+
+    //Footer Twitter Icon Link
+    @FindBy(xpath = "(//a[@href='https://www.twitter.com'])[2]")
+    public  WebElement getTwitterIconFooter;
+
+    //Footer Facebook Icon Link
+    @FindBy(xpath = "(//a[@href='https://www.facebook.com'])[2]")
+    public WebElement getFacebookIconFooter;
+
+    //Footer Youtube Icon Link
+    @FindBy(xpath = "//a[@href='https://www.youtube.com']")
+    public WebElement getYoutubeIconFooter;
+
+    //Footer Instagram Icon Link
+    @FindBy(xpath = "/html/body/section[6]/div/div/div/div[1]/div/ul/li[4]/a")
+    public WebElement getInstagramIconFooter;
+
+    //Footer About Title Link
+    @FindBy(xpath = "/html/body/section[6]/div/div/div/div[2]/div/ul/li[1]/a")
+    public  WebElement  getAboutTitleFooter;
+
+    //Footer FAQs Title Link
+    @FindBy(xpath = "/html/body/section[6]/div/div/div/div[2]/div/ul/li[2]/a")
+    public WebElement getFaqsTitleFooter;
+
+    //Footer Blog Title Link
+    @FindBy(xpath = "/html/body/section[6]/div/div/div/div[2]/div/ul/li[3]/a")
+    public WebElement getBlogTitleFooter;
+
+    //Footer Contact Title Link
+    @FindBy(xpath = "/html/body/section[6]/div/div/div/div[2]/div/ul/li[4]/a")
+    public WebElement footerContactUsefulLinks;
+
+    //Footer Privacy Policy Title Link
+    @FindBy(xpath = "/html/body/section[6]/div/div/div/div[3]/div/ul/li[1]/a")
+    public WebElement getPrivacyPolicyTitleFooter;
+
+    //Footer Terms and Conditions Title Link
+    @FindBy (xpath = "/html/body/section[6]/div/div/div/div[3]/div/ul/li[2]/a")
+    public WebElement getTermsAndConditionsTitleFooter;
+
+    //Footer Ticket Policies Title Link
+    @FindBy(xpath ="/html/body/section[6]/div/div/div/div[3]/div/ul/li[3]/a")
+    public  WebElement getTicketPoliciesFooter;
+
+    //Footer Contact Info Adress
+    @FindBy(xpath = "/html/body/section[6]/div/div/div/div[4]/div/ul/li[1]")
+    public WebElement footerContactInfoAdrese;
+
+    //Footer phone Link
+    @FindBy(xpath = "/html/body/section[6]/div/div/div/div[4]/div/ul/li[2]/a")
+    public WebElement footerPhoneLink;
+
+    //Footer Adress Link
+    @FindBy(xpath = "/html/body/section[6]/div/div/div/div[4]/div/ul/li[3]/a")
+    public WebElement footerEmailAdreseLink;
+
+
+    public SupportTicketPage createNewHistory() {
+        waitAndClick(dropDownSupportRequest);
+        waitAndClick(createNewOption);
+        String expectedTitle = "Easy Bus Ticket - Support Tickets";
+        String actualTitle = Driver.get(env).getTitle();
+        softAssert.assertEquals(actualTitle, expectedTitle);
+        softAssert.assertAll();
+        return new SupportTicketPage();
+    }
 
 }
 

@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
  * @author Ismail Koembe
  */
 @Slf4j
-public class US09_TC01_TC02_Register extends BaseTest{
+public class Register_US09 extends BaseTest{
 
 
     @Test
