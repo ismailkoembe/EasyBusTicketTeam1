@@ -6,11 +6,11 @@ import com.easybusticket.pages.UserDashboardPage;
 import com.easybusticket.pages.UserLoginPage;
 import org.testng.annotations.Test;
 
-public class UserChangePasswordTest extends BaseTest {
+public class UserChangePasswordTest_US18 extends BaseTest {
     @Test
     public void changePasswordTest() {
         UserLoginPage userLoginPage = new HomePage().clickToSignIn();
-        UserDashboardPage userDashboard = userLoginPage.login("logintesti", "LoginTesti!2");
+        UserDashboardPage userDashboard = userLoginPage.login("logintesti", "LoginTesti!5");
         userDashboard.getToChangePasswordPage();
         new UserChangePasswordPage().clickToChangePasswordButton();
     }
