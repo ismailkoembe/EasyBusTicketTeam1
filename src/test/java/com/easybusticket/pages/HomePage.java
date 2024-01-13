@@ -172,6 +172,8 @@ public class HomePage extends BasePage{
 
     }
 
+
+
     public void clickToFAQsTitle(){
         acceptCookies();
         waitAndClick(faqsTitle);

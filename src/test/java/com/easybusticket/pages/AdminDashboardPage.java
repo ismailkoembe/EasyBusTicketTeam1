@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import javax.swing.*;
+
 public class AdminDashboardPage extends BasePage{
     public AdminDashboardPage(){
         PageFactory.initElements(Driver.get("stage"),this);
@@ -148,5 +150,35 @@ public class AdminDashboardPage extends BasePage{
     // Login By OS
     @FindBy(xpath = "//*[text()='Login By Country']")
     public WebElement labelLoginByCountry;
+
+    @FindBy(xpath = "//*[text()='Booking History']")
+    public WebElement bookingHistorySidebar;
+
+    @FindBy(xpath = "//*[text()='Pending Ticket']")
+    public WebElement pendingTicketOnderTheSidebar;
+
+    @FindBy(xpath = "//*[text()='Pending Ticket']")
+    public WebElement bookedTicketOnderTheSidebar;
+
+    @FindBy(xpath = "//*[text()='Rejected Ticket']")
+    public WebElement rejectedTicketOnderTheSidebar;
+
+    @FindBy(xpath = "//*[text()='All Ticket']")
+    public WebElement allTicketOnderTheSidebar;
+
+    public void bookingHistoryDropdown(){
+        bookingHistorySidebar.isDisplayed();
+        pendingTicketOnderTheSidebar.isDisplayed();
+        bookedTicketOnderTheSidebar.isDisplayed();
+        rejectedTicketOnderTheSidebar.isDisplayed();
+        allTicketOnderTheSidebar.isDisplayed();
+        bookingHistorySidebar.click();
+
+    }
+
+    public AdminTicketPage pendingTicket(){
+        waitAndClick(pendingTicketOnderTheSidebar);
+        return new AdminTicketPage();
+    }
 
 }                                              
