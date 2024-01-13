@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 public class FooterVisibility_US04 extends BaseTest {
 
     @Test
-    public void testName() {
+    public void footerVisibityTest() {
 
         //As a visitor, I should be able to view the footer when I enter the homepage.
         HomePage homePage = new HomePage();
