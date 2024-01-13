@@ -202,7 +202,7 @@ public class AdminDashboardPage extends BasePage{
         }
         return null;
     }
-}                                              
+
 
     //========================SIDE BAR===========================//
     @FindBy(xpath = "//*[text()='Payment Gateways']")
