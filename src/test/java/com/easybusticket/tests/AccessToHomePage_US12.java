@@ -8,7 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.Test;
 
 @Slf4j
-public class US12_TC01 extends BaseTest{
+public class AccessToHomePage_US12 extends BaseTest{
 
     @Test
     public void accessToHomePage(){

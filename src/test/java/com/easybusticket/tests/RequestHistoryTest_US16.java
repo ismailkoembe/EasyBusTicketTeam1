@@ -4,11 +4,12 @@ import com.easybusticket.pages.HomePage;
 import com.easybusticket.pages.SupportTicketPage;
 import com.easybusticket.pages.UserDashboardPage;
 import com.easybusticket.pages.UserLoginPage;
+import com.easybusticket.utilities.Driver;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.Test;
 
 @Slf4j
-public class US16_TC01 extends BaseTest{
+public class RequestHistoryTest_US16 extends BaseTest{
     @Test
     public void requestCheckTest(){
         // navigate to the login page
@@ -19,9 +20,11 @@ public class US16_TC01 extends BaseTest{
 
         //navigate to the request ticket page
         SupportTicketPage supportTicketPage = new UserDashboardPage().requestHistory();
-        log.info(" Request History Page loaded " + env);
+        log.info(" Request History Page loaded ");
 
-
+        //navigate to the request detail view and return requests page
+        supportTicketPage.requestHistoryPageVerifyTest();
+        log.info(" Request Detail Page loaded and Returned to request history page");
 
     }
 

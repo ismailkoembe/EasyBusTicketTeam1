@@ -7,7 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.Test;
 
 @Slf4j
-public class US09_TC04 extends BaseTest{
+public class NegatifRegister2_US09 extends BaseTest{
 
     @Test
     public void negatifSignUpTest2(){
