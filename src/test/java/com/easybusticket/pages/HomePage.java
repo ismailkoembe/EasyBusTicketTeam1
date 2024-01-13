@@ -100,7 +100,7 @@ public class HomePage extends BasePage{
     public WebElement getInstagramIconFooter;
 
     //Footer About Title Linkhttps://www.youtube.com
-    @FindBy(linkText = "<a href=\"https://qa.easybusticket.com/about-us\">About</a>")
+    @FindBy(xpath="/html/body/section[6]/div/div/div/div[2]/div/ul/li[1]/a")
     public  WebElement  getAboutTitleFooter;
 
     //Footer FAQs Title Link
