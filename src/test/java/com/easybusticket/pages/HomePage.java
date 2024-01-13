@@ -96,11 +96,11 @@ public class HomePage extends BasePage{
     public WebElement getYoutubeIconFooter;
 
     //Footer Instagram Icon Link
-    @FindBy(xpath = "/html/body/section[6]/div/div/div/div[1]/div/ul/li[4]/a")
+    @FindBy(xpath = "(//a[@href='https://www.instagram.com'])[2]")
     public WebElement getInstagramIconFooter;
 
-    //Footer About Title Link
-    @FindBy(xpath = "/html/body/section[6]/div/div/div/div[2]/div/ul/li[1]/a")
+    //Footer About Title Linkhttps://www.youtube.com
+    @FindBy(linkText = "<a href=\"https://qa.easybusticket.com/about-us\">About</a>")
     public  WebElement  getAboutTitleFooter;
 
     //Footer FAQs Title Link
@@ -164,6 +164,14 @@ public class HomePage extends BasePage{
         return new AboutPage();
 
     }
+
+    public BlogPage clickToBlogTitlefromFooter(){
+        acceptCookies();
+        waitAndClick(getBlogTitleFooter);
+        return new BlogPage();
+
+
+    }
     public ContactPage clickToContactTitle(){
         acceptCookies();
         waitAndClick(contactTitle);
@@ -173,6 +181,7 @@ public class HomePage extends BasePage{
     }
 
     public void clickToFAQsTitle(){
+
         acceptCookies();
         waitAndClick(faqsTitle);
 
@@ -240,9 +249,9 @@ public class HomePage extends BasePage{
 
     }
 
+
     public class TwitterPage {
     }
-
     public class FacebookPage {
     }
 
