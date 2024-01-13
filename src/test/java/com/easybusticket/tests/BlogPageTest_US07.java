@@ -13,8 +13,13 @@ public class BlogPageTest_US07 extends BaseTest{
     public void blogPageTest(){
 
 
+
         //The user can access all blogspots via blog link in the homepage
 
+<<<<<<< HEAD
+=======
+        //com.easybusticket.pages.BlogPage blogPage = new BlogPage();
+>>>>>>> 9f42d9273ed60923cf68efb2e8e20ea3624fc377
         BlogPage blogPage = new HomePage().clickToBlogTitle();
 
     }

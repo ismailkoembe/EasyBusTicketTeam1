@@ -8,7 +8,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 @Slf4j
-public class US10_TC08 extends BaseTest{
+public class UserLoginRememberMeTest_US10 extends BaseTest{
     @Test
     public void rememberMeIsWorkingTest(){
 
