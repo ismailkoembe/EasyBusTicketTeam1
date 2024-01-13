@@ -4,9 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-/**
- * @author Ismail Koembe
- */
+
 public class PropManager {
     /**
      * This method requires environment parameter and picks correct key value

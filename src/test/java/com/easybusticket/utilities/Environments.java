@@ -1,8 +1,5 @@
 package com.easybusticket.utilities;
 
-/**
- * @author Ismail Koembe
- */
 public enum Environments {
     PRODUCTION("production"),
     STAGE("stage");
