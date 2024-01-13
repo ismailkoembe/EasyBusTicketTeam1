@@ -95,11 +95,14 @@ public class SupportTicketPage extends BasePage{
     @FindBy(xpath = "//*[text()='High']")
     public WebElement optionPriorityHigh;
 
+<<<<<<< HEAD
     /**
      * @Author Ayca OVALI
      */
 
 
+=======
+>>>>>>> 52c12ed183b51139402768f19405d9de0981e8f6
     public void requestHistoryPageVerifyTest(){
         //columnSubject.isDisplayed();
         softAssert.assertTrue(columnSubject.isDisplayed());
@@ -119,10 +122,17 @@ public class SupportTicketPage extends BasePage{
         softAssert.assertTrue(yourReplyBox.isDisplayed());
         softAssert.assertTrue(labelLastRequestMessage.isDisplayed());
         waitAndClick(dropDownSupportRequest);
+<<<<<<< HEAD
         waitAndClick(requestsOption);
+=======
+        feature/US15_The_users_creates_a_new_ticket_from_ticket_support_section
+        waitAndClick(createNewOption);
+        String expectedRequestHistoryPageTitle ="Easy Bus Ticket - Support Tickets";
+        String actualRequestHistoryPageTitle = Driver.get(env).getTitle();
+        softAssert.assertEquals(actualRequestHistoryPageTitle,expectedRequestHistoryPageTitle);
+>>>>>>> 52c12ed183b51139402768f19405d9de0981e8f6
         softAssert.assertAll();
-
-
+        log.info("returned history page");
     }
 
     public void requestHistoryNewTicketTest(){
@@ -131,6 +141,7 @@ public class SupportTicketPage extends BasePage{
         softAssert.assertTrue(textBoxOfNameButton.isDisplayed());
         softAssert.assertTrue(textBoxOfEmailButton.isDisplayed());
         waitAndClick(textBoxOfSubject);
+
         textBoxOfSubject.sendKeys(PropManager.getProperties(env, "us16Subject"));
         waitAndClick(dropDownPriority);
         actions.click(dropDownPriority).sendKeys(Keys.DOWN).click();
@@ -143,9 +154,9 @@ public class SupportTicketPage extends BasePage{
         String expectedRequestHistoryPageUrl="https://qa.easybusticket.com/ticket";
         String actualRequestHistoryPageUrl=Driver.get(env).getCurrentUrl();
         softAssert.assertEquals(actualRequestHistoryPageUrl,expectedRequestHistoryPageUrl);
+        softAssert.assertTrue(rowFirstRequest.isDisplayed());
         softAssert.assertAll();
-        softAssert.assertEquals("Lost Suitcase",rowFirstRequest.getText());
-
+        log.info("new ticket created");
     }
 
 
