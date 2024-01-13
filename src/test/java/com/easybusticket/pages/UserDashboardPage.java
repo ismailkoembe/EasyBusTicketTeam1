@@ -72,6 +72,7 @@ public class UserDashboardPage extends BasePage {
     @FindBy(xpath = "(//a[text()='Profile'])[1]")
     public WebElement dropDownProfile;
 
+
     // Profile option
     @FindBy(xpath = "(//a[text()='Profile'])[2]")
     public WebElement profileOption;
