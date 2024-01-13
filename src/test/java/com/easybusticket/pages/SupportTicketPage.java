@@ -114,7 +114,6 @@ public class SupportTicketPage extends BasePage{
         softAssert.assertTrue(yourReplyBox.isDisplayed());
         softAssert.assertTrue(labelLastRequestMessage.isDisplayed());
         waitAndClick(dropDownSupportRequest);
-        feature/US15_The_users_creates_a_new_ticket_from_ticket_support_section
         waitAndClick(createNewOption);
         String expectedRequestHistoryPageTitle ="Easy Bus Ticket - Support Tickets";
         String actualRequestHistoryPageTitle = Driver.get(env).getTitle();

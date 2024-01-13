@@ -166,18 +166,12 @@ public class HomePage extends BasePage{
 
     }
 
-    public BlogPage clickToBlogTitlefromFooter(){
-        acceptCookies();
-        waitAndClick(getBlogTitleFooter);
-        return new BlogPage();
 
 
-    }
     public ContactPage clickToContactTitle(){
         acceptCookies();
         waitAndClick(contactTitle);
         return new ContactPage();
-
 
     }
 
@@ -185,103 +179,6 @@ public class HomePage extends BasePage{
 
         acceptCookies();
         waitAndClick(faqsTitle);
-
-    }
-    public TwitterPage clickToFooterTwitterLink(){
-        acceptCookies();
-        scrollToBottom();
-        waitAndClick(getTwitterIconFooter);
-        return new TwitterPage();
-
-    }
-    public FacebookPage clickToFooterFacebookLink(){
-        acceptCookies();
-        scrollToBottom();
-        waitAndClick(getFacebookIconFooter);
-        return new FacebookPage();
-
-    }
-
-    public YoutubePage clickToFooterYoutubeLink() {
-        acceptCookies();
-        scrollToBottom();
-        waitAndClick(getYoutubeIconFooter);
-        return new YoutubePage();
-    }
-
-    public InstagramPage clickToFooterInstagramLink(){
-        acceptCookies();
-        scrollToBottom();
-        waitAndClick(getInstagramIconFooter);
-        return new InstagramPage();
-
-    }
-    public AboutPage clickToFooterAboutLink(){
-        acceptCookies();
-        scrollToBottom();
-        waitAndClick(getAboutTitleFooter);
-        return new AboutPage();
-
-    }
-    public FAQPage clickToFooterFaqLink(){
-        acceptCookies();
-        scrollToBottom();
-        waitAndClick(getFaqsTitleFooter);
-        return new FAQPage();
-
-    }
-
-    public ContactPage clickToFooterContactLink(){
-        acceptCookies();
-        scrollToBottom();
-        waitAndClick(footerContactUsefulLinks);
-        return new ContactPage();
-
-    }
-    public PrivacyPolicy clickToFooterPrivacyPolicyLink(){
-        acceptCookies();
-        scrollToBottom();
-        waitAndClick(getPrivacyPolicyTitleFooter);
-        return new PrivacyPolicy();
-
-    }
-    public TermsAndConditionsPage clickToFooterTermsAndConditionsLink(){
-        acceptCookies();
-        scrollToBottom();
-        waitAndClick(getTermsAndConditionsTitleFooter);
-        return new TermsAndConditionsPage();
-
-    }
-    public TicketAndPoliciesPage clickToFooterTicketPoliciesLink(){
-        acceptCookies();
-        scrollToBottom();
-        waitAndClick(getTicketPoliciesFooter);
-        return new TicketAndPoliciesPage();
-
-    }
-
-
-    public class TwitterPage {
-    }
-    public class FacebookPage {
-    }
-
-    public class YoutubePage {
-    }
-
-    public class InstagramPage {
-    }
-
-    public class PrivacyPolicy {
-    }
-
-    public class TermsAndConditionsPage {
-    }
-
-    public class TicketAndPoliciesPage {
-    }
-
-    public class FAQPage {
 
     }
 
