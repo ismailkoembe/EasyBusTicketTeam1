@@ -8,7 +8,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 @Slf4j
-public class US10_TC03_TC04_TC05_TC06 extends BaseTest {
+public class UserLoginNegativeTest_US10 extends BaseTest {
 
     @DataProvider(name = "loginData")
     public Object[][] getLoginData(){
