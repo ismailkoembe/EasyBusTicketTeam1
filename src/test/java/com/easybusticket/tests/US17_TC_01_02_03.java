@@ -2,7 +2,7 @@ package com.easybusticket.tests;
 
 import com.easybusticket.pages.HomePage;
 import com.easybusticket.pages.ProfilePage;
-import com.easybusticket.pages.UserDashboard;
+import com.easybusticket.pages.UserDashboardPage;
 import com.easybusticket.pages.UserLoginPage;
 import com.easybusticket.utilities.Driver;
 import com.github.javafaker.Faker;

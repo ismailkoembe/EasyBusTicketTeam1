@@ -2,6 +2,7 @@ package com.easybusticket.pages;
 
 import com.easybusticket.tests.BaseTest;
 import com.easybusticket.utilities.Driver;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -38,7 +39,7 @@ public class ProfilePage extends BaseTest {
     @FindBy(xpath = "//input[@id='state']")
     public WebElement state;
 
-    @FindBy(xpath = "//button[.='Update Profile']")
+    @FindBy(xpath = "//*[@*='btn btn--base btn--block mt-3 h-auto']")
     public WebElement buttonUpdateProfile;
 
     @FindBy(xpath = "//div[@class='row justify-content-center']")
@@ -50,7 +51,8 @@ public class ProfilePage extends BaseTest {
     // Profile option
     @FindBy(xpath = "(//a[text()='Profile'])[2]")
     public WebElement profileOption;
-
+@FindBy (xpath = "//*[@*='col-xl-2 col-lg-3 col-md-4 col-sm-6']")
+public WebElement footerRollOn;
 
     public ProfilePage profileSetting (){
 
@@ -66,13 +68,23 @@ public class ProfilePage extends BaseTest {
         address.clear();
 
         String fakeAddress ="Exocet" + loginPage.faker.letterify("??");
-        address.sendKeys(fakeAddress);
+        address.sendKeys(fakeAddress + Keys.ENTER);
 
-        loginPage.actions.sendKeys(Keys.PAGE_DOWN).perform();
+        JavascriptExecutor jse = (JavascriptExecutor) Driver.get(env);
+        jse.executeScript("arguments[0].scrollIntoViewIfNeeded(true);", buttonUpdateProfile);
 
-        buttonUpdateProfile.click();
+        buttonUpdateProfile.submit();
 
         return new ProfilePage();
+    }
+
+    public void titleCheckTest(){
+
+        String expectedTitle = "Profile Setting";
+        String actualTitle = Driver.get(env).getTitle();
+        softAssert.assertEquals(actualTitle,expectedTitle);
+        softAssert.assertAll();
+
     }
 
 
