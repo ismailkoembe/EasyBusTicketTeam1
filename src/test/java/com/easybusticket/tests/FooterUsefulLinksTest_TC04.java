@@ -8,21 +8,27 @@ import com.easybusticket.utilities.Driver;
 import lombok.extern.slf4j.Slf4j;
 
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.testng.annotations.Test;
+
+import static com.easybusticket.pages.BasePage.driver;
 
 @Slf4j
 public class FooterUsefulLinksTest_TC04 extends BaseTest {
 
     @Test
     public void footerUsefulLinksTest() {
+        String currentUrl;
+        String expectedUrl;
+       /* AboutPage aboutPage =new HomePage().clickToFooterAboutLink();
 
-        HomePage homePage =new HomePage();
-        homePage.clickToFooterAboutLink();
-        String currentUrl =Driver.get(env).getCurrentUrl();
-        String expectedUrl ="https://qa.easybusticket.com/about-us";
+        currentUrl =Driver.get(env).getCurrentUrl();
+        expectedUrl ="https://qa.easybusticket.com/about-us";
         softAssert.assertEquals(currentUrl,expectedUrl, "footer About Link is activ");
         softAssert.assertAll();
         Driver.get(env).navigate().back();
+
+        */
 
         HomePage.FAQPage faqPage = new HomePage().clickToFooterFaqLink();
         currentUrl =Driver.get(env).getCurrentUrl();

@@ -1,5 +1,6 @@
 package com.easybusticket.tests;
 
+import com.easybusticket.pages.BasePage;
 import com.easybusticket.pages.HomePage;
 import com.easybusticket.utilities.Driver;
 import lombok.extern.slf4j.Slf4j;
@@ -19,9 +20,7 @@ public class FooterVisibility_US04 extends BaseTest {
         homePage.acceptCookies();
 
         //scroll down to the bottom of the homepage
-        JavascriptExecutor jse = (JavascriptExecutor) Driver.get(env);
-        jse.executeScript("arguments[0].scrollIntoViewIfNeeded(true);", homePage.footerSection);
-
+        homePage.scrollToBottom();
         //verify the visibility of the footer
         softAssert.assertTrue(homePage.footerSection.isDisplayed());
         log.info(" Footer section is displayed " + env);

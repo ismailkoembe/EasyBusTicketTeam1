@@ -1,6 +1,7 @@
 package com.easybusticket.pages;
 
 import com.easybusticket.utilities.Driver;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -100,7 +101,7 @@ public class HomePage extends BasePage{
     public WebElement getInstagramIconFooter;
 
     //Footer About Title Linkhttps://www.youtube.com
-    @FindBy(xpath="/html/body/section[6]/div/div/div/div[2]/div/ul/li[1]/a")
+    @FindBy(xpath="(//*[@href='https://qa.easybusticket.com/about-us'])[2]")
     public  WebElement  getAboutTitleFooter;
 
     //Footer FAQs Title Link
@@ -188,12 +189,14 @@ public class HomePage extends BasePage{
     }
     public TwitterPage clickToFooterTwitterLink(){
         acceptCookies();
+        scrollToBottom();
         waitAndClick(getTwitterIconFooter);
         return new TwitterPage();
 
     }
     public FacebookPage clickToFooterFacebookLink(){
         acceptCookies();
+        scrollToBottom();
         waitAndClick(getFacebookIconFooter);
         return new FacebookPage();
 
@@ -201,24 +204,28 @@ public class HomePage extends BasePage{
 
     public YoutubePage clickToFooterYoutubeLink() {
         acceptCookies();
+        scrollToBottom();
         waitAndClick(getYoutubeIconFooter);
         return new YoutubePage();
     }
 
     public InstagramPage clickToFooterInstagramLink(){
         acceptCookies();
+        scrollToBottom();
         waitAndClick(getInstagramIconFooter);
         return new InstagramPage();
 
     }
     public AboutPage clickToFooterAboutLink(){
         acceptCookies();
+        scrollToBottom();
         waitAndClick(getAboutTitleFooter);
         return new AboutPage();
 
     }
     public FAQPage clickToFooterFaqLink(){
         acceptCookies();
+        scrollToBottom();
         waitAndClick(getFaqsTitleFooter);
         return new FAQPage();
 
@@ -226,24 +233,28 @@ public class HomePage extends BasePage{
 
     public ContactPage clickToFooterContactLink(){
         acceptCookies();
+        scrollToBottom();
         waitAndClick(footerContactUsefulLinks);
         return new ContactPage();
 
     }
     public PrivacyPolicy clickToFooterPrivacyPolicyLink(){
         acceptCookies();
+        scrollToBottom();
         waitAndClick(getPrivacyPolicyTitleFooter);
         return new PrivacyPolicy();
 
     }
     public TermsAndConditionsPage clickToFooterTermsAndConditionsLink(){
         acceptCookies();
+        scrollToBottom();
         waitAndClick(getTermsAndConditionsTitleFooter);
         return new TermsAndConditionsPage();
 
     }
     public TicketAndPoliciesPage clickToFooterTicketPoliciesLink(){
         acceptCookies();
+        scrollToBottom();
         waitAndClick(getTicketPoliciesFooter);
         return new TicketAndPoliciesPage();
 
@@ -284,6 +295,11 @@ public class HomePage extends BasePage{
         acceptCookies();
         waitAndClick(homeTitle);
     }
+    public  void scrollToBottom (){
+        ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight);");
+    }
+
+
 }
 
 
