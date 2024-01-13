@@ -183,7 +183,7 @@ public class HomePage extends BasePage{
         return new TwitterPage();
 
     }
-    public FacebookPage clickToFoterFacebookLink(){
+    public FacebookPage clickToFooterFacebookLink(){
         acceptCookies();
         waitAndClick(getFacebookIconFooter);
         return new FacebookPage();
@@ -220,7 +220,8 @@ public class HomePage extends BasePage{
         waitAndClick(footerContactUsefulLinks);
         return new ContactPage();
 
-    }public PrivacyPolicy clickToFooterPrivacyPolicyLink(){
+    }
+    public PrivacyPolicy clickToFooterPrivacyPolicyLink(){
         acceptCookies();
         waitAndClick(getPrivacyPolicyTitleFooter);
         return new PrivacyPolicy();
@@ -239,28 +240,28 @@ public class HomePage extends BasePage{
 
     }
 
-    private class TwitterPage {
+    public class TwitterPage {
     }
 
-    private class FacebookPage {
+    public class FacebookPage {
     }
 
-    private class YoutubePage {
+    public class YoutubePage {
     }
 
-    private class InstagramPage {
+    public class InstagramPage {
     }
 
-    private class PrivacyPolicy {
+    public class PrivacyPolicy {
     }
 
-    private class TermsAndConditionsPage {
+    public class TermsAndConditionsPage {
     }
 
-    private class TicketAndPoliciesPage {
+    public class TicketAndPoliciesPage {
     }
 
-    private class FAQPage {
+    public class FAQPage {
 
     }
 
