@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 @Slf4j
 
-public class TheUserBuysTicketnewCreate extends BaseTest{
+public class TheUserBuysTicketnewCreate_US15 extends BaseTest{
     @Test
     public void requestCheckTest(){
         // navigate to the login page
