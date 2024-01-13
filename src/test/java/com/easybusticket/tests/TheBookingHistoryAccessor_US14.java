@@ -6,9 +6,10 @@ import com.easybusticket.pages.UserDashboardPage;
 import com.easybusticket.pages.UserLoginPage;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 @Slf4j
-public class TheBookingHistoryAccessor extends BaseTest {
+public class TheBookingHistoryAccessor_US14 extends BaseTest {
 
     @Test
     public void testBookingHistoryAccessFromMenu() { //I should be able to verify that I can access the booking history page from the booking menu
@@ -22,7 +23,7 @@ public class TheBookingHistoryAccessor extends BaseTest {
         log.info("Dashboard opened " + env);
 
         //Locate and hover over the "Booking" menu option.
-        userDashboardPage.dropDownBooking.isEnabled();
+        softAssert.assertTrue(userDashboardPage.dropDownBooking.isEnabled());
         log.info("Booking drop menu is enabled " + env);
 
         //From the drop-down menu, click on the "Booking History" option.

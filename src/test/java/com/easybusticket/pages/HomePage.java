@@ -171,74 +171,11 @@ public class HomePage extends BasePage{
 
 
     }
-
     public void clickToFAQsTitle(){
         acceptCookies();
         waitAndClick(faqsTitle);
 
     }
-    public TwitterPage clickToFooterTwitterLink(){
-        acceptCookies();
-        waitAndClick(getTwitterIconFooter);
-        return new TwitterPage();
-
-    }
-    public FacebookPage clickToFoterFacebookLink(){
-        acceptCookies();
-        waitAndClick(getFacebookIconFooter);
-        return new FacebookPage();
-
-    }
-
-    public YoutubePage clickToFooterYoutubeLink() {
-        acceptCookies();
-        waitAndClick(getYoutubeIconFooter);
-        return new YoutubePage();
-    }
-
-    public InstagramPage clickToFooterInstagramLink(){
-        acceptCookies();
-        waitAndClick(getInstagramIconFooter);
-        return new InstagramPage();
-
-    }
-    public AboutPage clickToFooterAboutLink(){
-        acceptCookies();
-        waitAndClick(getAboutTitleFooter);
-        return new AboutPage();
-
-    }
-    public FAQPage clickToFooterFaqLink(){
-        acceptCookies();
-        waitAndClick(getFaqsTitleFooter);
-        return new FAQPage();
-
-    }
-
-    public ContactPage clickToFooterContactLink(){
-        acceptCookies();
-        waitAndClick(footerContactUsefulLinks);
-        return new ContactPage();
-
-    }public PrivacyPolicy clickToFooterPrivacyPolicyLink(){
-        acceptCookies();
-        waitAndClick(getPrivacyPolicyTitleFooter);
-        return new PrivacyPolicy();
-
-    }
-    public TermsAndConditionsPage clickToFooterTermsAndConditionsLink(){
-        acceptCookies();
-        waitAndClick(getTermsAndConditionsTitleFooter);
-        return new TermsAndConditionsPage();
-
-    }
-    public TicketAndPoliciesPage clickToFooterTicketPoliciesLink(){
-        acceptCookies();
-        waitAndClick(getTicketPoliciesFooter);
-        return new TicketAndPoliciesPage();
-
-    }
-
     public BlogPage clickToBlogTitle(){
         acceptCookies();
         waitAndClick(blogTitle);
