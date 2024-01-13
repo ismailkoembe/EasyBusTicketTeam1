@@ -15,11 +15,11 @@ public class SidebarBookingHistoryDetails_US26 extends BaseTestAdmin {
             public void sidebarBookingHistoryDetails() {
 
         //The admin can manage the admin dashboard page after successful login.
-        AdminDashboardPage adminDashboardPage = new AdminPage().adminLogin();
+        //AdminDashboardPage adminDashboardPage = new AdminPage().adminLogin();
         log.info("Admin logged in admin dashboards");
 
         //The admin reach all details of "Booking History" in the sidebar
-        adminDashboardPage = new AdminDashboardPage();
+        //adminDashboardPage = new AdminDashboardPage();
         log.info("Booking History dropdown menu opens");
 
         //The admin visualize content of "Pending Ticket"
