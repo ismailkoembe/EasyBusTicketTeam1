@@ -40,7 +40,7 @@ public class ContactPage extends BasePage {
     //Have Any Questions
     @FindBy(xpath = "//h4[@class='title mb-4']")
     public WebElement labelHaveAnyQuestion;
-//Name
+    //Name
     @FindBy(xpath="//input[@id='name']")
     public WebElement textOfBoxName;
     //Subject
@@ -59,7 +59,6 @@ public class ContactPage extends BasePage {
     //Map
     @FindBy(xpath = "/html/body/section[2]/div/div[3]/div[2]/div/iframe")
     public WebElement labelMap;
-
 
     public void titleContactTest() {
         String expectedContactTitle = "Easy Bus Ticket - Contact Us";
@@ -83,15 +82,8 @@ public class ContactPage extends BasePage {
                 .perform();
                   sendUsMessageButton.click();
 
-
-
-    }
-
-
-
-
-
         }
+}
 
 
 

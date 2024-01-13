@@ -49,18 +49,10 @@ public class VisitorContactPage_US_08 extends BaseTest {
         //The visitor should display the contact form under the heading "Have any question?" in the lower left corner of the Contact page
         softAssert.assertTrue(contactPage.labelHaveAnyQuestion.isDisplayed());
         log.info("Have any Question is displayed ");
-
-
-
-
-
-
-
-
+        // The visitor should enter the necessary information in the "Name, E-mail, Subject and Message"
+        // section and click on the "Send Us a Message" button and submit the form
+        contactPage.fillTheContactForm();
     }
-
-
-
 
 }
 
