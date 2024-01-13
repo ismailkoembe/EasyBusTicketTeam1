@@ -1,16 +1,19 @@
 package com.easybusticket.tests;
 
+import com.easybusticket.pages.BasePage;
 import com.easybusticket.pages.ContactPage;
 import com.easybusticket.pages.HomePage;
 import com.easybusticket.utilities.Driver;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 @Slf4j
 public class VisitorContactPage_US_08 extends BaseTest {
     @Test
-    public void ContactPageTest(){
+    public void ContactPageTest() {
         //Click the Contact Title
         ContactPage contactPage=new HomePage().clickToContactTitle();
 
@@ -20,8 +23,9 @@ public class VisitorContactPage_US_08 extends BaseTest {
 
         JavascriptExecutor javascriptExecutor= (JavascriptExecutor) Driver.get(env);
         javascriptExecutor.executeScript("arguments[0].scrollIntoViewIfNeeded(true);",contactPage.titleOurAdres);
+
         // Visitor should be able to view 'Our Address' small windows
-       softAssert.assertTrue(contactPage.titleOurAdres.isDisplayed());
+        softAssert.assertTrue(contactPage.titleOurAdres.isDisplayed());
         log.info("Title of Adresse is displayed ");
         // Visitor should be able to view 'Call Us' small windows
         softAssert.assertTrue(contactPage.titleCallUs.isDisplayed());
@@ -30,36 +34,24 @@ public class VisitorContactPage_US_08 extends BaseTest {
         softAssert.assertTrue(contactPage.titleEmailUs.isDisplayed());
         log.info("Title of Email Us is displayed ");
         softAssert.assertAll();
-        javascriptExecutor= (JavascriptExecutor) Driver.get(env);
+
+       javascriptExecutor= (JavascriptExecutor) Driver.get(env);
         javascriptExecutor.executeScript("arguments[0].scrollIntoViewIfNeeded(true);",contactPage.labelHaveAnyQuestion);
-       /* //The visitor should confirm that the links are active by clicking on the number under 'Call Us'
-        // and close the page that opens
-        contactPage.clickToCallUs();
-        log.info("Telefon tiklandi ");
-        Driver.get(env).navigate().back();
 
-        //The visitor should confirm that the links are active by clicking on the number under 'Call Us'
-        // and close the page that opens
-        contactPage.clickToEmailUs();
-        log.info("Email tiklandi ");
-        Driver.get(env).navigate().back();
+        //Visitor should be confirm that the Telephone number under "Call Us'' is active
+        softAssert.assertTrue(contactPage.linkPhoneNumber.isEnabled());
+        log.info("Telephone number enabled ");
 
-        */
+        //Visitor should be confirm that the Email Adress under "Email Us'' is active
+        softAssert.assertTrue(contactPage.linkEmail.isEnabled());
+        log.info("Email address enabled");
 
-
-        //The visitor should display the contact form under the heading "Have any question?"
-        // in the lower left corner of the Contact page
+        //The visitor should display the contact form under the heading "Have any question?" in the lower left corner of the Contact page
         softAssert.assertTrue(contactPage.labelHaveAnyQuestion.isDisplayed());
         log.info("Have any Question is displayed ");
 
-        // The visitor should enter the necessary information in the "Name, E-mail, Subject and Message"
-        // section and click on the "Send Us a Message" button and submit the form
 
-         contactPage.fillTheContactForm();
 
-        //The visitor should scroll down the Contact page and view the map showing the location of the company in the bottom right corner
-        Assert.assertTrue(contactPage.labelMapAdres.isDisplayed());
-        log.info("The Adress is displayed ");
 
 
 

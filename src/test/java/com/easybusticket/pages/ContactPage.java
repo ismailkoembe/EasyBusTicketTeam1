@@ -2,6 +2,8 @@ package com.easybusticket.pages;
 
 import com.easybusticket.utilities.Driver;
 import lombok.extern.slf4j.Slf4j;
+import org.bouncycastle.crypto.digests.Kangaroo;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -32,7 +34,7 @@ public class ContactPage extends BasePage {
     public WebElement titleEmailUs;
 
     //Email Link
-    @FindBy(linkText = "mailto:info@easybusticket.com")
+    @FindBy(xpath = "(//a[@href='mailto:info@easybusticket.com'])[1]")
     public WebElement linkEmail;
 
     //Have Any Questions
@@ -52,11 +54,11 @@ public class ContactPage extends BasePage {
     public WebElement textOfBoxYourMessage;
 
     //Send Us Message
-    @FindBy(className = "contact-button")
+    @FindBy(xpath = "//*[text()='Send Us Message']")
     public WebElement sendUsMessageButton;
     //Map
-    @FindBy(xpath = "//div[@class='address']")
-    public WebElement labelMapAdres;
+    @FindBy(xpath = "/html/body/section[2]/div/div[3]/div[2]/div/iframe")
+    public WebElement labelMap;
 
 
     public void titleContactTest() {
@@ -64,27 +66,22 @@ public class ContactPage extends BasePage {
         String actualContactTitle = Driver.get(env).getTitle();
         softAssert.assertEquals(actualContactTitle,expectedContactTitle);
         softAssert.assertAll();
+    }
 
-
-    }
-    public  void clickToEmailUs(){
-        waitAndClick(linkEmail);
-    }
-    public  void clickToCallUs() {
-        waitAndClick(linkPhoneNumber);
-    }
     public  void fillTheContactForm(){
+
         waitAndClick(textOfBoxName);
-        actions.click(textOfBoxName)
-                .sendKeys(faker.name().firstName())
+        actions.sendKeys(faker.name().firstName())
+                .sendKeys(Keys.PAGE_DOWN)
                 .sendKeys(Keys.TAB)
                 .sendKeys(faker.internet().emailAddress())
                 .sendKeys(Keys.TAB)
                 .sendKeys(faker.letterify("bag"))
                 .sendKeys(Keys.TAB)
                 .sendKeys(faker.letterify("loss"))
+                .sendKeys(Keys.PAGE_DOWN)
                 .perform();
-        sendUsMessageButton.click();
+                  sendUsMessageButton.click();
 
 
 
