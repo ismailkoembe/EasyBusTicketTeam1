@@ -121,9 +121,12 @@ public class SupportTicketPage extends BasePage{
         softAssert.assertTrue(labelLastRequestMessage.isDisplayed());
         waitAndClick(dropDownSupportRequest);
 
+
+
         waitAndClick(requestsOption);
 
 
+>
         waitAndClick(createNewOption);
         String expectedRequestHistoryPageTitle ="Easy Bus Ticket - Support Tickets";
         String actualRequestHistoryPageTitle = Driver.get(env).getTitle();
