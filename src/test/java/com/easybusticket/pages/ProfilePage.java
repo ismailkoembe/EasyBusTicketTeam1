@@ -39,8 +39,11 @@ public class ProfilePage extends BaseTest {
     @FindBy(xpath = "//input[@id='state']")
     public WebElement state;
 
-    @FindBy(xpath = "//*[@*='btn btn--base btn--block mt-3 h-auto']")
+    @FindBy(tagName = "button")
     public WebElement buttonUpdateProfile;
+    @FindBy(xpath = "//*[@*='iziToast-texts']")
+    public WebElement successfulyUpdateMessage;
+
 
     @FindBy(xpath = "//div[@class='row justify-content-center']")
     public WebElement page;
@@ -51,8 +54,7 @@ public class ProfilePage extends BaseTest {
     // Profile option
     @FindBy(xpath = "(//a[text()='Profile'])[2]")
     public WebElement profileOption;
-@FindBy (xpath = "//*[@*='col-xl-2 col-lg-3 col-md-4 col-sm-6']")
-public WebElement footerRollOn;
+
 
     public ProfilePage profileSetting (){
 
@@ -74,6 +76,11 @@ public WebElement footerRollOn;
         jse.executeScript("arguments[0].scrollIntoViewIfNeeded(true);", buttonUpdateProfile);
 
         buttonUpdateProfile.submit();
+        String actualresult =successfulyUpdateMessage.getText();
+
+        String expectedresult = "Profile updated successfully";
+
+        softAssert.assertEquals(actualresult,expectedresult);
 
         return new ProfilePage();
     }
