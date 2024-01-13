@@ -23,9 +23,9 @@ public class UserChangePasswordPage extends BasePage {
     public WebElement buttonChangePassword;
 
     public UserChangePasswordPage clickToChangePasswordButton() {
-        inputCurrentPassword.sendKeys("LoginTesti!5");
-        inputNewPassword.sendKeys("LoginTesti!6");
-        inputConfirmPassword.sendKeys("LoginTesti!6");
+        inputCurrentPassword.sendKeys("LoginTesti!8");
+        inputNewPassword.sendKeys("LoginTesti!9");
+        inputConfirmPassword.sendKeys("LoginTesti!9");
         actions.sendKeys(Keys.PAGE_DOWN).perform();
         waitAndClick(buttonChangePassword);
         return new UserChangePasswordPage();
