@@ -10,7 +10,7 @@ public class UserChangePasswordTest_US18 extends BaseTest {
     @Test
     public void changePasswordTest() {
         UserLoginPage userLoginPage = new HomePage().clickToSignIn();
-        UserDashboardPage userDashboard = userLoginPage.login("logintesti", "LoginTesti!5");
+        UserDashboardPage userDashboard = userLoginPage.login("logintesti", "LoginTesti!8");
         userDashboard.getToChangePasswordPage();
         new UserChangePasswordPage().clickToChangePasswordButton();
     }
