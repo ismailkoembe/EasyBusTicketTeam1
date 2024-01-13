@@ -10,8 +10,8 @@ import org.openqa.selenium.support.PageFactory;
 
 public class ProfilePage extends BaseTest {
 
-    public ProfilePage(){
-        PageFactory.initElements(Driver.get("stage"),this);
+    public ProfilePage() {
+        PageFactory.initElements(Driver.get("stage"), this);
     }
 
     @FindBy(xpath = "//input[@id='firstname']")
@@ -56,7 +56,7 @@ public class ProfilePage extends BaseTest {
     public WebElement profileOption;
 
 
-    public ProfilePage profileSetting (){
+    public ProfilePage profileSetting() {
 
         dropDownProfile.click();
 
@@ -64,32 +64,33 @@ public class ProfilePage extends BaseTest {
 
         return new ProfilePage();
     }
-    public ProfilePage updateProfileSettings (){
+
+    public ProfilePage updateProfileSettings() {
 
         UserLoginPage loginPage = new UserLoginPage();
         address.clear();
 
-        String fakeAddress ="Exocet" + loginPage.faker.letterify("??");
+        String fakeAddress = "Exocet" + loginPage.faker.letterify("??");
         address.sendKeys(fakeAddress + Keys.ENTER);
 
         JavascriptExecutor jse = (JavascriptExecutor) Driver.get(env);
         jse.executeScript("arguments[0].scrollIntoViewIfNeeded(true);", buttonUpdateProfile);
 
         buttonUpdateProfile.submit();
-        String actualresult =successfulyUpdateMessage.getText();
+        String actualresult = successfulyUpdateMessage.getText();
 
         String expectedresult = "Profile updated successfully";
 
-        softAssert.assertEquals(actualresult,expectedresult);
+        softAssert.assertEquals(actualresult, expectedresult);
 
         return new ProfilePage();
     }
 
-    public void titleCheckTest(){
+    public void titleCheckTest() {
 
         String expectedTitle = "Profile Setting";
         String actualTitle = Driver.get(env).getTitle();
-        softAssert.assertEquals(actualTitle,expectedTitle);
+        softAssert.assertEquals(actualTitle, expectedTitle);
         softAssert.assertAll();
 
     }

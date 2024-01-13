@@ -19,7 +19,7 @@ import static com.easybusticket.pages.BasePage.driver;
 public class US17_TC_01_02_03 extends BaseTest {
 
     @Test
-    public void LoginPage(){
+    public void LoginPage() {
 
         // navigate to the login page
         UserLoginPage userLoginPage = new HomePage().clickToSignIn();
