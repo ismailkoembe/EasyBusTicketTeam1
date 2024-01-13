@@ -2,6 +2,7 @@ package com.easybusticket.tests;
 
 import com.easybusticket.pages.AdminDashboardPage;
 import com.easybusticket.pages.AdminPage;
+import org.checkerframework.checker.units.qual.A;
 import org.testng.annotations.Test;
 
 public class ManageFleets_US_31 extends BaseTestAdmin{
@@ -11,6 +12,10 @@ public class ManageFleets_US_31 extends BaseTestAdmin{
     public void ManageFleets(){
 
         AdminDashboardPage adminDashboardPage = new AdminPage().adminLogin();
+
+        adminDashboardPage.manageFleets.click();
+
+
 
     }
 }

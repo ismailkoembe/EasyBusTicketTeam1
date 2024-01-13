@@ -169,6 +169,30 @@ public class AdminDashboardPage extends BasePage{
 
     }
 
+    //===================================================================//
+
+    @FindBy(xpath = "(//i[@class='menu-icon las la-bus'])[1]")
+    public WebElement manageFleets;
+
+    @FindBy(xpath = "//span[text()='Seat Layouts']")
+    public WebElement seatLayout;
+
+    @FindBy(xpath = "//span[text()='Fleet Type']")
+    public WebElement fleetType;
+
+    @FindBy(xpath = "//span[text()='Vehicles']")
+    public WebElement vehicle;
+
+    public AdminDashboardPage ManageFleets(){
+
+        manageFleets.click();
+
+
+
+        return new AdminDashboardPage();
+
+    }
+
 
 
 }                                              
