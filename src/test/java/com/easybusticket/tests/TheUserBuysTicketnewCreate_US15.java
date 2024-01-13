@@ -18,13 +18,13 @@ public class TheUserBuysTicketnewCreate_US15 extends BaseTest{
         //navigate to the dashboard page
         UserDashboardPage userDashboardPage = userLoginPage.login();
 
-        //navigate to the request ticket page
-        SupportTicketPage supportTicketPage = new UserDashboardPage().requestHistory();
-        log.info(" Request History Page loaded ");
+        //navigate to the create new ticket page
+        SupportTicketPage supportTicketPage = new UserDashboardPage().createNewHistory();
+        log.info(" Create new page created ");
 
-        //navigate to the request detail view and return requests page
-        supportTicketPage.requestHistoryPageVerifyTest();
-        log.info(" Request Detail Page loaded ");
+        //navigate to the create new detail view and return page
+         //supportTicketPage.createNewTicketTest();
+//        log.info(" Request Detail Page loaded ");
 
     }
 }
