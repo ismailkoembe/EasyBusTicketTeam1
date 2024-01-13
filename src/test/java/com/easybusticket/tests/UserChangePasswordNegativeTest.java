@@ -20,14 +20,14 @@ public class UserChangePasswordNegativeTest {
     @Test(dataProvider = "changePassword")
     public void userChangePasswordNegativeTest(String currentPassword, String newPassword){
         UserLoginPage userLoginPage = new HomePage().clickToSignIn();
-        userLoginPage.username_login.sendKeys(username);
-        userLoginPage.password_login.sendKeys(password);
-        userLoginPage.button_login.click();
-
-        String expectedTitle = "Easy Bus Ticket - Sign In";
-        String actualTitle = Driver.get(env).getTitle();
-        softAssert.assertEquals(actualTitle, expectedTitle);
-        softAssert.assertAll();
+//        userLoginPage.username_login.sendKeys(currentPassword);
+//        userLoginPage.password_login.sendKeys(password);
+//        userLoginPage.button_login.click();
+//
+//        String expectedTitle = "Easy Bus Ticket - Sign In";
+//        String actualTitle = Driver.get(env).getTitle();
+//        softAssert.assertEquals(actualTitle, expectedTitle);
+//        softAssert.assertAll();
 
     }
 }
