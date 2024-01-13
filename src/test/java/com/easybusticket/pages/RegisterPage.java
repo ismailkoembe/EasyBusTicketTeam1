@@ -8,9 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-/**
- * @author Ismail Koembe
- */
+
 @Slf4j
 public class RegisterPage extends BasePage {
 
@@ -44,7 +42,7 @@ public class RegisterPage extends BasePage {
 
 
 
-    public UserDashboard signUp(){
+    public UserDashboardPage signUp(){
 
 
         String fakePassword="06Feriha&";
@@ -80,10 +78,10 @@ public class RegisterPage extends BasePage {
         softAssert.assertAll();
 
 
-        return new UserDashboard();
+        return new UserDashboardPage();
     }
 
-    public UserDashboard withoutLastnameAndEmailSignUp(){
+    public UserDashboardPage withoutLastnameAndEmailSignUp(){
 
         String fakePassword="06Feriha&";
 
@@ -111,10 +109,10 @@ public class RegisterPage extends BasePage {
         buttonOfSignUp.click();
 
         softAssert.assertFalse(labelDashboard.isDisplayed());//dashboard title'i goruntulenmemeli
-        return new UserDashboard();
+        return new UserDashboardPage();
 
     }
-    public UserDashboard withExistingUsernameAndEmailSignUp(){
+    public UserDashboardPage withExistingUsernameAndEmailSignUp(){
 
         String username="celinpicard";
         String email="picardcelin06@gmail.com";
@@ -143,7 +141,7 @@ public class RegisterPage extends BasePage {
         buttonOfSignUp.click();
 
         softAssert.assertTrue(labelAlert.isDisplayed());//alert goruntulenmeli
-        return new UserDashboard();
+        return new UserDashboardPage();
     }
 
 
