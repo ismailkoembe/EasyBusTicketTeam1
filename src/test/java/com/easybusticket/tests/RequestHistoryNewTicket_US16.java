@@ -21,7 +21,7 @@ public class RequestHistoryNewTicket_US16 extends BaseTest {
         log.info(" Request History Page loaded ");
 
         supportTicketPage.requestHistoryNewTicketTest();
-        log.info(" A new ticket was created from the request history page ");
+        log.info(" A new ticket was created from the request history page and Returned to request history page ");
 
 
     }

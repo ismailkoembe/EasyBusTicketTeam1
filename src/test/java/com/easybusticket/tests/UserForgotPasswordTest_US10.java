@@ -7,7 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.Test;
 
 @Slf4j
-public class US10_TC07 extends BaseTest{
+public class UserForgotPasswordTest_US10 extends BaseTest{
     @Test
     public void forgotPasswordTest(){
         // navigate to the login page
