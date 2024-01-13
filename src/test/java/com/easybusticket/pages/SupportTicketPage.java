@@ -123,7 +123,7 @@ public class SupportTicketPage extends BasePage{
 
         waitAndClick(requestsOption);
 
-        feature/US15_The_users_creates_a_new_ticket_from_ticket_support_section
+
         waitAndClick(createNewOption);
         String expectedRequestHistoryPageTitle ="Easy Bus Ticket - Support Tickets";
         String actualRequestHistoryPageTitle = Driver.get(env).getTitle();
