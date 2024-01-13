@@ -240,31 +240,6 @@ public class HomePage extends BasePage{
 
     }
 
-    private class TwitterPage {
-    }
-
-    private class FacebookPage {
-    }
-
-    private class YoutubePage {
-    }
-
-    private class InstagramPage {
-    }
-
-    private class PrivacyPolicy {
-    }
-
-    private class TermsAndConditionsPage {
-    }
-
-    private class TicketAndPoliciesPage {
-    }
-
-    private class FAQPage {
-
-    }
-
     public BlogPage clickToBlogTitle(){
         acceptCookies();
         waitAndClick(blogTitle);
