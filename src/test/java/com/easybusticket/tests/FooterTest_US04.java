@@ -1,17 +1,14 @@
 package com.easybusticket.tests;
 
-import com.easybusticket.pages.BasePage;
 import com.easybusticket.pages.HomePage;
-import com.easybusticket.utilities.Driver;
 import lombok.extern.slf4j.Slf4j;
-import org.openqa.selenium.JavascriptExecutor;
 import org.testng.annotations.Test;
 
 @Slf4j
-public class FooterVisibility_US04 extends BaseTest {
+public class FooterTest_US04 extends BaseTest {
 
     @Test
-    public void footerVisibityTest() {
+    public void testFooterVisibilityAndEnable() {
 
         //As a visitor, I should be able to view the footer when I enter the homepage.
         HomePage homePage = new HomePage();
@@ -21,7 +18,8 @@ public class FooterVisibility_US04 extends BaseTest {
 
         //scroll down to the bottom of the homepage
         homePage.scrollToBottom();
-        //verify the visibility of the footer
+
+        //verify the visibility and enable of the footer
         softAssert.assertTrue(homePage.footerSection.isDisplayed());
         log.info(" Footer section is displayed and enabled " + env);
 
