@@ -2,6 +2,8 @@ package com.easybusticket.pages;
 
 import com.easybusticket.utilities.Driver;
 import lombok.extern.slf4j.Slf4j;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -98,7 +100,7 @@ public class GatewayPage extends BasePage{
     public WebElement labelCharge;
 
     @FindBy(xpath = "//*[@name='fixed_charge']")
-    public WebElement textOfBoxFixCharge;
+    public WebElement textOfBoxFixedCharge;
 
     @FindBy(xpath = "//*[@name='percent_charge']")
     public WebElement textOfBoxPercentCharge;
@@ -106,7 +108,7 @@ public class GatewayPage extends BasePage{
     @FindBy(xpath = "//*[text()='Deposit Instruction']")
     public WebElement labelDepositInstruction;
 
-    @FindBy(xpath = "//*[@class=' nicEdit-main               ']")
+    @FindBy(xpath = "//*[@contenteditable='true']")
     public WebElement textOfBoxMessage;
 
     @FindBy(xpath = "//*[text()='User data                                                ']")
@@ -127,7 +129,7 @@ public class GatewayPage extends BasePage{
     @FindBy(xpath = "//*[@class='btn btn--danger btn-lg removeBtn w-100']")
     public WebElement userDataRemove;
 
-    @FindBy(xpath = "//*[text()='Save Method ']")
+    @FindBy(xpath = "(//button[@type='submit'])[2]")
     public WebElement saveMethodButton;
 
     @FindBy(xpath = "(//a[@class='icon-btn editGatewayBtn'])[1]")
@@ -170,7 +172,37 @@ public class GatewayPage extends BasePage{
         softAssert.assertTrue(columnAction.isDisplayed());
         softAssert.assertTrue(rowFirstValueGateway.isDisplayed());
         softAssert.assertTrue(rowFirstValueStatus.isDisplayed());
+        softAssert.assertTrue(firstElementEditButton.isDisplayed());
+        softAssert.assertTrue(firstElementActivationButton.isDisplayed());
+        manualGatewayAddNewButton.click();
+        //waitAndClick(imageUploadButton);
+        //String dinamikDosyaYolu = System.getProperty("user.home") +
+                //"/Downloads/logo.png";
+        //imageUploadButton.sendKeys(dinamikDosyaYolu);
+        //driver.findElement(By.id("file-submit")).click();
+
+        textOfBoxGatewayName.sendKeys("hello");
+        textOfBoxCurrency.sendKeys("euro");
+        textOfBoxRate.sendKeys("0.80");
+        textOfBoxMinimumAmount.sendKeys("10");
+        textOfBoxMaximumAmount.sendKeys("1000");
+        textOfBoxFixedCharge.sendKeys("10");
+        textOfBoxPercentCharge.sendKeys("10");
+        waitAndClick(textOfBoxMessage);
+        textOfBoxMessage.sendKeys("new payment method");
+        waitAndClick(addNewUserDataButton);
+        waitAndClick(userDataRemove);
+        waitAndClick(saveMethodButton);
+        //javascriptExecutor.executeScript("arguments[0].scrollIntoViewIfNeeded(true);",goBackButton);
+        waitAndClick(goBackButton);
+
+
+
         softAssert.assertAll();
+
+
+
+
 
     }
 
