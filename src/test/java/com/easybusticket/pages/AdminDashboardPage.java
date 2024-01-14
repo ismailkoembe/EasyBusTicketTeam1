@@ -253,11 +253,13 @@ public class AdminDashboardPage extends BasePage{
     public WebElement manualGatewaysButton;
 
     public GatewayPage clickToAutomaticGateway() {
-        //softAssert.assertTrue(paymentGatewaysButton.isDisplayed());
+        softAssert.assertTrue(paymentGatewaysButton.isDisplayed());
         waitAndClick(paymentGatewaysButton);
-        //softAssert.assertTrue(automaticGatewaysButton.isDisplayed());
         waitAndClick(automaticGatewaysButton);
-        //softAssert.assertAll();
+        String expectedTitleAutoGateway = "Easy Bus Ticket - Automatic Gateways";
+        String actualTitleAutoGateway = Driver.get(env).getTitle();
+        softAssert.assertEquals(actualTitleAutoGateway,expectedTitleAutoGateway);
+        softAssert.assertAll();
         return new GatewayPage();
 
     }
