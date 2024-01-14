@@ -2,9 +2,11 @@ package com.easybusticket.pages;
 
 import com.easybusticket.utilities.Driver;
 import lombok.extern.slf4j.Slf4j;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -254,7 +256,7 @@ public class AdminDashboardPage extends BasePage{
         return new AdminTicketPage();
     }
 
-<<<<<<< HEAD
+
     /**
      * REYHAN  for Admin Rejected Ticket
      */
@@ -300,8 +302,7 @@ public class AdminDashboardPage extends BasePage{
 
 
 
-=======
->>>>>>> 7106f0afa9cddd005a910136ee1f2418fd990645
+
     //Ekrani full screen yapma butonu
     @FindBy(xpath = "//i[@class='fullscreen-open las la-compress']")
     public WebElement buttonFullScreenPage;
@@ -361,12 +362,25 @@ public class AdminDashboardPage extends BasePage{
     public WebElement manualGatewaysButton;
 
     public GatewayPage clickToAutomaticGateway() {
-        //softAssert.assertTrue(paymentGatewaysButton.isDisplayed());
+        softAssert.assertTrue(paymentGatewaysButton.isDisplayed());
         waitAndClick(paymentGatewaysButton);
-        //softAssert.assertTrue(automaticGatewaysButton.isDisplayed());
         waitAndClick(automaticGatewaysButton);
-        //softAssert.assertAll();
+        String expectedTitleAutoGateway = "Easy Bus Ticket - Automatic Gateways";
+        String actualTitleAutoGateway = Driver.get(env).getTitle();
+        softAssert.assertEquals(actualTitleAutoGateway,expectedTitleAutoGateway);
+        softAssert.assertAll();
         return new GatewayPage();
+
+    }
+
+    public void clickToManualGateway(){
+        softAssert.assertTrue(paymentGatewaysButton.isDisplayed());
+        waitAndClick(paymentGatewaysButton);
+        waitAndClick(manualGatewaysButton);
+        String expectedTitleManualGateway = "Easy Bus Ticket - Manual Gateways";
+        String actualTitleManualGateway = Driver.get(env).getTitle();
+        softAssert.assertEquals(actualTitleManualGateway,expectedTitleManualGateway);
+        softAssert.assertAll();
 
     }
 
@@ -441,6 +455,38 @@ public class AdminDashboardPage extends BasePage{
         waitAndClick(allPaymentOption);
         //softAssert.assertAll();
         return new AllPaymentPage();
+
+    }
+    //========================CHANGING-ADMIN-PASSWORD===========================//
+
+    // admin page admin icon
+    @FindBy(xpath = "//span[@class='navbar-user']")
+    public WebElement adminIcon;
+
+    // admin page, admin icon dropdown menu, option 'profile'
+    @FindBy(xpath = "(//*[@class='dropdown-menu__item d-flex align-items-center px-3 py-2'])[1]")
+    public WebElement optionProfile;
+
+    // admin logout option
+    @FindBy(xpath = "//span[text()='Logout']")
+    public WebElement logoutOptionAdmin;
+
+    public AdminProfilePage adminPageSettings(){
+
+        waitAndClick(adminIcon);
+        waitAndClick(optionProfile);
+        return new AdminProfilePage();
+    }
+
+    public AdminDashboardPage logout() {
+
+        waitAndClick(adminIcon);
+        waitAndClick(logoutOptionAdmin);
+        String expectedTitle = "Easy Bus Ticket - Admin Login";
+        String actualTitle = Driver.get(env).getTitle();
+        softAssert.assertEquals(actualTitle, expectedTitle);
+        softAssert.assertAll();
+        return new AdminDashboardPage();
 
     }
 
