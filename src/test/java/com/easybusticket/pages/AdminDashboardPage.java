@@ -172,10 +172,11 @@ public class AdminDashboardPage extends BasePage {
 
     //===================================================================//
 
+    //Manage Fleets Dropdown
     @FindBy(xpath = "(//i[@class='menu-icon las la-bus'])[1]")
     public WebElement manageFleets;
 
-    @FindBy(xpath = "//span[text()='Seat Layouts']")
+    @FindBy(xpath = "//span[.='Seat Layouts']")
     public WebElement seatLayout;
 
     @FindBy(xpath = "//span[text()='Fleet Type']")
@@ -184,16 +185,15 @@ public class AdminDashboardPage extends BasePage {
     @FindBy(xpath = "//span[text()='Vehicles']")
     public WebElement vehicle;
 
-    public AdminDashboardPage ManageFleets(){
+    public AdminDashboardPage manageFleets(){
 
         manageFleets.click();
-
-
+        waitAndClick(seatLayout);
 
         return new AdminDashboardPage();
 
     }
-
+//=====================================================================//
 
     //Dropdown PaymentHistory option
     @FindBy(xpath = "//*[@id=\"sidebar__menuWrapper\"]/ul/li[3]/a")
