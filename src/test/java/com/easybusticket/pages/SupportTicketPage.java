@@ -146,7 +146,6 @@ public class SupportTicketPage extends BasePage{
         log.info("new ticket created");
     }
 
-
     public void createNewHistoryPageVerifyTest(){
 
         softAssert.assertTrue(columnSubject.isDisplayed());
