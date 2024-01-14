@@ -14,14 +14,11 @@ public class BookingHistoryPage extends BasePage {
 @FindBy(xpath = "/html/body/section[2]/div/div/div/table/tbody/tr/td[10]/div/a")
 public WebElement detailActionButtonLink;
 
-
-
     public void titleCheckTestBookingHistory() {
         String expectedAboutTitle = "Easy Bus Ticket - Booking History";
         String actualAboutTitle = Driver.get(env).getTitle();
         softAssert.assertEquals(actualAboutTitle, expectedAboutTitle);
         softAssert.assertAll();
-
     }
 
     @Override
