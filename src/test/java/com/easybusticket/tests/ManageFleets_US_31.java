@@ -20,5 +20,11 @@ public class ManageFleets_US_31 extends BaseTestAdmin{
 
         seatLayoutsPage.addSeatLayouts();
 
+        seatLayoutsPage.successfulMessage();
+
+        seatLayoutsPage.updateLayout();
+
+        seatLayoutsPage.successfulMessage();
+
     }
 }

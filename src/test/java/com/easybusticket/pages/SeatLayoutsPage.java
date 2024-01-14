@@ -1,6 +1,7 @@
 package com.easybusticket.pages;
 
 import com.easybusticket.utilities.Driver;
+import com.github.javafaker.Faker;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -20,6 +21,20 @@ public class SeatLayoutsPage extends BasePage{
     @FindBy(xpath = "//button[.='Save']")
     public WebElement saveButton;
 
+    @FindBy(xpath = "//*[@*='iziToast-texts']")
+    public WebElement successfulyUpdateMessage;
+
+    @FindBy(xpath = "//i[@class='la la-pen']")
+    public WebElement penIcon;
+
+    @FindBy(xpath = "//i[@class='las la-trash']")
+    public WebElement deleteIcon;
+
+    @FindBy(xpath = "//button[.='Update']")
+    public WebElement updateButton;
+
+//============================================================================================================//
+
     public SeatLayoutsPage addSeatLayouts() {
 
         addNewButton.click();
@@ -30,13 +45,32 @@ public class SeatLayoutsPage extends BasePage{
 
         //layoutTextBox.sendKeys(String.valueOf(2));
 
-
-        layoutTextBox.sendKeys("43");
-
+        String fakeLayout = faker.numerify("##");
+        layoutTextBox.sendKeys(fakeLayout);
         waitAndClick(saveButton);
 
         return new SeatLayoutsPage();
+    }
 
+    public SeatLayoutsPage successfulMessage(){
+        String expectedMessage = "Seat layout saved successfully.";
+        String actualMessage = successfulyUpdateMessage.getText();
+        softAssert.assertEquals(actualMessage,expectedMessage);
+
+        return new SeatLayoutsPage();
+    }
+
+    public SeatLayoutsPage updateLayout(){
+
+        waitAndClick(penIcon);
+
+        layoutTextBox.click();
+        layoutTextBox.clear();
+
+        //layoutTextBox.sendKeys(faker.numerify("##"));
+
+        waitAndClick(updateButton);
+        return new SeatLayoutsPage();
     }
 
 }
