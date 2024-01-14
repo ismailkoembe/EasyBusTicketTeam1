@@ -254,6 +254,7 @@ public class AdminDashboardPage extends BasePage{
         return new AdminTicketPage();
     }
 
+<<<<<<< HEAD
     /**
      * REYHAN  for Admin Rejected Ticket
      */
@@ -299,6 +300,8 @@ public class AdminDashboardPage extends BasePage{
 
 
 
+=======
+>>>>>>> 7106f0afa9cddd005a910136ee1f2418fd990645
     //Ekrani full screen yapma butonu
     @FindBy(xpath = "//i[@class='fullscreen-open las la-compress']")
     public WebElement buttonFullScreenPage;
