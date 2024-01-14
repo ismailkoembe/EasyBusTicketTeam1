@@ -1,7 +1,7 @@
 package com.easybusticket.pages;
 
 import com.easybusticket.utilities.Driver;
-import org.openqa.selenium.JavascriptExecutor;
+import com.easybusticket.utilities.PropManager;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -22,12 +22,18 @@ public class UserChangePasswordPage extends BasePage {
     @FindBy(xpath = "//input[@type='submit']")
     public WebElement buttonChangePassword;
 
-    public UserChangePasswordPage clickToChangePasswordButton() {
-        inputCurrentPassword.sendKeys("LoginTesti!8");
-        inputNewPassword.sendKeys("LoginTesti!9");
-        inputConfirmPassword.sendKeys("LoginTesti!9");
+    public void clickToChangePasswordButton() {
+        inputCurrentPassword.sendKeys(PropManager.getProperties(env,"passwordRegistered"));
+        inputNewPassword.sendKeys(PropManager.getProperties(env,"changedPassword"));
+        inputConfirmPassword.sendKeys(PropManager.getProperties(env,"confirmPassword"));
         actions.sendKeys(Keys.PAGE_DOWN).perform();
         waitAndClick(buttonChangePassword);
-        return new UserChangePasswordPage();
+    }
+    public void clickToChangePasswordButton(String currentPassword, String newPassword) {
+        inputCurrentPassword.sendKeys(currentPassword);
+        inputNewPassword.sendKeys(newPassword);
+        inputConfirmPassword.sendKeys(newPassword);
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
+        waitAndClick(buttonChangePassword);
     }
 }
