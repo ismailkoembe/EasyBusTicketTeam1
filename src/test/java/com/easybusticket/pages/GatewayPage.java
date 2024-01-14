@@ -49,14 +49,97 @@ public class GatewayPage extends BasePage{
     @FindBy(xpath = "//*[text()='Automatic Gateways']")
     public WebElement automaticGatewaysButton;
 
-    public GatewayPage automaticGatewayVerifyTest(){
+/*-------------------------------------------------------------------------------------------------------------------*/
+    @FindBy(xpath = "(//*[text()='Manual Gateways'])[2]")
+    public WebElement labelManualGateway;
+    @FindBy(xpath = "//a[@class='btn btn-sm btn--primary box--shadow1 text--small']")
+    public WebElement manualGatewayAddNewButton;
+
+    @FindBy(xpath = "//*[text()='Action']")
+    public WebElement columnAction;
+
+    @FindBy(xpath = "(//a[@class='icon-btn editGatewayBtn'])[1]")
+    public WebElement firstElementEditButton;
+
+    @FindBy(xpath = "//*[@class='la la-eye']")
+    public WebElement firstElementActivationButton;
+
+    @FindBy(xpath = "//*[@class='btn btn--primary']")
+    public WebElement activationChangeButton;
+
+
+    @FindBy(xpath = "//*[text()='New Manual Gateway']")
+    public WebElement labelEditPageManualGateway;
+
+    @FindBy(xpath = "//*[@class='profilePicPreview']")
+    public WebElement imageProfile;
+
+    @FindBy(xpath = "//*[@class='bg--primary']")
+    public WebElement imageUploadButton;
+    @FindBy(xpath = "//*[@name='name']")
+    public WebElement textOfBoxGatewayName;
+
+    @FindBy(xpath = "//*[@name='currency']")
+    public WebElement textOfBoxCurrency;
+
+    @FindBy(xpath = "//*[@name='rate']")
+    public WebElement textOfBoxRate;
+
+    @FindBy(xpath = "//*[text()='Range']")
+    public WebElement labelRange;
+
+    @FindBy(xpath = "//*[@name='min_limit']")
+    public WebElement textOfBoxMinimumAmount;
+
+    @FindBy(xpath = "//*[@name='max_limit']")
+    public WebElement textOfBoxMaximumAmount;
+
+    @FindBy(xpath = "//*[text()='Charge']")
+    public WebElement labelCharge;
+
+    @FindBy(xpath = "//*[@name='fixed_charge']")
+    public WebElement textOfBoxFixCharge;
+
+    @FindBy(xpath = "//*[@name='percent_charge']")
+    public WebElement textOfBoxPercentCharge;
+
+    @FindBy(xpath = "//*[text()='Deposit Instruction']")
+    public WebElement labelDepositInstruction;
+
+    @FindBy(xpath = "//*[@class=' nicEdit-main               ']")
+    public WebElement textOfBoxMessage;
+
+    @FindBy(xpath = "//*[text()='User data                                                ']")
+    public WebElement labelUserData;
+
+    @FindBy(xpath = "//*[@class='btn btn-sm btn-outline-light float-right addUserData']")
+    public WebElement addNewUserDataButton;
+
+    @FindBy(xpath = "//*[@name='field_name[]']")
+    public WebElement textOfBoxFieldName;
+
+    @FindBy(xpath = "//*[@name='type[]']")
+    public WebElement dropDownUserDataInput;
+
+    @FindBy(xpath = "//*[@name='validation[]']")
+    public WebElement dropDownUserDataValue;
+
+    @FindBy(xpath = "//*[@class='btn btn--danger btn-lg removeBtn w-100']")
+    public WebElement userDataRemove;
+
+    @FindBy(xpath = "//*[text()='Save Method ']")
+    public WebElement saveMethodButton;
+
+    @FindBy(xpath = "(//a[@class='icon-btn editGatewayBtn'])[1]")
+    public WebElement goBackButton;
+
+    public void automaticGatewayVerifyTest(){
 
         softAssert.assertTrue(labelAutomaticGateway.isDisplayed());
         softAssert.assertTrue(searchBox.isDisplayed());
         softAssert.assertTrue(columnGateway.isDisplayed());
         softAssert.assertTrue(columnSupportedCurrency.isDisplayed());
         softAssert.assertTrue(columnEnabledCurrency.isDisplayed());
-        softAssert.assertTrue(columnGateway.isDisplayed());
         softAssert.assertTrue(columnStatus.isDisplayed());
         softAssert.assertTrue(rowFirstValueGateway.isDisplayed());
         softAssert.assertTrue(rowFirstValueSupportedCurrency.isDisplayed());
@@ -75,7 +158,19 @@ public class GatewayPage extends BasePage{
         waitAndClick(automaticGatewaysButton);
         log.info("Automatic gateway page sayfasına dönüş yapıldı");
 
-        return new GatewayPage();
+    }
+
+    public void manualGatewayVerifyTest(){
+
+        softAssert.assertTrue(labelManualGateway.isDisplayed());
+        softAssert.assertTrue(manualGatewayAddNewButton.isDisplayed());
+        softAssert.assertTrue(searchBox.isDisplayed());
+        softAssert.assertTrue(columnGateway.isDisplayed());
+        softAssert.assertTrue(columnStatus.isDisplayed());
+        softAssert.assertTrue(columnAction.isDisplayed());
+        softAssert.assertTrue(rowFirstValueGateway.isDisplayed());
+        softAssert.assertTrue(rowFirstValueStatus.isDisplayed());
+        softAssert.assertAll();
 
     }
 

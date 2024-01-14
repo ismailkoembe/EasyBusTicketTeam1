@@ -2,7 +2,6 @@ package com.easybusticket.pages;
 
 import com.easybusticket.utilities.Driver;
 import lombok.extern.slf4j.Slf4j;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -261,6 +260,17 @@ public class AdminDashboardPage extends BasePage{
         softAssert.assertEquals(actualTitleAutoGateway,expectedTitleAutoGateway);
         softAssert.assertAll();
         return new GatewayPage();
+
+    }
+
+    public void clickToManualGateway(){
+        softAssert.assertTrue(paymentGatewaysButton.isDisplayed());
+        waitAndClick(paymentGatewaysButton);
+        waitAndClick(manualGatewaysButton);
+        String expectedTitleManualGateway = "Easy Bus Ticket - Manual Gateways";
+        String actualTitleManualGateway = Driver.get(env).getTitle();
+        softAssert.assertEquals(actualTitleManualGateway,expectedTitleManualGateway);
+        softAssert.assertAll();
 
     }
 
