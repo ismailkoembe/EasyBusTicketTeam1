@@ -185,12 +185,13 @@ public class AdminDashboardPage extends BasePage {
     @FindBy(xpath = "//span[text()='Vehicles']")
     public WebElement vehicle;
 
-    public SeatLayoutsPage manageFleets(){
+    public AdminDashboardPage manageFleets(){
 
         manageFleets.click();
         waitAndClick(seatLayout);
 
-        return new SeatLayoutsPage();
+        return new AdminDashboardPage();
+
     }
 //=====================================================================//
 
