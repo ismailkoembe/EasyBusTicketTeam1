@@ -2,13 +2,19 @@ package com.easybusticket.pages;
 
 import com.easybusticket.utilities.Driver;
 import lombok.extern.slf4j.Slf4j;
-import org.openqa.selenium.Keys;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.Wait;
+import org.testng.Assert;
 
-
+import java.time.Duration;
+import java.util.function.Function;
 
 
 @Slf4j
@@ -175,23 +181,60 @@ public class AdminDashboardPage extends BasePage{
     @FindBy(xpath = "//*[text()='All Ticket']")
     public WebElement allTicketOnderTheSidebar;
 
+
+    /**
+     * REYHAN  for Admin booking History
+     */
+    public void bookingHistories(){
+
+        Wait<WebDriver> wait = new FluentWait<>(Driver.get("stage"))
+                .withTimeout(Duration.ofSeconds(30L))
+                .pollingEvery(Duration.ofSeconds(5L))
+                .ignoring(NoSuchElementException.class);
+        WebElement bookingHistory = wait.until(new Function<WebDriver, WebElement>() {
+            public WebElement apply(WebDriver driver) {
+                WebElement bookingHistory = Driver.get("stage").findElement(By.xpath("//*[text()='Booking History']"));
+                bookingHistory.click();
+                return bookingHistory;
+            }
+
+        });
+
+    }
+
     public void bookingHistoryDropdown(){
         bookingHistorySidebar.isDisplayed();
         pendingTicketOnderTheSidebar.isDisplayed();
         bookedTicketOnderTheSidebar.isDisplayed();
         rejectedTicketOnderTheSidebar.isDisplayed();
         allTicketOnderTheSidebar.isDisplayed();
-        waitAndClick(bookingHistorySidebar);
+        waitAndClick(pendingTicketOnderTheSidebar);
 
 
     }
 
-    public AdminTicketPage pendingTicket(){
-        waitAndClick(pendingTicketOnderTheSidebar);
+    public AdminTicketPage pendingTickets(){
+
+        Wait<WebDriver> wait = new FluentWait<>(Driver.get("stage"))
+                .withTimeout(Duration.ofSeconds(30L))
+                .pollingEvery(Duration.ofSeconds(5L))
+                .ignoring(NoSuchElementException.class);
+        WebElement pendingTicket = wait.until(new Function<WebDriver, WebElement>() {
+            public WebElement apply(WebDriver driver) {
+                WebElement pendingTicket = Driver.get("stage").findElement(By.xpath("//*[text()='Pending Ticket']"));
+                pendingTicket.click();
+                return pendingTicket;
+            }
+
+        });
         return new AdminTicketPage();
     }
 
-}                                              
+
+
+
+
+
 
 
     //Ekrani full screen yapma butonu

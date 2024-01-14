@@ -180,6 +180,9 @@ public class HomePage extends BasePage{
 
     }
 
+    /**
+     * REYHAN Blog page control
+     */
     public BlogPage clickToBlogTitle(){
         acceptCookies();
         waitAndClick(blogTitle);
@@ -194,6 +197,7 @@ public class HomePage extends BasePage{
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight);");
     }
 
+    
 
 }
 
