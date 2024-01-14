@@ -42,7 +42,7 @@ public class AdminDashboardPage extends BasePage{
     public WebElement labelSuccessfulPayment;
 
     // Represents the label of the 'Pending Payment' card
-    @FindBy(xpath = "(//*[text()='Pending Payment'])[1]")
+    @FindBy(xpath = "(//*[text()='Pending Payment'])[2]")
     public WebElement labelpendingPayment;
 
     // Represents the label of the 'Rejected Payment' card
