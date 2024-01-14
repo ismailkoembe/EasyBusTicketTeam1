@@ -17,7 +17,7 @@ public class US21_TC01_TC02 extends BaseTestAdmin {
 
         //The admin can manage the admin dashboard page after successful login.
         AdminDashboardPage adminDashboardPage = new AdminPage().adminLogin();
-log.info("Admin logged in admin dashboars");
+        log.info("Admin logged in admin dashboars");
 
 
     }

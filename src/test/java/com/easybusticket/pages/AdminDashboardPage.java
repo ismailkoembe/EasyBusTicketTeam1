@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class AdminDashboardPage extends BasePage{
+public class git checkout AdminDashboardPage extends BasePage{
     public AdminDashboardPage(){
         PageFactory.initElements(Driver.get("stage"),this);
     }
