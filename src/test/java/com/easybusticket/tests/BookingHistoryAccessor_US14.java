@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 @Slf4j
-public class TheBookingHistoryAccessor_US14 extends BaseTest {
+public class BookingHistoryAccessor_US14 extends BaseTest {
 
     @Test
     public void testBookingHistoryAccessFromMenu() { //I should be able to verify that I can access the booking history page from the booking menu
