@@ -5,6 +5,7 @@ import com.easybusticket.utilities.Environments;
 import com.easybusticket.utilities.PropManager;
 import com.github.javafaker.Faker;
 import lombok.extern.slf4j.Slf4j;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -38,4 +39,6 @@ public abstract class BasePage {
         wait.until(ExpectedConditions.elementToBeClickable(element)).click();
         log.info("Clicked in {}ms", System.currentTimeMillis() - start);
     }
+
+
 }
