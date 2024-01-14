@@ -10,10 +10,9 @@ public class SuccessfulPaymentPage extends BasePage {
     public SuccessfulPaymentPage() {
         PageFactory.initElements(Driver.get("stage"), this);
     }
-
+    
     @FindBy(xpath = "/html/body/div[1]/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[7]/a")
     public WebElement detailActionButtonLink;
-
 
     public void titleSuccessfulPaymentPage() {
 
@@ -23,6 +22,4 @@ public class SuccessfulPaymentPage extends BasePage {
         softAssert.assertAll();
 
     }
-
-
 }
