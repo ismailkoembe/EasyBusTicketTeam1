@@ -6,8 +6,6 @@ import org.testng.annotations.Test;
 
 @Slf4j
 public class BookingHistoryDetailActionTest_U14 extends BaseTest{
-
-
     @Test
     public void detailActionTest() {
 
