@@ -1,0 +1,20 @@
+<suite name="Sanity Test">
+<test name="Sanity Example">
+    <classes>
+        <class name="com.easybusticket.tests.AboutPageTest">
+            <methods>
+                <include name="AboutPageTest"/>
+                <!--                    <include name="testMethod2"/>-->
+                <!-- Add more method names if needed -->
+            </methods>
+        </class>
+        <class name="com.easybusticket.tests.HeaderHomePageTest_US02">
+            <methods>
+                <include name="homePageHeaderTest"/>
+                <!-- Add more method names if needed -->
+            </methods>
+        </class>
+        <!-- Add more classes if needed -->
+    </classes>
+</test>
+</suite>

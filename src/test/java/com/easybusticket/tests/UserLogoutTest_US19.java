@@ -5,15 +5,19 @@ import com.easybusticket.pages.UserDashboardPage;
 import com.easybusticket.pages.UserLoginPage;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.Test;
-
 @Slf4j
-public class US10_TC01_TC02 extends BaseTest {
+public class UserLogoutTest_US19 extends BaseTest{
+
     @Test
-    public void loginTest() {
+    public void userLogoutTest(){
         // navigate to the login page
         UserLoginPage userLoginPage = new HomePage().clickToSignIn();
 
-       //navigate to the dashboard page
+        //navigate to the dashboard page
         UserDashboardPage userDashboardPage = userLoginPage.login();
+
+        //navigate to the login page
+        UserLoginPage userLogout = new UserDashboardPage().logout();
+        log.info(" logout test " + env);
     }
 }
