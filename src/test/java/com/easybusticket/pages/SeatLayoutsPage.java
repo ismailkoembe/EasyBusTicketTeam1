@@ -56,6 +56,7 @@ public class SeatLayoutsPage extends BasePage{
     }
 
     public void successfulMessage(){
+
         String expectedMessage = "Seat layout saved successfully.";
         String actualMessage = successfulyUpdateMessage.getText();
         softAssert.assertEquals(actualMessage,expectedMessage);
@@ -73,6 +74,7 @@ public class SeatLayoutsPage extends BasePage{
         waitAndClick(updateButton);
 
     }
+
     public void deleteLayout(){
 
         waitAndClick(deleteIcon);
