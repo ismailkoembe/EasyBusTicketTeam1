@@ -347,6 +347,38 @@ public class AdminDashboardPage extends BasePage{
         return new AllPaymentPage();
 
     }
+    //========================CHANGING-ADMIN-PASSWORD===========================//
+
+    // admin page admin icon
+    @FindBy(xpath = "//span[@class='navbar-user']")
+    public WebElement adminIcon;
+
+    // admin page, admin icon dropdown menu, option 'profile'
+    @FindBy(xpath = "(//*[@class='dropdown-menu__item d-flex align-items-center px-3 py-2'])[1]")
+    public WebElement optionProfile;
+
+    // admin logout option
+    @FindBy(xpath = "//span[text()='Logout']")
+    public WebElement logoutOptionAdmin;
+
+    public AdminProfilePage adminPageSettings(){
+
+        waitAndClick(adminIcon);
+        waitAndClick(optionProfile);
+        return new AdminProfilePage();
+    }
+
+    public AdminDashboardPage logout() {
+
+        waitAndClick(adminIcon);
+        waitAndClick(logoutOptionAdmin);
+        String expectedTitle = "Easy Bus Ticket - Admin Login";
+        String actualTitle = Driver.get(env).getTitle();
+        softAssert.assertEquals(actualTitle, expectedTitle);
+        softAssert.assertAll();
+        return new AdminDashboardPage();
+
+    }
 
 }
 
