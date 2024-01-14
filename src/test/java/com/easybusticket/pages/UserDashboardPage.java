@@ -229,6 +229,12 @@ public class UserDashboardPage extends BasePage {
         return new SupportTicketPage();
     }
 
+    public BookingHistoryPage clickToBookingHistory() {
+        waitAndClick(dropDownBooking);
+        waitAndClick(bookingHistory);
+        return new BookingHistoryPage();
+    }
+
     public UserChangePasswordPage getToChangePasswordPage() {
         waitAndClick(dropDownProfile);
         waitAndClick(changePasswordOption);

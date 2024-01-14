@@ -8,9 +8,13 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
-public class AdminDashboardPage extends BasePage {
-    public AdminDashboardPage() {
-        PageFactory.initElements(Driver.get("stage"), this);
+
+@Slf4j
+public class AdminDashboardPage extends BasePage{
+    public AdminDashboardPage(){
+        PageFactory.initElements(Driver.get("stage"),this);
+
+
     }
 
     // Represents the title label on the Dashboard page
@@ -151,6 +155,54 @@ public class AdminDashboardPage extends BasePage {
     // Login By OS
     @FindBy(xpath = "//*[text()='Login By Country']")
     public WebElement labelLoginByCountry;
+
+
+    //Ekrani full screen yapma butonu
+    @FindBy(xpath = "//i[@class='fullscreen-open las la-compress']")
+    public WebElement buttonFullScreenPage;
+
+    @FindBy(xpath = "//i[@class='fullscreen-close las la-compress-arrows-alt']")
+    public WebElement buttonCloseFullScreenPage;
+
+
+    public void clickButtonFullScreenPage(){
+        waitAndClick(buttonFullScreenPage);
+        waitAndClick(buttonCloseFullScreenPage);
+    }
+
+    //header'daki search buttonu
+    @FindBy(xpath = "(//button[@type='button'])[4]")
+    public WebElement buttonSearch;
+
+    //search cubugu
+    @FindBy(xpath = "//*[@id='navbar-search__field']")
+    public WebElement linkSearch;
+
+    //search alt cubugu
+    @FindBy(xpath = "//*[@id=\"navbar_search_result_area\"]/ul/li/a")
+    public WebElement linkSearchSub;
+
+    public void clickButtonSearch(){
+        waitAndClick(buttonSearch);
+        waitAndClick(linkSearch);
+    }
+
+    public Object searchPage(String pages){
+        linkSearch.sendKeys(pages);
+        waitAndClick(linkSearchSub);
+        switch(pages){
+            case "Blog":
+                return new BlogPage();
+            case "FAQ":
+                return new FaqsPage();
+            case "About Us":
+                return new AboutPage();
+            case "Contact":
+                return new ContactPage();
+        }
+        return null;
+    }
+
 
     //========================SIDE BAR===========================//
     @FindBy(xpath = "//*[text()='Payment Gateways']")
