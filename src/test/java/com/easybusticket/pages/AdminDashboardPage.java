@@ -490,6 +490,31 @@ public class AdminDashboardPage extends BasePage{
 
     }
 
+    //header daki notification button
+    @FindBy(xpath = "//i[@class='las la-bell text--primary']")
+    public WebElement buttonNotification;
+
+    //header daki notification butona basinca cikan notification yazisi
+    @FindBy(xpath = "//span[text()='Notification']")
+    public WebElement labelNotification;
+
+    public void clickButtonNotification(){
+        waitAndClick(buttonNotification);
+        softAssert.assertTrue(labelNotification.isDisplayed());
+        softAssert.assertAll();
+    }
+
+    //view all notification butonu
+    @FindBy(xpath = "//*[@class='view-all-message']")
+    public WebElement buttonViewAllNotification;
+
+    public NotificationsPage clickViewAllNotification(){
+        waitAndClick(buttonViewAllNotification);
+        return new NotificationsPage();
+    }
+
+
+
 }
 
 
