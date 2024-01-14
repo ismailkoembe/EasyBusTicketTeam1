@@ -9,10 +9,13 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
 
+
+
 @Slf4j
 public class AdminDashboardPage extends BasePage{
     public AdminDashboardPage(){
         PageFactory.initElements(Driver.get("stage"),this);
+
 
 
     }
@@ -157,6 +160,40 @@ public class AdminDashboardPage extends BasePage{
     public WebElement labelLoginByCountry;
 
 
+    @FindBy(xpath = "//*[text()='Booking History']")
+    public WebElement bookingHistorySidebar;
+
+    @FindBy(xpath = "//*[text()='Pending Ticket']")
+    public WebElement pendingTicketOnderTheSidebar;
+
+    @FindBy(xpath = "//*[text()='Pending Ticket']")
+    public WebElement bookedTicketOnderTheSidebar;
+
+    @FindBy(xpath = "//*[text()='Rejected Ticket']")
+    public WebElement rejectedTicketOnderTheSidebar;
+
+    @FindBy(xpath = "//*[text()='All Ticket']")
+    public WebElement allTicketOnderTheSidebar;
+
+    public void bookingHistoryDropdown(){
+        bookingHistorySidebar.isDisplayed();
+        pendingTicketOnderTheSidebar.isDisplayed();
+        bookedTicketOnderTheSidebar.isDisplayed();
+        rejectedTicketOnderTheSidebar.isDisplayed();
+        allTicketOnderTheSidebar.isDisplayed();
+        waitAndClick(bookingHistorySidebar);
+
+
+    }
+
+    public AdminTicketPage pendingTicket(){
+        waitAndClick(pendingTicketOnderTheSidebar);
+        return new AdminTicketPage();
+    }
+
+}                                              
+
+
     //Ekrani full screen yapma butonu
     @FindBy(xpath = "//i[@class='fullscreen-open las la-compress']")
     public WebElement buttonFullScreenPage;
@@ -202,6 +239,7 @@ public class AdminDashboardPage extends BasePage{
         }
         return null;
     }
+
 
 
     //========================SIDE BAR===========================//

@@ -173,6 +173,7 @@ public class HomePage extends BasePage{
         return new ContactPage();
 
     }
+
     public void clickToFAQsTitle(){
         acceptCookies();
         waitAndClick(faqsTitle);
