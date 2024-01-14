@@ -90,6 +90,8 @@ public class SupportTicketPage extends BasePage{
     @FindBy(xpath = "//*[text()='High']")
     public WebElement optionPriorityHigh;
 
+
+    /**Ayça Ovali*/
     public void requestHistoryPageVerifyTest(){
         //columnSubject.isDisplayed();
         softAssert.assertTrue(columnSubject.isDisplayed());
@@ -102,14 +104,16 @@ public class SupportTicketPage extends BasePage{
         softAssert.assertTrue(actionButton.isDisplayed());
 
         waitAndClick(actionButton);
+
         log.info("Request Detail Page loaded");
         softAssert.assertTrue(labelOpenedRequestTitle.isDisplayed());
         softAssert.assertTrue(selectFileButton.isDisplayed());
         softAssert.assertTrue(replyButton.isDisplayed());
         softAssert.assertTrue(yourReplyBox.isDisplayed());
         softAssert.assertTrue(labelLastRequestMessage.isDisplayed());
+
         waitAndClick(dropDownSupportRequest);
-        waitAndClick(createNewOption);
+        waitAndClick(requestsOption);
         String expectedRequestHistoryPageTitle ="Easy Bus Ticket - Support Tickets";
         String actualRequestHistoryPageTitle = Driver.get(env).getTitle();
         softAssert.assertEquals(actualRequestHistoryPageTitle,expectedRequestHistoryPageTitle);
@@ -117,13 +121,14 @@ public class SupportTicketPage extends BasePage{
         log.info("returned history page");
     }
 
+    /**Ayça Ovali*/
     public void requestHistoryNewTicketTest(){
         waitAndClick(newTicketButton);
         softAssert.assertTrue(mySupportTicketButton.isDisplayed());
         softAssert.assertTrue(textBoxOfNameButton.isDisplayed());
         softAssert.assertTrue(textBoxOfEmailButton.isDisplayed());
-        waitAndClick(textBoxOfSubject);
 
+        waitAndClick(textBoxOfSubject);
         textBoxOfSubject.sendKeys(PropManager.getProperties(env, "us16Subject"));
         waitAndClick(dropDownPriority);
         actions.click(dropDownPriority).sendKeys(Keys.DOWN).click();
@@ -140,6 +145,8 @@ public class SupportTicketPage extends BasePage{
         softAssert.assertAll();
         log.info("new ticket created");
     }
+
+
 
     public void createNewHistoryPageVerifyTest(){
 
