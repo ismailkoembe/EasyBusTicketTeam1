@@ -5,6 +5,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
 
 public class HomePage extends BasePage{
@@ -166,17 +167,13 @@ public class HomePage extends BasePage{
 
     }
 
-
-
     public ContactPage clickToContactTitle(){
         acceptCookies();
         waitAndClick(contactTitle);
         return new ContactPage();
 
     }
-
     public void clickToFAQsTitle(){
-
         acceptCookies();
         waitAndClick(faqsTitle);
 

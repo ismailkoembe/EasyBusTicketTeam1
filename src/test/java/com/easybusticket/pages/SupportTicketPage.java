@@ -114,6 +114,7 @@ public class SupportTicketPage extends BasePage{
         softAssert.assertTrue(yourReplyBox.isDisplayed());
         softAssert.assertTrue(labelLastRequestMessage.isDisplayed());
         waitAndClick(dropDownSupportRequest);
+        waitAndClick(requestsOption);
         waitAndClick(createNewOption);
         String expectedRequestHistoryPageTitle ="Easy Bus Ticket - Support Tickets";
         String actualRequestHistoryPageTitle = Driver.get(env).getTitle();
@@ -146,7 +147,6 @@ public class SupportTicketPage extends BasePage{
         log.info("new ticket created");
     }
 
-
     public void createNewHistoryPageVerifyTest(){
 
         softAssert.assertTrue(columnSubject.isDisplayed());
@@ -168,7 +168,6 @@ public class SupportTicketPage extends BasePage{
         waitAndClick(dropDownSupportRequest);
         waitAndClick(createNewOption);
         softAssert.assertAll();
-
 
     }
 
