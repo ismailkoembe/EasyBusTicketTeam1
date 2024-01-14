@@ -3,15 +3,10 @@ package com.easybusticket.pages;
 import com.easybusticket.utilities.Driver;
 import com.easybusticket.utilities.PropManager;
 import lombok.extern.slf4j.Slf4j;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import javax.swing.*;
 
 @Slf4j
 public class SupportTicketPage extends BasePage{
@@ -95,12 +90,6 @@ public class SupportTicketPage extends BasePage{
     @FindBy(xpath = "//*[text()='High']")
     public WebElement optionPriorityHigh;
 
-    /**
-     * @Author Ayca OVALI
-     */
-
-
-
     public void requestHistoryPageVerifyTest(){
         //columnSubject.isDisplayed();
         softAssert.assertTrue(columnSubject.isDisplayed());
@@ -120,15 +109,10 @@ public class SupportTicketPage extends BasePage{
         softAssert.assertTrue(yourReplyBox.isDisplayed());
         softAssert.assertTrue(labelLastRequestMessage.isDisplayed());
         waitAndClick(dropDownSupportRequest);
-
-        waitAndClick(requestsOption);
-
-
         waitAndClick(createNewOption);
         String expectedRequestHistoryPageTitle ="Easy Bus Ticket - Support Tickets";
         String actualRequestHistoryPageTitle = Driver.get(env).getTitle();
         softAssert.assertEquals(actualRequestHistoryPageTitle,expectedRequestHistoryPageTitle);
-
         softAssert.assertAll();
         log.info("returned history page");
     }
@@ -157,30 +141,20 @@ public class SupportTicketPage extends BasePage{
         log.info("new ticket created");
     }
 
+    public void createNewHistoryPageVerifyTest(){
 
-    /**
-     * @Author Reyhan Y.Yildiz
-     */
-    public void createNewVerifyTest() {
-//        softAssert.assertTrue(columnSubject.isDisplayed());
-//        log.info("Subject is display");
-//        softAssert.assertTrue(columnStatus.isDisplayed());
-//        log.info("Status is display");
-//        softAssert.assertTrue(columnPriority.isDisplayed());
-//        log.info("Priority is display");
-//        softAssert.assertTrue(columnLastReply.isDisplayed());
-//        log.info("Reply is display");
-//        softAssert.assertTrue(columnAction.isDisplayed());
-//        log.info("Action column is display");
-//        softAssert.assertTrue(newTicketButton.isDisplayed());
-//        log.info("New ticket button is display");
-//        softAssert.assertTrue(rowFirstRequest.isDisplayed());
-//
-//        softAssert.assertTrue(actionButton.isDisplayed());
+        softAssert.assertTrue(columnSubject.isDisplayed());
+        softAssert.assertTrue(columnStatus.isDisplayed());
+        softAssert.assertTrue(columnPriority.isDisplayed());
+        softAssert.assertTrue(columnLastReply.isDisplayed());
+        softAssert.assertTrue(columnAction.isDisplayed());
+        softAssert.assertTrue(newTicketButton.isDisplayed());
+        softAssert.assertTrue(rowFirstRequest.isDisplayed());
+        softAssert.assertTrue(actionButton.isDisplayed());
 
         waitAndClick(actionButton);
-        log.info("Create new page loaded");
-       // softAssert.assertTrue(labelOpenedRequestTitle.isDisplayed());
+        log.info("Create new detail Page loaded");
+        softAssert.assertTrue(labelOpenedRequestTitle.isDisplayed());
         softAssert.assertTrue(selectFileButton.isDisplayed());
         softAssert.assertTrue(replyButton.isDisplayed());
         softAssert.assertTrue(yourReplyBox.isDisplayed());
@@ -189,14 +163,11 @@ public class SupportTicketPage extends BasePage{
         waitAndClick(createNewOption);
         softAssert.assertAll();
 
+
     }
 
     public void createNewTicketTest(){
-
-        JavascriptExecutor javascriptExecutor= (JavascriptExecutor) Driver.get("stage");
-        javascriptExecutor.executeScript("arguments[0].scrollIntoView();",newTicketButton);
-        javascriptExecutor.executeScript("arguments[0].click();",newTicketButton);
-//        waitAndClick(newTicketButton);
+        waitAndClick(newTicketButton);
         softAssert.assertTrue(mySupportTicketButton.isDisplayed());
         softAssert.assertTrue(textBoxOfNameButton.isDisplayed());
         softAssert.assertTrue(textBoxOfEmailButton.isDisplayed());
@@ -208,15 +179,7 @@ public class SupportTicketPage extends BasePage{
         textBoxOfMessage.sendKeys(PropManager.getProperties(env, "us16Message"));
         softAssert.assertTrue(selectFileButton.isDisplayed());
         softAssert.assertTrue(extraFileButton.isDisplayed());
-
-
-
-       // javascriptExecutor.executeScript("arguments[0].scrollIntoView();",submitButton);
-        javascriptExecutor.executeScript("arguments[0].click();",submitButton);
-
-
-
-       // waitAndClick(submitButton);
+        waitAndClick(submitButton);
 
         String expectedRequestHistoryPageUrl="https://qa.easybusticket.com/ticket";
         String actualRequestHistoryPageUrl=Driver.get(env).getCurrentUrl();
@@ -225,8 +188,4 @@ public class SupportTicketPage extends BasePage{
         softAssert.assertEquals("Lost Suitcase",rowFirstRequest.getText());
 
     }
-
-
-
-
 }

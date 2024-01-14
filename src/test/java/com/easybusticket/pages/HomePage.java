@@ -1,9 +1,11 @@
 package com.easybusticket.pages;
 
 import com.easybusticket.utilities.Driver;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
 
 public class HomePage extends BasePage{
@@ -96,11 +98,11 @@ public class HomePage extends BasePage{
     public WebElement getYoutubeIconFooter;
 
     //Footer Instagram Icon Link
-    @FindBy(xpath = "/html/body/section[6]/div/div/div/div[1]/div/ul/li[4]/a")
+    @FindBy(xpath = "(//a[@href='https://www.instagram.com'])[2]")
     public WebElement getInstagramIconFooter;
 
-    //Footer About Title Link
-    @FindBy(xpath = "/html/body/section[6]/div/div/div/div[2]/div/ul/li[1]/a")
+    //Footer About Title Linkhttps://www.youtube.com
+    @FindBy(xpath="(//*[@href='https://qa.easybusticket.com/about-us'])[2]")
     public  WebElement  getAboutTitleFooter;
 
     //Footer FAQs Title Link
@@ -164,105 +166,17 @@ public class HomePage extends BasePage{
         return new AboutPage();
 
     }
+
     public ContactPage clickToContactTitle(){
         acceptCookies();
         waitAndClick(contactTitle);
         return new ContactPage();
 
-
     }
-
-
 
     public void clickToFAQsTitle(){
         acceptCookies();
         waitAndClick(faqsTitle);
-
-    }
-    public TwitterPage clickToFooterTwitterLink(){
-        acceptCookies();
-        waitAndClick(getTwitterIconFooter);
-        return new TwitterPage();
-
-    }
-    public FacebookPage clickToFoterFacebookLink(){
-        acceptCookies();
-        waitAndClick(getFacebookIconFooter);
-        return new FacebookPage();
-
-    }
-
-    public YoutubePage clickToFooterYoutubeLink() {
-        acceptCookies();
-        waitAndClick(getYoutubeIconFooter);
-        return new YoutubePage();
-    }
-
-    public InstagramPage clickToFooterInstagramLink(){
-        acceptCookies();
-        waitAndClick(getInstagramIconFooter);
-        return new InstagramPage();
-
-    }
-    public AboutPage clickToFooterAboutLink(){
-        acceptCookies();
-        waitAndClick(getAboutTitleFooter);
-        return new AboutPage();
-
-    }
-    public FAQPage clickToFooterFaqLink(){
-        acceptCookies();
-        waitAndClick(getFaqsTitleFooter);
-        return new FAQPage();
-
-    }
-
-    public ContactPage clickToFooterContactLink(){
-        acceptCookies();
-        waitAndClick(footerContactUsefulLinks);
-        return new ContactPage();
-
-    }public PrivacyPolicy clickToFooterPrivacyPolicyLink(){
-        acceptCookies();
-        waitAndClick(getPrivacyPolicyTitleFooter);
-        return new PrivacyPolicy();
-
-    }
-    public TermsAndConditionsPage clickToFooterTermsAndConditionsLink(){
-        acceptCookies();
-        waitAndClick(getTermsAndConditionsTitleFooter);
-        return new TermsAndConditionsPage();
-
-    }
-    public TicketAndPoliciesPage clickToFooterTicketPoliciesLink(){
-        acceptCookies();
-        waitAndClick(getTicketPoliciesFooter);
-        return new TicketAndPoliciesPage();
-
-    }
-
-    private class TwitterPage {
-    }
-
-    private class FacebookPage {
-    }
-
-    private class YoutubePage {
-    }
-
-    private class InstagramPage {
-    }
-
-    private class PrivacyPolicy {
-    }
-
-    private class TermsAndConditionsPage {
-    }
-
-    private class TicketAndPoliciesPage {
-    }
-
-    private class FAQPage {
 
     }
 
@@ -276,6 +190,11 @@ public class HomePage extends BasePage{
         acceptCookies();
         waitAndClick(homeTitle);
     }
+    public  void scrollToBottom (){
+        ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight);");
+    }
+
+
 }
 
 
