@@ -172,7 +172,7 @@ public class AdminDashboardPage extends BasePage{
     @FindBy(xpath = "//*[text()='Pending Ticket']")
     public WebElement pendingTicketOnderTheSidebar;
 
-    @FindBy(xpath = "//*[text()='Pending Ticket']")
+    @FindBy(xpath = "//*[text()='Booked Ticket']")
     public WebElement bookedTicketOnderTheSidebar;
 
     @FindBy(xpath = "//*[text()='Rejected Ticket']")
@@ -213,6 +213,10 @@ public class AdminDashboardPage extends BasePage{
 
     }
 
+
+    /**
+     * REYHAN  for Admin Pending Ticket
+     */
     public AdminTicketPage pendingTickets(){
 
         Wait<WebDriver> wait = new FluentWait<>(Driver.get("stage"))
@@ -230,9 +234,67 @@ public class AdminDashboardPage extends BasePage{
         return new AdminTicketPage();
     }
 
+    /**
+     * REYHAN  for Admin Booked Ticket
+     */
+    public AdminTicketPage bookedTickets(){
 
+        Wait<WebDriver> wait = new FluentWait<>(Driver.get("stage"))
+                .withTimeout(Duration.ofSeconds(30L))
+                .pollingEvery(Duration.ofSeconds(5L))
+                .ignoring(NoSuchElementException.class);
+        WebElement bookedTicket = wait.until(new Function<WebDriver, WebElement>() {
+            public WebElement apply(WebDriver driver) {
+                WebElement bookedTicket = Driver.get("stage").findElement(By.xpath("//*[text()='Booked Ticket']"));
+                bookedTicket.click();
+                return bookedTicket;
+            }
 
+        });
+        return new AdminTicketPage();
+    }
 
+    /**
+     * REYHAN  for Admin Rejected Ticket
+     */
+
+    public AdminTicketPage rejectedTickets() {
+
+        Wait<WebDriver> wait = new FluentWait<>(Driver.get("stage"))
+                .withTimeout(Duration.ofSeconds(30L))
+                .pollingEvery(Duration.ofSeconds(5L))
+                .ignoring(NoSuchElementException.class);
+        WebElement rejectedTicket = wait.until(new Function<WebDriver, WebElement>() {
+            public WebElement apply(WebDriver driver) {
+                WebElement rejectedTicket = Driver.get("stage").findElement(By.xpath("//*[text()='Rejected Ticket']"));
+                rejectedTicket.click();
+                return rejectedTicket;
+            }
+
+        });
+        return new AdminTicketPage();
+    }
+
+    /**
+     * REYHAN  for Admin All Ticket
+     */
+
+    public AdminTicketPage allTickets() {
+
+        Wait<WebDriver> wait = new FluentWait<>(Driver.get("stage"))
+                .withTimeout(Duration.ofSeconds(30L))
+                .pollingEvery(Duration.ofSeconds(5L))
+                .ignoring(NoSuchElementException.class);
+        WebElement allTicket = wait.until(new Function<WebDriver, WebElement>() {
+            public WebElement apply(WebDriver driver) {
+                WebElement allTicket = Driver.get("stage").findElement(By.xpath("//*[text()='All Ticket']"));
+                allTicket.click();
+                return allTicket;
+            }
+
+        });
+        return new AdminTicketPage();
+    }
 
 
 

@@ -15,6 +15,10 @@ public class SidebarBookingHistoryDetails_US26 extends BaseTestAdmin {
     @Test
             public void sidebarBookingHistoryDetails() {
 
+        /**
+         * REYHAN
+         */
+
         //The admin can manage the admin dashboard page after successful login.
         AdminDashboardPage adminDashboardPage = new AdminPage().adminLogin();
         log.info("Admin logged in admin dashboards");
@@ -28,6 +32,21 @@ public class SidebarBookingHistoryDetails_US26 extends BaseTestAdmin {
         //The admin visualize content of "Pending Ticket"
          AdminTicketPage adminTicketPage = new AdminTicketPage();
          adminTicketPage.pendingTest();
+         Driver.get(env).navigate().back();
+
+        //The admin visualize content of "Booked Ticket"
+        adminTicketPage = new AdminTicketPage();
+        adminTicketPage.bookedTest();
+        Driver.get(env).navigate().back();
+
+        //The admin visualize content of "Rejected Ticket"
+        adminTicketPage = new AdminTicketPage();
+        adminTicketPage.rejectedTest();;
+        Driver.get(env).navigate().back();
+
+        //The admin visualize content of "All Ticket"
+        adminTicketPage = new AdminTicketPage();
+        adminTicketPage.allTicketTest();
         Driver.get(env).navigate().back();
 
 
