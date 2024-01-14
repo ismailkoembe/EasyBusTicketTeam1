@@ -12,9 +12,11 @@ public class AdminLogsIn_US21 extends BaseTestAdmin {
 
     public void AdminLogin1(){
 
+
         // The admin can manage the admin dashboard page after successful login.
+
         AdminDashboardPage adminDashboardPage = new AdminPage().adminLogin();
-log.info("Admin logged in admin dashboars");
+        log.info("Admin logged in admin dashboars");
 
 
     }
