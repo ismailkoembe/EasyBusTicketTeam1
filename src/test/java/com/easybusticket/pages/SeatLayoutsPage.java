@@ -45,17 +45,13 @@ public class SeatLayoutsPage extends BasePage{
     public void addSeatLayouts() {
 
         addNewButton.click();
-
         layoutTextBox.isDisplayed();
 
         waitAndClick(layoutTextBox);
 
-        //layoutTextBox.sendKeys(String.valueOf(2));
-
         String fakeLayout = faker.numerify("##");
         layoutTextBox.sendKeys(fakeLayout);
         waitAndClick(saveButton);
-
 
     }
 
@@ -64,31 +60,25 @@ public class SeatLayoutsPage extends BasePage{
         String actualMessage = successfulyUpdateMessage.getText();
         softAssert.assertEquals(actualMessage,expectedMessage);
 
-
     }
-
 
     public void updateLayout(){
 
         waitAndClick(penIcon);
-
-        //layoutTextBoxUpdate.click();
         waitAndClick(layoutTextBoxUpdate);
 
         layoutTextBoxUpdate.clear();
-
         layoutTextBoxUpdate.sendKeys(faker.numerify("##"));
 
         waitAndClick(updateButton);
 
     }
-    public SeatLayoutsPage deleteLayout(){
+    public void deleteLayout(){
 
         waitAndClick(deleteIcon);
-
         waitAndClick(deleteButton);
 
-        return new SeatLayoutsPage();
+
     }
 
 }
