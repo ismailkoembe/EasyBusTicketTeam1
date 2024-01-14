@@ -191,7 +191,6 @@ public class AdminDashboardPage extends BasePage {
         waitAndClick(seatLayout);
 
         return new AdminDashboardPage();
-
     }
 //=====================================================================//
 
