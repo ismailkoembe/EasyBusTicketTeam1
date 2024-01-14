@@ -42,7 +42,7 @@ public class SeatLayoutsPage extends BasePage{
 
 //============================================================================================================//
 
-    public SeatLayoutsPage addSeatLayouts() {
+    public void addSeatLayouts() {
 
         addNewButton.click();
 
@@ -56,19 +56,19 @@ public class SeatLayoutsPage extends BasePage{
         layoutTextBox.sendKeys(fakeLayout);
         waitAndClick(saveButton);
 
-        return new SeatLayoutsPage();
+
     }
 
-    public SeatLayoutsPage successfulMessage(){
+    public void successfulMessage(){
         String expectedMessage = "Seat layout saved successfully.";
         String actualMessage = successfulyUpdateMessage.getText();
         softAssert.assertEquals(actualMessage,expectedMessage);
 
-        return new SeatLayoutsPage();
+
     }
 
 
-    public SeatLayoutsPage updateLayout(){
+    public void updateLayout(){
 
         waitAndClick(penIcon);
 
@@ -80,7 +80,7 @@ public class SeatLayoutsPage extends BasePage{
         layoutTextBoxUpdate.sendKeys(faker.numerify("##"));
 
         waitAndClick(updateButton);
-        return new SeatLayoutsPage();
+
     }
     public SeatLayoutsPage deleteLayout(){
 
