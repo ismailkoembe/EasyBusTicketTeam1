@@ -191,7 +191,7 @@ public class AdminDashboardPage extends BasePage{
         return new AdminTicketPage();
     }
 
-}                                              
+
 
 
     //Ekrani full screen yapma butonu
