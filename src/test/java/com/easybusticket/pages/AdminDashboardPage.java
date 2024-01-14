@@ -233,10 +233,6 @@ public class AdminDashboardPage extends BasePage{
 
 
 
-
-
-
-
     //Ekrani full screen yapma butonu
     @FindBy(xpath = "//i[@class='fullscreen-open las la-compress']")
     public WebElement buttonFullScreenPage;
