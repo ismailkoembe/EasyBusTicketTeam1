@@ -35,7 +35,6 @@ public class ManageFleets_US_31 extends BaseTestAdmin{
         SeatLayoutsPage seatLayoutsPage = new SeatLayoutsPage();
 
         seatLayoutsPage.updateLayout();
-
         seatLayoutsPage.successfulMessage();
 
     }

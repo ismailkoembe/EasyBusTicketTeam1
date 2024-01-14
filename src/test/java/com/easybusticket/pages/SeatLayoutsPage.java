@@ -86,7 +86,6 @@ public class SeatLayoutsPage extends BasePage{
 
         waitAndClick(deleteIcon);
 
-        //layoutTextBoxUpdate.click();
         waitAndClick(deleteButton);
 
         return new SeatLayoutsPage();
