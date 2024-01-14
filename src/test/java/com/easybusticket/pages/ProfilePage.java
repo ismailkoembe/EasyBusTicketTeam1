@@ -8,7 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class ProfilePage extends BaseTest {
+public class ProfilePage extends BasePage {
 
     public ProfilePage() {
         PageFactory.initElements(Driver.get("stage"), this);
