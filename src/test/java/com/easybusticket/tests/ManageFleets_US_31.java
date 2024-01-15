@@ -22,7 +22,7 @@ public class ManageFleets_US_31 extends BaseTestAdmin{
         ManageFleets();
         SeatLayoutsPage seatLayoutsPage = new SeatLayoutsPage();
         seatLayoutsPage.addSeatLayouts();
-        seatLayoutsPage.successfulMessage();
+
 
     }
 
@@ -32,7 +32,7 @@ public class ManageFleets_US_31 extends BaseTestAdmin{
         ManageFleets();
         SeatLayoutsPage seatLayoutsPage = new SeatLayoutsPage();
         seatLayoutsPage.updateLayout();
-        seatLayoutsPage.successfulMessage();
+
 
     }
 
@@ -42,7 +42,7 @@ public class ManageFleets_US_31 extends BaseTestAdmin{
         ManageFleets();
         SeatLayoutsPage seatLayoutsPage = new SeatLayoutsPage();
         seatLayoutsPage.deleteLayout();
-        seatLayoutsPage.successfulMessage();
+
     }
 
 

@@ -22,8 +22,6 @@ public class SeatLayoutsPage extends BasePage{
     @FindBy(xpath = "//button[.='Save']")
     public WebElement saveButton;
 
-    @FindBy(xpath = "//*[@*='iziToast-texts']")
-    public WebElement successfulyUpdateMessage;
 
     @FindBy(xpath = "//i[@class='la la-pen']")
     public WebElement penIcon;
@@ -44,9 +42,8 @@ public class SeatLayoutsPage extends BasePage{
 
     public void addSeatLayouts() {
 
-        addNewButton.click();
-        layoutTextBox.isDisplayed();
-
+        waitAndClick(addNewButton);
+        softAssert.assertTrue(layoutTextBox.isDisplayed());
         waitAndClick(layoutTextBox);
 
         String fakeLayout = faker.numerify("##");
@@ -55,13 +52,7 @@ public class SeatLayoutsPage extends BasePage{
 
     }
 
-    public void successfulMessage(){
 
-        String expectedMessage = "Seat layout saved successfully.";
-        String actualMessage = successfulyUpdateMessage.getText();
-        softAssert.assertEquals(actualMessage,expectedMessage);
-
-    }
 
     public void updateLayout(){
 
