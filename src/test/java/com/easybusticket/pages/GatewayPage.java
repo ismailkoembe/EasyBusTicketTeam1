@@ -17,7 +17,8 @@ public class GatewayPage extends BasePage{
     public GatewayPage(){
         PageFactory.initElements(Driver.get("stage"),this);
     }
-
+    @FindBy(xpath = "//*[text()='Manual Gateways']")
+    public WebElement manualGatewaysButton;
     @FindBy(xpath = "(//*[text()='Automatic Gateways'])[2]")
     public WebElement labelAutomaticGateway;
 
@@ -177,12 +178,19 @@ public class GatewayPage extends BasePage{
         softAssert.assertTrue(rowFirstValueStatus.isDisplayed());
         softAssert.assertTrue(firstElementEditButton.isDisplayed());
         softAssert.assertTrue(firstElementActivationButton.isDisplayed());
+        String expectedIcerik = "WISE PAY";
+        searchBox.sendKeys(expectedIcerik);
+        String actualIcerik = rowFirstValueGateway.getText();
+        softAssert.assertEquals(actualIcerik,expectedIcerik);
+        log.info("Manual gateway searchbox'da arama yapıldı");
+        //waitAndClick(paymentGatewaysButton);
+        waitAndClick(manualGatewaysButton);
+
         manualGatewayAddNewButton.click();
         //waitAndClick(imageUploadButton);
-        //String dinamikDosyaYolu = System.getProperty("user.home") +
+        //String dinamikDosyaYolu = System.getProperty("user.dir") +
                 //"/Downloads/logo.png";
-        //imageUploadButton.sendKeys(dinamikDosyaYolu);
-        //driver.findElement(By.id("file-submit")).click();
+        //imageUploadButton.sendKeys(dinamikDosyaYolu + Keys.ENTER);
 
         textOfBoxGatewayName.sendKeys("hello");
         textOfBoxCurrency.sendKeys("euro");
@@ -191,18 +199,14 @@ public class GatewayPage extends BasePage{
         textOfBoxMaximumAmount.sendKeys("1000");
         textOfBoxFixedCharge.sendKeys("10");
         textOfBoxPercentCharge.sendKeys("10");
-        //waitAndClick(textOfBoxMessage);
-        //textOfBoxMessage.sendKeys("new payment method");
-        Actions actions = new Actions(driver);
+        waitAndClick(textOfBoxMessage);
+        textOfBoxMessage.sendKeys("new payment method");
         actions.sendKeys(Keys.PAGE_DOWN).perform();
+        waitAndClick(addNewUserDataButton);
+        waitAndClick(userDataRemove);
+        log.info("buraya kadar çalıştı");
         waitAndClick(saveMethodButton);
-        waitAndClick(saveMethodButton);
-        //waitAndClick(goBackButton);
         log.info("save butonuna tıkladı");
-
-        //waitAndClick(addNewUserDataButton);
-        //log.info("buraya kadar çalıştı");
-        //waitAndClick(userDataRemove);
         //waitAndClick(goBackButton);
 
 
