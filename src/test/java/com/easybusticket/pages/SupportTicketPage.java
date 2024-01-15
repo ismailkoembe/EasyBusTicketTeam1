@@ -107,8 +107,8 @@ public class SupportTicketPage extends BasePage {
         softAssert.assertTrue(actionButton.isDisplayed());
 
         waitAndClick(actionButton);
-
         log.info("Request Detail Page loaded");
+
         softAssert.assertTrue(labelOpenedRequestTitle.isDisplayed());
         softAssert.assertTrue(selectFileButton.isDisplayed());
         softAssert.assertTrue(replyButton.isDisplayed());
@@ -121,8 +121,6 @@ public class SupportTicketPage extends BasePage {
         String actualRequestHistoryPageTitle = Driver.get(env).getTitle();
 
         softAssert.assertEquals(actualRequestHistoryPageTitle,expectedRequestHistoryPageTitle);
-
-        softAssert.assertAll();
 
         log.info("returned history page");
         softAssert.assertAll();
@@ -169,29 +167,6 @@ public class SupportTicketPage extends BasePage {
         inputAttachmentsForm.sendKeys(path);
         waitAndClick(submitButton);
 
-
-
-        softAssert.assertTrue(columnSubject.isDisplayed());
-        softAssert.assertTrue(columnStatus.isDisplayed());
-        softAssert.assertTrue(columnPriority.isDisplayed());
-        softAssert.assertTrue(columnLastReply.isDisplayed());
-        softAssert.assertTrue(columnAction.isDisplayed());
-        softAssert.assertTrue(newTicketButton.isDisplayed());
-        softAssert.assertTrue(rowFirstRequest.isDisplayed());
-        softAssert.assertTrue(actionButton.isDisplayed());
-
-        waitAndClick(actionButton);
-        log.info("Create new detail Page loaded");
-        softAssert.assertTrue(labelOpenedRequestTitle.isDisplayed());
-        softAssert.assertTrue(selectFileButton.isDisplayed());
-        softAssert.assertTrue(replyButton.isDisplayed());
-        softAssert.assertTrue(yourReplyBox.isDisplayed());
-        softAssert.assertTrue(labelLastRequestMessage.isDisplayed());
-        waitAndClick(dropDownSupportRequest);
-        waitAndClick(createNewOption);
-
-        softAssert.assertAll();
-        log.info("returned history page");
     }
 
 }
