@@ -2,6 +2,7 @@ package com.easybusticket.tests;
 
 import com.easybusticket.pages.AdminDashboardPage;
 import com.easybusticket.pages.AdminPage;
+import com.easybusticket.pages.AllPaymentPage;
 import com.easybusticket.pages.PaymentHistory;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.Test;
@@ -14,7 +15,7 @@ public class AllPayment_US25 extends BaseTestAdmin{
         AdminDashboardPage adminDashboardPage = new AdminPage().adminLogin();
         adminDashboardPage.clickToAllPayment();
         AllPaymentPage allPaymentPage =new AllPaymentPage();
-        allPaymentPage.titleAllPaymentPage();
+        allPaymentPage.titleCheckAllPaymentPage();
 
     }
     @Test(priority = 2)
@@ -24,30 +25,30 @@ public class AllPayment_US25 extends BaseTestAdmin{
         AdminDashboardPage adminDashboardPage = new AdminPage().adminLogin();
         log.info("Admin logged in " + env);
         //log in as an administrator and locate the admin Dashboard.
-        adminDashboardPage.clickToPendingPayment();
-        log.info("clicked Pending Payment Page " + env);
+        adminDashboardPage.clickToAllPayment();
+        log.info("clicked All Payment Page " + env);
         //PendingPayment enters
-        PaymentHistory paymentHistory = new PaymentHistory();
-        log.info("Pending Payment entered " + env);
+        AllPaymentPage allPaymentPage =new AllPaymentPage();
+        log.info("All Payment entered " + env);
         //search
-        paymentHistory.searchingTicketNoTicket();
+        allPaymentPage.searchingTicketNoTicket();
         log.info("displayed whether a ticket is available or not.  " + env);
     }
     @Test(dependsOnMethods = "getPNRNumberSearchWithTicket")
-    public void pendingPaymentNoTicketTest() {
+    public void allPaymentNoTicketTest() {
         //!!!There must be no Ticket in this Test Scenario
         //log in as an administrator and locate the admin Dashboard.
         AdminDashboardPage adminDashboardPage = new AdminPage().adminLogin();
         log.info("Admin logged in " + env);
         //log in as an administrator and locate the admin Dashboard.
-        adminDashboardPage.clickToPendingPayment();
-        log.info("clicked Pending Payment Page " + env);
+        adminDashboardPage.clickToAllPayment();
+        log.info("clicked All Payment Page " + env);
         //PendingPayment enters
-        PaymentHistory paymentHistory = new PaymentHistory();
-        log.info("Pending Payment entered " + env);
+        AllPaymentPage allPaymentPage =new AllPaymentPage();
+        log.info("All Payment entered " + env);
         //verify the Text on the Table that "There is no pending payment" is written.
-        String actualResultTest = paymentHistory.dataTableNoTicket.getText();
-        softAssert.assertEquals(actualResultTest, "There is no pending payment");
+        String actualResultTest = allPaymentPage.dataTableNoTicket.getText();
+        softAssert.assertEquals(actualResultTest, "There is no ticket");
         log.info("displayed whether a ticket is  not.  " + env);
 
         softAssert.assertAll();
@@ -60,13 +61,13 @@ public class AllPayment_US25 extends BaseTestAdmin{
         AdminDashboardPage adminDashboardPage = new AdminPage().adminLogin();
         log.info("Admin logged in " + env);
         //log in as an administrator and locate the admin Dashboard.
-        adminDashboardPage.clickToPendingPayment();
-        log.info("clicked Pending Payment Page " + env);
+        adminDashboardPage.clickToAllPayment();
+        log.info("clicked All Payment Page " + env);
         //PendingPayment enters
-        PaymentHistory paymentHistory = new PaymentHistory();
-        log.info("Pending Payment entered " + env);
+        AllPaymentPage allPaymentPage =new AllPaymentPage();
+        log.info("All Payment entered " + env);
         //search
-        paymentHistory.getPNRNumberSearchBoxWithTicket();
+        allPaymentPage.getPNRNumberSearchBoxWithTicket();
         log.info("displayed whether a ticket is available or not.  " + env);
 
 

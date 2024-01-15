@@ -414,44 +414,47 @@ public class AdminDashboardPage extends BasePage{
         return false;
     }
 
-    public PaymentHistory clickToPendingPayment() {
-
+    public PendingPaymentPage clickToPendingPayment() {
 
         waitAndClick(paymentHistoryDropdownDashboard);
-        softAssert.assertTrue(pendingPaymentOption.isEnabled());
+        softAssert.assertTrue(paymentHistoryDropdownDashboard.isEnabled());
         waitAndClick(pendingPaymentOption);
         softAssert.assertTrue(pendingPaymentOption.isEnabled());
-
-        return new PaymentHistory();
+        softAssert.assertAll();
+        return new PendingPaymentPage();
 
     }
 
+    public SuccessfulPaymentPage clickToSuccessfulPayment() {
 
-    public PaymentHistory clickToSuccessfulPayment() {
+        softAssert.assertTrue(paymentHistoryDropdownDashboard.isDisplayed());
         waitAndClick(paymentHistoryDropdownDashboard);
-        softAssert.assertTrue(pendingPaymentOption.isEnabled());
+        softAssert.assertTrue(successfulPaymentOption.isDisplayed());
         waitAndClick(successfulPaymentOption);
-        softAssert.assertTrue(successfulPaymentOption.isEnabled());
-
-        return new PaymentHistory();
-
-    }
-    public PaymentHistory clickToRejectedPayment() {
-
-        waitAndClick(paymentHistoryDropdownDashboard);
-        softAssert.assertTrue(pendingPaymentOption.isEnabled());
-        waitAndClick(successfulPaymentOption);
-        softAssert.assertTrue(successfulPaymentOption.isEnabled());
-        return new PaymentHistory();
+        softAssert.assertAll();
+        return new SuccessfulPaymentPage();
 
     }
-    public PaymentHistory clickToAllPayment() {
 
+    public RejectedPaymentPage clickToRejectedPayment() {
+
+        softAssert.assertTrue(paymentHistoryDropdownDashboard.isDisplayed());
         waitAndClick(paymentHistoryDropdownDashboard);
-        softAssert.assertTrue(allPaymentOption.isEnabled());
+        softAssert.assertTrue(rejectedPaymentOption.isDisplayed());
+        waitAndClick(rejectedPaymentOption);
+        //softAssert.assertAll();
+        return new RejectedPaymentPage();
+
+    }
+
+    public AllPaymentPage clickToAllPayment() {
+
+        //softAssert.assertTrue(paymentHistoryDropdownDashboard.isDisplayed());
+        waitAndClick(paymentHistoryDropdownDashboard);
+        //softAssert.assertTrue(allPaymentOption.isDisplayed());
         waitAndClick(allPaymentOption);
-        softAssert.assertTrue(allPaymentOption.isEnabled());
-        return new PaymentHistory();
+        //softAssert.assertAll();
+        return new AllPaymentPage();
 
     }
     //========================CHANGING-ADMIN-PASSWORD===========================//

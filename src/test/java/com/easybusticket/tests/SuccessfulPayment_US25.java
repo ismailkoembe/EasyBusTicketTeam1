@@ -3,6 +3,7 @@ package com.easybusticket.tests;
 import com.easybusticket.pages.AdminDashboardPage;
 import com.easybusticket.pages.AdminPage;
 import com.easybusticket.pages.PaymentHistory;
+import com.easybusticket.pages.SuccessfulPaymentPage;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.Test;
 
@@ -25,29 +26,29 @@ public class SuccessfulPayment_US25 extends BaseTestAdmin{
         log.info("Admin logged in " + env);
         //log in as an administrator and locate the admin Dashboard.
         adminDashboardPage.clickToSuccessfulPayment();
-        log.info("clicked Pending Payment Page " + env);
-        //PendingPayment enters
-        PaymentHistory paymentHistory = new PaymentHistory();
-        log.info("Pending Payment entered " + env);
+        log.info("clicked PSuccessfulPaymentPage " + env);
+        //SuccessfulPaymentPage enters
+        SuccessfulPaymentPage successfulPaymentPage =new SuccessfulPaymentPage();
+        log.info("SuccessfulPaymentPage entered " + env);
         //search
-        paymentHistory.searchingTicketNoTicket();
+        successfulPaymentPage.searchingTicketNoTicket();
         log.info("displayed whether a ticket is available or not.  " + env);
     }
     @Test(dependsOnMethods = "getPNRNumberSearchWithTicket")
-    public void pendingPaymentNoTicketTest() {
+    public void successfullPaymentNoTicketTest() {
         //!!!There must be no Ticket in this Test Scenario
         //log in as an administrator and locate the admin Dashboard.
         AdminDashboardPage adminDashboardPage = new AdminPage().adminLogin();
         log.info("Admin logged in " + env);
         //log in as an administrator and locate the admin Dashboard.
         adminDashboardPage.clickToSuccessfulPayment();
-        log.info("clicked Pending Payment Page " + env);
-        //PendingPayment enters
-        PaymentHistory paymentHistory = new PaymentHistory();
-        log.info("Pending Payment entered " + env);
+        log.info("clicked SuccessfulPaymentPage" + env);
+        //SuccessfulPaymentPage enters
+        SuccessfulPaymentPage successfulPaymentPage =new SuccessfulPaymentPage();
+        log.info("SuccessfulPaymentPage entered " + env);
         //verify the Text on the Table that "There is no pending payment" is written.
-        String actualResultTest = paymentHistory.dataTableNoTicket.getText();
-        softAssert.assertEquals(actualResultTest, "There is no pending payment");
+        String actualResultTest = successfulPaymentPage.dataTableNoTicket.getText();
+        softAssert.assertEquals(actualResultTest, "There is no Ticket");
         log.info("displayed whether a ticket is  not.  " + env);
 
         softAssert.assertAll();
@@ -61,12 +62,12 @@ public class SuccessfulPayment_US25 extends BaseTestAdmin{
         log.info("Admin logged in " + env);
         //log in as an administrator and locate the admin Dashboard.
         adminDashboardPage.clickToSuccessfulPayment();;
-        log.info("clicked Pending Payment Page " + env);
+        log.info("clicked SuccessfulPaymentPage " + env);
         //PendingPayment enters
-        PaymentHistory paymentHistory = new PaymentHistory();
-        log.info("Pending Payment entered " + env);
+        SuccessfulPaymentPage successfulPaymentPage =new SuccessfulPaymentPage();
+        log.info("SuccessfulPaymentPage entered " + env);
         //search
-        paymentHistory.getPNRNumberSearchBoxWithTicket();
+        successfulPaymentPage.getPNRNumberSearchBoxWithTicket();
         log.info("displayed whether a ticket is available or not.  " + env);
 
 
