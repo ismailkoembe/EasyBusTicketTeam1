@@ -7,15 +7,14 @@ import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.Test;
 
 @Slf4j
-public class AdminAutoPaymentGateway_US27 extends BaseTestAdmin{
+public class AdminManualGateway_US27 extends BaseTestAdmin{
+
     @Test
-    public void automaticGateWayTest(){
-
+    public void manuelGatewayTest(){
         AdminDashboardPage adminDashboardPage = new AdminPage().adminLogin();
-        adminDashboardPage.clickToAutomaticGateway();
+        adminDashboardPage.clickToManualGateway();
         GatewayPage gatewayPage = new GatewayPage();
-        gatewayPage.automaticGatewayVerifyTest();
-        log.info("edit - delete basamaklarına kadar tamamlandı. Edit - Delete butonları sayfada mevcut değil");
-
+        gatewayPage.manualGatewayVerifyTest();
     }
+
 }
