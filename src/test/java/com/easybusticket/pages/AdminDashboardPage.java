@@ -92,7 +92,7 @@ public class AdminDashboardPage extends BasePage {
     public WebElement viewAllOfSuccessfulPaymentButton;
 
     // Represents the ' View All' button of the 'Pending Payment' card
-    @FindBy(xpath = "(//*[text()='Pending Payment'])[6]")
+    @FindBy(xpath = "(//*[text()='View All'])[6]")
     public WebElement viewAllAllOfPendingPaymentButton;
 
 
@@ -537,10 +537,100 @@ public class AdminDashboardPage extends BasePage {
         waitAndClick(dashboardIconButton);
         return new ManageActiveUsersPage();
 
+    }
+
+    //Viewing Email Unverified Users card with view all button
+    public EmailUnverifiedUsersPage clickViewAllEmailUnverifiedUsers() {
+        waitAndClick(viewAllTotalEmailUnverifiedUsersButton);
+        String expectedUrl = "https://qa.easybusticket.com/admin/users/email-unverified";
+        String actualUrl = Driver.get(env).getCurrentUrl();
+        softAssert.assertEquals(actualUrl, expectedUrl);
+        softAssert.assertAll();
+        waitAndClick(dashboardIconButton);
+        return new EmailUnverifiedUsersPage();
 
     }
-}
 
+    //Viewing Total SMS Unverified Users card with view all button
+    public TotalSMSUnverifiedUsers clickViewAllTotalSMSUnverifiedUsers() {
+        waitAndClick(viewAllOfTotalSmSUnverifiedUsersButton);
+        String expectedUrl = "https://qa.easybusticket.com/admin/users/sms-unverified";
+        String actualUrl = Driver.get(env).getCurrentUrl();
+        softAssert.assertEquals(actualUrl, expectedUrl);
+        softAssert.assertAll();
+        waitAndClick(dashboardIconButton);
+        return new TotalSMSUnverifiedUsers();
+
+    }
+
+    //Viewing total users card with view all button
+    public SuccessfulPaymentPage clickViewAllSuccessfulPayment() {
+        waitAndClick(viewAllOfSuccessfulPaymentButton);
+        String expectedUrl = "https://qa.easybusticket.com/admin/payment/successful";
+        String actualUrl = Driver.get(env).getCurrentUrl();
+        softAssert.assertEquals(actualUrl, expectedUrl);
+        softAssert.assertAll();
+        waitAndClick(dashboardIconButton);
+        return new SuccessfulPaymentPage();
+    }
+
+    //Viewing total users card with view all button
+    public PendingPaymentPage clickViewAllPendingPayment() {
+        waitAndClick(viewAllAllOfPendingPaymentButton);
+        String expectedUrl = "https://qa.easybusticket.com/admin/payment/pending";
+        String actualUrl = Driver.get(env).getCurrentUrl();
+        softAssert.assertEquals(actualUrl, expectedUrl);
+        softAssert.assertAll();
+        waitAndClick(dashboardIconButton);
+        return new PendingPaymentPage();
+    }
+
+    //Viewing Rejected Payment card with view all button
+    public RejectedPaymentPage clickViewAllRejectedPaymentPage() {
+        waitAndClick(viewAllOfRejectedPaymentButton);
+        String expectedUrl = "https://qa.easybusticket.com/admin/payment/rejected";
+        String actualUrl = Driver.get(env).getCurrentUrl();
+        softAssert.assertEquals(actualUrl, expectedUrl);
+        softAssert.assertAll();
+        waitAndClick(dashboardIconButton);
+        return new RejectedPaymentPage();
+    }
+
+    //Viewing AC Vehicles card with view all button
+    public AllVehiclesPages clickViewAllAcVehicles() {
+        waitAndClick(viewAllOfAcVehicleButton);
+        String expectedUrl = "https://qa.easybusticket.com/admin/manage/vehicles";
+        String actualUrl = Driver.get(env).getCurrentUrl();
+        softAssert.assertEquals(actualUrl, expectedUrl);
+        softAssert.assertAll();
+        waitAndClick(dashboardIconButton);
+        return new AllVehiclesPages();
+
+    }
+
+    //Viewing AC Vehicles card with view all button
+    public AllVehiclesPages clickViewAllNonAcVehicles() {
+        waitAndClick(viewAllOfNonAcVehicleButton);
+        String expectedUrl = "https://qa.easybusticket.com/admin/manage/vehicles";
+        String actualUrl = Driver.get(env).getCurrentUrl();
+        softAssert.assertEquals(actualUrl, expectedUrl);
+        softAssert.assertAll();
+        waitAndClick(dashboardIconButton);
+        return new AllVehiclesPages();
+
+    }
+
+    //Viewing AC Vehicles card with view all button
+    public AllCounter clickViewAllTotalCounter() {
+        waitAndClick(viewAllOfTotalCounterButton);
+        String expectedUrl = "https://qa.easybusticket.com/admin/manage/counter";
+        String actualUrl = Driver.get(env).getCurrentUrl();
+        softAssert.assertEquals(actualUrl, expectedUrl);
+        softAssert.assertAll();
+        waitAndClick(dashboardIconButton);
+        return new AllCounter();
+    }
+}
 
 
 

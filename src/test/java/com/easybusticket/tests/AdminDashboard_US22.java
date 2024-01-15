@@ -57,22 +57,34 @@ public class AdminDashboard_US22 extends BaseTestAdmin{
         log.info("Total Counter item  displayed");
         softAssert.assertAll();
 
-        /*On the Dahsboard page, click the "View All" button on the Total Users item and
-        the total number of user and the details of the users are displayed and to
-         return to the page, click on the "Dashboard" menu on the left
-
-       */
+        //Viewing TotalUsers card with view all button
         adminDashboardPage.clickViewAllTotalUsers();
 
-
-       /*On the Dahsboard page, click the "View All" button on the Total verified users,
-       and the number of active users and the details of the users are displayed and to return to the page,
-        click on the "Dashboard" menu on the left
-
-        */
+        //Viewing TotalVerifiedUsers card with view all button
         adminDashboardPage.clickViewAllTotalVerifiedUsers();
 
+        //Viewing EmailUnverifiedUsers card with view all button
+        adminDashboardPage.clickViewAllEmailUnverifiedUsers();
 
+        //Viewing TotalSMSUnverifiedUsers card with view all button
+        adminDashboardPage.clickViewAllTotalSMSUnverifiedUsers();
 
+        //Viewing SuccessfulPayment card with view all button
+        adminDashboardPage.clickViewAllSuccessfulPayment();
+
+        //Viewing PendingPayment card with view all button
+        adminDashboardPage.clickViewAllPendingPayment();
+
+        //Viewing Rejected Payment card with view all button
+        adminDashboardPage.clickViewAllRejectedPaymentPage();
+
+        //Viewing AC Vehicles card with view all button
+        adminDashboardPage.clickViewAllAcVehicles();
+
+        //Viewing Non-AC Vehicles card with view all button
+        adminDashboardPage.clickViewAllNonAcVehicles();
+
+        //Viewing Total Counter card with view all button
+        adminDashboardPage.clickViewAllTotalCounter();
     }
 }
