@@ -21,7 +21,7 @@ import java.util.function.Function;
 @Slf4j
 public class AdminDashboardPage extends BasePage {
     public AdminDashboardPage() {
-        PageFactory.initElements(Driver.get("stage"), this);
+        PageFactory.initElements(Driver.get(env), this);
 
     }
 

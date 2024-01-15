@@ -1,6 +1,7 @@
 package com.easybusticket.pages;
 
 import com.easybusticket.utilities.Driver;
+import com.easybusticket.utilities.GetAbsolutePath;
 import com.easybusticket.utilities.PropManager;
 import lombok.extern.slf4j.Slf4j;
 
@@ -169,15 +170,11 @@ public class SupportTicketPage extends BasePage {
         slc.getFirstSelectedOption();
         textBoxOfMessage.sendKeys("Deneme Request olusturuldu");
 
-        String path= System.getProperty("user.dir") +
-                "\\src\\test\\java\\com\\easybusticket\\testResources\\attachment.png";
+        String path = GetAbsolutePath.getAbsolutePath(PropManager.getProperties(env, "imgPathAttachment"));
+
         actions.sendKeys(Keys.PAGE_DOWN).perform();
         inputAttachmentsForm.sendKeys(path);
         waitAndClick(submitButton);
-
-    }
-
-
 
 
 
@@ -203,36 +200,5 @@ public class SupportTicketPage extends BasePage {
         softAssert.assertAll();
         log.info("returned history page");
     }
-
-    /**Ayça Ovali*/
-    public void requestHistoryNewTicketTest(){
-        waitAndClick(newTicketButton);
-        softAssert.assertTrue(mySupportTicketButton.isDisplayed());
-        softAssert.assertTrue(textBoxOfNameButton.isDisplayed());
-        softAssert.assertTrue(textBoxOfEmailButton.isDisplayed());
-
-        waitAndClick(textBoxOfSubject);
-        textBoxOfSubject.sendKeys(PropManager.getProperties(env, "us16Subject"));
-        waitAndClick(dropDownPriority);
-        actions.click(dropDownPriority).sendKeys(Keys.DOWN).click();
-        softAssert.assertTrue(textBoxOfMessage.isDisplayed());
-        textBoxOfMessage.sendKeys(PropManager.getProperties(env, "us16Message"));
-        softAssert.assertTrue(selectFileButton.isDisplayed());
-        softAssert.assertTrue(extraFileButton.isDisplayed());
-        waitAndClick(submitButton);
-
-        String expectedRequestHistoryPageUrl="https://qa.easybusticket.com/ticket";
-        String actualRequestHistoryPageUrl=Driver.get(env).getCurrentUrl();
-        softAssert.assertEquals(actualRequestHistoryPageUrl,expectedRequestHistoryPageUrl);
-        softAssert.assertTrue(rowFirstRequest.isDisplayed());
-        softAssert.assertAll();
-        log.info("new ticket created");
-    }
-
-
-
-
-
-
 
 }

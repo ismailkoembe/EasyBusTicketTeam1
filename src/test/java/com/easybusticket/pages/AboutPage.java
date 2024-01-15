@@ -9,7 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 @Slf4j
 public class AboutPage extends BasePage{
     public AboutPage(){
-        PageFactory.initElements(Driver.get("stage"),this);
+        PageFactory.initElements(Driver.get(env),this);
     }
     //About page title
     @FindBy (xpath = "(//h2[@class='title'])[1]")
