@@ -153,6 +153,19 @@ public class SupportTicketPage extends BasePage {
         softAssert.assertAll();
         log.info("new ticket created");
     }
+    public void fillTheRestOfForm() {
+        textBoxOfSubject.sendKeys("Deneme");
+        Select slc = new Select(dropDownPriority);
+        slc.getFirstSelectedOption();
+        textBoxOfMessage.sendKeys("Deneme Request olusturuldu");
+
+        String path= System.getProperty("user.dir") +
+                "\\src\\test\\java\\com\\easybusticket\\testResources\\attachment.png";
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
+        inputAttachmentsForm.sendKeys(path);
+        waitAndClick(submitButton);
+
+    }
 
 
 

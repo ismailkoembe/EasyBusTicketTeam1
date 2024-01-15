@@ -5,9 +5,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.annotations.Test;
-
-import javax.xml.xpath.XPath;
 
 import org.testng.Assert;
 
@@ -398,13 +395,13 @@ public class UserDashboardPage extends BasePage {
         return new SupportTicketPage();
     }
 
-    public UserSupportTicketFormPage getToSupportTicketFormPage() {
+    public SupportTicketPage createNewRequestPage() {
         waitAndClick(dropDownSupportRequest);
         waitAndClick(createNewOption);
         String expectedTitle = "Easy Bus Ticket - Support Tickets";
         String actualTitle = Driver.get(env).getTitle();
         Assert.assertEquals(actualTitle, expectedTitle);
-        return new UserSupportTicketFormPage();
+        return new SupportTicketPage();
     }
 
 }
