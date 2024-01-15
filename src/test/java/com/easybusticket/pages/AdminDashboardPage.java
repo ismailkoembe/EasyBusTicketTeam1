@@ -74,7 +74,7 @@ public class AdminDashboardPage extends BasePage{
 
     //========================VIEW ALL BUTTON===========================
     // Represents the ' View All' button of the 'Total Users' card
-    @FindBy(className = "(//a[@class='btn btn-sm text--small bg--white text--black box--shadow3 mt-3'])[1]")
+    @FindBy(xpath = "(//a[@class='btn btn-sm text--small bg--white text--black box--shadow3 mt-3'])[1]")
     public WebElement viewAllOfTotalUsersButton;
 
     // Represents the ' View All' button of the 'Total Verified Users' card
@@ -352,8 +352,14 @@ public class AdminDashboardPage extends BasePage{
 
 
     //========================SIDE BAR===========================//
+
+
     @FindBy(xpath = "//*[text()='Payment Gateways']")
     public WebElement paymentGatewaysButton;
+
+    // DasboardPage of dasboard button
+    @FindBy(xpath = "//i[@class='menu-icon las la-home']")
+    public WebElement dashboardIconButton;
 
     @FindBy(xpath = "//*[text()='Automatic Gateways']")
     public WebElement automaticGatewaysButton;
@@ -513,7 +519,16 @@ public class AdminDashboardPage extends BasePage{
         return new NotificationsPage();
     }
 
-
+    //Viewing total users card with view all button
+     public ManageUsersPage clickViewAllTotalUsers(){
+        waitAndClick(viewAllOfTotalUsersButton);
+        String expectedUrl="https://qa.easybusticket.com/admin/users";
+        String actualUrl=Driver.get(env).getCurrentUrl();
+        softAssert.assertEquals(actualUrl,expectedUrl);
+        softAssert.assertAll();
+        waitAndClick(dashboardIconButton);
+        return new ManageUsersPage();
+     }
 
 }
 

@@ -57,7 +57,12 @@ public class AdminDashboard_US22 extends BaseTestAdmin{
         log.info("Total Counter item  displayed");
         softAssert.assertAll();
 
+        /*On the Dahsboard page, click the "View All" button on the Total Users item and
+        the total number of user and the details of the users are displayed and to
+         return to the page, click on the "Dashboard" menu on the left
 
+       */
+        adminDashboardPage.clickViewAllTotalUsers();
 
 
     }
