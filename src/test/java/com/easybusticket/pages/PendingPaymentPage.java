@@ -2,10 +2,12 @@ package com.easybusticket.pages;
 
 import com.easybusticket.utilities.Driver;
 import lombok.extern.slf4j.Slf4j;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 
 import java.util.List;
@@ -57,6 +59,17 @@ public class PendingPaymentPage extends BasePage {
     }
 
     public WebElement getTrxNumberUsernameSearchBox() {
+
+        waitAndClick(dateSearchBox);
+        dateSearchBox.sendKeys("12/20/2023 - 01/03/2024"+ Keys.ENTER);
+
+
+
+
+
+
+
+
         return trxNumberUsernameSearchBox;
     }
 
