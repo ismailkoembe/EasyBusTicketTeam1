@@ -127,7 +127,7 @@ public class GatewayPage extends BasePage{
     @FindBy(xpath = "//*[@contenteditable='true']")
     public WebElement textOfBoxMessage;
 
-    @FindBy(xpath = "//*[text()='User data                                                ']")
+    @FindBy(xpath = "//*[text()='User data']")
     public WebElement labelUserData;
 
 
