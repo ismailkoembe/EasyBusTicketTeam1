@@ -12,7 +12,6 @@ public class US08_TC01_TC02 extends BaseTest {
         ContactPage contactPage=new HomePage().clickToContactTitle();
         contactPage.titleContactTest();
         log.info("Contact page displayed "+env);
-
     }
 
 }

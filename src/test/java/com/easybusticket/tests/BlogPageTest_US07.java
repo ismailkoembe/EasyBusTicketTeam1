@@ -12,12 +12,12 @@ public class BlogPageTest_US07 extends BaseTest{
     @Test
     public void blogPageTest(){
 
-        //com.easybusticket.pages.BlogPage blogPage = new BlogPage();
+
+
+        //The user can access all blogspots via blog link in the homepage
+
         BlogPage blogPage = new HomePage().clickToBlogTitle();
 
     }
 }
-
-
-
 

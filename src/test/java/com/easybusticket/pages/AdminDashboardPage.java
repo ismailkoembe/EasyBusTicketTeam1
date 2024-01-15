@@ -1,14 +1,31 @@
 package com.easybusticket.pages;
 
 import com.easybusticket.utilities.Driver;
+import lombok.extern.slf4j.Slf4j;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebDriver;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.Wait;
+import org.testng.Assert;
 
-public class AdminDashboardPage extends BasePage {
-    public AdminDashboardPage() {
-        PageFactory.initElements(Driver.get("stage"), this);
+import java.time.Duration;
+import java.util.function.Function;
+
+
+@Slf4j
+public class AdminDashboardPage extends BasePage{
+    public AdminDashboardPage(){
+        PageFactory.initElements(Driver.get("stage"),this);
+
+
+
     }
 
     // Represents the title label on the Dashboard page
@@ -36,7 +53,7 @@ public class AdminDashboardPage extends BasePage {
     public WebElement labelSuccessfulPayment;
 
     // Represents the label of the 'Pending Payment' card
-    @FindBy(xpath = "(//*[text()='Pending Payment'])[1]")
+    @FindBy(xpath = "(//*[text()='Pending Payment'])[2]")
     public WebElement labelpendingPayment;
 
     // Represents the label of the 'Rejected Payment' card
@@ -150,6 +167,190 @@ public class AdminDashboardPage extends BasePage {
     @FindBy(xpath = "//*[text()='Login By Country']")
     public WebElement labelLoginByCountry;
 
+
+    @FindBy(xpath = "//*[text()='Booking History']")
+    public WebElement bookingHistorySidebar;
+
+    @FindBy(xpath = "//*[text()='Pending Ticket']")
+    public WebElement pendingTicketOnderTheSidebar;
+
+    @FindBy(xpath = "//*[text()='Booked Ticket']")
+    public WebElement bookedTicketOnderTheSidebar;
+
+    @FindBy(xpath = "//*[text()='Rejected Ticket']")
+    public WebElement rejectedTicketOnderTheSidebar;
+
+    @FindBy(xpath = "//*[text()='All Ticket']")
+    public WebElement allTicketOnderTheSidebar;
+
+
+    /**
+     * REYHAN  for Admin booking History
+     */
+    public void bookingHistories(){
+
+        Wait<WebDriver> wait = new FluentWait<>(Driver.get("stage"))
+                .withTimeout(Duration.ofSeconds(30L))
+                .pollingEvery(Duration.ofSeconds(5L))
+                .ignoring(NoSuchElementException.class);
+        WebElement bookingHistory = wait.until(new Function<WebDriver, WebElement>() {
+            public WebElement apply(WebDriver driver) {
+                WebElement bookingHistory = Driver.get("stage").findElement(By.xpath("//*[text()='Booking History']"));
+                bookingHistory.click();
+                return bookingHistory;
+            }
+
+        });
+
+    }
+
+    public void bookingHistoryDropdown(){
+        bookingHistorySidebar.isDisplayed();
+        pendingTicketOnderTheSidebar.isDisplayed();
+        bookedTicketOnderTheSidebar.isDisplayed();
+        rejectedTicketOnderTheSidebar.isDisplayed();
+        allTicketOnderTheSidebar.isDisplayed();
+        waitAndClick(pendingTicketOnderTheSidebar);
+
+
+    }
+
+
+    /**
+     * REYHAN  for Admin Pending Ticket
+     */
+    public AdminTicketPage pendingTickets(){
+
+        Wait<WebDriver> wait = new FluentWait<>(Driver.get("stage"))
+                .withTimeout(Duration.ofSeconds(30L))
+                .pollingEvery(Duration.ofSeconds(5L))
+                .ignoring(NoSuchElementException.class);
+        WebElement pendingTicket = wait.until(new Function<WebDriver, WebElement>() {
+            public WebElement apply(WebDriver driver) {
+                WebElement pendingTicket = Driver.get("stage").findElement(By.xpath("//*[text()='Pending Ticket']"));
+                pendingTicket.click();
+                return pendingTicket;
+            }
+
+        });
+        return new AdminTicketPage();
+    }
+
+    /**
+     * REYHAN  for Admin Booked Ticket
+     */
+    public AdminTicketPage bookedTickets(){
+
+        Wait<WebDriver> wait = new FluentWait<>(Driver.get("stage"))
+                .withTimeout(Duration.ofSeconds(30L))
+                .pollingEvery(Duration.ofSeconds(5L))
+                .ignoring(NoSuchElementException.class);
+        WebElement bookedTicket = wait.until(new Function<WebDriver, WebElement>() {
+            public WebElement apply(WebDriver driver) {
+                WebElement bookedTicket = Driver.get("stage").findElement(By.xpath("//*[text()='Booked Ticket']"));
+                bookedTicket.click();
+                return bookedTicket;
+            }
+
+        });
+        return new AdminTicketPage();
+    }
+
+
+    /**
+     * REYHAN  for Admin Rejected Ticket
+     */
+
+    public AdminTicketPage rejectedTickets() {
+
+        Wait<WebDriver> wait = new FluentWait<>(Driver.get("stage"))
+                .withTimeout(Duration.ofSeconds(30L))
+                .pollingEvery(Duration.ofSeconds(5L))
+                .ignoring(NoSuchElementException.class);
+        WebElement rejectedTicket = wait.until(new Function<WebDriver, WebElement>() {
+            public WebElement apply(WebDriver driver) {
+                WebElement rejectedTicket = Driver.get("stage").findElement(By.xpath("//*[text()='Rejected Ticket']"));
+                rejectedTicket.click();
+                return rejectedTicket;
+            }
+
+        });
+        return new AdminTicketPage();
+    }
+
+    /**
+     * REYHAN  for Admin All Ticket
+     */
+
+    public AdminTicketPage allTickets() {
+
+        Wait<WebDriver> wait = new FluentWait<>(Driver.get("stage"))
+                .withTimeout(Duration.ofSeconds(30L))
+                .pollingEvery(Duration.ofSeconds(5L))
+                .ignoring(NoSuchElementException.class);
+        WebElement allTicket = wait.until(new Function<WebDriver, WebElement>() {
+            public WebElement apply(WebDriver driver) {
+                WebElement allTicket = Driver.get("stage").findElement(By.xpath("//*[text()='All Ticket']"));
+                allTicket.click();
+                return allTicket;
+            }
+
+        });
+        return new AdminTicketPage();
+    }
+
+
+
+
+
+    //Ekrani full screen yapma butonu
+    @FindBy(xpath = "//i[@class='fullscreen-open las la-compress']")
+    public WebElement buttonFullScreenPage;
+
+    @FindBy(xpath = "//i[@class='fullscreen-close las la-compress-arrows-alt']")
+    public WebElement buttonCloseFullScreenPage;
+
+
+    public void clickButtonFullScreenPage(){
+        waitAndClick(buttonFullScreenPage);
+        waitAndClick(buttonCloseFullScreenPage);
+    }
+
+    //header'daki search buttonu
+    @FindBy(xpath = "(//button[@type='button'])[4]")
+    public WebElement buttonSearch;
+
+    //search cubugu
+    @FindBy(xpath = "//*[@id='navbar-search__field']")
+    public WebElement linkSearch;
+
+    //search alt cubugu
+    @FindBy(xpath = "//*[@id=\"navbar_search_result_area\"]/ul/li/a")
+    public WebElement linkSearchSub;
+
+    public void clickButtonSearch(){
+        waitAndClick(buttonSearch);
+        waitAndClick(linkSearch);
+    }
+
+    public Object searchPage(String pages){
+        linkSearch.sendKeys(pages);
+        waitAndClick(linkSearchSub);
+        switch(pages){
+            case "Blog":
+                return new BlogPage();
+            case "FAQ":
+                return new FaqsPage();
+            case "About Us":
+                return new AboutPage();
+            case "Contact":
+                return new ContactPage();
+        }
+        return null;
+    }
+
+
+
     //========================SIDE BAR===========================//
     @FindBy(xpath = "//*[text()='Payment Gateways']")
     public WebElement paymentGatewaysButton;
@@ -161,12 +362,25 @@ public class AdminDashboardPage extends BasePage {
     public WebElement manualGatewaysButton;
 
     public GatewayPage clickToAutomaticGateway() {
-        //softAssert.assertTrue(paymentGatewaysButton.isDisplayed());
+        softAssert.assertTrue(paymentGatewaysButton.isDisplayed());
         waitAndClick(paymentGatewaysButton);
-        //softAssert.assertTrue(automaticGatewaysButton.isDisplayed());
         waitAndClick(automaticGatewaysButton);
-        //softAssert.assertAll();
+        String expectedTitleAutoGateway = "Easy Bus Ticket - Automatic Gateways";
+        String actualTitleAutoGateway = Driver.get(env).getTitle();
+        softAssert.assertEquals(actualTitleAutoGateway,expectedTitleAutoGateway);
+        softAssert.assertAll();
         return new GatewayPage();
+
+    }
+
+    public void clickToManualGateway(){
+        softAssert.assertTrue(paymentGatewaysButton.isDisplayed());
+        waitAndClick(paymentGatewaysButton);
+        waitAndClick(manualGatewaysButton);
+        String expectedTitleManualGateway = "Easy Bus Ticket - Manual Gateways";
+        String actualTitleManualGateway = Driver.get(env).getTitle();
+        softAssert.assertEquals(actualTitleManualGateway,expectedTitleManualGateway);
+        softAssert.assertAll();
 
     }
 
@@ -243,8 +457,66 @@ public class AdminDashboardPage extends BasePage {
         return new AllPaymentPage();
 
     }
+    //========================CHANGING-ADMIN-PASSWORD===========================//
+
+    // admin page admin icon
+    @FindBy(xpath = "//span[@class='navbar-user']")
+    public WebElement adminIcon;
+
+    // admin page, admin icon dropdown menu, option 'profile'
+    @FindBy(xpath = "(//*[@class='dropdown-menu__item d-flex align-items-center px-3 py-2'])[1]")
+    public WebElement optionProfile;
+
+    // admin logout option
+    @FindBy(xpath = "//span[text()='Logout']")
+    public WebElement logoutOptionAdmin;
+
+    public AdminProfilePage adminPageSettings(){
+
+        waitAndClick(adminIcon);
+        waitAndClick(optionProfile);
+        return new AdminProfilePage();
+    }
+
+    public AdminDashboardPage logout() {
+
+        waitAndClick(adminIcon);
+        waitAndClick(logoutOptionAdmin);
+        String expectedTitle = "Easy Bus Ticket - Admin Login";
+        String actualTitle = Driver.get(env).getTitle();
+        softAssert.assertEquals(actualTitle, expectedTitle);
+        softAssert.assertAll();
+        return new AdminDashboardPage();
+
+    }
+
+    //header daki notification button
+    @FindBy(xpath = "//i[@class='las la-bell text--primary']")
+    public WebElement buttonNotification;
+
+    //header daki notification butona basinca cikan notification yazisi
+    @FindBy(xpath = "//span[text()='Notification']")
+    public WebElement labelNotification;
+
+    public void clickButtonNotification(){
+        waitAndClick(buttonNotification);
+        softAssert.assertTrue(labelNotification.isDisplayed());
+        softAssert.assertAll();
+    }
+
+    //view all notification butonu
+    @FindBy(xpath = "//*[@class='view-all-message']")
+    public WebElement buttonViewAllNotification;
+
+    public NotificationsPage clickViewAllNotification(){
+        waitAndClick(buttonViewAllNotification);
+        return new NotificationsPage();
+    }
+
+
 
 }
+
 
 
 
