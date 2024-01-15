@@ -2,12 +2,15 @@ package com.easybusticket.pages;
 
 import com.easybusticket.utilities.Driver;
 import lombok.extern.slf4j.Slf4j;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
+
+import java.time.Duration;
+import java.util.function.Function;
 
 @Slf4j
 public class GatewayPage extends BasePage{
@@ -114,7 +117,7 @@ public class GatewayPage extends BasePage{
     @FindBy(xpath = "//*[text()='User data                                                ']")
     public WebElement labelUserData;
 
-    @FindBy(xpath = "//*[@class='btn btn-sm btn-outline-light float-right addUserData']")
+    @FindBy(xpath = "(//*[@type='button'])[7]")
     public WebElement addNewUserDataButton;
 
     @FindBy(xpath = "//*[@name='field_name[]']")
@@ -188,13 +191,19 @@ public class GatewayPage extends BasePage{
         textOfBoxMaximumAmount.sendKeys("1000");
         textOfBoxFixedCharge.sendKeys("10");
         textOfBoxPercentCharge.sendKeys("10");
-        waitAndClick(textOfBoxMessage);
-        textOfBoxMessage.sendKeys("new payment method");
-        waitAndClick(addNewUserDataButton);
-        waitAndClick(userDataRemove);
+        //waitAndClick(textOfBoxMessage);
+        //textOfBoxMessage.sendKeys("new payment method");
+        Actions actions = new Actions(driver);
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
         waitAndClick(saveMethodButton);
-        //javascriptExecutor.executeScript("arguments[0].scrollIntoViewIfNeeded(true);",goBackButton);
-        waitAndClick(goBackButton);
+        waitAndClick(saveMethodButton);
+        //waitAndClick(goBackButton);
+        log.info("save butonuna tıkladı");
+
+        //waitAndClick(addNewUserDataButton);
+        //log.info("buraya kadar çalıştı");
+        //waitAndClick(userDataRemove);
+        //waitAndClick(goBackButton);
 
 
 
