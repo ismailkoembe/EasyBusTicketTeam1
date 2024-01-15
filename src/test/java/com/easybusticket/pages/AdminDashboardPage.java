@@ -21,8 +21,7 @@ import java.util.function.Function;
 @Slf4j
 public class AdminDashboardPage extends BasePage {
     public AdminDashboardPage() {
-        PageFactory.initElements(Driver.get("stage"), this);
-
+        PageFactory.initElements(Driver.get(env), this);
 
     }
 
@@ -51,7 +50,9 @@ public class AdminDashboardPage extends BasePage {
     public WebElement labelSuccessfulPayment;
 
     // Represents the label of the 'Pending Payment' card
-    @FindBy(xpath = "(//*[text()='Pending Payment'])[2]")
+
+    @FindBy(xpath = "(//*[text()='Pending Payment'])[1]")
+
     public WebElement labelpendingPayment;
 
     // Represents the label of the 'Rejected Payment' card
@@ -72,7 +73,11 @@ public class AdminDashboardPage extends BasePage {
 
     //========================VIEW ALL BUTTON===========================
     // Represents the ' View All' button of the 'Total Users' card
+
+
+
     @FindBy(xpath = "(//a[@class='btn btn-sm text--small bg--white text--black box--shadow3 mt-3'])[1]")
+
     public WebElement viewAllOfTotalUsersButton;
 
     // Represents the ' View All' button of the 'Total Verified Users' card
@@ -417,32 +422,31 @@ public class AdminDashboardPage extends BasePage {
 
     public PendingPaymentPage clickToPendingPayment() {
 
-        // softAssert.assertTrue(pendingPaymentOption.isDisplayed());
         waitAndClick(paymentHistoryDropdownDashboard);
-        //softAssert.assertTrue(automaticGatewaysButton.isDisplayed());
+        softAssert.assertTrue(paymentHistoryDropdownDashboard.isEnabled());
         waitAndClick(pendingPaymentOption);
-        //softAssert.assertAll();
+        softAssert.assertTrue(pendingPaymentOption.isEnabled());
+        softAssert.assertAll();
         return new PendingPaymentPage();
 
     }
 
-
     public SuccessfulPaymentPage clickToSuccessfulPayment() {
 
-        // softAssert.assertTrue(pendingPaymentOption.isDisplayed());
+        softAssert.assertTrue(paymentHistoryDropdownDashboard.isDisplayed());
         waitAndClick(paymentHistoryDropdownDashboard);
-        //softAssert.assertTrue(automaticGatewaysButton.isDisplayed());
+        softAssert.assertTrue(successfulPaymentOption.isDisplayed());
         waitAndClick(successfulPaymentOption);
-        //softAssert.assertAll();
+        softAssert.assertAll();
         return new SuccessfulPaymentPage();
 
     }
 
     public RejectedPaymentPage clickToRejectedPayment() {
 
-        // softAssert.assertTrue(pendingPaymentOption.isDisplayed());
+        softAssert.assertTrue(paymentHistoryDropdownDashboard.isDisplayed());
         waitAndClick(paymentHistoryDropdownDashboard);
-        //softAssert.assertTrue(automaticGatewaysButton.isDisplayed());
+        softAssert.assertTrue(rejectedPaymentOption.isDisplayed());
         waitAndClick(rejectedPaymentOption);
         //softAssert.assertAll();
         return new RejectedPaymentPage();
@@ -451,9 +455,9 @@ public class AdminDashboardPage extends BasePage {
 
     public AllPaymentPage clickToAllPayment() {
 
-        // softAssert.assertTrue(pendingPaymentOption.isDisplayed());
+        //softAssert.assertTrue(paymentHistoryDropdownDashboard.isDisplayed());
         waitAndClick(paymentHistoryDropdownDashboard);
-        //softAssert.assertTrue(automaticGatewaysButton.isDisplayed());
+        //softAssert.assertTrue(allPaymentOption.isDisplayed());
         waitAndClick(allPaymentOption);
         //softAssert.assertAll();
         return new AllPaymentPage();

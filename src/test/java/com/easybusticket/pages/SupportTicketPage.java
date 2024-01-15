@@ -1,14 +1,19 @@
 package com.easybusticket.pages;
 
 import com.easybusticket.utilities.Driver;
+import com.easybusticket.utilities.GetAbsolutePath;
 import com.easybusticket.utilities.PropManager;
 import lombok.extern.slf4j.Slf4j;
+
 import org.openqa.selenium.By;
+
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
 import org.openqa.selenium.support.ui.Select;
+
 
 @Slf4j
 public class SupportTicketPage extends BasePage {
@@ -114,7 +119,11 @@ public class SupportTicketPage extends BasePage {
         waitAndClick(requestsOption);
         String expectedRequestHistoryPageTitle = "Easy Bus Ticket - Support Tickets";
         String actualRequestHistoryPageTitle = Driver.get(env).getTitle();
-        softAssert.assertEquals(actualRequestHistoryPageTitle, expectedRequestHistoryPageTitle);
+
+        softAssert.assertEquals(actualRequestHistoryPageTitle,expectedRequestHistoryPageTitle);
+
+        softAssert.assertAll();
+
         log.info("returned history page");
         softAssert.assertAll();
 
@@ -154,16 +163,35 @@ public class SupportTicketPage extends BasePage {
         slc.getFirstSelectedOption();
         textBoxOfMessage.sendKeys("Deneme Request olusturuldu");
 
-        String path= System.getProperty("user.dir") +
-                "\\src\\test\\java\\com\\easybusticket\\testResources\\attachment.png";
+        String path = GetAbsolutePath.getAbsolutePath(PropManager.getProperties(env, "imgPathAttachment"));
+
         actions.sendKeys(Keys.PAGE_DOWN).perform();
         inputAttachmentsForm.sendKeys(path);
         waitAndClick(submitButton);
 
+
+
+        softAssert.assertTrue(columnSubject.isDisplayed());
+        softAssert.assertTrue(columnStatus.isDisplayed());
+        softAssert.assertTrue(columnPriority.isDisplayed());
+        softAssert.assertTrue(columnLastReply.isDisplayed());
+        softAssert.assertTrue(columnAction.isDisplayed());
+        softAssert.assertTrue(newTicketButton.isDisplayed());
+        softAssert.assertTrue(rowFirstRequest.isDisplayed());
+        softAssert.assertTrue(actionButton.isDisplayed());
+
+        waitAndClick(actionButton);
+        log.info("Create new detail Page loaded");
+        softAssert.assertTrue(labelOpenedRequestTitle.isDisplayed());
+        softAssert.assertTrue(selectFileButton.isDisplayed());
+        softAssert.assertTrue(replyButton.isDisplayed());
+        softAssert.assertTrue(yourReplyBox.isDisplayed());
+        softAssert.assertTrue(labelLastRequestMessage.isDisplayed());
+        waitAndClick(dropDownSupportRequest);
+        waitAndClick(createNewOption);
+
+        softAssert.assertAll();
+        log.info("returned history page");
     }
-
-
-
-
 
 }

@@ -2,10 +2,24 @@ package com.easybusticket.pages;
 
 import com.easybusticket.utilities.Driver;
 import lombok.extern.slf4j.Slf4j;
+
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
+
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
 
 
 @Slf4j
@@ -13,8 +27,11 @@ public class GatewayPage extends BasePage{
     public GatewayPage(){
         PageFactory.initElements(Driver.get("stage"),this);
     }
+
+
     @FindBy(xpath = "//*[text()='Manual Gateways']")
     public WebElement manualGatewaysButton;
+
     @FindBy(xpath = "(//*[text()='Automatic Gateways'])[2]")
     public WebElement labelAutomaticGateway;
 
@@ -111,10 +128,12 @@ public class GatewayPage extends BasePage{
     @FindBy(xpath = "//*[@contenteditable='true']")
     public WebElement textOfBoxMessage;
 
-    @FindBy(xpath = "//*[text()='User data                                                ']")
+    @FindBy(xpath = "//*[text()='User data']")
     public WebElement labelUserData;
 
+
     @FindBy(xpath = "(//*[@type='button'])[7]")
+
     public WebElement addNewUserDataButton;
 
     @FindBy(xpath = "//*[@name='field_name[]']")
@@ -174,6 +193,13 @@ public class GatewayPage extends BasePage{
         softAssert.assertTrue(rowFirstValueStatus.isDisplayed());
         softAssert.assertTrue(firstElementEditButton.isDisplayed());
         softAssert.assertTrue(firstElementActivationButton.isDisplayed());
+        manualGatewayAddNewButton.click();
+        //waitAndClick(imageUploadButton);
+        //String dinamikDosyaYolu = System.getProperty("user.home") +
+                //"/Downloads/logo.png";
+        //imageUploadButton.sendKeys(dinamikDosyaYolu);
+        //driver.findElement(By.id("file-submit")).click();
+
         String expectedIcerik = "WISE PAY";
         searchBox.sendKeys(expectedIcerik);
         String actualIcerik = rowFirstValueGateway.getText();
@@ -188,6 +214,7 @@ public class GatewayPage extends BasePage{
                 "/log.png";
         imageUploadButton.sendKeys(path);
 
+
         textOfBoxGatewayName.sendKeys("hello");
         textOfBoxCurrency.sendKeys("euro");
         textOfBoxRate.sendKeys("0.80");
@@ -197,6 +224,13 @@ public class GatewayPage extends BasePage{
         textOfBoxPercentCharge.sendKeys("10");
         waitAndClick(textOfBoxMessage);
         textOfBoxMessage.sendKeys("new payment method");
+
+        waitAndClick(addNewUserDataButton);
+        waitAndClick(userDataRemove);
+        waitAndClick(saveMethodButton);
+        //javascriptExecutor.executeScript("arguments[0].scrollIntoViewIfNeeded(true);",goBackButton);
+        waitAndClick(goBackButton);
+
         actions.sendKeys(Keys.PAGE_DOWN).perform();
         waitAndClick(addNewUserDataButton);
         waitAndClick(userDataRemove);
@@ -204,6 +238,7 @@ public class GatewayPage extends BasePage{
         waitAndClick(saveMethodButton);
         log.info("save butonuna tıkladı");
         //waitAndClick(goBackButton);
+
 
 
 
