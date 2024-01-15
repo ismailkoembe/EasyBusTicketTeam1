@@ -13,17 +13,15 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.Wait;
-import org.testng.Assert;
 
 import java.time.Duration;
 import java.util.function.Function;
 
 
 @Slf4j
-public class AdminDashboardPage extends BasePage{
-    public AdminDashboardPage(){
-        PageFactory.initElements(Driver.get("stage"),this);
-
+public class AdminDashboardPage extends BasePage {
+    public AdminDashboardPage() {
+        PageFactory.initElements(Driver.get("stage"), this);
 
 
     }
@@ -74,7 +72,7 @@ public class AdminDashboardPage extends BasePage{
 
     //========================VIEW ALL BUTTON===========================
     // Represents the ' View All' button of the 'Total Users' card
-    @FindBy(className = "view-all-message")
+    @FindBy(xpath = "(//a[@class='btn btn-sm text--small bg--white text--black box--shadow3 mt-3'])[1]")
     public WebElement viewAllOfTotalUsersButton;
 
     // Represents the ' View All' button of the 'Total Verified Users' card
@@ -187,7 +185,7 @@ public class AdminDashboardPage extends BasePage{
     /**
      * REYHAN  for Admin booking History
      */
-    public void bookingHistories(){
+    public void bookingHistories() {
 
         Wait<WebDriver> wait = new FluentWait<>(Driver.get("stage"))
                 .withTimeout(Duration.ofSeconds(30L))
@@ -204,7 +202,7 @@ public class AdminDashboardPage extends BasePage{
 
     }
 
-    public void bookingHistoryDropdown(){
+    public void bookingHistoryDropdown() {
         bookingHistorySidebar.isDisplayed();
         pendingTicketOnderTheSidebar.isDisplayed();
         bookedTicketOnderTheSidebar.isDisplayed();
@@ -219,7 +217,7 @@ public class AdminDashboardPage extends BasePage{
     /**
      * REYHAN  for Admin Pending Ticket
      */
-    public AdminTicketPage pendingTickets(){
+    public AdminTicketPage pendingTickets() {
 
         Wait<WebDriver> wait = new FluentWait<>(Driver.get("stage"))
                 .withTimeout(Duration.ofSeconds(30L))
@@ -239,7 +237,7 @@ public class AdminDashboardPage extends BasePage{
     /**
      * REYHAN  for Admin Booked Ticket
      */
-    public AdminTicketPage bookedTickets(){
+    public AdminTicketPage bookedTickets() {
 
         Wait<WebDriver> wait = new FluentWait<>(Driver.get("stage"))
                 .withTimeout(Duration.ofSeconds(30L))
@@ -300,9 +298,6 @@ public class AdminDashboardPage extends BasePage{
     }
 
 
-
-
-
     //Ekrani full screen yapma butonu
     @FindBy(xpath = "//i[@class='fullscreen-open las la-compress']")
     public WebElement buttonFullScreenPage;
@@ -311,7 +306,7 @@ public class AdminDashboardPage extends BasePage{
     public WebElement buttonCloseFullScreenPage;
 
 
-    public void clickButtonFullScreenPage(){
+    public void clickButtonFullScreenPage() {
         waitAndClick(buttonFullScreenPage);
         waitAndClick(buttonCloseFullScreenPage);
     }
@@ -328,15 +323,15 @@ public class AdminDashboardPage extends BasePage{
     @FindBy(xpath = "//*[@id=\"navbar_search_result_area\"]/ul/li/a")
     public WebElement linkSearchSub;
 
-    public void clickButtonSearch(){
+    public void clickButtonSearch() {
         waitAndClick(buttonSearch);
         waitAndClick(linkSearch);
     }
 
-    public Object searchPage(String pages){
+    public Object searchPage(String pages) {
         linkSearch.sendKeys(pages);
         waitAndClick(linkSearchSub);
-        switch(pages){
+        switch (pages) {
             case "Blog":
                 return new BlogPage();
             case "FAQ":
@@ -350,10 +345,15 @@ public class AdminDashboardPage extends BasePage{
     }
 
 
-
     //========================SIDE BAR===========================//
+
+
     @FindBy(xpath = "//*[text()='Payment Gateways']")
     public WebElement paymentGatewaysButton;
+
+    // DasboardPage of dasboard button
+    @FindBy(xpath = "//i[@class='menu-icon las la-home']")
+    public WebElement dashboardIconButton;
 
     @FindBy(xpath = "//*[text()='Automatic Gateways']")
     public WebElement automaticGatewaysButton;
@@ -367,19 +367,19 @@ public class AdminDashboardPage extends BasePage{
         waitAndClick(automaticGatewaysButton);
         String expectedTitleAutoGateway = "Easy Bus Ticket - Automatic Gateways";
         String actualTitleAutoGateway = Driver.get(env).getTitle();
-        softAssert.assertEquals(actualTitleAutoGateway,expectedTitleAutoGateway);
+        softAssert.assertEquals(actualTitleAutoGateway, expectedTitleAutoGateway);
         softAssert.assertAll();
         return new GatewayPage();
 
     }
 
-    public void clickToManualGateway(){
+    public void clickToManualGateway() {
         softAssert.assertTrue(paymentGatewaysButton.isDisplayed());
         waitAndClick(paymentGatewaysButton);
         waitAndClick(manualGatewaysButton);
         String expectedTitleManualGateway = "Easy Bus Ticket - Manual Gateways";
         String actualTitleManualGateway = Driver.get(env).getTitle();
-        softAssert.assertEquals(actualTitleManualGateway,expectedTitleManualGateway);
+        softAssert.assertEquals(actualTitleManualGateway, expectedTitleManualGateway);
         softAssert.assertAll();
 
     }
@@ -437,6 +437,7 @@ public class AdminDashboardPage extends BasePage{
         return new SuccessfulPaymentPage();
 
     }
+
     public RejectedPaymentPage clickToRejectedPayment() {
 
         // softAssert.assertTrue(pendingPaymentOption.isDisplayed());
@@ -447,6 +448,7 @@ public class AdminDashboardPage extends BasePage{
         return new RejectedPaymentPage();
 
     }
+
     public AllPaymentPage clickToAllPayment() {
 
         // softAssert.assertTrue(pendingPaymentOption.isDisplayed());
@@ -471,7 +473,7 @@ public class AdminDashboardPage extends BasePage{
     @FindBy(xpath = "//span[text()='Logout']")
     public WebElement logoutOptionAdmin;
 
-    public AdminProfilePage adminPageSettings(){
+    public AdminProfilePage adminPageSettings() {
 
         waitAndClick(adminIcon);
         waitAndClick(optionProfile);
@@ -498,7 +500,7 @@ public class AdminDashboardPage extends BasePage{
     @FindBy(xpath = "//span[text()='Notification']")
     public WebElement labelNotification;
 
-    public void clickButtonNotification(){
+    public void clickButtonNotification() {
         waitAndClick(buttonNotification);
         softAssert.assertTrue(labelNotification.isDisplayed());
         softAssert.assertAll();
@@ -508,13 +510,35 @@ public class AdminDashboardPage extends BasePage{
     @FindBy(xpath = "//*[@class='view-all-message']")
     public WebElement buttonViewAllNotification;
 
-    public NotificationsPage clickViewAllNotification(){
+    public NotificationsPage clickViewAllNotification() {
         waitAndClick(buttonViewAllNotification);
         return new NotificationsPage();
     }
 
+    //Viewing total users card with view all button
+    public ManageUsersPage clickViewAllTotalUsers() {
+        waitAndClick(viewAllOfTotalUsersButton);
+        String expectedUrl = "https://qa.easybusticket.com/admin/users";
+        String actualUrl = Driver.get(env).getCurrentUrl();
+        softAssert.assertEquals(actualUrl, expectedUrl);
+        softAssert.assertAll();
+        waitAndClick(dashboardIconButton);
+        return new ManageUsersPage();
+
+    }
+    //Viewing Total Verified Users card with view all button
+
+    public ManageActiveUsersPage clickViewAllTotalVerifiedUsers() {
+        waitAndClick(viewAllOfTotalVerifiedUsersButton);
+        String expectedUrl = "https://qa.easybusticket.com/admin/users/active";
+        String actualUrl = Driver.get(env).getCurrentUrl();
+        softAssert.assertEquals(actualUrl, expectedUrl);
+        softAssert.assertAll();
+        waitAndClick(dashboardIconButton);
+        return new ManageActiveUsersPage();
 
 
+    }
 }
 
 
