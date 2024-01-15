@@ -5,9 +5,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class git checkout AdminDashboardPage extends BasePage{
-    public AdminDashboardPage(){
-        PageFactory.initElements(Driver.get("stage"),this);
+public class git checkout AdminDashboardPage extends BasePage {
+    public AdminDashboardPage() {
+        PageFactory.initElements(Driver.get("stage"), this);
     }
 
     // Represents the title label on the Dashboard page
@@ -16,119 +16,119 @@ public class git checkout AdminDashboardPage extends BasePage{
 
     // Represents the label of the 'Total Users' card
     @FindBy(xpath = "//*[text()='Total Users']")
-    public  WebElement labelTotalUsers;
+    public WebElement labelTotalUsers;
 
     // Represents the label of the 'Total Verified Users' card
     @FindBy(xpath = "//*[text()='Total Verified Users']")
-    public  WebElement labelTotalVerifiedUsers;
+    public WebElement labelTotalVerifiedUsers;
 
     // Represents the label of the 'Total Email Unverified Users' card
     @FindBy(xpath = "//*[text()='Total Email Unverified Users']")
-    public  WebElement labelTotalEmailUnverifiedUsers;
+    public WebElement labelTotalEmailUnverifiedUsers;
 
     // Represents the label of the 'Total SMS Unverified Users' card
     @FindBy(xpath = "//*[text()='Total SMS Unverified Users']")
-    public  WebElement labelTotalSmSUnverifiedUsers;
+    public WebElement labelTotalSmSUnverifiedUsers;
 
     // Represents the label of the 'Successful Payment' card
     @FindBy(xpath = "(//*[text()='Successful Payment'])[2]")
-    public  WebElement labelSuccessfulPayment;
+    public WebElement labelSuccessfulPayment;
 
     // Represents the label of the 'Pending Payment' card
     @FindBy(xpath = "(//*[text()='Pending Payment'])[1]")
-    public  WebElement labelpendingPayment;
+    public WebElement labelpendingPayment;
 
     // Represents the label of the 'Rejected Payment' card
     @FindBy(xpath = "(//*[text()='Rejected Payment'])[2]")
-    public  WebElement labelRejectedPayment;
+    public WebElement labelRejectedPayment;
 
     // Represents the label of the 'AC Vehicle' card
     @FindBy(xpath = "//*[text()='AC Vehicle']")
-    public  WebElement labelAcVehicle;
+    public WebElement labelAcVehicle;
 
     // Represents the label of the 'Non-AC Vehicle' card
     @FindBy(xpath = "//*[text()='Non-AC Vehicle']")
-    public  WebElement labelNonAcVehicle;
+    public WebElement labelNonAcVehicle;
 
     // Represents the label of the 'Total Counter' card
     @FindBy(xpath = "//*[text()='Total Counter']")
-    public  WebElement labelTotalCounter;
+    public WebElement labelTotalCounter;
 
     //========================VIEW ALL BUTTON===========================
     // Represents the ' View All' button of the 'Total Users' card
     @FindBy(className = "view-all-message")
-    public  WebElement viewAllOfTotalUsersButton;
+    public WebElement viewAllOfTotalUsersButton;
 
     // Represents the ' View All' button of the 'Total Verified Users' card
-    @FindBy(xpath= "(//a[text()='View All'])[2]")
-    public  WebElement viewAllOfTotalVerifiedUsersButton;
+    @FindBy(xpath = "(//a[text()='View All'])[2]")
+    public WebElement viewAllOfTotalVerifiedUsersButton;
 
     // Represents the ' View All' button of the 'Total Email Unverified Users' card
     @FindBy(xpath = "(//a[text()='View All'])[3]")
-    public  WebElement viewAllTotalEmailUnverifiedUsersButton;
+    public WebElement viewAllTotalEmailUnverifiedUsersButton;
 
     // Represents the ' View All' button of the 'Total SMS Unverified Users' card
     @FindBy(xpath = "(//a[text()='View All'])[4]")
-    public  WebElement viewAllOfTotalSmSUnverifiedUsersButton;
+    public WebElement viewAllOfTotalSmSUnverifiedUsersButton;
 
     // Represents the ' View All' button of the 'Successful Payment' card
     @FindBy(xpath = "(//a[text()='View All'])[5]")
-    public  WebElement viewAllOfSuccessfulPaymentButton;
+    public WebElement viewAllOfSuccessfulPaymentButton;
 
     // Represents the ' View All' button of the 'Pending Payment' card
     @FindBy(xpath = "(//*[text()='Pending Payment'])[6]")
-    public  WebElement viewAllAllOfPendingPaymentButton;
+    public WebElement viewAllAllOfPendingPaymentButton;
 
 
     // Represents the ' View All' button of the 'Rejected Payment' card
     @FindBy(xpath = "(//a[text()='View All'])[7]")
-    public  WebElement viewAllOfRejectedPaymentButton;
+    public WebElement viewAllOfRejectedPaymentButton;
 
     // Represents the ' View All' button of the 'AC Vehicle' card
     @FindBy(xpath = "(//a[text()='View All'])[8]")
-    public  WebElement viewAllOfAcVehicleButton;
+    public WebElement viewAllOfAcVehicleButton;
 
     // Represents the ' View All' button of the 'Non-AC Vehicle' card
     @FindBy(xpath = "(//a[text()='View All'])[9]")
-    public  WebElement viewAllOfNonAcVehicleButton;
+    public WebElement viewAllOfNonAcVehicleButton;
 
     // Represents the ' View All' button of the 'Total Counter' card
     @FindBy(xpath = "(//a[text()='View All'])[10]")
-    public  WebElement viewAllOfTotalCounterButton;
+    public WebElement viewAllOfTotalCounterButton;
 
     // Represents the 'Last Booking History' heading
     @FindBy(xpath = "//*[text()='Latest Booking History']")
     public WebElement labelLatestBookingHistory;
 
     //Table of the Last Booking History
-    @FindBy(xpath= "//table/tbody")
+    @FindBy(xpath = "//table/tbody")
     public WebElement tableLatestBookingHistory;
 
     //Row of the Last Booking History table
-    @FindBy(xpath= "//table/thead/tr")
+    @FindBy(xpath = "//table/thead/tr")
     public WebElement rowLatestBookingHistory;
 
     //Coloumn of User
-    @FindBy(xpath= "(//table/thead/tr/th)[1] ")
+    @FindBy(xpath = "(//table/thead/tr/th)[1] ")
     public WebElement coloumnUser;
 
     //Coloumn of PNR Nummer
-    @FindBy(xpath= "(//table/thead/tr/th)[2] ")
+    @FindBy(xpath = "(//table/thead/tr/th)[2] ")
     public WebElement coloumnPnrNummer;
 
     //Coloumn of Ticket Count
-    @FindBy(xpath= "(//table/thead/tr/th)[3] ")
+    @FindBy(xpath = "(//table/thead/tr/th)[3] ")
     public WebElement coloumnTicketCount;
 
-     //Coloumn of Amount
-    @FindBy(xpath= "(//table/thead/tr/th)[4] ")
+    //Coloumn of Amount
+    @FindBy(xpath = "(//table/thead/tr/th)[4] ")
     public WebElement coloumnAmount;
 
     //Coloumn of Action
-    @FindBy(xpath= "(//table/thead/tr/th)[5] ")
+    @FindBy(xpath = "(//table/thead/tr/th)[5] ")
     public WebElement coloumnAction;
 
-   //Coloumn of Last 30 days Payment History
+    //Coloumn of Last 30 days Payment History
     @FindBy(xpath = "//*[text()='Last 30 days Payment History']")
     public WebElement labelLast30daysPaymentHistory;
 
