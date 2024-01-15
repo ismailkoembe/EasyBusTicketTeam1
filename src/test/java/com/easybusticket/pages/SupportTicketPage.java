@@ -157,7 +157,6 @@ public class SupportTicketPage extends BasePage{
 
 
 
-    public void createNewHistoryPageVerifyTest(){
 
         softAssert.assertTrue(columnSubject.isDisplayed());
         softAssert.assertTrue(columnStatus.isDisplayed());
@@ -209,52 +208,8 @@ public class SupportTicketPage extends BasePage{
 
 
 
-    public void createNewHistoryPageVerifyTest(){
-
-        softAssert.assertTrue(columnSubject.isDisplayed());
-        softAssert.assertTrue(columnStatus.isDisplayed());
-        softAssert.assertTrue(columnPriority.isDisplayed());
-        softAssert.assertTrue(columnLastReply.isDisplayed());
-        softAssert.assertTrue(columnAction.isDisplayed());
-        softAssert.assertTrue(newTicketButton.isDisplayed());
-        softAssert.assertTrue(rowFirstRequest.isDisplayed());
-        softAssert.assertTrue(actionButton.isDisplayed());
-
-        waitAndClick(actionButton);
-        log.info("Create new detail Page loaded");
-        softAssert.assertTrue(labelOpenedRequestTitle.isDisplayed());
-        softAssert.assertTrue(selectFileButton.isDisplayed());
-        softAssert.assertTrue(replyButton.isDisplayed());
-        softAssert.assertTrue(yourReplyBox.isDisplayed());
-        softAssert.assertTrue(labelLastRequestMessage.isDisplayed());
-        waitAndClick(dropDownSupportRequest);
-        waitAndClick(createNewOption);
-        softAssert.assertAll();
 
 
-    }
 
 
-    public void createNewTicketTest(){
-        waitAndClick(newTicketButton);
-        softAssert.assertTrue(mySupportTicketButton.isDisplayed());
-        softAssert.assertTrue(textBoxOfNameButton.isDisplayed());
-        softAssert.assertTrue(textBoxOfEmailButton.isDisplayed());
-        waitAndClick(textBoxOfSubject);
-        textBoxOfSubject.sendKeys(PropManager.getProperties(env, "us16Subject"));
-        waitAndClick(dropDownPriority);
-        actions.click(dropDownPriority).sendKeys(Keys.DOWN).click();
-        softAssert.assertTrue(textBoxOfMessage.isDisplayed());
-        textBoxOfMessage.sendKeys(PropManager.getProperties(env, "us16Message"));
-        softAssert.assertTrue(selectFileButton.isDisplayed());
-        softAssert.assertTrue(extraFileButton.isDisplayed());
-        waitAndClick(submitButton);
-
-        String expectedRequestHistoryPageUrl="https://qa.easybusticket.com/ticket";
-        String actualRequestHistoryPageUrl=Driver.get(env).getCurrentUrl();
-        softAssert.assertEquals(actualRequestHistoryPageUrl,expectedRequestHistoryPageUrl);
-        softAssert.assertAll();
-        softAssert.assertEquals("Lost Suitcase",rowFirstRequest.getText());
-
-    }
 }
