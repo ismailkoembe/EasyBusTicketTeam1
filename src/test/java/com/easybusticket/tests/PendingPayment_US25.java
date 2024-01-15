@@ -40,7 +40,7 @@ public class PendingPayment_US25 extends BaseTestAdmin {
         pendingPaymentPage.searchingTicketNoTicket();
         log.info("displayed whether a ticket is available or not.  " + env);
     }
-    @Test(dependsOnMethods = "getDateSearchWithTicket")
+    @Test(dependsOnMethods = "getPNRNumberSearchWithTicket")
     public void pendingPaymentNoTicketTest() {
         //!!!There must be no Ticket in this Test Scenario
         //log in as an administrator and locate the admin Dashboard.
@@ -62,7 +62,7 @@ public class PendingPayment_US25 extends BaseTestAdmin {
 
     }
     @Test(priority = 3)
-    public void getDateSearchWithTicket() {
+    public void getPNRNumberSearchWithTicket() {
         //The admin enters a name or PR NUMBER
         //log in as an administrator and locate the admin Dashboard.
         AdminDashboardPage adminDashboardPage = new AdminPage().adminLogin();
