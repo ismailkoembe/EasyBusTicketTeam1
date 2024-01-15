@@ -3,7 +3,6 @@ package com.easybusticket.tests;
 import com.easybusticket.pages.AdminDashboardPage;
 import com.easybusticket.pages.AdminPage;
 import com.easybusticket.pages.PaymentHistory;
-import com.easybusticket.pages.RejectedPaymentPage;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.Test;
 

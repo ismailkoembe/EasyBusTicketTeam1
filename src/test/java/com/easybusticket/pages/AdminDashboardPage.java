@@ -416,44 +416,42 @@ public class AdminDashboardPage extends BasePage{
 
     public PaymentHistory clickToPendingPayment() {
 
-        // softAssert.assertTrue(pendingPaymentOption.isDisplayed());
+
         waitAndClick(paymentHistoryDropdownDashboard);
-        //softAssert.assertTrue(automaticGatewaysButton.isDisplayed());
+        softAssert.assertTrue(pendingPaymentOption.isEnabled());
         waitAndClick(pendingPaymentOption);
-        //softAssert.assertAll();
+        softAssert.assertTrue(pendingPaymentOption.isEnabled());
+
         return new PaymentHistory();
 
     }
 
 
     public PaymentHistory clickToSuccessfulPayment() {
-
-        // softAssert.assertTrue(pendingPaymentOption.isDisplayed());
         waitAndClick(paymentHistoryDropdownDashboard);
-        //softAssert.assertTrue(automaticGatewaysButton.isDisplayed());
+        softAssert.assertTrue(pendingPaymentOption.isEnabled());
         waitAndClick(successfulPaymentOption);
-        //softAssert.assertAll();
+        softAssert.assertTrue(successfulPaymentOption.isEnabled());
+
         return new PaymentHistory();
 
     }
-    public RejectedPaymentPage clickToRejectedPayment() {
+    public PaymentHistory clickToRejectedPayment() {
 
-        // softAssert.assertTrue(pendingPaymentOption.isDisplayed());
         waitAndClick(paymentHistoryDropdownDashboard);
-        //softAssert.assertTrue(automaticGatewaysButton.isDisplayed());
-        waitAndClick(rejectedPaymentOption);
-        //softAssert.assertAll();
-        return new RejectedPaymentPage();
+        softAssert.assertTrue(pendingPaymentOption.isEnabled());
+        waitAndClick(successfulPaymentOption);
+        softAssert.assertTrue(successfulPaymentOption.isEnabled());
+        return new PaymentHistory();
 
     }
-    public AllPaymentPage clickToAllPayment() {
+    public PaymentHistory clickToAllPayment() {
 
-        // softAssert.assertTrue(pendingPaymentOption.isDisplayed());
         waitAndClick(paymentHistoryDropdownDashboard);
-        //softAssert.assertTrue(automaticGatewaysButton.isDisplayed());
+        softAssert.assertTrue(allPaymentOption.isEnabled());
         waitAndClick(allPaymentOption);
-        //softAssert.assertAll();
-        return new AllPaymentPage();
+        softAssert.assertTrue(allPaymentOption.isEnabled());
+        return new PaymentHistory();
 
     }
     //========================CHANGING-ADMIN-PASSWORD===========================//

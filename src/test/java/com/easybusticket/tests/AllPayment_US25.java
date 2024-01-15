@@ -2,7 +2,6 @@ package com.easybusticket.tests;
 
 import com.easybusticket.pages.AdminDashboardPage;
 import com.easybusticket.pages.AdminPage;
-import com.easybusticket.pages.AllPaymentPage;
 import com.easybusticket.pages.PaymentHistory;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.Test;
