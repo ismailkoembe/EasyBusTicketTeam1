@@ -13,7 +13,6 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.Wait;
-import org.testng.Assert;
 
 import java.time.Duration;
 import java.util.function.Function;
@@ -415,26 +414,26 @@ public class AdminDashboardPage extends BasePage{
         return false;
     }
 
-    public PendingPaymentPage clickToPendingPayment() {
+    public PaymentHistory clickToPendingPayment() {
 
         // softAssert.assertTrue(pendingPaymentOption.isDisplayed());
         waitAndClick(paymentHistoryDropdownDashboard);
         //softAssert.assertTrue(automaticGatewaysButton.isDisplayed());
         waitAndClick(pendingPaymentOption);
         //softAssert.assertAll();
-        return new PendingPaymentPage();
+        return new PaymentHistory();
 
     }
 
 
-    public SuccessfulPaymentPage clickToSuccessfulPayment() {
+    public PaymentHistory clickToSuccessfulPayment() {
 
         // softAssert.assertTrue(pendingPaymentOption.isDisplayed());
         waitAndClick(paymentHistoryDropdownDashboard);
         //softAssert.assertTrue(automaticGatewaysButton.isDisplayed());
         waitAndClick(successfulPaymentOption);
         //softAssert.assertAll();
-        return new SuccessfulPaymentPage();
+        return new PaymentHistory();
 
     }
     public RejectedPaymentPage clickToRejectedPayment() {

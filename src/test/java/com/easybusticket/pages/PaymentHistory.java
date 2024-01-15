@@ -11,9 +11,9 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 
 @Slf4j
-public class PendingPaymentPage extends BasePage {
+public class PaymentHistory extends BasePage {
 
-    public PendingPaymentPage() {
+    public PaymentHistory() {
         PageFactory.initElements(Driver.get("stage"), this);
     }
 

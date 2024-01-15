@@ -2,7 +2,7 @@ package com.easybusticket.tests;
 
 import com.easybusticket.pages.AdminDashboardPage;
 import com.easybusticket.pages.AdminPage;
-import com.easybusticket.pages.PendingPaymentPage;
+import com.easybusticket.pages.PaymentHistory;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.Test;
 
@@ -17,9 +17,9 @@ public class PendingPayment_US25 extends BaseTestAdmin {
         //click on the Pending Payment due to Payment History dropdown menu.
         adminDashboardPage.clickToPendingPayment();
         //PendingPayment enters
-        PendingPaymentPage pendingPaymentPage = new PendingPaymentPage();
+        PaymentHistory paymentHistory = new PaymentHistory();
         //verify that the Page ist the true Page.
-        pendingPaymentPage.titlePendingPaymentPage();
+        paymentHistory.titlePendingPaymentPage();
 
     }
 
@@ -33,10 +33,10 @@ public class PendingPayment_US25 extends BaseTestAdmin {
         adminDashboardPage.clickToPendingPayment();
         log.info("clicked Pending Payment Page " + env);
         //PendingPayment enters
-        PendingPaymentPage pendingPaymentPage = new PendingPaymentPage();
+        PaymentHistory paymentHistory = new PaymentHistory();
         log.info("Pending Payment entered " + env);
         //search
-        pendingPaymentPage.searchingTicketNoTicket();
+        paymentHistory.searchingTicketNoTicket();
         log.info("displayed whether a ticket is available or not.  " + env);
     }
     @Test(dependsOnMethods = "getPNRNumberSearchWithTicket")
@@ -49,10 +49,10 @@ public class PendingPayment_US25 extends BaseTestAdmin {
         adminDashboardPage.clickToPendingPayment();
         log.info("clicked Pending Payment Page " + env);
         //PendingPayment enters
-        PendingPaymentPage pendingPaymentPage = new PendingPaymentPage();
+        PaymentHistory paymentHistory = new PaymentHistory();
         log.info("Pending Payment entered " + env);
         //verify the Text on the Table that "There is no pending payment" is written.
-        String actualResultTest = pendingPaymentPage.dataTableNoTicket.getText();
+        String actualResultTest = paymentHistory.dataTableNoTicket.getText();
         softAssert.assertEquals(actualResultTest, "There is no pending payment");
         log.info("displayed whether a ticket is  not.  " + env);
 
@@ -69,10 +69,10 @@ public class PendingPayment_US25 extends BaseTestAdmin {
         adminDashboardPage.clickToPendingPayment();
         log.info("clicked Pending Payment Page " + env);
         //PendingPayment enters
-        PendingPaymentPage pendingPaymentPage = new PendingPaymentPage();
+        PaymentHistory paymentHistory = new PaymentHistory();
         log.info("Pending Payment entered " + env);
         //search
-        pendingPaymentPage.getPNRNumberSearchBoxWithTicket();
+        paymentHistory.getPNRNumberSearchBoxWithTicket();
         log.info("displayed whether a ticket is available or not.  " + env);
 
 
