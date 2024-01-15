@@ -46,6 +46,16 @@ public class UserCreateSupportTicketTest_US15 extends BaseTest {
         SupportTicketPage supportTicketPage = userDashboardPage.createNewRequestPage();
         log.info("navigated to the support ticket page");
         supportTicketPage.fillTheRestOfForm();
+        softAssert.assertTrue(supportTicketPage.columnSubject.isDisplayed());
+        softAssert.assertTrue(supportTicketPage.columnStatus.isDisplayed());
+        softAssert.assertTrue(supportTicketPage.columnPriority.isDisplayed());
+        softAssert.assertTrue(supportTicketPage.columnLastReply.isDisplayed());
+        softAssert.assertTrue(supportTicketPage.columnAction.isDisplayed());
+        softAssert.assertTrue(supportTicketPage.newTicketButton.isDisplayed());
+        softAssert.assertTrue(supportTicketPage.rowFirstRequest.isDisplayed());
+        softAssert.assertTrue(supportTicketPage.actionButton.isDisplayed());
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
+        supportTicketPage.actionButton.click();
 //       supportTicketPage.requestHistoryPageVerifyTest();
     }
 }
