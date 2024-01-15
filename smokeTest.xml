@@ -3,7 +3,7 @@
 <!--        <parameter name="username" value="your_username"/>-->
 <!--        <parameter name="password" value="your_password"/>-->
         <classes>
-            <class name="com.easybusticket.tests.AboutPageTest"/>
+            <class name="com.easybusticket.tests.AboutPageTest_US05"/>
         </classes>
     </test>
 </suite>

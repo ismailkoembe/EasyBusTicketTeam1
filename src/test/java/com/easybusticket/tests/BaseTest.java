@@ -1,14 +1,23 @@
 package com.easybusticket.tests;
 
+import com.easybusticket.utilities.ANSIColors;
 import com.easybusticket.utilities.Driver;
 import com.easybusticket.utilities.Environments;
 import com.easybusticket.utilities.PropManager;
+import com.google.common.base.Throwables;
+import io.qameta.allure.Attachment;
 import lombok.extern.slf4j.Slf4j;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.logging.LogEntry;
+import org.openqa.selenium.logging.LogType;
+import org.testng.ITestResult;
 import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
 
 import java.lang.reflect.Method;
+import java.util.List;
 import java.util.Objects;
 import java.util.Random;
 
@@ -66,14 +75,68 @@ public class BaseTest {
     }
 
 
-    @AfterMethod
-    public void teardown(){
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+    @AfterMethod (alwaysRun = true)
+    public void afterTest(ITestResult result){
+        switch (result.getStatus()) {
+            case ITestResult.SUCCESS:
+                log.info(ANSIColors.ANSI_GREEN);
+                log.info("----------------TEST PASSED----------------");
+                log.info("-------------------------------------------" + ANSIColors.ANSI_RESET);
+                break;
+            case ITestResult.FAILURE:
+                log.info(ANSIColors.ANSI_RED);
+                log.info("----------------TEST FAILED----------------");
+                log.info("-------------------------------------------");
+                log.info("--------------Test fail cause--------------");
+                log.info("-------------------------------------------");
+                log.error(Throwables.getStackTraceAsString(result.getThrowable()));
+                log.info("-------------------------------------------" + ANSIColors.ANSI_RESET);
+
+                getBrowserLogs();
+                makeScreenshotOnFailure();
+                break;
+            case ITestResult.SKIP:
+                log.info(ANSIColors.ANSI_YELLOW);
+                log.info("----------------TEST SKIPPED---------------");
+                log.info("-------------------------------------------");
+                log.info("--------------Test skip cause--------------");
+                if (result.getThrowable() != null) {
+                    log.error(Throwables.getStackTraceAsString(result.getThrowable()));
+                }
+                log.info("-------------------------------------------" + ANSIColors.ANSI_RESET);
+                break;
+            default:
+                log.info("--------------Test has not result---------------");
         }
+        tearDownSession();
+        log.info(String.format("\n----------------Test %s finished--------------\n", result.getMethod().getMethodName()));
+    }
+
+    private void getBrowserLogs() {
+        log.info(ANSIColors.ANSI_PURPLE);
+        log.info("----------------BROWSER LOGS---------------");
+        List<LogEntry> logEntries;
+        try {
+            logEntries = Driver.get(env).manage().logs().get(LogType.BROWSER).getAll();
+            for (LogEntry logEnt : logEntries) {
+                log.info("[" + logEnt.getLevel() + "] " + logEnt.getMessage());
+            }
+        } catch (Exception ignored) {
+            log.info("Couldn't get any browser logs");
+        }
+
+        log.info("-------------------------------------------" + ANSIColors.ANSI_RESET);
+    }
+
+
+    private void tearDownSession() {
         Driver.closeDriver();
     }
+
+    @Attachment("Screenshot on failure")
+    public byte[] makeScreenshotOnFailure() {
+        return ((TakesScreenshot) Driver.get(env)).getScreenshotAs(OutputType.BYTES);
+    }
+
 
 }

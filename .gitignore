@@ -38,5 +38,6 @@ atlassian-ide-plugin.xml
 out
 .DS_Store
 allure-results
+.allure
 DS_Store
 src/.DS_Store

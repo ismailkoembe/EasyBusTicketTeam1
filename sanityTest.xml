@@ -1,7 +1,7 @@
 <suite name="Sanity Test">
 <test name="Sanity Example">
     <classes>
-        <class name="com.easybusticket.tests.AboutPageTest">
+        <class name="com.easybusticket.tests.AboutPageTest_US05">
             <methods>
                 <include name="AboutPageTest"/>
                 <!--                    <include name="testMethod2"/>-->
