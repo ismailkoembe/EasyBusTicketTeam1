@@ -36,21 +36,10 @@ public class CounterAddandEditTest_US30 extends BaseTestAdmin{
         softAssert.assertTrue(adminDashboardPage.addNewButtonLink.isEnabled());
         softAssert.assertAll();
 
-        //New counter information is added.
-        adminDashboardPage.addNewButtonLink.click();
-        Faker faker=new Faker();
-        actions.click(adminDashboardPage.namesection)
-                .sendKeys(faker.country().capital())
-                .sendKeys(Keys.TAB)
-                .sendKeys(faker.address().cityName())
-                .sendKeys(Keys.TAB)
-                .sendKeys(faker.address().cityName())
-                .sendKeys(Keys.TAB)
-                .sendKeys(faker.phoneNumber().subscriberNumber())
-                .sendKeys(Keys.TAB)
-                .perform();
-         adminDashboardPage.submitButton.click();
+        //Added new terminal information.
+        adminDashboardPage.addedCounter();
 
-         //The newly added information is displayed in the list.
+        //The newly added information is displayed in the list.
+        log.info("New terminal information has been added, but the new terminal information does not appear in the list. ");
     }
 }

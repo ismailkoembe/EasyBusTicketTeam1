@@ -1,13 +1,11 @@
 package com.easybusticket.pages;
 
 import com.easybusticket.utilities.Driver;
+import com.github.javafaker.Faker;
 import lombok.extern.slf4j.Slf4j;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.FluentWait;
@@ -579,12 +577,27 @@ public class AdminDashboardPage extends BasePage {
     @FindBy(xpath = "(//input[@class='form-control'])[1]")
     public WebElement namesection;
 
+    //Submit button
     @FindBy(xpath = "(//button[@type='submit'])[2]")
     public WebElement submitButton;
 
+    //New counter information is added.
+    public ManageUsersPage addedCounter(){
+        addNewButtonLink.click();
+    Faker faker=new Faker();
+        actions.click(namesection)
+            .sendKeys(faker.country().capital())
+            .sendKeys(Keys.TAB)
+                .sendKeys(faker.address().cityName())
+            .sendKeys(Keys.TAB)
+                .sendKeys(faker.address().cityName())
+            .sendKeys(Keys.TAB)
+                .sendKeys(faker.phoneNumber().subscriberNumber())
+            .sendKeys(Keys.TAB)
+                .perform();
+         submitButton.click();
+         return new ManageUsersPage();
+
+    }
 
 }
-
-
-
-
