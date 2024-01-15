@@ -126,12 +126,10 @@ public class AdminDashboard_US22 extends BaseTestAdmin{
         //Action Button details  button should be display
         adminDashboardPage.clickActionButton();
 
-
         //Last 30 Days Payment History should be displayed
          softAssert.assertTrue(adminDashboardPage.labelLast30daysPaymentHistory.isDisplayed());
          log.info("Last 30 Days Payment History displayed");
          softAssert.assertAll();
-
 
     }
 }
