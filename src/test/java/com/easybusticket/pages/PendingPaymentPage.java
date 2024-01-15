@@ -32,7 +32,24 @@ public class PendingPaymentPage extends BasePage {
 
     }
 
+    //userin havale ile satin aldigi bir biletin Admin tarafindan kontrolunde kullanabiliriz.
+    public WebElement getDatasPendingPayment() {
+        return tablePendingPayment;
+    }
 
+    public WebElement getTrxNumberUsernameSearchBox() {
+        return trxNumberUsernameSearchBox;
+    }
 
+    public WebElement getDateSearchBox() {
+        return dateSearchBox;
+    }
 
+    public void setTrxNumberUsernameSearchBox(WebElement trxNumberUsernameSearchBox) {
+        this.trxNumberUsernameSearchBox = trxNumberUsernameSearchBox;
+    }
+
+    public void setTablePendingPayment(WebElement tablePendingPayment) {
+        this.tablePendingPayment = tablePendingPayment;
+    }
 }
