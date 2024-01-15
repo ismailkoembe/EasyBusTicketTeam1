@@ -417,32 +417,31 @@ public class AdminDashboardPage extends BasePage {
 
     public PendingPaymentPage clickToPendingPayment() {
 
-        // softAssert.assertTrue(pendingPaymentOption.isDisplayed());
         waitAndClick(paymentHistoryDropdownDashboard);
-        //softAssert.assertTrue(automaticGatewaysButton.isDisplayed());
+        softAssert.assertTrue(paymentHistoryDropdownDashboard.isEnabled());
         waitAndClick(pendingPaymentOption);
-        //softAssert.assertAll();
+        softAssert.assertTrue(pendingPaymentOption.isEnabled());
+        softAssert.assertAll();
         return new PendingPaymentPage();
 
     }
 
-
     public SuccessfulPaymentPage clickToSuccessfulPayment() {
 
-        // softAssert.assertTrue(pendingPaymentOption.isDisplayed());
+        softAssert.assertTrue(paymentHistoryDropdownDashboard.isDisplayed());
         waitAndClick(paymentHistoryDropdownDashboard);
-        //softAssert.assertTrue(automaticGatewaysButton.isDisplayed());
+        softAssert.assertTrue(successfulPaymentOption.isDisplayed());
         waitAndClick(successfulPaymentOption);
-        //softAssert.assertAll();
+        softAssert.assertAll();
         return new SuccessfulPaymentPage();
 
     }
 
     public RejectedPaymentPage clickToRejectedPayment() {
 
-        // softAssert.assertTrue(pendingPaymentOption.isDisplayed());
+        softAssert.assertTrue(paymentHistoryDropdownDashboard.isDisplayed());
         waitAndClick(paymentHistoryDropdownDashboard);
-        //softAssert.assertTrue(automaticGatewaysButton.isDisplayed());
+        softAssert.assertTrue(rejectedPaymentOption.isDisplayed());
         waitAndClick(rejectedPaymentOption);
         //softAssert.assertAll();
         return new RejectedPaymentPage();
@@ -451,9 +450,9 @@ public class AdminDashboardPage extends BasePage {
 
     public AllPaymentPage clickToAllPayment() {
 
-        // softAssert.assertTrue(pendingPaymentOption.isDisplayed());
+        //softAssert.assertTrue(paymentHistoryDropdownDashboard.isDisplayed());
         waitAndClick(paymentHistoryDropdownDashboard);
-        //softAssert.assertTrue(automaticGatewaysButton.isDisplayed());
+        //softAssert.assertTrue(allPaymentOption.isDisplayed());
         waitAndClick(allPaymentOption);
         //softAssert.assertAll();
         return new AllPaymentPage();
