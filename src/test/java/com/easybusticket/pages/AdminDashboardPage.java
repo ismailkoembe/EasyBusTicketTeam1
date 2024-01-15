@@ -24,6 +24,10 @@ public class AdminDashboardPage extends BasePage {
         PageFactory.initElements(Driver.get("stage"), this);
 
 
+public class git checkout AdminDashboardPage extends BasePage {
+    public AdminDashboardPage() {
+        PageFactory.initElements(Driver.get("stage"), this);
+
     }
 
     // Represents the title label on the Dashboard page
@@ -51,7 +55,9 @@ public class AdminDashboardPage extends BasePage {
     public WebElement labelSuccessfulPayment;
 
     // Represents the label of the 'Pending Payment' card
-    @FindBy(xpath = "(//*[text()='Pending Payment'])[2]")
+
+    @FindBy(xpath = "(//*[text()='Pending Payment'])[1]")
+
     public WebElement labelpendingPayment;
 
     // Represents the label of the 'Rejected Payment' card
@@ -72,7 +78,12 @@ public class AdminDashboardPage extends BasePage {
 
     //========================VIEW ALL BUTTON===========================
     // Represents the ' View All' button of the 'Total Users' card
+
+  
+    @FindBy(className = "view-all-message")
+
     @FindBy(xpath = "(//a[@class='btn btn-sm text--small bg--white text--black box--shadow3 mt-3'])[1]")
+
     public WebElement viewAllOfTotalUsersButton;
 
     // Represents the ' View All' button of the 'Total Verified Users' card
