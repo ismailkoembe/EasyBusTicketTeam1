@@ -21,7 +21,6 @@ public class PendingPayment_US25 extends BaseTestAdmin {
         //verify that the Page ist the true Page.
         pendingPaymentPage.titlePendingPaymentPage();
 
-
     }
 
     @Test(priority = 2)
@@ -58,7 +57,6 @@ public class PendingPayment_US25 extends BaseTestAdmin {
         log.info("displayed whether a ticket is  not.  " + env);
 
         softAssert.assertAll();
-
 
     }
     @Test(priority = 3)
