@@ -2,8 +2,18 @@ package com.easybusticket.pages;
 
 import com.easybusticket.utilities.Driver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.DataProvider;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.Base64;
+import java.util.List;
+import java.util.Objects;
 
 public class BookingHistoryPage extends BasePage {
 
@@ -13,6 +23,36 @@ public class BookingHistoryPage extends BasePage {
 
 @FindBy(xpath = "/html/body/section[2]/div/div/div/table/tbody/tr/td[10]/div/a")
 public WebElement detailActionButtonLink;
+
+    @FindAll({
+            @FindBy(xpath = "//tbody//tr/td[1]"),
+            @FindBy(xpath = "//tbody//tr/td[2]"),
+            @FindBy(xpath = "//tbody//tr/td[3]"),
+            @FindBy(xpath = "//tbody//tr/td[4]"),
+            @FindBy(xpath = "//tbody//tr/td[5]"),
+            @FindBy(xpath = "//tbody//tr/td[6]"),
+            @FindBy(xpath = "//tbody//tr/td[7]"),
+            @FindBy(xpath = "//tbody//tr/td[8]"),
+            @FindBy(xpath = "//tbody//tr/td[9]"),
+            @FindBy(xpath = "//tbody//tr/td[10]")
+    })
+    public List<WebElement> tableCellsList;
+
+
+    @FindAll({
+            @FindBy(xpath = "//thead//tr/th[1]"),
+            @FindBy(xpath = "//thead//tr/th[2]"),
+            @FindBy(xpath = "//thead//tr/th[3]"),
+            @FindBy(xpath = "//thead//tr/th[4]"),
+            @FindBy(xpath = "//thead//tr/th[5]"),
+            @FindBy(xpath = "//thead//tr/th[6]"),
+            @FindBy(xpath = "//thead//tr/th[7]"),
+            @FindBy(xpath = "//thead//tr/th[8]"),
+            @FindBy(xpath = "//thead//tr/th[9]"),
+            @FindBy(xpath = "//thead//tr/th[10]")
+    })
+    public List<WebElement> tableHeaderList;
+
 
     public void titleCheckTestBookingHistory() {
         String expectedAboutTitle = "Easy Bus Ticket - Booking History";
@@ -27,4 +67,35 @@ public WebElement detailActionButtonLink;
         softAssert.assertEquals(Driver.get(env).getCurrentUrl(), "https://qa.easybusticket.com/user/booked-ticket/print/388");
         softAssert.assertAll();
     }
-}
+
+    public void isAnyInfoOnTheTable (List<WebElement> tableCells ){
+        //if the user has never booked a ticket
+        //softAssert.assertTrue(tableCells.isEmpty());
+
+        //if the user has  booked a ticket
+        softAssert.assertFalse(tableCells.isEmpty());
+        softAssert.assertAll();
+
+    }
+
+    public void isTheHeaderListAsExpected (List<WebElement> tableHeaderList ) {
+       //here the ticket information is checked for completeness on the table.
+
+        List<String> expectedHeaderDataList = List.of("PNR Number", "Starting Point", "Dropping Point" , "Journey Date", "Pickup Time" , "Booked Seats","Fare");
+        String headerDataStr;
+        List<String>currentlyTableHeaderListStr = new ArrayList<>();
+
+        for (int i = 0; i <tableHeaderList.size() ; i++) {
+
+               headerDataStr= tableHeaderList.get(i).getText();
+               currentlyTableHeaderListStr.add(headerDataStr);
+        }
+
+        softAssert.assertTrue(Objects.requireNonNull(currentlyTableHeaderListStr).containsAll(expectedHeaderDataList));
+        softAssert.assertAll();
+        }
+    }
+
+
+
+

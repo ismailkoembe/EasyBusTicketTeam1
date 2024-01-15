@@ -82,7 +82,7 @@ public class ProfilePage extends BasePage {
         String expectedresult = "Profile updated successfully";
 
         softAssert.assertEquals(actualresult, expectedresult);
-
+        softAssert.assertAll();
         return new ProfilePage();
     }
 
