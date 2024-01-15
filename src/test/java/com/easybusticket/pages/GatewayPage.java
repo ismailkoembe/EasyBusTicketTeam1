@@ -1,22 +1,13 @@
 package com.easybusticket.pages;
 
 import com.easybusticket.utilities.Driver;
+import com.easybusticket.utilities.GetAbsolutePath;
+import com.easybusticket.utilities.PropManager;
 import lombok.extern.slf4j.Slf4j;
-
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
-
-
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-
-import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
-
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -93,7 +84,7 @@ public class GatewayPage extends BasePage{
     @FindBy(xpath = "//*[@class='profilePicPreview']")
     public WebElement imageProfile;
 
-    @FindBy(xpath = "//*[@class='bg--primary']")
+    @FindBy(xpath = "//*[@class='profilePicUpload']")
     public WebElement imageUploadButton;
     @FindBy(xpath = "//*[@name='name']")
     public WebElement textOfBoxGatewayName;
@@ -145,10 +136,10 @@ public class GatewayPage extends BasePage{
     @FindBy(xpath = "//*[@name='validation[]']")
     public WebElement dropDownUserDataValue;
 
-    @FindBy(xpath = "//*[@class='btn btn--danger btn-lg removeBtn w-100']")
+    @FindBy(xpath = "(//*[@type='button'])[8]")
     public WebElement userDataRemove;
 
-    @FindBy(xpath = "(//button[@type='submit'])[2]")
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/form/div[2]/button")
     public WebElement saveMethodButton;
 
     @FindBy(xpath = "(//a[@class='icon-btn editGatewayBtn'])[1]")
@@ -193,27 +184,16 @@ public class GatewayPage extends BasePage{
         softAssert.assertTrue(rowFirstValueStatus.isDisplayed());
         softAssert.assertTrue(firstElementEditButton.isDisplayed());
         softAssert.assertTrue(firstElementActivationButton.isDisplayed());
-        manualGatewayAddNewButton.click();
-        //waitAndClick(imageUploadButton);
-        //String dinamikDosyaYolu = System.getProperty("user.home") +
-                //"/Downloads/logo.png";
-        //imageUploadButton.sendKeys(dinamikDosyaYolu);
-        //driver.findElement(By.id("file-submit")).click();
 
         String expectedIcerik = "WISE PAY";
         searchBox.sendKeys(expectedIcerik);
         String actualIcerik = rowFirstValueGateway.getText();
         softAssert.assertEquals(actualIcerik,expectedIcerik);
         log.info("Manual gateway searchbox'da arama yapıldı");
-        //waitAndClick(paymentGatewaysButton);
-        waitAndClick(manualGatewaysButton);
+        waitAndClick(manualGatewayAddNewButton);
 
-        manualGatewayAddNewButton.click();
-        waitAndClick(imageUploadButton);
-        String path= System.getProperty("user.home") +
-                "/log.png";
+        String path = GetAbsolutePath.getAbsolutePath(PropManager.getProperties(env, "imgPathLogo"));
         imageUploadButton.sendKeys(path);
-
 
         textOfBoxGatewayName.sendKeys("hello");
         textOfBoxCurrency.sendKeys("euro");
@@ -224,28 +204,25 @@ public class GatewayPage extends BasePage{
         textOfBoxPercentCharge.sendKeys("10");
         waitAndClick(textOfBoxMessage);
         textOfBoxMessage.sendKeys("new payment method");
-
-        waitAndClick(addNewUserDataButton);
-        waitAndClick(userDataRemove);
-        waitAndClick(saveMethodButton);
-        //javascriptExecutor.executeScript("arguments[0].scrollIntoViewIfNeeded(true);",goBackButton);
-        waitAndClick(goBackButton);
-
         actions.sendKeys(Keys.PAGE_DOWN).perform();
-        waitAndClick(addNewUserDataButton);
-        waitAndClick(userDataRemove);
-        log.info("buraya kadar çalıştı");
+
         waitAndClick(saveMethodButton);
-        log.info("save butonuna tıkladı");
-        //waitAndClick(goBackButton);
+        log.info("Clicked the Save Method Button");
 
+        /*softAssert.assertTrue(labelManualGateway.isDisplayed());
+        log.info("Returned to Manual Gateways page");
 
+        waitAndClick(firstElementActivationButton);
+        waitAndClick(textOfBoxCurrency);
+        textOfBoxCurrency.sendKeys(Keys.DELETE);
+        textOfBoxCurrency.sendKeys("dolar");
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
+
+        waitAndClick(saveMethodButton);
+        log.info("Saved Changed");*/
 
 
         softAssert.assertAll();
-
-
-
 
 
     }
