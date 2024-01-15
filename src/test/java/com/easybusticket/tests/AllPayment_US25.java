@@ -3,7 +3,6 @@ package com.easybusticket.tests;
 import com.easybusticket.pages.AdminDashboardPage;
 import com.easybusticket.pages.AdminPage;
 import com.easybusticket.pages.AllPaymentPage;
-import com.easybusticket.pages.PaymentHistory;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.Test;
 
@@ -12,10 +11,14 @@ public class AllPayment_US25 extends BaseTestAdmin{
 
     @Test(priority = 1)
     public void allPaymentPageTest() {
+        //Admin should be able to view All Pagement Page from the entering Dashboard.
         AdminDashboardPage adminDashboardPage = new AdminPage().adminLogin();
+        log.info("Admin logged in " + env);
         adminDashboardPage.clickToAllPayment();
+        log.info("clicked All Payment Page " + env);
         AllPaymentPage allPaymentPage =new AllPaymentPage();
         allPaymentPage.titleCheckAllPaymentPage();
+        log.info("checked whether the Page true or not.");
 
     }
     @Test(priority = 2)

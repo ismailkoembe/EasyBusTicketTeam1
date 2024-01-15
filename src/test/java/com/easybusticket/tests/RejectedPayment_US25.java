@@ -2,7 +2,6 @@ package com.easybusticket.tests;
 
 import com.easybusticket.pages.AdminDashboardPage;
 import com.easybusticket.pages.AdminPage;
-import com.easybusticket.pages.PaymentHistory;
 import com.easybusticket.pages.RejectedPaymentPage;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.Test;
@@ -12,12 +11,17 @@ public class RejectedPayment_US25 extends BaseTestAdmin{
 
     @Test(priority = 1)
     public void rejectedPaymentTest() {
-
+        //log in as an administrator and locate the admin Dashboard.
         AdminDashboardPage adminDashboardPage = new AdminPage().adminLogin();
+        log.info("Admin logged in " + env);
+        //click on RejectedPaymentPage due to Payment History dropdown menu.
         adminDashboardPage.clickToRejectedPayment();
+        log.info("clicked RejectedPaymentPage " + env);
+        //RejectedPaymentPage enters
         RejectedPaymentPage rejectedPaymentPage =new RejectedPaymentPage();
+        //verify that the Page ist the true Page.
         rejectedPaymentPage.titleRejectedPaymentPage();
-
+        log.info("checked whether the Page true or not.");
 
     }
     @Test(priority = 2)

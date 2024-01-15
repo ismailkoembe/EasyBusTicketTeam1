@@ -2,7 +2,6 @@ package com.easybusticket.tests;
 
 import com.easybusticket.pages.AdminDashboardPage;
 import com.easybusticket.pages.AdminPage;
-import com.easybusticket.pages.PaymentHistory;
 import com.easybusticket.pages.PendingPaymentPage;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.Test;
@@ -15,12 +14,15 @@ public class PendingPayment_US25 extends BaseTestAdmin {
 
         //log in as an administrator and locate the admin Dashboard.
         AdminDashboardPage adminDashboardPage = new AdminPage().adminLogin();
+        log.info("Admin logged in " + env);
         //click on the Pending Payment due to Payment History dropdown menu.
         adminDashboardPage.clickToPendingPayment();
+        log.info("clicked Pending Payment Page " + env);
         //PendingPayment enters
         PendingPaymentPage pendingPaymentPage =new PendingPaymentPage();
         //verify that the Page ist the true Page.
         pendingPaymentPage.titlePendingPaymentPage();
+        log.info("checked whether the Page true or not.");
 
     }
 
