@@ -2,15 +2,11 @@ package com.easybusticket.pages;
 
 import com.easybusticket.utilities.Driver;
 import lombok.extern.slf4j.Slf4j;
-import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.Wait;
 
-import java.time.Duration;
-import java.util.function.Function;
 
 @Slf4j
 public class GatewayPage extends BasePage{
@@ -187,10 +183,10 @@ public class GatewayPage extends BasePage{
         waitAndClick(manualGatewaysButton);
 
         manualGatewayAddNewButton.click();
-        //waitAndClick(imageUploadButton);
-        //String dinamikDosyaYolu = System.getProperty("user.dir") +
-                //"/Downloads/logo.png";
-        //imageUploadButton.sendKeys(dinamikDosyaYolu + Keys.ENTER);
+        waitAndClick(imageUploadButton);
+        String path= System.getProperty("user.home") +
+                "/log.png";
+        imageUploadButton.sendKeys(path);
 
         textOfBoxGatewayName.sendKeys("hello");
         textOfBoxCurrency.sendKeys("euro");
