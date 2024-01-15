@@ -7,6 +7,7 @@ import com.easybusticket.pages.UserSupportTicketFormPage;
 import com.easybusticket.utilities.Driver;
 import com.easybusticket.utilities.PropManager;
 import lombok.extern.slf4j.Slf4j;
+import org.openqa.selenium.Keys;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -25,5 +26,16 @@ public class UserCreateSupportTicketTest_US15 extends BaseTest{
         String expectedTitle = "Easy Bus Ticket - Support Tickets";
         String actualTitle = Driver.get(env).getTitle();
         Assert.assertEquals(actualTitle,expectedTitle);
+    }
+    @Test
+    public void createSupportTicketTestNegative(){
+        UserLoginPage userLoginPage = new HomePage().clickToSignIn();
+        UserDashboardPage userDashboardPage = userLoginPage.login(PropManager.getProperties(env,"usernameRegistered"),PropManager.getProperties(env,"passwordRegistered"));
+        UserSupportTicketFormPage userSupportTicketFormPage = userDashboardPage.getToSupportTicketFormPage();
+        log.info("navigated to the support ticket page");
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
+        userSupportTicketFormPage.buttonSubmitForm.click();
+        Assert.assertTrue(userSupportTicketFormPage.nameFormInput.isDisplayed());
+
     }
 }
