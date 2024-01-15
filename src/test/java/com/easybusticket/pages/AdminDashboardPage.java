@@ -539,6 +539,50 @@ public class AdminDashboardPage extends BasePage {
 
 
     }
+
+    //TransportManager Counter section
+    @FindBy(xpath = "(//span[@class='menu-title'])[30]")
+    public WebElement counterTitle;
+
+    //All Counter Title
+    @FindBy(xpath = "//div[@class='col-lg-6 col-sm-6']")
+    public WebElement allCounterTitle;
+
+    //Name title of counter page
+    @FindBy(xpath = "//th[text()='Name']")
+    public WebElement nameTitle;
+
+    //Mobile Number title of counter page
+     @FindBy(xpath = "//th[text()='Mobile Number']")
+     public WebElement mobileNumberTitle;
+
+    //City title of counter page
+    @FindBy(xpath = "//th[text()='City']")
+    public WebElement cityTitle;
+
+    //Location title of counter page
+    @FindBy(xpath = "//th[text()='Location']")
+    public WebElement locationTitle;
+
+    //Status title of counter page
+    @FindBy(xpath = "//th[text()='Status']")
+    public WebElement statusTitle;
+
+    //Action title of counter page
+    @FindBy(xpath = "//th[text()='Action']")
+    public WebElement actionTitle;
+
+    //Add New ButtonLink
+    @FindBy(xpath = "//a[text()='Add New']")
+    public WebElement addNewButtonLink;
+
+    @FindBy(xpath = "(//input[@class='form-control'])[1]")
+    public WebElement namesection;
+
+    @FindBy(xpath = "(//button[@type='submit'])[2]")
+    public WebElement submitButton;
+
+
 }
 
 
