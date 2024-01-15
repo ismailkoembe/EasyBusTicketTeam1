@@ -1,6 +1,7 @@
 package com.easybusticket.pages;
 
 import com.easybusticket.utilities.Driver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -8,10 +9,10 @@ import org.openqa.selenium.support.PageFactory;
 /**
  * @author Ismail Koembe
  */
-public class HomePage extends BasePage{
+public class HomePage extends BasePage {
 
-    public HomePage(){
-        PageFactory.initElements(Driver.get("stage"),this);
+    public HomePage() {
+        PageFactory.initElements(Driver.get("stage"), this);
     }
 
     //Cookie Allow Button
@@ -73,11 +74,13 @@ public class HomePage extends BasePage{
     @FindBy(xpath = "//div[@class='d-flex flex-wrap algin-items-center']")
     public WebElement buyTicketButtonLink;
 
+    @FindBy (xpath = "/html/body/section/div/div/form/div[4]/div[2]/a")
+    public WebElement forgotPasword;
 
 
     //Footer Twitter Icon Link
     @FindBy(xpath = "/html/body/section[6]/div/div/div/div[1]/div/ul/li[1]/a/svg")
-    public  WebElement getTwitterIconFooter;
+    public WebElement getTwitterIconFooter;
 
     //Footer Facebook Icon Link
     @FindBy(xpath = "/html/body/section[6]/div/div/div/div[1]/div/ul/li[2]/a/svg")
@@ -93,7 +96,7 @@ public class HomePage extends BasePage{
 
     //Footer About Title Link
     @FindBy(xpath = "/html/body/section[6]/div/div/div/div[2]/div/ul/li[1]/a")
-    public  WebElement  getAboutTitleFooter;
+    public WebElement getAboutTitleFooter;
 
     //Footer FAQs Title Link
     @FindBy(xpath = "/html/body/section[6]/div/div/div/div[2]/div/ul/li[2]/a")
@@ -112,12 +115,12 @@ public class HomePage extends BasePage{
     public WebElement getPrivacyPolicyTitleFooter;
 
     //Footer Terms and Conditions Title Link
-    @FindBy (xpath = "/html/body/section[6]/div/div/div/div[3]/div/ul/li[2]/a")
+    @FindBy(xpath = "/html/body/section[6]/div/div/div/div[3]/div/ul/li[2]/a")
     public WebElement getTermsAndConditionsTitleFooter;
 
     //Footer Ticket Policies Title Link
-    @FindBy(xpath ="/html/body/section[6]/div/div/div/div[3]/div/ul/li[3]/a")
-    public  WebElement getTicketPoliciesFooter;
+    @FindBy(xpath = "/html/body/section[6]/div/div/div/div[3]/div/ul/li[3]/a")
+    public WebElement getTicketPoliciesFooter;
 
     public RegisterPage register = new RegisterPage();
 
@@ -125,11 +128,12 @@ public class HomePage extends BasePage{
     public void acceptCookies() {
         waitAndClick(cookies);
     }
+
     public RegisterPage clickSignUp() {
         waitAndClick(signUpLink);
         String expectedText = "Sign Up your Account";
         String actualText = register.textOfSignUpyourAccount.getText();
-        softAssert.assertEquals(actualText,expectedText);
+        softAssert.assertEquals(actualText, expectedText);
 
         return new RegisterPage();
     }
@@ -140,19 +144,42 @@ public class HomePage extends BasePage{
         return new UserLoginPage();
     }
 
-    public AboutPage clickToAboutButton(){
+    public AboutPage clickToAboutButton() {
         acceptCookies();
         waitAndClick(aboutButton);
         return new AboutPage();
 
 
     }
-    public ContactPage clickToContactTitle(){
+
+    public ContactPage clickToContactTitle() {
         acceptCookies();
         waitAndClick(contactTitle);
         return new ContactPage();
 
     }
+
+    public FaqPage clickToFaqTitle() {
+        acceptCookies();
+        waitAndClick(faqsTitle);
+        return new FaqPage();
+    }
+
+    public ForgotPasswordPage clickToForgotPasswordButton() {
+        acceptCookies();
+        waitAndClick(forgotPasword);
+        return new ForgotPasswordPage();
+
+    }
+
+
+
+
+
+
+
+
+
 }
 
 

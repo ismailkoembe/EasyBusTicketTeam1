@@ -7,6 +7,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
 
+
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+
 import java.lang.reflect.Method;
 import java.util.Objects;
 import java.util.Random;
@@ -18,7 +24,7 @@ import java.util.Random;
 public class BaseTest {
     public String env = Environments.STAGE.name;
     public final Integer timeout = Integer.valueOf(Objects.requireNonNull(PropManager.getProperties(env, "timeout")));
-    public final SoftAssert softAssert=new SoftAssert();
+    public final SoftAssert softAssert = new SoftAssert();
 
     @BeforeMethod(enabled = false)
     public void setupUserContext(Method method) {
@@ -60,15 +66,15 @@ public class BaseTest {
     }
 
     @BeforeMethod
-    public void setup(){
-        Driver.get(env).get(PropManager.getProperties(env,"url"));
+    public void setup() {
+        Driver.get(env).get(PropManager.getProperties(env, "url"));
         Driver.get(env).manage().window().maximize();
-        log.info("Navigating {} environment {}", PropManager.getProperties(env,"url"), env);
+        log.info("Navigating {} environment {}", PropManager.getProperties(env, "url"), env);
     }
 
 
     @AfterMethod
-    public void teardown(){
+    public void teardown() {
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
@@ -76,5 +82,7 @@ public class BaseTest {
         }
         Driver.closeDriver();
     }
+
+
 
 }
