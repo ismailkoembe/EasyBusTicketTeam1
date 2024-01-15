@@ -3,6 +3,7 @@ package com.easybusticket.pages;
 import com.easybusticket.utilities.Driver;
 import com.easybusticket.utilities.PropManager;
 import lombok.extern.slf4j.Slf4j;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -139,7 +140,9 @@ public class SupportTicketPage extends BasePage {
         waitAndClick(textBoxOfSubject);
         textBoxOfSubject.sendKeys(PropManager.getProperties(env, "us16Subject"));
         waitAndClick(dropDownPriority);
-        actions.click(dropDownPriority).sendKeys(Keys.DOWN).click();
+        WebElement dropdownElement = driver.findElement(By.xpath("//*[@name='priority']"));
+        Select dropdown = new Select(dropdownElement);
+        dropdown.selectByValue("2");
         softAssert.assertTrue(textBoxOfMessage.isDisplayed());
         textBoxOfMessage.sendKeys(PropManager.getProperties(env, "us16Message"));
         softAssert.assertTrue(selectFileButton.isDisplayed());
@@ -153,6 +156,7 @@ public class SupportTicketPage extends BasePage {
         softAssert.assertAll();
         log.info("new ticket created");
     }
+
     public void fillTheRestOfForm() {
         textBoxOfSubject.sendKeys("Deneme");
         Select slc = new Select(dropDownPriority);
@@ -166,6 +170,7 @@ public class SupportTicketPage extends BasePage {
         waitAndClick(submitButton);
 
     }
+
 
 
 
