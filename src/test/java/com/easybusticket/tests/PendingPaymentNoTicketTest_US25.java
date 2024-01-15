@@ -11,13 +11,19 @@ public class PendingPaymentNoTicketTest_US25 extends BaseTestAdmin {
 
     @Test
     public void pendingPaymentNoTicketTest() {
-
+        //log in as an administrator and locate the admin Dashboard.
         AdminDashboardPage adminDashboardPage = new AdminPage().adminLogin();
+        log.info("Admin logged in " + env);
+        //log in as an administrator and locate the admin Dashboard.
         adminDashboardPage.clickToPendingPayment();
+        log.info("clicked Pending Payment Page " + env);
+        //PendingPayment enters
         PendingPaymentPage pendingPaymentPage = new PendingPaymentPage();
-        String actualResultTest = pendingPaymentPage.getTablePendingPaymentNoTicket.getText();
+        log.info("Pending Payment entered " + env);
+        //verify the Text on the Table that "There is no pending payment" is written.
+        String actualResultTest = pendingPaymentPage.dataTableNoTicket.getText();
         softAssert.assertEquals(actualResultTest, "There is no pending payment");
-
+        log.info("displayed whether a ticket is  not.  " + env);
         softAssert.assertAll();
 
 

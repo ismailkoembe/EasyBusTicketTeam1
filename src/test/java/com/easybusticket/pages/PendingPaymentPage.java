@@ -7,22 +7,20 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Select;
-import org.testng.annotations.Test;
 
 import java.util.List;
 
 @Slf4j
 public class PendingPaymentPage extends BasePage {
 
-    public PendingPaymentPage(){
-        PageFactory.initElements(Driver.get("stage"),this);
+    public PendingPaymentPage() {
+        PageFactory.initElements(Driver.get("stage"), this);
     }
 
-    @FindBy (xpath = "/html/body/div[1]/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr/td")
+    @FindBy(xpath = "/html/body/div[1]/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr/td")
     public WebElement tablePendingPayment;
 
-    @FindBy (xpath = "/html/body/div[1]/div[2]/div/div[1]/div[2]/form[2]/div/input[1]")
+    @FindBy(xpath = "/html/body/div[1]/div[2]/div/div[1]/div[2]/form[2]/div/input[1]")
     public WebElement dateSearchBox;
 
     @FindBy(xpath = "/html/body/div[1]/div[2]/div/div[1]/div[2]/form[1]/div/input")
@@ -40,48 +38,44 @@ public class PendingPaymentPage extends BasePage {
     })
     public List<WebElement> tablePendingPaymentHeaderList;
 
-    @FindBy (xpath = "//td[@class='text-muted text-center']")
-    public  WebElement getTablePendingPaymentNoTicket;
+    @FindBy(xpath = "(//tbody//tr/td)")
+    public WebElement dataTableNoTicket;
 
+    @FindBy (xpath = "//td [@data-label=\"User\"]")
+    public WebElement getDataTableWithTicket;
 
-    public void titlePendingPaymentPage(){
+    public void titlePendingPaymentPage() {
 
         String expectedTitle = "Easy Bus Ticket - Pending Payment";
         String actualTitle = Driver.get(env).getTitle();
-        softAssert.assertEquals(actualTitle,expectedTitle);
+        softAssert.assertEquals(actualTitle, expectedTitle);
         softAssert.assertAll();
 
     }
 
-    //userin havale ile satin aldigi bir biletin Admin tarafindan kontrolunde kullanabiliriz.
-    public WebElement getDatasPendingPayment() {
-        return tablePendingPayment;
-    }
-
-    public WebElement getTrxNumberUsernameSearchBox() {
-
+    public void searchingTicketNoTicket() {
+        //Searching mit date without Ticket Scenerio
         waitAndClick(dateSearchBox);
-        dateSearchBox.sendKeys("12/20/2023 - 01/03/2024"+ Keys.ENTER);
+
+        //enter a time period in the past when no tickets were received.
+        dateSearchBox.sendKeys("12/20/2023 - 01/03/2024" + Keys.ENTER);
+
+        String actualResultText = dataTableNoTicket.getText();
+        softAssert.assertEquals(actualResultText, "No Payments Found");
 
 
-
-
-
-
-
-
-        return trxNumberUsernameSearchBox;
+        softAssert.assertAll();
     }
 
-    public WebElement getDateSearchBox() {
-        return dateSearchBox;
+    public void getPNRNumberSearchBoxWithTicket() {
+        //Searching mit date without Ticket Scenerio with Ticket
+        waitAndClick(dateSearchBox);
+        dateSearchBox.sendKeys("" + Keys.ENTER);
+
+        String actualResultText = getDataTableWithTicket.getText();
+        softAssert.assertNotEquals(actualResultText, "No Payments Found");
+        softAssert.assertAll();
     }
 
-    public void setTrxNumberUsernameSearchBox(WebElement trxNumberUsernameSearchBox) {
-        this.trxNumberUsernameSearchBox = trxNumberUsernameSearchBox;
-    }
 
-    public void setTablePendingPayment(WebElement tablePendingPayment) {
-        this.tablePendingPayment = tablePendingPayment;
-    }
 }

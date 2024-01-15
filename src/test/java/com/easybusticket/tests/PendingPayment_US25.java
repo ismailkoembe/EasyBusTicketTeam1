@@ -14,8 +14,11 @@ public class PendingPayment_US25 extends BaseTestAdmin {
 
         //log in as an administrator and locate the admin Dashboard.
         AdminDashboardPage adminDashboardPage = new AdminPage().adminLogin();
+        //click on the Pending Payment due to Payment History dropdown menu.
         adminDashboardPage.clickToPendingPayment();
+        //PendingPayment enters
         PendingPaymentPage pendingPaymentPage = new PendingPaymentPage();
+        //verify that the Page ist the true Page.
         pendingPaymentPage.titlePendingPaymentPage();
 
 
