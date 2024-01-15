@@ -57,6 +57,7 @@ public class AdminDashboard_US22 extends BaseTestAdmin{
         log.info("Total Counter item  displayed");
         softAssert.assertAll();
 
+  
         //Viewing TotalUsers card with view all button
         adminDashboardPage.clickViewAllTotalUsers();
 
@@ -83,8 +84,11 @@ public class AdminDashboard_US22 extends BaseTestAdmin{
 
         //Viewing Non-AC Vehicles card with view all button
         adminDashboardPage.clickViewAllNonAcVehicles();
-
+ 
         //Viewing Total Counter card with view all button
         adminDashboardPage.clickViewAllTotalCounter();
+
+
+
     }
 }
