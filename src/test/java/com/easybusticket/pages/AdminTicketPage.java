@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
@@ -15,10 +16,15 @@ import java.time.Duration;
 import java.util.function.Function;
 
 public class AdminTicketPage extends BasePage{
+
+
     public AdminTicketPage() {
 
         PageFactory.initElements(Driver.get("stage"), this);
     }
+
+    @FindBy(xpath = "(//tr/th)[1]")
+    WebElement allUsersDetailsSutun1;
 
     /**
      * REYHAN  for Admin Pending Ticket
@@ -70,6 +76,20 @@ public class AdminTicketPage extends BasePage{
         softAssert.assertAll();
 
     }
+
+    /**
+     * REYHAN  for Admin AllUsers under the manageUsers
+     */
+
+    public void detailsOfAllUsers1(){
+        AdminTicketPage adminTicketPage = new AdminDashboardPage().allUsers();
+        String expectedUrl = "https://qa.easybusticket.com/admin/users";
+        String actualUrl = Driver.get("stage").getCurrentUrl();
+        softAssert.assertEquals(actualUrl,expectedUrl);
+        allUsersDetailsSutun1.isDisplayed();
+
+    }
+
 
 
 
