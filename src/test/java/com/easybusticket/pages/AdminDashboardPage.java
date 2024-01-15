@@ -15,6 +15,8 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.Wait;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Function;
 
 
@@ -117,12 +119,8 @@ public class AdminDashboardPage extends BasePage {
     public WebElement labelLatestBookingHistory;
 
     //Table of the Last Booking History
-    @FindBy(xpath = "//table/tbody")
+    @FindBy(xpath = "(//div[@class='card-body'])[1]")
     public WebElement tableLatestBookingHistory;
-
-    //Row of the Last Booking History table
-    @FindBy(xpath = "//table/thead/tr")
-    public WebElement rowLatestBookingHistory;
 
     //Coloumn of User
     @FindBy(xpath = "(//table/thead/tr/th)[1] ")
@@ -629,8 +627,40 @@ public class AdminDashboardPage extends BasePage {
         softAssert.assertAll();
         waitAndClick(dashboardIconButton);
         return new AllCounter();
+
     }
+
+    public static List<String> stringListeDonusturLatestBookingHistory(List<WebElement> elementlerListesi) {
+
+        List<String> stringlerListesi = new ArrayList<>();
+
+        for (WebElement each : elementlerListesi
+        ) {
+
+            stringlerListesi.add(each.getText());
+        }
+
+        return stringlerListesi;
+    }
+
+    //Easy Bus Ticket radio Button
+    @FindBy(xpath = "//button[@class='navbar__expand']")
+    public WebElement buttonEasyBusTicketradioButton;
+
+
+    public BookingHistoryPage clickActionButton(){
+
+        waitAndClick(buttonActiondetails);
+        String expectedUrl = "https://qa.easybusticket.com/admin/ticket/booked";
+        String actualUrl = Driver.get(env).getCurrentUrl();
+        softAssert.assertEquals(actualUrl, expectedUrl);
+        softAssert.assertAll();
+        waitAndClick(dashboardIconButton);
+        return new BookingHistoryPage();
+    }
+
 }
+
 
 
 

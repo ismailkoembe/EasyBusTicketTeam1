@@ -2,7 +2,10 @@ package com.easybusticket.tests;
 
 import com.easybusticket.pages.AdminDashboardPage;
 import com.easybusticket.pages.AdminPage;
+import com.easybusticket.pages.HomePage;
+import com.easybusticket.utilities.Driver;
 import lombok.extern.slf4j.Slf4j;
+import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 @Slf4j
@@ -86,5 +89,49 @@ public class AdminDashboard_US22 extends BaseTestAdmin{
 
         //Viewing Total Counter card with view all button
         adminDashboardPage.clickViewAllTotalCounter();
+
+
+        JavascriptExecutor javascriptExecutor= (JavascriptExecutor) Driver.get(env);
+        javascriptExecutor.executeScript("arguments[0].scrollIntoViewIfNeeded(true);",adminDashboardPage.tableLatestBookingHistory);
+
+        //Last Booking History heading should be displayed
+        softAssert.assertTrue(adminDashboardPage.labelLatestBookingHistory.isDisplayed());
+        log.info("Last Booking History' heading displayed");
+
+
+        //Table of the Last Booking History should be displayed
+        softAssert.assertTrue(adminDashboardPage.tableLatestBookingHistory.isDisplayed());
+        log.info("Table of the Last Booking History displayed");
+
+        //User title should be displayed
+        softAssert.assertTrue(adminDashboardPage.coloumnUser.isDisplayed());
+        log.info("User title  displayed ");
+
+        //PNR title should be displayed
+        softAssert.assertTrue(adminDashboardPage.coloumnPnrNummer.isDisplayed());
+        log.info("PNR title  displayed ");
+
+        //Ticket Count title should be displayed
+        softAssert.assertTrue(adminDashboardPage.coloumnTicketCount.isDisplayed());
+        log.info("Ticket Count title  displayed ");
+
+        //Amount title should be displayed
+        softAssert.assertTrue(adminDashboardPage.coloumnAmount.isDisplayed());
+        log.info("Amount title  displayed ");
+
+        //Action title should be displayed
+         softAssert.assertTrue(adminDashboardPage.coloumnAction.isDisplayed());
+         log.info("Action title  displayed ");
+
+        //Action Button details  button should be display
+        adminDashboardPage.clickActionButton();
+
+
+        //Last 30 Days Payment History should be displayed
+         softAssert.assertTrue(adminDashboardPage.labelLast30daysPaymentHistory.isDisplayed());
+         log.info("Last 30 Days Payment History displayed");
+         softAssert.assertAll();
+
+
     }
 }
