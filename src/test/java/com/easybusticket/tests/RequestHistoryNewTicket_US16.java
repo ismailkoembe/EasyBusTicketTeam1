@@ -1,6 +1,7 @@
 package com.easybusticket.tests;
 
 import com.easybusticket.pages.*;
+import com.easybusticket.utilities.Driver;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.Test;
 
@@ -22,7 +23,6 @@ public class RequestHistoryNewTicket_US16 extends BaseTest {
 
         supportTicketPage.requestHistoryNewTicketTest();
         log.info(" A new ticket was created from the request history page and Returned to request history page ");
-
 
     }
 }
