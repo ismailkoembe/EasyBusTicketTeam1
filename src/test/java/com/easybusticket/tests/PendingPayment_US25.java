@@ -20,8 +20,7 @@ public class PendingPayment_US25 extends BaseTestAdmin {
         PendingPaymentPage pendingPaymentPage = new PendingPaymentPage();
         //verify that the Page ist the true Page.
         pendingPaymentPage.titlePendingPaymentPage();
-
-
+        
     }
 
     @Test(priority = 2)
@@ -40,6 +39,7 @@ public class PendingPayment_US25 extends BaseTestAdmin {
         pendingPaymentPage.searchingTicketNoTicket();
         log.info("displayed whether a ticket is available or not.  " + env);
     }
+    
     @Test(dependsOnMethods = "getDateSearchWithTicket")
     public void pendingPaymentNoTicketTest() {
         //!!!There must be no Ticket in this Test Scenario
@@ -59,8 +59,8 @@ public class PendingPayment_US25 extends BaseTestAdmin {
 
         softAssert.assertAll();
 
-
     }
+    
     @Test(priority = 3)
     public void getDateSearchWithTicket() {
         //The admin enters a name or PR NUMBER
