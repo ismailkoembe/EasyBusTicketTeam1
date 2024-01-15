@@ -8,6 +8,7 @@ import com.easybusticket.pages.UserLoginPage;
 import com.easybusticket.utilities.Driver;
 import com.easybusticket.utilities.PropManager;
 import lombok.extern.slf4j.Slf4j;
+import org.openqa.selenium.Keys;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -26,6 +27,26 @@ public class UserCreateSupportTicketTest_US15 extends BaseTest {
         String expectedTitle = "Easy Bus Ticket - Support Tickets";
         String actualTitle = Driver.get(env).getTitle();
         Assert.assertEquals(actualTitle, expectedTitle);
+    }
+    @Test
+    public void createSupportTicketTestNegative(){
+        UserLoginPage userLoginPage = new HomePage().clickToSignIn();
+        UserDashboardPage userDashboardPage = userLoginPage.login(PropManager.getProperties(env,"usernameRegistered"),PropManager.getProperties(env,"passwordRegistered"));
+        SupportTicketPage supportTicketPage = userDashboardPage.createNewRequestPage();
+        log.info("navigated to the support ticket page");
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
+        supportTicketPage.waitAndClick(supportTicketPage.submitButton);
+        Assert.assertTrue(supportTicketPage.textBoxOfNameButton.isDisplayed());
+
+    }
+    @Test
+    public void displayingRequestTicketTest(){
+        UserLoginPage userLoginPage = new HomePage().clickToSignIn();
+        UserDashboardPage userDashboardPage = userLoginPage.login(PropManager.getProperties(env,"usernameRegistered"),PropManager.getProperties(env,"passwordRegistered"));
+        SupportTicketPage supportTicketPage = userDashboardPage.createNewRequestPage();
+        log.info("navigated to the support ticket page");
+        supportTicketPage.fillTheRestOfForm();
+//       supportTicketPage.requestHistoryPageVerifyTest();
     }
 }
 
