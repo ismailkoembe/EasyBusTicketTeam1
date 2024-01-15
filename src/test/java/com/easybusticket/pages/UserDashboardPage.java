@@ -398,5 +398,14 @@ public class UserDashboardPage extends BasePage {
         return new SupportTicketPage();
     }
 
+    public UserSupportTicketFormPage getToSupportTicketFormPage() {
+        waitAndClick(dropDownSupportRequest);
+        waitAndClick(createNewOption);
+        String expectedTitle = "Easy Bus Ticket - Support Tickets";
+        String actualTitle = Driver.get(env).getTitle();
+        Assert.assertEquals(actualTitle, expectedTitle);
+        return new UserSupportTicketFormPage();
+    }
+
 }
 
