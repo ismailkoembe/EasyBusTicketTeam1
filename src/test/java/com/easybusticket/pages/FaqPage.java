@@ -2,9 +2,14 @@ package com.easybusticket.pages;
 
 import com.easybusticket.utilities.Driver;
 import lombok.extern.slf4j.Slf4j;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import java.util.concurrent.TimeUnit;
+
 public class FaqPage extends BasePage {
     public FaqPage(){
         PageFactory.initElements(Driver.get("stage"),this);
@@ -21,18 +26,28 @@ public class FaqPage extends BasePage {
         softAssert.assertAll();
     }
 
-    @FindBy (xpath = "/html/body/section[2]/div/div[2]/div[1]/div")
-    public WebElement faqItemContent;
+    @FindBy (xpath = "/html/body/section[2]/div/div[2]/div[1]/div/div[1]/div[1]")
+    public WebElement faqItemContentQuestion;
 
-    @FindBy (xpath = "/html/body/section[2]/div/div[2]/div[1]/div/div[2]/div[2]/p")
+    @FindBy (xpath = "/html/body/section[2]/div/div[2]/div[1]/div/div[1]/div[2]")
 
-    public WebElement FaqItemContentAnswers;
+    public WebElement faqItemContentAnswers;
 
     public void faqItemContentTest(){
+        // Scroll the element into view
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", faqItemContentQuestion);
 
-        boolean isDisplayed = faqItemContent.isDisplayed();
+        // Click on the question to reveal the answer
+        waitAndClick(faqItemContentQuestion);
 
-        softAssert.assertTrue(isDisplayed, "FAQ item content should be displayed");
+        // Give some time for the page to stabilize
+        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+
+        boolean isDisplayedQuestion = faqItemContentQuestion.isDisplayed();
+
+        boolean isDisplayedAnswer = faqItemContentAnswers.isDisplayed();
+
+        softAssert.assertTrue((isDisplayedQuestion && isDisplayedAnswer), "FAQ item content should be displayed");
 
         softAssert.assertAll();
 

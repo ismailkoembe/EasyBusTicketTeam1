@@ -28,7 +28,7 @@ public class US06_TC01 extends BaseTest {
 
         faqPage.faqItemContentTest();
 
-        log.info("FAQ item is exist and env is: " + env);
+        log.info("FAQ item has item and content: " + env);
 
     }
 }

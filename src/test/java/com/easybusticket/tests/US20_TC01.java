@@ -2,6 +2,7 @@ package com.easybusticket.tests;
 
 import com.easybusticket.pages.ForgotPasswordPage;
 import com.easybusticket.pages.HomePage;
+import com.easybusticket.pages.UserLoginPage;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.Test;
 
@@ -11,11 +12,15 @@ public class US20_TC01 extends BaseTest{
 
     @Test
     public void resetPasswordWithSentCode(){
-        ForgotPasswordPage forgotPasswordPage = new HomePage().clickToForgotPasswordButton();
+        UserLoginPage loginPage = new HomePage().clickToSignIn();
+
+        loginPage.clickToForgotPassword();
+
+        ForgotPasswordPage forgotPasswordPage = new ForgotPasswordPage();
 
         forgotPasswordPage.passwordCodeTest();
 
-        log.info("FAQ item is exist and env is: " + env);
+        log.info("Reset code sent successfully: " + env);
 
 
     }
