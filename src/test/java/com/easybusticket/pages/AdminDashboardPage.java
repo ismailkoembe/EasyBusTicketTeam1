@@ -183,6 +183,13 @@ public class AdminDashboardPage extends BasePage {
     @FindBy(xpath = "//*[text()='All Ticket']")
     public WebElement allTicketOnderTheSidebar;
 
+    @FindBy(xpath = "(//*[@class='menu-title'])[2]")
+    public WebElement manageUsers;
+
+
+    @FindBy(xpath = "(//*[@class='menu-title'])[2]")
+    public WebElement allUsersUnderTheManageUsers;
+
 
     /**
      * REYHAN  for Admin booking History
@@ -220,19 +227,7 @@ public class AdminDashboardPage extends BasePage {
      * REYHAN  for Admin Pending Ticket
      */
     public AdminTicketPage pendingTickets() {
-
-        Wait<WebDriver> wait = new FluentWait<>(Driver.get("stage"))
-                .withTimeout(Duration.ofSeconds(30L))
-                .pollingEvery(Duration.ofSeconds(5L))
-                .ignoring(NoSuchElementException.class);
-        WebElement pendingTicket = wait.until(new Function<WebDriver, WebElement>() {
-            public WebElement apply(WebDriver driver) {
-                WebElement pendingTicket = Driver.get("stage").findElement(By.xpath("//*[text()='Pending Ticket']"));
-                pendingTicket.click();
-                return pendingTicket;
-            }
-
-        });
+        waitAndClick(pendingTicketOnderTheSidebar);
         return new AdminTicketPage();
     }
 
@@ -262,19 +257,9 @@ public class AdminDashboardPage extends BasePage {
      */
 
     public AdminTicketPage rejectedTickets() {
+        waitAndClick(rejectedTicketOnderTheSidebar);
 
-        Wait<WebDriver> wait = new FluentWait<>(Driver.get("stage"))
-                .withTimeout(Duration.ofSeconds(30L))
-                .pollingEvery(Duration.ofSeconds(5L))
-                .ignoring(NoSuchElementException.class);
-        WebElement rejectedTicket = wait.until(new Function<WebDriver, WebElement>() {
-            public WebElement apply(WebDriver driver) {
-                WebElement rejectedTicket = Driver.get("stage").findElement(By.xpath("//*[text()='Rejected Ticket']"));
-                rejectedTicket.click();
-                return rejectedTicket;
-            }
 
-        });
         return new AdminTicketPage();
     }
 
@@ -631,6 +616,7 @@ public class AdminDashboardPage extends BasePage {
         return new RejectedPaymentPage();
     }
 
+
     //Viewing AC Vehicles card with view all button
     @Step("I clicked AcVehicles")
     public AllVehiclesPages clickViewAllAcVehicles() {
@@ -699,6 +685,30 @@ public class AdminDashboardPage extends BasePage {
         waitAndClick(dashboardIconButton);
         return new BookingHistoryPage();
     }
+
+
+    @FindBy(xpath = "//*[text()='All Users']")
+    WebElement getAllUsersUnderTheManageUsers;
+
+    /**
+     * REYHAN  for ManageUsers dropdown menu
+     */
+    public void manageUsersDropdown(){
+        waitAndClick(manageUsers);
+    }
+
+    /**
+     * REYHAN  for AllUsers under the ManageUsers dropdown menu
+     */
+    public AdminTicketPage allUsers(){
+       waitAndClick(getAllUsersUnderTheManageUsers);
+        return new AdminTicketPage();
+    }
+
+
+
+
+
 
 
     //TransportManager Counter section
