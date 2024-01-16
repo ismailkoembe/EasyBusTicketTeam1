@@ -4,9 +4,7 @@ import com.easybusticket.utilities.Driver;
 import com.github.javafaker.Faker;
 import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
-
 import org.openqa.selenium.*;
-
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.FluentWait;
@@ -25,6 +23,7 @@ public class AdminDashboardPage extends BasePage {
         PageFactory.initElements(Driver.get(env), this);
 
     }
+
 
     // Represents the title label on the Dashboard page
     @FindBy(xpath = "//h6[@class='page-title']")
@@ -74,7 +73,6 @@ public class AdminDashboardPage extends BasePage {
 
     //========================VIEW ALL BUTTON===========================
     // Represents the ' View All' button of the 'Total Users' card
-
 
 
     @FindBy(xpath = "(//a[@class='btn btn-sm text--small bg--white text--black box--shadow3 mt-3'])[1]")
@@ -376,12 +374,12 @@ public class AdminDashboardPage extends BasePage {
     @FindBy(xpath = "//span[text()='Vehicles']")
     public WebElement vehicle;
 
-    public SeatLayoutsPage manageFleets(){
+    public SeatLayoutsPage manageFleets() {
 
         waitAndClick(manageFleets);
         waitAndClick(seatLayout);
 
-     return new SeatLayoutsPage();
+        return new SeatLayoutsPage();
     }
 //=====================================================================//
 
@@ -395,7 +393,6 @@ public class AdminDashboardPage extends BasePage {
         softAssert.assertAll();
 
     }
-
 
 
     //Dropdown PaymentHistory option
@@ -693,17 +690,19 @@ public class AdminDashboardPage extends BasePage {
     /**
      * REYHAN  for ManageUsers dropdown menu
      */
-    public void manageUsersDropdown(){
+    public void manageUsersDropdown() {
         waitAndClick(manageUsers);
     }
 
     /**
      * REYHAN  for AllUsers under the ManageUsers dropdown menu
      */
-    public AdminTicketPage allUsers(){
-       waitAndClick(getAllUsersUnderTheManageUsers);
+    public AdminTicketPage allUsers() {
+        waitAndClick(getAllUsersUnderTheManageUsers);
         return new AdminTicketPage();
     }
+
+
 
 
 
@@ -724,8 +723,8 @@ public class AdminDashboardPage extends BasePage {
     public WebElement nameTitle;
 
     //Mobile Number title of counter page
-     @FindBy(xpath = "//th[text()='Mobile Number']")
-     public WebElement mobileNumberTitle;
+    @FindBy(xpath = "//th[text()='Mobile Number']")
+    public WebElement mobileNumberTitle;
 
     //City title of counter page
     @FindBy(xpath = "//th[text()='City']")
@@ -755,23 +754,29 @@ public class AdminDashboardPage extends BasePage {
     public WebElement submitButton;
 
     //New counter information is added.
-    public ManageUsersPage addedCounter(){
+    public ManageUsersPage addedCounter() {
         addNewButtonLink.click();
-    Faker faker=new Faker();
+        Faker faker = new Faker();
         actions.click(namesection)
-            .sendKeys(faker.country().capital())
-            .sendKeys(Keys.TAB)
+                .sendKeys(faker.country().capital())
+                .sendKeys(Keys.TAB)
                 .sendKeys(faker.address().cityName())
-            .sendKeys(Keys.TAB)
+                .sendKeys(Keys.TAB)
                 .sendKeys(faker.address().cityName())
-            .sendKeys(Keys.TAB)
+                .sendKeys(Keys.TAB)
                 .sendKeys(faker.phoneNumber().subscriberNumber())
-            .sendKeys(Keys.TAB)
+                .sendKeys(Keys.TAB)
                 .perform();
-         submitButton.click();
-         return new ManageUsersPage();
+        submitButton.click();
+        return new ManageUsersPage();
 
     }
 
 
 }
+
+
+
+
+
+
