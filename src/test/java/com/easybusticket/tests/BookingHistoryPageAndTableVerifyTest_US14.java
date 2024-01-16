@@ -6,10 +6,9 @@ import com.easybusticket.pages.UserDashboardPage;
 import com.easybusticket.pages.UserLoginPage;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
 
 @Slf4j
-public class BookingHistoryAccessor_US14 extends BaseTest {
+public class BookingHistoryPageAndTableVerifyTest_US14 extends BaseTest {
 
     @Test
     public void testBookingHistoryAccessFromMenu() { //I should be able to verify that I can access the booking history page from the booking menu
