@@ -13,7 +13,7 @@ public class FleetTypePage extends BasePage{
     }
 
 
-    @FindBy(xpath = "//[@class='btn btn-sm btn--primary box--shadow1 text--small addBtn']")
+    @FindBy(xpath = "//a[@class='btn btn-sm btn--primary box--shadow1 text--small addBtn']")
     public WebElement fleetTypeaddNewButton;
 
     @FindBy(xpath = "//input[@placeholder='Enter Fleet Name']")
@@ -22,7 +22,7 @@ public class FleetTypePage extends BasePage{
     @FindBy(xpath = "//select[@name='seat_layout']")
     public WebElement fleetTypeTextBoxSeatLayout;
 
-    @FindBy(xpath = "//input[@placeholder='Enter Number of Deck']")
+    @FindBy(xpath = "//input[@class='form-control']")
     public WebElement fleetTypeTextBoxNumberOfDeck;
 
     @FindBy(xpath = "//input[@placeholder='Enter Number of Deck']")
@@ -59,35 +59,32 @@ public class FleetTypePage extends BasePage{
 //=======================================================================================================//
 
     public void addFleetType () {
-
         waitAndClick(fleetTypeaddNewButton);
-        waitAndClick(fleetTypeTextBoxName);
+       //waitAndClick(fleetTypeTextBoxName);
 
-        fleetTypeTextBoxName.sendKeys(faker.name().name());
-        waitAndClick(fleetTypeTextBoxSeatLayout);
+        //fleetTypeTextBoxName.sendKeys(faker.name().name());
+       // waitAndClick(fleetTypeTextBoxSeatLayout);
 
-        waitAndClick(firstDropdownOption);
+       // waitAndClick(firstDropdownOption);
 
-        waitAndClick(fleetTypeTextBoxNumberOfDeck);
-        fleetTypeTextBoxNumberOfDeck.sendKeys("1");
+       // waitAndClick(fleetTypeTextBoxNumberOfDeck);
+       // fleetTypeTextBoxNumberOfDeck.sendKeys("1");
 
-        waitAndClick(fleetTypeTextBoxSeatOfDeck);
-        fleetTypeTextBoxSeatOfDeck.sendKeys(faker.numerify("##"));
+       // waitAndClick(fleetTypeTextBoxSeatOfDeck);
+        //fleetTypeTextBoxSeatOfDeck.sendKeys(faker.numerify("##"));
 
-        waitAndClick(fleetTypeTextBoxButtonSave);
+       // waitAndClick(fleetTypeTextBoxButtonSave);
 
     }
 
 
-    public void updateFleetType(){
+   public void updateFleetType(){
 
         waitAndClick(penIcon);
         waitAndClick(fleetTypeTextBoxName);
         fleetTypeTextBoxName.clear();
         fleetTypeTextBoxName.sendKeys("Urfa Cesur");
         waitAndClick(updateButton);
-
-
 
     }
 

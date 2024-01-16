@@ -10,13 +10,13 @@ public class FleetType_US_31 extends BaseTestAdmin {
     @Test
     public void ManageFleets() {
         AdminDashboardPage adminDashboardPage = new AdminPage().adminLogin();
-        ManageFleets();
+        adminDashboardPage.manageFleets();
     }
 
     @Test
     public void AddNewFleetType(){
-        ManageFleets();
 
+        ManageFleets();
         FleetTypePage fleetTypePage = new FleetTypePage();
         fleetTypePage.addFleetType();
 
