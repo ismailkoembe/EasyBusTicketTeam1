@@ -91,11 +91,7 @@ public class FleetTypePage extends BasePage{
 
        waitAndClick(fleetTypeTextBoxButtonSave);
 
-       // String actualresult = successfulyMessage.getText();
 
-       // String expectedresult = "Fleet type saved successfuly";
-
-        //softAssert.assertEquals(actualresult, expectedresult);
 
 
     }
