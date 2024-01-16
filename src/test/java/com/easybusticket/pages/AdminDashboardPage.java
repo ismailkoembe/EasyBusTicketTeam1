@@ -514,8 +514,37 @@ public class AdminDashboardPage extends BasePage{
     }
 
 
+    //===================================================================//
 
+    //Support Requests Dropdown
+    @FindBy(xpath = "//*[@id=\"sidebar__menuWrapper\"]/ul/li[6]/a/i")
+    public WebElement supportRequests;
+
+    @FindBy(xpath = "//*[@id=\"sidebar__menuWrapper\"]/ul/li[6]/div/ul/li[1]/a/span")
+    public WebElement allRequests;
+
+    @FindBy(xpath = "//*[@id=\"sidebar__menuWrapper\"]/ul/li[6]/div/ul/li[2]/a/span[1]")
+    public WebElement pendingRequests;
+
+    @FindBy(xpath = "//*[@id=\"sidebar__menuWrapper\"]/ul/li[6]/div/ul/li[3]/a/span")
+    public WebElement closedRequests;
+
+    @FindBy(xpath = "//*[@id=\"sidebar__menuWrapper\"]/ul/li[6]/div/ul/li[4]/a/span")
+    public WebElement answeredRequests;
+
+    public AllRequestsPage supportRequests(){
+
+        waitAndClick(supportRequests);
+        waitAndClick(allRequests);
+
+        return new AllRequestsPage();
+    }
 }
+
+
+
+
+
 
 
 
