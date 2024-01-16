@@ -2,15 +2,20 @@ package com.easybusticket.tests;
 
 import com.easybusticket.pages.AdminDashboardPage;
 import com.easybusticket.pages.AdminPage;
-import com.easybusticket.pages.HomePage;
 import com.easybusticket.utilities.Driver;
+import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.JavascriptExecutor;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 @Slf4j
 public class AdminDashboard_US22 extends BaseTestAdmin{
     @Test
+    @Severity(value = SeverityLevel.MINOR)
+    @Description("Admin Dashboard page viewed and verified")
+    @Story("1. Some story")
     public void displayOfDashboardItems(){
         // Navigate to the login page
         AdminDashboardPage adminDashboardPage=new AdminPage().adminLogin();
@@ -83,7 +88,7 @@ public class AdminDashboard_US22 extends BaseTestAdmin{
         adminDashboardPage.clickViewAllPendingPayment();
 
         //Viewing Rejected Payment card with view all button
-        adminDashboardPage.clickViewAllRejectedPaymentPage();
+        adminDashboardPage.clickViewAllRejectedPayment();
 
         //Viewing AC Vehicles card with view all button
         adminDashboardPage.clickViewAllAcVehicles();

@@ -2,6 +2,7 @@ package com.easybusticket.pages;
 
 import com.easybusticket.utilities.Driver;
 import com.github.javafaker.Faker;
+import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
 
 import org.openqa.selenium.*;
@@ -542,6 +543,7 @@ public class AdminDashboardPage extends BasePage {
     }
 
     //Viewing total users card with view all button
+    @Step("I clicked AllTotalUsers")
     public ManageUsersPage clickViewAllTotalUsers() {
         waitAndClick(viewAllOfTotalUsersButton);
         String expectedUrl = "https://qa.easybusticket.com/admin/users";
@@ -553,8 +555,9 @@ public class AdminDashboardPage extends BasePage {
 
     }
     //Viewing Total Verified Users card with view all button
-
+    @Step("I clicked AllTotalVerifiedUsers")
     public ManageActiveUsersPage clickViewAllTotalVerifiedUsers() {
+
         waitAndClick(viewAllOfTotalVerifiedUsersButton);
         String expectedUrl = "https://qa.easybusticket.com/admin/users/active";
         String actualUrl = Driver.get(env).getCurrentUrl();
@@ -566,6 +569,7 @@ public class AdminDashboardPage extends BasePage {
     }
 
     //Viewing Email Unverified Users card with view all button
+    @Step("I clicked AllEmailUnverifiedUsers")
     public EmailUnverifiedUsersPage clickViewAllEmailUnverifiedUsers() {
         waitAndClick(viewAllTotalEmailUnverifiedUsersButton);
         String expectedUrl = "https://qa.easybusticket.com/admin/users/email-unverified";
@@ -579,6 +583,7 @@ public class AdminDashboardPage extends BasePage {
 
 
     //Viewing Total SMS Unverified Users card with view all button
+    @Step("I clicked AllTotalSMSUnverifiedUsers")
     public TotalSMSUnverifiedUsers clickViewAllTotalSMSUnverifiedUsers() {
         waitAndClick(viewAllOfTotalSmSUnverifiedUsersButton);
         String expectedUrl = "https://qa.easybusticket.com/admin/users/sms-unverified";
@@ -591,6 +596,7 @@ public class AdminDashboardPage extends BasePage {
     }
 
     //Viewing total users card with view all button
+    @Step("I clicked SuccessfulPayments")
     public SuccessfulPaymentPage clickViewAllSuccessfulPayment() {
         waitAndClick(viewAllOfSuccessfulPaymentButton);
         String expectedUrl = "https://qa.easybusticket.com/admin/payment/successful";
@@ -602,6 +608,7 @@ public class AdminDashboardPage extends BasePage {
     }
 
     //Viewing total users card with view all button
+    @Step("I clicked PendingPayment")
     public PendingPaymentPage clickViewAllPendingPayment() {
         waitAndClick(viewAllAllOfPendingPaymentButton);
         String expectedUrl = "https://qa.easybusticket.com/admin/payment/pending";
@@ -613,7 +620,8 @@ public class AdminDashboardPage extends BasePage {
     }
 
     //Viewing Rejected Payment card with view all button
-    public RejectedPaymentPage clickViewAllRejectedPaymentPage() {
+    @Step("I clicked RejectedPaymentPage")
+    public RejectedPaymentPage clickViewAllRejectedPayment() {
         waitAndClick(viewAllOfRejectedPaymentButton);
         String expectedUrl = "https://qa.easybusticket.com/admin/payment/rejected";
         String actualUrl = Driver.get(env).getCurrentUrl();
@@ -624,6 +632,7 @@ public class AdminDashboardPage extends BasePage {
     }
 
     //Viewing AC Vehicles card with view all button
+    @Step("I clicked AcVehicles")
     public AllVehiclesPages clickViewAllAcVehicles() {
         waitAndClick(viewAllOfAcVehicleButton);
         String expectedUrl = "https://qa.easybusticket.com/admin/manage/vehicles";
@@ -635,7 +644,8 @@ public class AdminDashboardPage extends BasePage {
 
     }
 
-    //Viewing AC Vehicles card with view all button
+    //Viewing Non-AC Vehicles card with view all button
+    @Step("I clicked NonAcVehicles")
     public AllVehiclesPages clickViewAllNonAcVehicles() {
         waitAndClick(viewAllOfNonAcVehicleButton);
         String expectedUrl = "https://qa.easybusticket.com/admin/manage/vehicles";
@@ -647,7 +657,8 @@ public class AdminDashboardPage extends BasePage {
 
     }
 
-    //Viewing AC Vehicles card with view all button
+    //Viewing Total counter card with view all button
+    @Step("I clicked TotalCounter")
     public AllCounterPage clickViewAllTotalCounter() {
         waitAndClick(viewAllOfTotalCounterButton);
         String expectedUrl = "https://qa.easybusticket.com/admin/manage/counter";
@@ -676,8 +687,9 @@ public class AdminDashboardPage extends BasePage {
     @FindBy(xpath = "//button[@class='navbar__expand']")
     public WebElement buttonEasyBusTicketradioButton;
 
-
+    @Step("I clicked ActionButton")
     public BookingHistoryPage clickActionButton(){
+
 
         waitAndClick(buttonActiondetails);
         String expectedUrl = "https://qa.easybusticket.com/admin/ticket/booked";
