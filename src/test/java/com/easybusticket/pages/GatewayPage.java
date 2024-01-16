@@ -139,7 +139,7 @@ public class GatewayPage extends BasePage{
     @FindBy(xpath = "(//*[@type='button'])[8]")
     public WebElement userDataRemove;
 
-    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/form/div[2]/button")
+    @FindBy(className = "card-footer")
     public WebElement saveMethodButton;
 
     @FindBy(xpath = "(//a[@class='icon-btn editGatewayBtn'])[1]")
@@ -191,6 +191,7 @@ public class GatewayPage extends BasePage{
         softAssert.assertEquals(actualIcerik,expectedIcerik);
         log.info("Manual gateway searchbox'da arama yapıldı");
         waitAndClick(manualGatewayAddNewButton);
+        softAssert.assertAll();
 
         String path = GetAbsolutePath.getAbsolutePath(PropManager.getProperties(env, "imgPathLogo"));
         imageUploadButton.sendKeys(path);
@@ -203,8 +204,9 @@ public class GatewayPage extends BasePage{
         textOfBoxFixedCharge.sendKeys("10");
         textOfBoxPercentCharge.sendKeys("10");
         waitAndClick(textOfBoxMessage);
-        textOfBoxMessage.sendKeys("new payment method");
-        actions.sendKeys(Keys.PAGE_DOWN).perform();
+        textOfBoxMessage.sendKeys("yeni ödeme methodu eklendi");
+        JavascriptExecutor javascriptExecutor= (JavascriptExecutor) Driver.get(env);
+        javascriptExecutor.executeScript("arguments[0].scrollIntoViewIfNeeded(true);",saveMethodButton);
 
         waitAndClick(saveMethodButton);
         log.info("Clicked the Save Method Button");
@@ -220,9 +222,6 @@ public class GatewayPage extends BasePage{
 
         waitAndClick(saveMethodButton);
         log.info("Saved Changed");*/
-
-
-        softAssert.assertAll();
 
 
     }
