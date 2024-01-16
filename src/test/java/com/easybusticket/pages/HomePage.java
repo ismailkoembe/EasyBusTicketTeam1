@@ -86,11 +86,12 @@ public class HomePage extends BasePage {
     public WebElement footerContactInfo;
 
     //Footer Twitter Icon Link
-    @FindBy(xpath = "(//a[@href='https://www.twitter.com'])[2]")
-    public WebElement getTwitterIconFooter;
+
+    @FindBy(xpath = "//a[@href='https://www.twitter.com']")
+    public  WebElement getTwitterIconFooter;
 
     //Footer Facebook Icon Link
-    @FindBy(xpath = "(//a[@href='https://www.facebook.com'])[2]")
+    @FindBy(xpath = "//a[@href='https://www.facebook.com']")
     public WebElement getFacebookIconFooter;
 
     //Footer Youtube Icon Link
