@@ -649,14 +649,14 @@ public class AdminDashboardPage extends BasePage {
     }
 
     //Viewing AC Vehicles card with view all button
-    public AllCounter clickViewAllTotalCounter() {
+    public AllCounterPage clickViewAllTotalCounter() {
         waitAndClick(viewAllOfTotalCounterButton);
         String expectedUrl = "https://qa.easybusticket.com/admin/manage/counter";
         String actualUrl = Driver.get(env).getCurrentUrl();
         softAssert.assertEquals(actualUrl, expectedUrl);
         softAssert.assertAll();
         waitAndClick(dashboardIconButton);
-        return new AllCounter();
+        return new AllCounterPage();
 
     }
 
