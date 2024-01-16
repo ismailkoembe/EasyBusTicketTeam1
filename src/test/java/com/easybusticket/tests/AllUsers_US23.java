@@ -19,11 +19,7 @@ public class AllUsers_US23 extends BaseTestAdmin {
     public void allUsersTest() {
         // Log in as an administrator and navigate to the admin Dashboard.
         AdminDashboardPage adminDashboardPage = new AdminPage().adminLogin();
-        ManageUsersPage manageUsersPage = new ManageUsersPage();
-
-        manageUsersPage.clickToAllUsersPage();
-
-
+      
         // Navigate to the "All Users" page.
         AllUsersPage allUsersPage = new AllUsersPage();
 
