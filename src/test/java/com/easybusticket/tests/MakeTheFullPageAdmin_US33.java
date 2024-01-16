@@ -2,6 +2,9 @@ package com.easybusticket.tests;
 
 import com.easybusticket.pages.AdminDashboardPage;
 import com.easybusticket.pages.AdminPage;
+import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.Test;
 
@@ -9,6 +12,8 @@ import org.testng.annotations.Test;
 public class MakeTheFullPageAdmin_US33 extends BaseTestAdmin{
 
     @Test
+    @Severity(value = SeverityLevel.TRIVIAL)
+    @Description("Clicks button full screen page,makes the dashboard screen full screen and brings it back to normal")
     public void makeTheFullPage(){
 
         //The admin can manage the admin dashboard page after successful login.
