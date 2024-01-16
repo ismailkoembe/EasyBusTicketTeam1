@@ -139,7 +139,7 @@ public class GatewayPage extends BasePage{
     @FindBy(xpath = "(//*[@type='button'])[8]")
     public WebElement userDataRemove;
 
-    @FindBy(className = "card-footer")
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/form/div[2]/button")
     public WebElement saveMethodButton;
 
     @FindBy(xpath = "(//a[@class='icon-btn editGatewayBtn'])[1]")
