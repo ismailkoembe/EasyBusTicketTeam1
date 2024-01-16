@@ -1,9 +1,11 @@
 package com.easybusticket.pages;
 
 import com.easybusticket.utilities.Driver;
+//import com.easybusticket.utilities.GetAbsolutePath;
 import com.easybusticket.utilities.PropManager;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -62,9 +64,6 @@ public class SupportTicketPage extends BasePage {
     @FindBy(xpath = "//a[text()='Requests']")
     public WebElement requestsOption;
 
-    @FindBy(xpath = "//a[text()='Create New']")
-    public WebElement createNewOption;
-
     @FindBy(xpath = "//a[@class='btn btn-sm bg-white float-right support-ticket']")
     public WebElement mySupportTicketButton;
 
@@ -94,6 +93,12 @@ public class SupportTicketPage extends BasePage {
 
     @FindBy(xpath = "//*[text()='High']")
     public WebElement optionPriorityHigh;
+
+    @FindBy(xpath = "//textarea[@id='inputMessage']")
+    public WebElement textareaMessage;
+
+    @FindBy(xpath = "//button/i[@class='fa fa-lg fa-times-circle']")
+    public WebElement closeTicketButton;
 
 
     /**
@@ -169,6 +174,21 @@ public class SupportTicketPage extends BasePage {
         inputAttachmentsForm.sendKeys(path);
         waitAndClick(submitButton);
 
+    }
+    public void clickToSubmitButton(){
+        JavascriptExecutor javascriptExecutor= (JavascriptExecutor) Driver.get(env);
+        javascriptExecutor.executeScript("arguments[0].scrollIntoViewIfNeeded(true);",mySupportTicketButton);
+        waitAndClick(submitButton);
+    }
+    public void clickToMyRequestButton(){
+        JavascriptExecutor javascriptExecutor= (JavascriptExecutor) Driver.get(env);
+        javascriptExecutor.executeScript("arguments[0].scrollIntoViewIfNeeded(true);",mySupportTicketButton);
+        waitAndClick(mySupportTicketButton);
+    }
+    public void replyToRequest(){
+        textareaMessage.sendKeys("Tesekkurler");
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
+        waitAndClick(replyButton);
     }
 
 

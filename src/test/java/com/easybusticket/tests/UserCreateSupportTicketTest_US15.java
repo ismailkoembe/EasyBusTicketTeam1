@@ -20,32 +20,33 @@ public class UserCreateSupportTicketTest_US15 extends BaseTest {
         UserDashboardPage userDashboardPage = userLoginPage.login(PropManager.getProperties(env, "usernameRegistered"), PropManager.getProperties(env, "passwordRegistered"));
         SupportTicketPage supportTicketPage = userDashboardPage.createNewRequestPage();
         log.info("navigated to the support ticket page");
-        Assert.assertEquals(supportTicketPage.textBoxOfNameButton.getAttribute("value"),"login Testi");
-        Assert.assertEquals(supportTicketPage.textBoxOfEmailButton.getAttribute("value"),"logintesti@proton.me");
+        Assert.assertEquals(supportTicketPage.textBoxOfNameButton.getAttribute("value"), "login Testi");
+        Assert.assertEquals(supportTicketPage.textBoxOfEmailButton.getAttribute("value"), "logintesti@proton.me");
         supportTicketPage.fillTheRestOfForm();
 
         String expectedTitle = "Easy Bus Ticket - Support Tickets";
         String actualTitle = Driver.get(env).getTitle();
         Assert.assertEquals(actualTitle, expectedTitle);
     }
+
     @Test
-    public void createSupportTicketTestNegative(){
+    public void createSupportTicketTestNegative() {
         UserLoginPage userLoginPage = new HomePage().clickToSignIn();
-        UserDashboardPage userDashboardPage = userLoginPage.login(PropManager.getProperties(env,"usernameRegistered"),PropManager.getProperties(env,"passwordRegistered"));
+        UserDashboardPage userDashboardPage = userLoginPage.login(PropManager.getProperties(env, "usernameRegistered"), PropManager.getProperties(env, "passwordRegistered"));
         SupportTicketPage supportTicketPage = userDashboardPage.createNewRequestPage();
         log.info("navigated to the support ticket page");
-        actions.sendKeys(Keys.PAGE_DOWN).perform();
-        supportTicketPage.waitAndClick(supportTicketPage.submitButton);
+        supportTicketPage.clickToSubmitButton();
         Assert.assertTrue(supportTicketPage.textBoxOfNameButton.isDisplayed());
 
     }
+
     @Test
-    public void displayingRequestTicketTest(){
+    public void displayingRequestTicketTest() {
         UserLoginPage userLoginPage = new HomePage().clickToSignIn();
-        UserDashboardPage userDashboardPage = userLoginPage.login(PropManager.getProperties(env,"usernameRegistered"),PropManager.getProperties(env,"passwordRegistered"));
+        UserDashboardPage userDashboardPage = userLoginPage.login(PropManager.getProperties(env, "usernameRegistered"), PropManager.getProperties(env, "passwordRegistered"));
         SupportTicketPage supportTicketPage = userDashboardPage.createNewRequestPage();
         log.info("navigated to the support ticket page");
-        supportTicketPage.fillTheRestOfForm();
+        supportTicketPage.clickToMyRequestButton();
         softAssert.assertTrue(supportTicketPage.columnSubject.isDisplayed());
         softAssert.assertTrue(supportTicketPage.columnStatus.isDisplayed());
         softAssert.assertTrue(supportTicketPage.columnPriority.isDisplayed());
@@ -56,7 +57,9 @@ public class UserCreateSupportTicketTest_US15 extends BaseTest {
         softAssert.assertTrue(supportTicketPage.actionButton.isDisplayed());
         actions.sendKeys(Keys.PAGE_DOWN).perform();
         supportTicketPage.actionButton.click();
-//       supportTicketPage.requestHistoryPageVerifyTest();
+        supportTicketPage.replyToRequest();
+        softAssert.assertTrue(supportTicketPage.closeTicketButton.isDisplayed());
+        softAssert.assertAll();
     }
 }
 
