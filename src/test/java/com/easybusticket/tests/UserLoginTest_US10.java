@@ -14,6 +14,6 @@ public class UserLoginTest_US10 extends BaseTest {
         UserLoginPage userLoginPage = new HomePage().clickToSignIn();
 
        //navigate to the dashboard page
-        UserDashboardPage userDashboardPage = userLoginPage.login();
+        userLoginPage.login();
     }
 }
