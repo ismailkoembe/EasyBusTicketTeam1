@@ -26,7 +26,7 @@ public class AdminDashboardPage extends BasePage {
     }
 
     // Represents the title label on the Dashboard page
-    @FindBy(className = "page-title")
+    @FindBy(xpath = "//h6[@class='page-title']")
     public WebElement labelDashboard;
 
     // Represents the label of the 'Total Users' card
@@ -51,7 +51,7 @@ public class AdminDashboardPage extends BasePage {
 
     // Represents the label of the 'Pending Payment' card
 
-    @FindBy(xpath = "(//*[text()='Pending Payment'])[1]")
+    @FindBy(xpath = "(//*[text()='Pending Payment'])[2]")
 
     public WebElement labelpendingPayment;
 

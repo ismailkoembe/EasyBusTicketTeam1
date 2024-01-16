@@ -60,10 +60,10 @@ public class AdminDashboard_US22 extends BaseTestAdmin{
         log.info("Total Counter item  displayed");
         softAssert.assertAll();
 
-<<<<<<< HEAD
-=======
+
+
   
->>>>>>> a2cf206b0c845aa37341895b0b6e2fb5e290e1db
+
         //Viewing TotalUsers card with view all button
         adminDashboardPage.clickViewAllTotalUsers();
 
@@ -95,7 +95,7 @@ public class AdminDashboard_US22 extends BaseTestAdmin{
         adminDashboardPage.clickViewAllTotalCounter();
 
 
-<<<<<<< HEAD
+
         JavascriptExecutor javascriptExecutor= (JavascriptExecutor) Driver.get(env);
         javascriptExecutor.executeScript("arguments[0].scrollIntoViewIfNeeded(true);",adminDashboardPage.tableLatestBookingHistory);
 
@@ -135,8 +135,8 @@ public class AdminDashboard_US22 extends BaseTestAdmin{
          softAssert.assertTrue(adminDashboardPage.labelLast30daysPaymentHistory.isDisplayed());
          log.info("Last 30 Days Payment History displayed");
          softAssert.assertAll();
-=======
->>>>>>> a2cf206b0c845aa37341895b0b6e2fb5e290e1db
+
+
 
     }
 }
