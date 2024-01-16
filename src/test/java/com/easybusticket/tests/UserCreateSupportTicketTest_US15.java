@@ -7,6 +7,9 @@ import com.easybusticket.pages.UserLoginPage;
 //import com.easybusticket.pages.UserSupportTicketFormPage;
 import com.easybusticket.utilities.Driver;
 import com.easybusticket.utilities.PropManager;
+import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -14,6 +17,8 @@ import org.testng.annotations.Test;
 @Slf4j
 public class UserCreateSupportTicketTest_US15 extends BaseTest {
     @Test
+    @Severity(value = SeverityLevel.NORMAL)
+    @Description("User create a new support ticket test")
     public void createSupportTicketTest() {
         UserLoginPage userLoginPage = new HomePage().clickToSignIn();
         UserDashboardPage userDashboardPage = userLoginPage.login(PropManager.getProperties(env, "usernameRegistered"), PropManager.getProperties(env, "passwordRegistered"));

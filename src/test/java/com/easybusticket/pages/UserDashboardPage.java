@@ -1,6 +1,7 @@
 package com.easybusticket.pages;
 
 import com.easybusticket.utilities.Driver;
+import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -395,6 +396,7 @@ public class UserDashboardPage extends BasePage {
         return new SupportTicketPage();
     }
 
+    @Step("User navigated to the New Support Ticket Page")
     public SupportTicketPage createNewRequestPage() {
         waitAndClick(dropDownSupportRequest);
         waitAndClick(createNewOption);
