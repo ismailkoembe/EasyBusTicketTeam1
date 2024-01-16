@@ -1,6 +1,7 @@
 package com.easybusticket.pages;
 
 import com.easybusticket.utilities.Driver;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
@@ -14,7 +15,7 @@ import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 import java.util.Objects;
-
+@Slf4j
 public class BookingHistoryPage extends BasePage {
 
     public BookingHistoryPage() {
@@ -58,22 +59,24 @@ public WebElement detailActionButtonLink;
         String expectedAboutTitle = "Easy Bus Ticket - Booking History";
         String actualAboutTitle = Driver.get(env).getTitle();
         softAssert.assertEquals(actualAboutTitle, expectedAboutTitle);
+        log.info("verified that page has correct title.");
         softAssert.assertAll();
     }
 
-    @Override
+  @Override
     public void waitAndClick(WebElement detailActionButtonLink) {
         super.waitAndClick(detailActionButtonLink);
         softAssert.assertEquals(Driver.get(env).getCurrentUrl(), "https://qa.easybusticket.com/user/booked-ticket/print/388");
+        log.info("URL verified.");
         softAssert.assertAll();
     }
 
     public void isAnyInfoOnTheTable (List<WebElement> tableCells ){
         //if the user has never booked a ticket
         //softAssert.assertTrue(tableCells.isEmpty());
-
         //if the user has  booked a ticket
         softAssert.assertFalse(tableCells.isEmpty());
+        log.info("verified that there is no Ticket on the Table");
         softAssert.assertAll();
 
     }
@@ -92,6 +95,7 @@ public WebElement detailActionButtonLink;
         }
 
         softAssert.assertTrue(Objects.requireNonNull(currentlyTableHeaderListStr).containsAll(expectedHeaderDataList));
+        log.info("The table included Ticket Informations as expected.");
         softAssert.assertAll();
         }
     }
