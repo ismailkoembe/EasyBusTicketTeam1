@@ -21,8 +21,7 @@ import java.util.function.Function;
 @Slf4j
 public class AdminDashboardPage extends BasePage {
     public AdminDashboardPage() {
-        PageFactory.initElements(Driver.get("stage"), this);
-
+        PageFactory.initElements(Driver.get(env), this);
 
     }
 
@@ -51,7 +50,9 @@ public class AdminDashboardPage extends BasePage {
     public WebElement labelSuccessfulPayment;
 
     // Represents the label of the 'Pending Payment' card
-    @FindBy(xpath = "(//*[text()='Pending Payment'])[2]")
+
+    @FindBy(xpath = "(//*[text()='Pending Payment'])[1]")
+
     public WebElement labelpendingPayment;
 
     // Represents the label of the 'Rejected Payment' card
@@ -72,7 +73,11 @@ public class AdminDashboardPage extends BasePage {
 
     //========================VIEW ALL BUTTON===========================
     // Represents the ' View All' button of the 'Total Users' card
+
+
+
     @FindBy(xpath = "(//a[@class='btn btn-sm text--small bg--white text--black box--shadow3 mt-3'])[1]")
+
     public WebElement viewAllOfTotalUsersButton;
 
     // Represents the ' View All' button of the 'Total Verified Users' card
@@ -373,6 +378,31 @@ public class AdminDashboardPage extends BasePage {
 
     }
 
+
+    //===================================================================//
+
+    //Manage Fleets Dropdown
+    @FindBy(xpath = "(//i[@class='menu-icon las la-bus'])[1]")
+    public WebElement manageFleets;
+
+    @FindBy(xpath = "//span[.='Seat Layouts']")
+    public WebElement seatLayout;
+
+    @FindBy(xpath = "//span[text()='Fleet Type']")
+    public WebElement fleetType;
+
+    @FindBy(xpath = "//span[text()='Vehicles']")
+    public WebElement vehicle;
+
+    public SeatLayoutsPage manageFleets(){
+
+        waitAndClick(manageFleets);
+        waitAndClick(seatLayout);
+
+     return new SeatLayoutsPage();
+    }
+//=====================================================================//
+
     public void clickToManualGateway() {
         softAssert.assertTrue(paymentGatewaysButton.isDisplayed());
         waitAndClick(paymentGatewaysButton);
@@ -383,6 +413,7 @@ public class AdminDashboardPage extends BasePage {
         softAssert.assertAll();
 
     }
+
 
 
     //Dropdown PaymentHistory option

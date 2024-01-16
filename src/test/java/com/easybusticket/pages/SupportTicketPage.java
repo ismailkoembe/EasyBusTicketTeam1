@@ -1,7 +1,7 @@
 package com.easybusticket.pages;
 
 import com.easybusticket.utilities.Driver;
-//import com.easybusticket.utilities.GetAbsolutePath;
+import com.easybusticket.utilities.GetAbsolutePath;
 import com.easybusticket.utilities.PropManager;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
@@ -11,6 +11,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
+
 
 @Slf4j
 public class SupportTicketPage extends BasePage {
@@ -101,11 +102,11 @@ public class SupportTicketPage extends BasePage {
     public WebElement closeTicketButton;
 
 
-    /**
-     * Ayça Ovali
-     */
+
+
+    /** Ayça Ovali */
     public void requestHistoryPageVerifyTest() {
-        //columnSubject.isDisplayed();
+
         softAssert.assertTrue(columnSubject.isDisplayed());
         softAssert.assertTrue(columnStatus.isDisplayed());
         softAssert.assertTrue(columnPriority.isDisplayed());
@@ -116,8 +117,8 @@ public class SupportTicketPage extends BasePage {
         softAssert.assertTrue(actionButton.isDisplayed());
 
         waitAndClick(actionButton);
-
         log.info("Request Detail Page loaded");
+
         softAssert.assertTrue(labelOpenedRequestTitle.isDisplayed());
         softAssert.assertTrue(selectFileButton.isDisplayed());
         softAssert.assertTrue(replyButton.isDisplayed());
@@ -128,20 +129,20 @@ public class SupportTicketPage extends BasePage {
         waitAndClick(requestsOption);
         String expectedRequestHistoryPageTitle = "Easy Bus Ticket - Support Tickets";
         String actualRequestHistoryPageTitle = Driver.get(env).getTitle();
-        softAssert.assertEquals(actualRequestHistoryPageTitle, expectedRequestHistoryPageTitle);
-        softAssert.assertAll();
+
+        softAssert.assertEquals(actualRequestHistoryPageTitle,expectedRequestHistoryPageTitle);
+
         log.info("returned history page");
+        softAssert.assertAll();
+
     }
 
-    /**
-     * Ayça Ovali
-     */
+    /** Ayça Ovali */
     public void requestHistoryNewTicketTest() {
         waitAndClick(newTicketButton);
         softAssert.assertTrue(mySupportTicketButton.isDisplayed());
         softAssert.assertTrue(textBoxOfNameButton.isDisplayed());
         softAssert.assertTrue(textBoxOfEmailButton.isDisplayed());
-
         waitAndClick(textBoxOfSubject);
         textBoxOfSubject.sendKeys(PropManager.getProperties(env, "us16Subject"));
         waitAndClick(dropDownPriority);
@@ -154,12 +155,14 @@ public class SupportTicketPage extends BasePage {
         softAssert.assertTrue(extraFileButton.isDisplayed());
         waitAndClick(submitButton);
 
-        String expectedRequestHistoryPageUrl = "https://qa.easybusticket.com/ticket";
-        String actualRequestHistoryPageUrl = Driver.get(env).getCurrentUrl();
-        softAssert.assertEquals(actualRequestHistoryPageUrl, expectedRequestHistoryPageUrl);
+        String expectedRequestHistoryPageUrl="https://qa.easybusticket.com/ticket";
+        String actualRequestHistoryPageUrl=Driver.get(env).getCurrentUrl();
+        softAssert.assertEquals(actualRequestHistoryPageUrl,expectedRequestHistoryPageUrl);
         softAssert.assertTrue(rowFirstRequest.isDisplayed());
-        softAssert.assertAll();
         log.info("new ticket created");
+        softAssert.assertAll();
+
+
     }
 
     public void fillTheRestOfForm() {
@@ -168,8 +171,8 @@ public class SupportTicketPage extends BasePage {
         slc.getFirstSelectedOption();
         textBoxOfMessage.sendKeys("Deneme Request olusturuldu");
 
-        String path= System.getProperty("user.dir") +
-                "\\src\\test\\java\\com\\easybusticket\\testResources\\attachment.png";
+        String path = GetAbsolutePath.getAbsolutePath(PropManager.getProperties(env, "imgPathAttachment"));
+
         actions.sendKeys(Keys.PAGE_DOWN).perform();
         inputAttachmentsForm.sendKeys(path);
         waitAndClick(submitButton);
@@ -190,10 +193,6 @@ public class SupportTicketPage extends BasePage {
         actions.sendKeys(Keys.PAGE_DOWN).perform();
         waitAndClick(replyButton);
     }
-
-
-
-
 
 
 }
