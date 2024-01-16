@@ -1,6 +1,7 @@
 package com.easybusticket.pages;
 
 import com.easybusticket.utilities.Driver;
+import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -27,13 +28,14 @@ public class UserDashboardPage extends BasePage {
     @FindBy(xpath = "//h2[text()='Dashboard']")
     public WebElement titleDashboard;
 
+    @Step("I clicked to logo Easy Bus Ticket,Redirected to home page")
     public HomePage logoEasyBusTicket() {
         waitAndClick(logoEasybusticket);
         softAssert.assertTrue(linkDashboard.isDisplayed());
         softAssert.assertAll();
         return new HomePage();
     }
-
+    @Step("Clicked on the dashboard link on the home page,I expect title Dashboard")
     public void linkDashboard() {
         waitAndClick(linkDashboard);
         softAssert.assertTrue(titleDashboard.isDisplayed());
