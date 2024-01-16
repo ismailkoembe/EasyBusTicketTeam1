@@ -1,15 +1,17 @@
 package com.easybusticket.pages;
 
 import com.easybusticket.utilities.Driver;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
 /**
  * @author Ismail Koembe
  */
-public class HomePage extends BasePage {
+public class HomePage extends BasePage{
 
     public HomePage() {
         PageFactory.initElements(Driver.get("stage"), this);
@@ -63,7 +65,7 @@ public class HomePage extends BasePage {
     public WebElement faqsTitle;
 
     //Blog Title Button
-    @FindBy(xpath = "(//a[text()=Blog])")
+    @FindBy(xpath = "(//a[text()='Blog'])")
     public WebElement blogTitle;
 
     // Contact Title Button.
@@ -76,27 +78,37 @@ public class HomePage extends BasePage {
 
     @FindBy (xpath = "/html/body/section/div/div/form/div[4]/div[2]/a")
     public WebElement forgotPasword;
+    @FindBy (xpath = "/html/body/section[6]")
+    public WebElement footerSection;
 
+    @FindBy(xpath = "/html/body/section[6]/div/div/div/div[2]/div/h4")
+    public WebElement footerUsefulLinks;
+
+    @FindBy(xpath = "/html/body/section[6]/div/div/div/div[3]/div/h4")
+    public WebElement footerPolicies;
+
+    @FindBy(xpath = "/html/body/section[6]/div/div/div/div[4]/div/h4")
+    public WebElement footerContactInfo;
 
     //Footer Twitter Icon Link
-    @FindBy(xpath = "/html/body/section[6]/div/div/div/div[1]/div/ul/li[1]/a/svg")
-    public WebElement getTwitterIconFooter;
+    @FindBy(xpath = "(//a[@href='https://www.twitter.com'])[2]")
+    public  WebElement getTwitterIconFooter;
 
     //Footer Facebook Icon Link
-    @FindBy(xpath = "/html/body/section[6]/div/div/div/div[1]/div/ul/li[2]/a/svg")
+    @FindBy(xpath = "(//a[@href='https://www.facebook.com'])[2]")
     public WebElement getFacebookIconFooter;
 
     //Footer Youtube Icon Link
-    @FindBy(xpath = "/html/body/section[6]/div/div/div/div[1]/div/ul/li[3]/a/svg")
+    @FindBy(xpath = "//a[@href='https://www.youtube.com']")
     public WebElement getYoutubeIconFooter;
 
     //Footer Instagram Icon Link
-    @FindBy(xpath = "/html/body/section[6]/div/div/div/div[1]/div/ul/li[4]/a")
+    @FindBy(xpath = "(//a[@href='https://www.instagram.com'])[2]")
     public WebElement getInstagramIconFooter;
 
-    //Footer About Title Link
-    @FindBy(xpath = "/html/body/section[6]/div/div/div/div[2]/div/ul/li[1]/a")
-    public WebElement getAboutTitleFooter;
+    //Footer About Title Linkhttps://www.youtube.com
+    @FindBy(xpath="(//*[@href='https://qa.easybusticket.com/about-us'])[2]")
+    public  WebElement  getAboutTitleFooter;
 
     //Footer FAQs Title Link
     @FindBy(xpath = "/html/body/section[6]/div/div/div/div[2]/div/ul/li[2]/a")
@@ -108,7 +120,7 @@ public class HomePage extends BasePage {
 
     //Footer Contact Title Link
     @FindBy(xpath = "/html/body/section[6]/div/div/div/div[2]/div/ul/li[4]/a")
-    public WebElement getContactTitleFooter;
+    public WebElement footerContactUsefulLinks;
 
     //Footer Privacy Policy Title Link
     @FindBy(xpath = "/html/body/section[6]/div/div/div/div[3]/div/ul/li[1]/a")
@@ -121,6 +133,15 @@ public class HomePage extends BasePage {
     //Footer Ticket Policies Title Link
     @FindBy(xpath = "/html/body/section[6]/div/div/div/div[3]/div/ul/li[3]/a")
     public WebElement getTicketPoliciesFooter;
+
+    @FindBy(xpath = "/html/body/section[6]/div/div/div/div[4]/div/ul/li[1]")
+    public WebElement footerContactInfoAdresse;
+
+    @FindBy(xpath = "/html/body/section[6]/div/div/div/div[4]/div/ul/li[2]/a")
+    public WebElement footerPhoneLink;
+
+    @FindBy(xpath = "/html/body/section[6]/div/div/div/div[4]/div/ul/li[3]/a")
+    public WebElement footerEmailAdresseLink;
 
     public RegisterPage register = new RegisterPage();
 
@@ -149,14 +170,12 @@ public class HomePage extends BasePage {
         waitAndClick(aboutButton);
         return new AboutPage();
 
-
     }
 
-    public ContactPage clickToContactTitle() {
+    public ContactPage clickToContactTitle(){
         acceptCookies();
         waitAndClick(contactTitle);
         return new ContactPage();
-
     }
 
     public FaqPage clickToFaqTitle() {
@@ -172,11 +191,28 @@ public class HomePage extends BasePage {
 
     }
 
+    public void clickToFAQsTitle(){
+        acceptCookies();
+        waitAndClick(faqsTitle);
 
+    }
 
+    /**
+     * REYHAN Blog page control
+     */
+    public BlogPage clickToBlogTitle(){
+        acceptCookies();
+        waitAndClick(blogTitle);
+        return new BlogPage();
+    }
 
-
-
+    public void clickToHomeTitle(){
+        acceptCookies();
+        waitAndClick(homeTitle);
+    }
+    public  void scrollToBottom (){
+        ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight);");
+    }
 
 
 

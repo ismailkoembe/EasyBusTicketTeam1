@@ -5,6 +5,7 @@ import com.easybusticket.utilities.Environments;
 import com.easybusticket.utilities.PropManager;
 import com.github.javafaker.Faker;
 import lombok.extern.slf4j.Slf4j;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,13 +17,11 @@ import org.testng.asserts.SoftAssert;
 
 import java.time.Duration;
 
-/**
- * @author Ismail Koembe
- */
+
 @Slf4j
 public abstract class BasePage {
 
-    public static final String env = Environments.PRODUCTION.name();
+    public static final String env = Environments.STAGE.name();
     public static final WebDriver driver = Driver.get(env);
 
     public static final Wait<WebDriver> wait = new FluentWait<>(driver)
@@ -40,4 +39,6 @@ public abstract class BasePage {
         wait.until(ExpectedConditions.elementToBeClickable(element)).click();
         log.info("Clicked in {}ms", System.currentTimeMillis() - start);
     }
+
+
 }
