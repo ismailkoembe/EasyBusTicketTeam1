@@ -2,6 +2,7 @@ package com.easybusticket.pages;
 
 import com.easybusticket.utilities.Driver;
 import com.github.javafaker.Faker;
+import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
@@ -11,6 +12,8 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.Wait;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Function;
 
 
@@ -23,7 +26,7 @@ public class AdminDashboardPage extends BasePage {
 
 
     // Represents the title label on the Dashboard page
-    @FindBy(className = "page-title")
+    @FindBy(xpath = "//h6[@class='page-title']")
     public WebElement labelDashboard;
 
     // Represents the label of the 'Total Users' card
@@ -48,7 +51,7 @@ public class AdminDashboardPage extends BasePage {
 
     // Represents the label of the 'Pending Payment' card
 
-    @FindBy(xpath = "(//*[text()='Pending Payment'])[1]")
+    @FindBy(xpath = "(//*[text()='Pending Payment'])[2]")
 
     public WebElement labelpendingPayment;
 
@@ -93,7 +96,7 @@ public class AdminDashboardPage extends BasePage {
     public WebElement viewAllOfSuccessfulPaymentButton;
 
     // Represents the ' View All' button of the 'Pending Payment' card
-    @FindBy(xpath = "(//*[text()='Pending Payment'])[6]")
+    @FindBy(xpath = "(//*[text()='View All'])[6]")
     public WebElement viewAllAllOfPendingPaymentButton;
 
 
@@ -118,12 +121,8 @@ public class AdminDashboardPage extends BasePage {
     public WebElement labelLatestBookingHistory;
 
     //Table of the Last Booking History
-    @FindBy(xpath = "//table/tbody")
+    @FindBy(xpath = "(//div[@class='card-body'])[1]")
     public WebElement tableLatestBookingHistory;
-
-    //Row of the Last Booking History table
-    @FindBy(xpath = "//table/thead/tr")
-    public WebElement rowLatestBookingHistory;
 
     //Coloumn of User
     @FindBy(xpath = "(//table/thead/tr/th)[1] ")
@@ -526,6 +525,7 @@ public class AdminDashboardPage extends BasePage {
     }
 
     //Viewing total users card with view all button
+    @Step("I clicked AllTotalUsers")
     public ManageUsersPage clickViewAllTotalUsers() {
         waitAndClick(viewAllOfTotalUsersButton);
         String expectedUrl = "https://qa.easybusticket.com/admin/users";
@@ -537,8 +537,9 @@ public class AdminDashboardPage extends BasePage {
 
     }
     //Viewing Total Verified Users card with view all button
-
+    @Step("I clicked AllTotalVerifiedUsers")
     public ManageActiveUsersPage clickViewAllTotalVerifiedUsers() {
+
         waitAndClick(viewAllOfTotalVerifiedUsersButton);
         String expectedUrl = "https://qa.easybusticket.com/admin/users/active";
         String actualUrl = Driver.get(env).getCurrentUrl();
@@ -547,7 +548,139 @@ public class AdminDashboardPage extends BasePage {
         waitAndClick(dashboardIconButton);
         return new ManageActiveUsersPage();
 
+    }
 
+    //Viewing Email Unverified Users card with view all button
+    @Step("I clicked AllEmailUnverifiedUsers")
+    public EmailUnverifiedUsersPage clickViewAllEmailUnverifiedUsers() {
+        waitAndClick(viewAllTotalEmailUnverifiedUsersButton);
+        String expectedUrl = "https://qa.easybusticket.com/admin/users/email-unverified";
+        String actualUrl = Driver.get(env).getCurrentUrl();
+        softAssert.assertEquals(actualUrl, expectedUrl);
+        softAssert.assertAll();
+        waitAndClick(dashboardIconButton);
+        return new EmailUnverifiedUsersPage();
+
+    }
+
+
+    //Viewing Total SMS Unverified Users card with view all button
+    @Step("I clicked AllTotalSMSUnverifiedUsers")
+    public TotalSMSUnverifiedUsers clickViewAllTotalSMSUnverifiedUsers() {
+        waitAndClick(viewAllOfTotalSmSUnverifiedUsersButton);
+        String expectedUrl = "https://qa.easybusticket.com/admin/users/sms-unverified";
+        String actualUrl = Driver.get(env).getCurrentUrl();
+        softAssert.assertEquals(actualUrl, expectedUrl);
+        softAssert.assertAll();
+        waitAndClick(dashboardIconButton);
+        return new TotalSMSUnverifiedUsers();
+
+    }
+
+    //Viewing total users card with view all button
+    @Step("I clicked SuccessfulPayments")
+    public SuccessfulPaymentPage clickViewAllSuccessfulPayment() {
+        waitAndClick(viewAllOfSuccessfulPaymentButton);
+        String expectedUrl = "https://qa.easybusticket.com/admin/payment/successful";
+        String actualUrl = Driver.get(env).getCurrentUrl();
+        softAssert.assertEquals(actualUrl, expectedUrl);
+        softAssert.assertAll();
+        waitAndClick(dashboardIconButton);
+        return new SuccessfulPaymentPage();
+    }
+
+    //Viewing total users card with view all button
+    @Step("I clicked PendingPayment")
+    public PendingPaymentPage clickViewAllPendingPayment() {
+        waitAndClick(viewAllAllOfPendingPaymentButton);
+        String expectedUrl = "https://qa.easybusticket.com/admin/payment/pending";
+        String actualUrl = Driver.get(env).getCurrentUrl();
+        softAssert.assertEquals(actualUrl, expectedUrl);
+        softAssert.assertAll();
+        waitAndClick(dashboardIconButton);
+        return new PendingPaymentPage();
+    }
+
+    //Viewing Rejected Payment card with view all button
+    @Step("I clicked RejectedPaymentPage")
+    public RejectedPaymentPage clickViewAllRejectedPayment() {
+        waitAndClick(viewAllOfRejectedPaymentButton);
+        String expectedUrl = "https://qa.easybusticket.com/admin/payment/rejected";
+        String actualUrl = Driver.get(env).getCurrentUrl();
+        softAssert.assertEquals(actualUrl, expectedUrl);
+        softAssert.assertAll();
+        waitAndClick(dashboardIconButton);
+        return new RejectedPaymentPage();
+    }
+
+
+    //Viewing AC Vehicles card with view all button
+    @Step("I clicked AcVehicles")
+    public AllVehiclesPages clickViewAllAcVehicles() {
+        waitAndClick(viewAllOfAcVehicleButton);
+        String expectedUrl = "https://qa.easybusticket.com/admin/manage/vehicles";
+        String actualUrl = Driver.get(env).getCurrentUrl();
+        softAssert.assertEquals(actualUrl, expectedUrl);
+        softAssert.assertAll();
+        waitAndClick(dashboardIconButton);
+        return new AllVehiclesPages();
+
+    }
+
+    //Viewing Non-AC Vehicles card with view all button
+    @Step("I clicked NonAcVehicles")
+    public AllVehiclesPages clickViewAllNonAcVehicles() {
+        waitAndClick(viewAllOfNonAcVehicleButton);
+        String expectedUrl = "https://qa.easybusticket.com/admin/manage/vehicles";
+        String actualUrl = Driver.get(env).getCurrentUrl();
+        softAssert.assertEquals(actualUrl, expectedUrl);
+        softAssert.assertAll();
+        waitAndClick(dashboardIconButton);
+        return new AllVehiclesPages();
+
+    }
+
+    //Viewing Total counter card with view all button
+    @Step("I clicked TotalCounter")
+    public AllCounterPage clickViewAllTotalCounter() {
+        waitAndClick(viewAllOfTotalCounterButton);
+        String expectedUrl = "https://qa.easybusticket.com/admin/manage/counter";
+        String actualUrl = Driver.get(env).getCurrentUrl();
+        softAssert.assertEquals(actualUrl, expectedUrl);
+        softAssert.assertAll();
+        waitAndClick(dashboardIconButton);
+        return new AllCounterPage();
+
+    }
+
+    public static List<String> stringListeDonusturLatestBookingHistory(List<WebElement> elementlerListesi) {
+
+        List<String> stringlerListesi = new ArrayList<>();
+
+        for (WebElement each : elementlerListesi
+        ) {
+
+            stringlerListesi.add(each.getText());
+        }
+
+        return stringlerListesi;
+    }
+
+    //Easy Bus Ticket radio Button
+    @FindBy(xpath = "//button[@class='navbar__expand']")
+    public WebElement buttonEasyBusTicketradioButton;
+
+    @Step("I clicked ActionButton")
+    public BookingHistoryPage clickActionButton(){
+
+
+        waitAndClick(buttonActiondetails);
+        String expectedUrl = "https://qa.easybusticket.com/admin/ticket/booked";
+        String actualUrl = Driver.get(env).getCurrentUrl();
+        softAssert.assertEquals(actualUrl, expectedUrl);
+        softAssert.assertAll();
+        waitAndClick(dashboardIconButton);
+        return new BookingHistoryPage();
     }
 
 
@@ -568,6 +701,14 @@ public class AdminDashboardPage extends BasePage {
         waitAndClick(getAllUsersUnderTheManageUsers);
         return new AdminTicketPage();
     }
+
+
+
+
+
+
+
+
 
     //TransportManager Counter section
     @FindBy(xpath = "(//span[@class='menu-title'])[30]")
@@ -630,6 +771,7 @@ public class AdminDashboardPage extends BasePage {
         return new ManageUsersPage();
 
     }
+
 
 }
 
