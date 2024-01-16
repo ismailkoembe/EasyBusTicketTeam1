@@ -96,9 +96,120 @@ public class AdminTicketPage extends BasePage {
         allUsersFirstActionButton.isDisplayed();
         }
 
+
+    /**
+     * REYHAN  for Admin All Users details under the manageUsers
+     */
     public ManageActiveUsersPage detailsOfAllUser2(){
       waitAndClick(allUsersFirstActionButton);
         return new ManageActiveUsersPage();
     }
+
+    /**
+     * REYHAN  for Admin Active Users under the manageUsers
+     */
+
+    public void detailsOfActiveUsers1() {
+        AdminTicketPage adminTicketPage = new AdminDashboardPage().allUsers();
+        String expectedUrl = "https://qa.easybusticket.com/admin/users/active";
+        String actualUrl = Driver.get("stage").getCurrentUrl();
+        softAssert.assertEquals(actualUrl, expectedUrl);
+        allUsersFirstActionButton.isDisplayed();
+    }
+
+
+    /**
+     * REYHAN  for Admin Active Users details under the manageUsers
+     */
+    public ManageActiveUsersPage detailsOfActiveUser2(){
+        waitAndClick(allUsersFirstActionButton);
+        return new ManageActiveUsersPage();
+    }
+
+    /**
+     * REYHAN  for Admin Banned Users under the manageUsers
+     */
+
+    public void detailsOfBannedUsers1() {
+        AdminTicketPage adminTicketPage = new AdminDashboardPage().allUsers();
+        String expectedUrl = "https://qa.easybusticket.com/admin/users";
+        String actualUrl = Driver.get(env).getCurrentUrl();
+        Assert.assertEquals(actualUrl, expectedUrl);
+        allUsersFirstActionButton.isDisplayed();
+    }
+
+
+    /**
+     * REYHAN  for Admin banned Users details under the manageUsers
+     */
+    public ManageActiveUsersPage detailsOfBannedUser2(){
+        waitAndClick(allUsersFirstActionButton);
+        return new ManageActiveUsersPage();
+    }
+
+    /**
+     * REYHAN  for Admin Email Unverified under the manageUsers
+     */
+
+    public void detailsOfEmailUnverified1() {
+        AdminTicketPage adminTicketPage = new AdminDashboardPage().emailUnverified();
+        String expectedUrl = "https://qa.easybusticket.com/admin/users/email-unverified";
+        String actualUrl = Driver.get(env).getCurrentUrl();
+        Assert.assertEquals(actualUrl, expectedUrl);
+        allUsersFirstActionButton.isDisplayed();
+    }
+
+
+    /**
+     * REYHAN  for Admin Email Unverified details under the manageUsers
+     */
+    public ManageActiveUsersPage detailsOfEmailUnverified2(){
+
+        waitAndClick(allUsersFirstActionButton);
+        return new ManageActiveUsersPage();
+    }
+
+    /**
+     * REYHAN  for Admin Sms Unverified under the manageUsers
+     */
+
+    public void detailsOfSmsUnverified1() {
+        AdminTicketPage adminTicketPage = new AdminDashboardPage().emailUnverified();
+        String expectedUrl = "https://qa.easybusticket.com/admin/users/sms-unverified";
+        String actualUrl = Driver.get(env).getCurrentUrl();
+        Assert.assertEquals(actualUrl, expectedUrl);
+        allUsersFirstActionButton.isDisplayed();
+    }
+
+
+    /**
+     * REYHAN  for Admin Sms Unverified details under the manageUsers
+     */
+    public ManageActiveUsersPage detailsOfSmsUnverified2(){
+        waitAndClick(allUsersFirstActionButton);
+        return new ManageActiveUsersPage();
+    }
+
+    /**
+     * REYHAN  for Admin Email to all under the manageUsers
+     */
+
+    public void detailsOfEmailtoAll1() {
+        AdminTicketPage adminTicketPage = new AdminDashboardPage().emailUnverified();
+        String expectedUrl = "https://qa.easybusticket.com/admin/users/send-email";
+        String actualUrl = Driver.get(env).getCurrentUrl();
+        softAssert.assertEquals(actualUrl, expectedUrl);
+        allUsersFirstActionButton.isDisplayed();
+    }
+
+
+    /**
+     * REYHAN  for Admin Email to All details under the manageUsers
+     */
+    public ManageActiveUsersPage detailsOfEmailToAll2(){
+        waitAndClick(allUsersFirstActionButton);
+        return new ManageActiveUsersPage();
+    }
+
 
 }

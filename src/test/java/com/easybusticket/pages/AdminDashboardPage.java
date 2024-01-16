@@ -687,6 +687,23 @@ public class AdminDashboardPage extends BasePage {
     @FindBy(xpath = "//*[text()='All Users']")
     WebElement getAllUsersUnderTheManageUsers;
 
+    @FindBy(xpath = "//*[text()='Active Users']")
+    WebElement getActiveUsersUnderTheManageUsers;
+
+    @FindBy(xpath = "//*[text()='Banned Users']")
+    WebElement getBannedUsersUnderTheManageUsers;
+
+    @FindBy(xpath = "//*[text()='Email Unverified']")
+    WebElement getEmailUnverifiedUnderTheManageUsers;
+
+    @FindBy(xpath = "//*[text()='SMS Unverified']")
+    WebElement getSmsUnverifiedUnderTheManageUsers;
+
+    @FindBy(xpath = "//*[text()='Email to All']")
+    WebElement getEmailToAllUnderTheManageUsers;
+
+
+
     /**
      * REYHAN  for ManageUsers dropdown menu
      */
@@ -701,6 +718,48 @@ public class AdminDashboardPage extends BasePage {
         waitAndClick(getAllUsersUnderTheManageUsers);
         return new AdminTicketPage();
     }
+
+    /**
+     * REYHAN  for Active Users under the ManageUsers dropdown menu
+     */
+    public AdminTicketPage activeUsers() {
+        waitAndClick(getActiveUsersUnderTheManageUsers);
+        return new AdminTicketPage();
+    }
+
+    /**
+     * REYHAN  for Banned Users under the ManageUsers dropdown menu
+     */
+    public AdminTicketPage bannedUsers() {
+        waitAndClick(getBannedUsersUnderTheManageUsers);
+        return new AdminTicketPage();
+    }
+
+
+    /**
+     * REYHAN  for Email Unverified under the ManageUsers dropdown menu
+     */
+    public AdminTicketPage emailUnverified() {
+        waitAndClick(getEmailUnverifiedUnderTheManageUsers);
+        return new AdminTicketPage();
+    }
+
+    /**
+     * REYHAN  for Sms Unverified under the ManageUsers dropdown menu
+     */
+    public AdminTicketPage smsUnverified() {
+        waitAndClick(getSmsUnverifiedUnderTheManageUsers);
+        return new AdminTicketPage();
+    }
+
+
+//    /**
+//     * REYHAN  for Email to All under the ManageUsers dropdown menu
+//     */
+//    public AdminTicketPage emailToAll() {
+//        waitAndClick(getEmailToAllUnderTheManageUsers);
+//        return new AdminTicketPage();
+//    }
 
 
 
