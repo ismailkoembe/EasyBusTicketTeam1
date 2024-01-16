@@ -35,7 +35,7 @@ public class AllUsersPage extends BasePage {
         String expectedTitle = "Easy Bus Ticket - All Users";
         String actualTitle = Driver.get(env).getTitle();
         softAssert.assertEquals(actualTitle, expectedTitle, "Incorrect page title on All Users page");
-        softAssert.assertAll();
+        
         // assertAll should not be called here
     }
 
