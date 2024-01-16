@@ -1,13 +1,11 @@
 package com.easybusticket.pages;
 
 import com.easybusticket.utilities.Driver;
+import com.github.javafaker.Faker;
 import lombok.extern.slf4j.Slf4j;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.FluentWait;
@@ -555,6 +553,7 @@ public class AdminDashboardPage extends BasePage {
 
     }
 
+
     @FindBy(xpath = "//*[text()='All Users']")
     WebElement getAllUsersUnderTheManageUsers;
 
@@ -578,4 +577,66 @@ public class AdminDashboardPage extends BasePage {
 
 
 
+    //TransportManager Counter section
+    @FindBy(xpath = "(//span[@class='menu-title'])[30]")
+    public WebElement counterTitle;
 
+    //All Counter Title
+    @FindBy(xpath = "//div[@class='col-lg-6 col-sm-6']")
+    public WebElement allCounterTitle;
+
+    //Name title of counter page
+    @FindBy(xpath = "//th[text()='Name']")
+    public WebElement nameTitle;
+
+    //Mobile Number title of counter page
+     @FindBy(xpath = "//th[text()='Mobile Number']")
+     public WebElement mobileNumberTitle;
+
+    //City title of counter page
+    @FindBy(xpath = "//th[text()='City']")
+    public WebElement cityTitle;
+
+    //Location title of counter page
+    @FindBy(xpath = "//th[text()='Location']")
+    public WebElement locationTitle;
+
+    //Status title of counter page
+    @FindBy(xpath = "//th[text()='Status']")
+    public WebElement statusTitle;
+
+    //Action title of counter page
+    @FindBy(xpath = "//th[text()='Action']")
+    public WebElement actionTitle;
+
+    //Add New ButtonLink
+    @FindBy(xpath = "//a[text()='Add New']")
+    public WebElement addNewButtonLink;
+
+    @FindBy(xpath = "(//input[@class='form-control'])[1]")
+    public WebElement namesection;
+
+    //Submit button
+    @FindBy(xpath = "(//button[@type='submit'])[2]")
+    public WebElement submitButton;
+
+    //New counter information is added.
+    public ManageUsersPage addedCounter(){
+        addNewButtonLink.click();
+    Faker faker=new Faker();
+        actions.click(namesection)
+            .sendKeys(faker.country().capital())
+            .sendKeys(Keys.TAB)
+                .sendKeys(faker.address().cityName())
+            .sendKeys(Keys.TAB)
+                .sendKeys(faker.address().cityName())
+            .sendKeys(Keys.TAB)
+                .sendKeys(faker.phoneNumber().subscriberNumber())
+            .sendKeys(Keys.TAB)
+                .perform();
+         submitButton.click();
+         return new ManageUsersPage();
+
+    }
+
+}

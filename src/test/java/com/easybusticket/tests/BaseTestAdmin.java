@@ -4,6 +4,7 @@ import com.easybusticket.utilities.Driver;
 import com.easybusticket.utilities.Environments;
 import com.easybusticket.utilities.PropManager;
 import lombok.extern.slf4j.Slf4j;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
 
@@ -18,6 +19,7 @@ public class BaseTestAdmin {
     public String env = Environments.STAGE.name;
     public final Integer timeout = Integer.valueOf(Objects.requireNonNull(PropManager.getProperties(env, "timeout")));
     public final SoftAssert softAssert=new SoftAssert();
+    public Actions actions=new Actions(Driver.get(env));
 
     @BeforeMethod(enabled = false)
     public void setupUserContext(Method method) {
