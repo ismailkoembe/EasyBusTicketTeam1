@@ -83,16 +83,10 @@ public class FleetTypePage extends BasePage{
         waitAndClick(fleetTypeTextBoxNumberOfDeck);
         fleetTypeTextBoxNumberOfDeck.sendKeys("1");
 
-
-       // waitAndClick(selectAnOption);
-
         waitAndClick(fleetTypeTextBoxSeatOfDeck);
         fleetTypeTextBoxSeatOfDeck.sendKeys("1");
 
        waitAndClick(fleetTypeTextBoxButtonSave);
-
-
-
 
     }
 
