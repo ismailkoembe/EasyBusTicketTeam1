@@ -1,7 +1,8 @@
-<suite name="Sanity Test">
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="SanityTest">
 <test name="Sanity Example">
     <classes>
-        <class name="com.easybusticket.tests.AboutPageTest">
+        <class name="com.easybusticket.tests.AboutPageTest_US05">
             <methods>
                 <include name="AboutPageTest"/>
                 <!--                    <include name="testMethod2"/>-->
