@@ -10,7 +10,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
+import javax.swing.plaf.TableHeaderUI;
 
 
 @Slf4j
@@ -19,9 +21,6 @@ public class GatewayPage extends BasePage{
         PageFactory.initElements(Driver.get("stage"),this);
     }
 
-
-    @FindBy(xpath = "//*[text()='Manual Gateways']")
-    public WebElement manualGatewaysButton;
 
     @FindBy(xpath = "(//*[text()='Automatic Gateways'])[2]")
     public WebElement labelAutomaticGateway;
@@ -81,9 +80,6 @@ public class GatewayPage extends BasePage{
     @FindBy(xpath = "//*[text()='New Manual Gateway']")
     public WebElement labelEditPageManualGateway;
 
-    @FindBy(xpath = "//*[@class='profilePicPreview']")
-    public WebElement imageProfile;
-
     @FindBy(xpath = "//*[@class='profilePicUpload']")
     public WebElement imageUploadButton;
     @FindBy(xpath = "//*[@name='name']")
@@ -95,17 +91,11 @@ public class GatewayPage extends BasePage{
     @FindBy(xpath = "//*[@name='rate']")
     public WebElement textOfBoxRate;
 
-    @FindBy(xpath = "//*[text()='Range']")
-    public WebElement labelRange;
-
     @FindBy(xpath = "//*[@name='min_limit']")
     public WebElement textOfBoxMinimumAmount;
 
     @FindBy(xpath = "//*[@name='max_limit']")
     public WebElement textOfBoxMaximumAmount;
-
-    @FindBy(xpath = "//*[text()='Charge']")
-    public WebElement labelCharge;
 
     @FindBy(xpath = "//*[@name='fixed_charge']")
     public WebElement textOfBoxFixedCharge;
@@ -113,14 +103,8 @@ public class GatewayPage extends BasePage{
     @FindBy(xpath = "//*[@name='percent_charge']")
     public WebElement textOfBoxPercentCharge;
 
-    @FindBy(xpath = "//*[text()='Deposit Instruction']")
-    public WebElement labelDepositInstruction;
-
     @FindBy(xpath = "//*[@contenteditable='true']")
     public WebElement textOfBoxMessage;
-
-    @FindBy(xpath = "//*[text()='User data']")
-    public WebElement labelUserData;
 
 
     @FindBy(xpath = "(//*[@type='button'])[7]")
@@ -139,11 +123,24 @@ public class GatewayPage extends BasePage{
     @FindBy(xpath = "(//*[@type='button'])[8]")
     public WebElement userDataRemove;
 
-    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/form/div[2]/button")
+    @FindBy(xpath = "//*[text()='Save Method']")
     public WebElement saveMethodButton;
 
-    @FindBy(xpath = "(//a[@class='icon-btn editGatewayBtn'])[1]")
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[2]/div/div/form/div[2]/button")
+    public WebElement updateSaveMethod;
+
+    @FindBy(xpath = "/html/body/div[1]/div[2]/div/div[1]/div[2]/a")
     public WebElement goBackButton;
+
+    @FindBy(xpath = "//*[@id=\"activateModal\"]/div/div/form/div[2]/button[2]")
+    public WebElement methodActivateButton;
+
+    @FindBy(xpath = "//*[@class='icon-btn bg--danger ml-1 deactivateBtn ']")
+    public WebElement methodDeactivatedButton;
+
+    @FindBy(xpath = "//*[@id=\"deactivateModal\"]/div/div/form/div[2]/button[2]")
+    public WebElement methodDisabledButton;
+
 
     public void automaticGatewayVerifyTest(){
 
@@ -191,11 +188,10 @@ public class GatewayPage extends BasePage{
         softAssert.assertEquals(actualIcerik,expectedIcerik);
         log.info("Manual gateway searchbox'da arama yapıldı");
         waitAndClick(manualGatewayAddNewButton);
-        softAssert.assertAll();
+
 
         String path = GetAbsolutePath.getAbsolutePath(PropManager.getProperties(env, "imgPathLogo"));
         imageUploadButton.sendKeys(path);
-
         textOfBoxGatewayName.sendKeys("hello");
         textOfBoxCurrency.sendKeys("euro");
         textOfBoxRate.sendKeys("0.80");
@@ -203,37 +199,65 @@ public class GatewayPage extends BasePage{
         textOfBoxMaximumAmount.sendKeys("1000");
         textOfBoxFixedCharge.sendKeys("10");
         textOfBoxPercentCharge.sendKeys("10");
-        waitAndClick(textOfBoxMessage);
         textOfBoxMessage.sendKeys("yeni ödeme methodu eklendi");
-        JavascriptExecutor javascriptExecutor= (JavascriptExecutor) Driver.get(env);
-        javascriptExecutor.executeScript("arguments[0].scrollIntoViewIfNeeded(true);",saveMethodButton);
 
-        waitAndClick(saveMethodButton);
+        actions.sendKeys(Keys.PAGE_DOWN).sendKeys(Keys.PAGE_DOWN).perform();
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        saveMethodButton.submit();
         log.info("Clicked the Save Method Button");
 
-        /*softAssert.assertTrue(labelManualGateway.isDisplayed());
-        log.info("Returned to Manual Gateways page");
 
-        waitAndClick(firstElementActivationButton);
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        goBackButton.click();
+        waitAndClick(firstElementEditButton);
         waitAndClick(textOfBoxCurrency);
         textOfBoxCurrency.sendKeys(Keys.DELETE);
         textOfBoxCurrency.sendKeys("dolar");
-        actions.sendKeys(Keys.PAGE_DOWN).perform();
 
-        waitAndClick(saveMethodButton);
-        log.info("Saved Changed");*/
+        actions.sendKeys(Keys.PAGE_DOWN).sendKeys(Keys.PAGE_DOWN).perform();
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        updateSaveMethod.submit();
+        log.info("Saved Changed");
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        goBackButton.click();
+
+        waitAndClick(firstElementActivationButton);
+        waitAndClick(methodActivateButton);
+        waitAndClick(methodDeactivatedButton);
+        waitAndClick(methodDisabledButton);
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        String expectedStatus = "Disabled";
+        String actualStatus = rowFirstValueStatus.getText();
+        Assert.assertEquals(actualStatus,expectedStatus);
+
 
 
     }
-
-
-
-
-
-
-
-
-
 
 
 }
