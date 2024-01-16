@@ -397,6 +397,7 @@ public class UserDashboardPage extends BasePage {
         return new SupportTicketPage();
     }
 
+    @Step("User navigated to the New Support Ticket Page")
     public SupportTicketPage createNewRequestPage() {
         waitAndClick(dropDownSupportRequest);
         waitAndClick(createNewOption);
