@@ -1,6 +1,7 @@
 package com.easybusticket.pages;
 
 import com.easybusticket.utilities.Driver;
+import io.qameta.allure.Step;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -140,17 +141,18 @@ public class HomePage extends BasePage{
 
     public RegisterPage register = new RegisterPage();
 
-
+    @Step("I clicked Cookies")
     public void acceptCookies() {
         waitAndClick(cookies);
     }
 
+    @Step("I clicked SignUp link,I expect Sign Up your Account text")
     public RegisterPage clickSignUp() {
         waitAndClick(signUpLink);
         String expectedText = "Sign Up your Account";
         String actualText = register.textOfSignUpyourAccount.getText();
         softAssert.assertEquals(actualText,expectedText);
-
+        softAssert.assertAll();
         return new RegisterPage();
     }
 
