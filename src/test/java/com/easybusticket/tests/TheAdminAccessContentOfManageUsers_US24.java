@@ -17,7 +17,15 @@ public class TheAdminAccessContentOfManageUsers_US24 extends BaseTestAdmin{
         //The admin opens the manage users dropdown
         adminDashboardPage.manageUsersDropdown();
 
-        //AdminTicketPage adminTicketPage = new AdminDashboardPage().allUsers();
+        //details of all users under the manage users
+        adminDashboardPage.allUsers();
+
+        AdminTicketPage adminTicketPage = new AdminTicketPage();
+        adminTicketPage.detailsOfAllUser2();
+
+
+
+
 
 
 

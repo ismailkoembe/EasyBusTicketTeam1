@@ -555,6 +555,9 @@ public class AdminDashboardPage extends BasePage {
 
     }
 
+    @FindBy(xpath = "//*[text()='All Users']")
+    WebElement getAllUsersUnderTheManageUsers;
+
     /**
      * REYHAN  for ManageUsers dropdown menu
      */
@@ -566,7 +569,7 @@ public class AdminDashboardPage extends BasePage {
      * REYHAN  for AllUsers under the ManageUsers dropdown menu
      */
     public AdminTicketPage allUsers(){
-        waitAndClick(allUsersUnderTheManageUsers);
+       waitAndClick(getAllUsersUnderTheManageUsers);
         return new AdminTicketPage();
     }
 
