@@ -6,13 +6,10 @@ import com.easybusticket.pages.FaqPage;
 import com.easybusticket.pages.HomePage;
 //import com.easybusticket.pages.FaqPage;
 import lombok.extern.slf4j.Slf4j;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.util.Map;
-
 @Slf4j
-public class US06_TC01 extends BaseTest {
+public class FAQPageAndContent_US06 extends BaseTest {
 
     @Test
     public void accessFaqPageAndVerifyContent() {

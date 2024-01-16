@@ -7,7 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.Test;
 
 @Slf4j
-public class US20_TC01 extends BaseTest{
+public class PasswordCodeSent_US20 extends BaseTest{
 
 
     @Test
