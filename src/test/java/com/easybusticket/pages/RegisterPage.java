@@ -1,6 +1,7 @@
 package com.easybusticket.pages;
 
 import com.easybusticket.utilities.Driver;
+import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -41,13 +42,11 @@ public class RegisterPage extends BasePage {
     public WebElement labelAlert;
 
 
-
+    @Step("Visitor registers")
     public UserDashboardPage signUp(){
-
 
         String fakePassword="06Feriha&";
         waitAndClick(textBoxOfFirstName);
-
 
         actions.click(textBoxOfFirstName)
                 .sendKeys(faker.name().firstName())
@@ -74,13 +73,13 @@ public class RegisterPage extends BasePage {
 
         String expectedTitle="Easy Bus Ticket - Dashboard";
         String actualTitle=Driver.get(env).getTitle();
-        softAssert.assertEquals(expectedTitle,actualTitle);
+        softAssert.assertEquals(actualTitle,expectedTitle);
         softAssert.assertAll();
-
 
         return new UserDashboardPage();
     }
 
+    @Step("Visitors should not register")
     public UserDashboardPage withoutLastnameAndEmailSignUp(){
 
         String fakePassword="06Feriha&";
@@ -105,13 +104,14 @@ public class RegisterPage extends BasePage {
                 .perform();
 
         buttonOfAcceptingall.click();
-
         buttonOfSignUp.click();
 
         softAssert.assertFalse(labelDashboard.isDisplayed());//dashboard title'i goruntulenmemeli
+        softAssert.assertAll();
         return new UserDashboardPage();
-
     }
+
+    @Step("Visitors should not register")
     public UserDashboardPage withExistingUsernameAndEmailSignUp(){
 
         String username="celinpicard";
@@ -141,6 +141,7 @@ public class RegisterPage extends BasePage {
         buttonOfSignUp.click();
 
         softAssert.assertTrue(labelAlert.isDisplayed());//alert goruntulenmeli
+        softAssert.assertAll();
         return new UserDashboardPage();
     }
 
