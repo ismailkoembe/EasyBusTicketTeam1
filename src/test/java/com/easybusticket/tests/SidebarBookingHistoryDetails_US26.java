@@ -35,17 +35,17 @@ public class SidebarBookingHistoryDetails_US26 extends BaseTestAdmin {
          Driver.get(env).navigate().back();
 
         //The admin visualize content of "Booked Ticket"
-        adminTicketPage = new AdminTicketPage();
+       // adminTicketPage = new AdminTicketPage();
         adminTicketPage.bookedTest();
         Driver.get(env).navigate().back();
 
         //The admin visualize content of "Rejected Ticket"
-        adminTicketPage = new AdminTicketPage();
+        //adminTicketPage = new AdminTicketPage();
         adminTicketPage.rejectedTest();;
         Driver.get(env).navigate().back();
 
         //The admin visualize content of "All Ticket"
-        adminTicketPage = new AdminTicketPage();
+        //adminTicketPage = new AdminTicketPage();
         adminTicketPage.allTicketTest();
         Driver.get(env).navigate().back();
 
