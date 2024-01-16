@@ -47,13 +47,11 @@ public class AllPaymentPage extends BasePage {
     public void searchingTicketNoTicket() {
         //Searching mit date without Ticket Scenerio
         waitAndClick(dateSearchBox);
-
         //enter a time period in the past when no tickets were received.
         dateSearchBox.sendKeys("12/20/2023 - 01/03/2024" + Keys.ENTER);
-
         String actualResultText = dataTableNoTicket.getText();
         softAssert.assertEquals(actualResultText, "No Payments Found");
-
+        log.info("verified that the text on the table as expected.");
 
         softAssert.assertAll();
     }
@@ -62,9 +60,9 @@ public class AllPaymentPage extends BasePage {
         //Searching mit date without Ticket Scenerio with Ticket
         waitAndClick(dateSearchBox);
         dateSearchBox.sendKeys("" + Keys.ENTER);
-
         String actualResultText = getDataTableWithTicket.getText();
         softAssert.assertNotEquals(actualResultText, "No Payments Found");
+        log.info("verified that the text on the table as expected.");
         softAssert.assertAll();
     }
 
@@ -73,6 +71,7 @@ public class AllPaymentPage extends BasePage {
         String expectedTitle = "Easy Bus Ticket - All Payment";
         String actualTitle = Driver.get(env).getTitle();
         softAssert.assertEquals(actualTitle, expectedTitle);
+        log.info("title checked.");
         softAssert.assertAll();
 
     }
