@@ -363,6 +363,31 @@ public class AdminDashboardPage extends BasePage {
 
     }
 
+
+    //===================================================================//
+
+    //Manage Fleets Dropdown
+    @FindBy(xpath = "(//i[@class='menu-icon las la-bus'])[1]")
+    public WebElement manageFleets;
+
+    @FindBy(xpath = "//span[.='Seat Layouts']")
+    public WebElement seatLayout;
+
+    @FindBy(xpath = "//span[text()='Fleet Type']")
+    public WebElement fleetType;
+
+    @FindBy(xpath = "//span[text()='Vehicles']")
+    public WebElement vehicle;
+
+    public SeatLayoutsPage manageFleets(){
+
+        waitAndClick(manageFleets);
+        waitAndClick(seatLayout);
+
+     return new SeatLayoutsPage();
+    }
+//=====================================================================//
+
     public void clickToManualGateway() {
         softAssert.assertTrue(paymentGatewaysButton.isDisplayed());
         waitAndClick(paymentGatewaysButton);
@@ -373,6 +398,7 @@ public class AdminDashboardPage extends BasePage {
         softAssert.assertAll();
 
     }
+
 
 
     //Dropdown PaymentHistory option

@@ -1,6 +1,10 @@
 package com.easybusticket.pages;
 
 import com.easybusticket.utilities.Driver;
+import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -15,6 +19,7 @@ public class AboutPage extends BasePage{
     @FindBy (xpath = "(//h2[@class='title'])[1]")
     public WebElement labelAboutPage;
 
+    @Step("I clicked titleCheckTest")
     public void titleCheckTest(){
         String expectedAboutTitle = "Easy Bus Ticket - About";
         String actualAboutTitle = Driver.get(env).getTitle();
