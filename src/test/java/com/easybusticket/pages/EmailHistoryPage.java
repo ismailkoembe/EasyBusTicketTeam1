@@ -13,9 +13,6 @@ public class EmailHistoryPage extends BasePage{
 
 
 
-        //Action title of Email History
-        @FindBy(xpath = "//tbody/tr[1]/td[5]/a")
-        public WebElement coloumnEmailHistoryAction;
 
    }
 

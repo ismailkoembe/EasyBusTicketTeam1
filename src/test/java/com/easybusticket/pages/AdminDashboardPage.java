@@ -530,9 +530,9 @@ public class AdminDashboardPage extends BasePage {
         waitAndClick(buttonViewAllNotification);
         return new NotificationsPage();
     }
-
+//==========================Dashboard View All Button click===========================
     //Viewing total users card with view all button
-    @Step("I clicked AllTotalUsers")
+    @Step(" Clicked All Total Users")
     public ManageUsersPage clickViewAllTotalUsers() {
         waitAndClick(viewAllOfTotalUsersButton);
         String expectedUrl = "https://qa.easybusticket.com/admin/users";
@@ -545,7 +545,7 @@ public class AdminDashboardPage extends BasePage {
     }
 
     //Viewing Total Verified Users card with view all button
-    @Step("I clicked AllTotalVerifiedUsers")
+    @Step("Clicked All Total Verified Users")
     public ManageActiveUsersPage clickViewAllTotalVerifiedUsers() {
 
         waitAndClick(viewAllOfTotalVerifiedUsersButton);
@@ -559,7 +559,7 @@ public class AdminDashboardPage extends BasePage {
     }
 
     //Viewing Email Unverified Users card with view all button
-    @Step("I clicked AllEmailUnverifiedUsers")
+    @Step("Clicked All Email Unverified Users")
     public EmailUnverifiedUsersPage clickViewAllEmailUnverifiedUsers() {
         waitAndClick(viewAllTotalEmailUnverifiedUsersButton);
         String expectedUrl = "https://qa.easybusticket.com/admin/users/email-unverified";
@@ -573,7 +573,7 @@ public class AdminDashboardPage extends BasePage {
 
 
     //Viewing Total SMS Unverified Users card with view all button
-    @Step("I clicked AllTotalSMSUnverifiedUsers")
+    @Step("Clicked All Total SMS Unverified Users")
     public TotalSMSUnverifiedUsers clickViewAllTotalSMSUnverifiedUsers() {
         waitAndClick(viewAllOfTotalSmSUnverifiedUsersButton);
         String expectedUrl = "https://qa.easybusticket.com/admin/users/sms-unverified";
@@ -585,8 +585,8 @@ public class AdminDashboardPage extends BasePage {
 
     }
 
-    //Viewing total users card with view all button
-    @Step("I clicked SuccessfulPayments")
+    //Viewing Succesful Payment card with view all button
+    @Step("Clicked View All of Successful Payments")
     public SuccessfulPaymentPage clickViewAllSuccessfulPayment() {
         waitAndClick(viewAllOfSuccessfulPaymentButton);
         String expectedUrl = "https://qa.easybusticket.com/admin/payment/successful";
@@ -597,8 +597,8 @@ public class AdminDashboardPage extends BasePage {
         return new SuccessfulPaymentPage();
     }
 
-    //Viewing total users card with view all button
-    @Step("I clicked PendingPayment")
+    //Viewing Pending Payment card with view all button
+    @Step("Clicked View all of PendingPayment")
     public PendingPaymentPage clickViewAllPendingPayment() {
         waitAndClick(viewAllAllOfPendingPaymentButton);
         String expectedUrl = "https://qa.easybusticket.com/admin/payment/pending";
@@ -610,7 +610,7 @@ public class AdminDashboardPage extends BasePage {
     }
 
     //Viewing Rejected Payment card with view all button
-    @Step("I clicked RejectedPaymentPage")
+    @Step("Clicked View all of RejectedPaymentPage")
     public RejectedPaymentPage clickViewAllRejectedPayment() {
         waitAndClick(viewAllOfRejectedPaymentButton);
         String expectedUrl = "https://qa.easybusticket.com/admin/payment/rejected";
@@ -623,7 +623,7 @@ public class AdminDashboardPage extends BasePage {
 
 
     //Viewing AC Vehicles card with view all button
-    @Step("I clicked AcVehicles")
+    @Step("Clicked View all of AcVehicles")
     public AllVehiclesPages clickViewAllAcVehicles() {
         waitAndClick(viewAllOfAcVehicleButton);
         String expectedUrl = "https://qa.easybusticket.com/admin/manage/vehicles";
@@ -636,7 +636,7 @@ public class AdminDashboardPage extends BasePage {
     }
 
     //Viewing Non-AC Vehicles card with view all button
-    @Step("I clicked NonAcVehicles")
+    @Step("Clicked View all of NonAcVehicles")
     public AllVehiclesPages clickViewAllNonAcVehicles() {
         waitAndClick(viewAllOfNonAcVehicleButton);
         String expectedUrl = "https://qa.easybusticket.com/admin/manage/vehicles";
@@ -649,7 +649,7 @@ public class AdminDashboardPage extends BasePage {
     }
 
     //Viewing Total counter card with view all button
-    @Step("I clicked TotalCounter")
+    @Step("Clicked View all of TotalCounter")
     public AllCounterPage clickViewAllTotalCounter() {
         waitAndClick(viewAllOfTotalCounterButton);
         String expectedUrl = "https://qa.easybusticket.com/admin/manage/counter";
@@ -661,24 +661,12 @@ public class AdminDashboardPage extends BasePage {
 
     }
 
-    public static List<String> stringListeDonusturLatestBookingHistory(List<WebElement> elementlerListesi) {
-
-        List<String> stringlerListesi = new ArrayList<>();
-
-        for (WebElement each : elementlerListesi
-        ) {
-
-            stringlerListesi.add(each.getText());
-        }
-
-        return stringlerListesi;
-    }
 
     //Easy Bus Ticket radio Button
     @FindBy(xpath = "//button[@class='navbar__expand']")
     public WebElement buttonEasyBusTicketradioButton;
 
-    @Step("I clicked ActionButton")
+    @Step("Clicked View all of ActionButton")
     public BookingHistoryPage clickActionButton() {
 
 
@@ -773,7 +761,7 @@ public class AdminDashboardPage extends BasePage {
 
     }
 
-
+//===============================Report Button==============
     //Report button
     @FindBy(xpath = "//*[text()='Report ']")
     public WebElement reportButton;
@@ -827,18 +815,23 @@ public class AdminDashboardPage extends BasePage {
 
 
     //Report button should be clicked
-    @Step("I clicked Login History")
+    @Step("Clicked Report und display Login History and Email History")
     public void clickToReport() {
-        waitAndClick(reportButton);
         softAssert.assertTrue(reportButton.isDisplayed());
-        //softAssert.assertTrue(loginHistoryLink.isDisplayed());
-        //softAssert.assertTrue(emailHistoryLink.isDisplayed());
+        waitAndClick(reportButton);
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        softAssert.assertTrue(loginHistoryLink.isDisplayed());
+        softAssert.assertTrue(emailHistoryLink.isDisplayed());
         softAssert.assertAll();
 
     }
 
     //Login History should be clicked
-    @Step("I clicked Login History")
+    @Step("Clicked Login History")
     public UserLoginHistoryPage clickLoginHistory() {
 
 
@@ -847,13 +840,17 @@ public class AdminDashboardPage extends BasePage {
         String expectedUrl = "https://qa.easybusticket.com/admin/report/login/history";
         String actualUrl = Driver.get(env).getCurrentUrl();
         softAssert.assertEquals(actualUrl, expectedUrl);
-        softAssert.assertAll();
-        log.info("URL is verified");
+        log.info("URL  verified");
         softAssert.assertTrue(userTitle.isDisplayed());
+        log.info("User title  displayed");
         softAssert.assertTrue(loginAtTitle.isDisplayed());
+        log.info("login At Title  displayed");
         softAssert.assertTrue(coloumnIp.isDisplayed());
+        log.info("coloumnIp title  displayed");
         softAssert.assertTrue(coloumnLocation.isDisplayed());
+        log.info("Location title  verified");
         softAssert.assertTrue(coloumnBrowserOSTitle.isDisplayed());
+        log.info("BrowserOSTitle verified");
         softAssert.assertAll();
         waitAndClick(dashboardIconButton);
         return new UserLoginHistoryPage();
@@ -862,7 +859,7 @@ public class AdminDashboardPage extends BasePage {
     }
 
     //Email History should be clicked
-    @Step("I clicked Email History")
+    @Step("Clicked Email History")
     public EmailHistoryPage clickEmailHistory() {
         waitAndClick(reportButton);
         waitAndClick(emailHistoryLink);
@@ -875,11 +872,11 @@ public class AdminDashboardPage extends BasePage {
         softAssert.assertTrue(coloumnSubject.isDisplayed());
         softAssert.assertTrue(coloumnAction.isDisplayed());
         softAssert.assertAll();
-        //waitAndClick(dashboardIconButton);
+
         return new EmailHistoryPage();
     }
     //Action Button should be clicked und the page should open as "Email details" in another tab
-    @Step("I clicked ActionButton")
+    @Step("Clicked ActionButton and vieved Emails of details")
     public PaymentCompletedSuccessfully clickEmailHistoryActionButton() {
 
         waitAndClick(coloumnActionButton);
