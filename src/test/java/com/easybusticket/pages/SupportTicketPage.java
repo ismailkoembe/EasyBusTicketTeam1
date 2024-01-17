@@ -183,19 +183,26 @@ public class SupportTicketPage extends BasePage {
         waitAndClick(submitButton);
 
     }
+    @Step("User click to submit button")
     public void clickToSubmitButton(){
-        JavascriptExecutor javascriptExecutor= (JavascriptExecutor) Driver.get(env);
-        javascriptExecutor.executeScript("arguments[0].scrollIntoViewIfNeeded(true);",mySupportTicketButton);
+//        JavascriptExecutor javascriptExecutor= (JavascriptExecutor) Driver.get(env);
+//        javascriptExecutor.executeScript("arguments[0].scrollIntoViewIfNeeded(true);",mySupportTicketButton);
+        actions.sendKeys(Keys.PAGE_DOWN).sendKeys(Keys.PAGE_DOWN).perform();
         waitAndClick(submitButton);
     }
+    @Step("User click to My Request button")
     public void clickToMyRequestButton(){
-        JavascriptExecutor javascriptExecutor= (JavascriptExecutor) Driver.get(env);
-        javascriptExecutor.executeScript("arguments[0].scrollIntoViewIfNeeded(true);",mySupportTicketButton);
+//        JavascriptExecutor javascriptExecutor= (JavascriptExecutor) Driver.get(env);
+//        javascriptExecutor.executeScript("arguments[0].scrollIntoViewIfNeeded(true);",mySupportTicketButton);
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
         waitAndClick(mySupportTicketButton);
     }
+    @Step("User reply to support ticket")
     public void replyToRequest(){
-        textareaMessage.sendKeys("Tesekkurler");
+        textareaMessage.sendKeys("Thanks");
+        log.info("Message sent");
         actions.sendKeys(Keys.PAGE_DOWN).perform();
+        log.info("Page down");
         waitAndClick(replyButton);
     }
 
