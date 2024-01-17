@@ -15,11 +15,11 @@ public class AboutPage extends BasePage{
     public AboutPage(){
         PageFactory.initElements(Driver.get(env),this);
     }
-    //About page title
+
     @FindBy (xpath = "(//h2[@class='title'])[1]")
     public WebElement labelAboutPage;
 
-    @Step("I clicked titleCheckTest")
+    @Step("I clicked titleCheckTest for About Page")
     public void titleCheckTest(){
         String expectedAboutTitle = "Easy Bus Ticket - About";
         String actualAboutTitle = Driver.get(env).getTitle();

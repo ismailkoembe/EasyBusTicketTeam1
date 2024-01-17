@@ -3,6 +3,7 @@ package com.easybusticket.pages;
 import com.easybusticket.utilities.Driver;
 import com.easybusticket.utilities.GetAbsolutePath;
 import com.easybusticket.utilities.PropManager;
+import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -105,6 +106,7 @@ public class SupportTicketPage extends BasePage {
 
 
     /** Ayça Ovali */
+
     public void requestHistoryPageVerifyTest() {
 
         softAssert.assertTrue(columnSubject.isDisplayed());
@@ -130,14 +132,16 @@ public class SupportTicketPage extends BasePage {
         String expectedRequestHistoryPageTitle = "Easy Bus Ticket - Support Tickets";
         String actualRequestHistoryPageTitle = Driver.get(env).getTitle();
 
-        softAssert.assertEquals(actualRequestHistoryPageTitle,expectedRequestHistoryPageTitle);
+        softAssert.assertEquals(actualRequestHistoryPageTitle, expectedRequestHistoryPageTitle);
 
         log.info("returned history page");
         softAssert.assertAll();
 
     }
 
-    /** Ayça Ovali */
+    /**
+     * Ayça Ovali
+     */
     public void requestHistoryNewTicketTest() {
         waitAndClick(newTicketButton);
         softAssert.assertTrue(mySupportTicketButton.isDisplayed());
@@ -155,9 +159,9 @@ public class SupportTicketPage extends BasePage {
         softAssert.assertTrue(extraFileButton.isDisplayed());
         waitAndClick(submitButton);
 
-        String expectedRequestHistoryPageUrl="https://qa.easybusticket.com/ticket";
-        String actualRequestHistoryPageUrl=Driver.get(env).getCurrentUrl();
-        softAssert.assertEquals(actualRequestHistoryPageUrl,expectedRequestHistoryPageUrl);
+        String expectedRequestHistoryPageUrl = "https://qa.easybusticket.com/ticket";
+        String actualRequestHistoryPageUrl = Driver.get(env).getCurrentUrl();
+        softAssert.assertEquals(actualRequestHistoryPageUrl, expectedRequestHistoryPageUrl);
         softAssert.assertTrue(rowFirstRequest.isDisplayed());
         log.info("new ticket created");
         softAssert.assertAll();
@@ -165,6 +169,7 @@ public class SupportTicketPage extends BasePage {
 
     }
 
+    @Step("User fill the form and submit")
     public void fillTheRestOfForm() {
         textBoxOfSubject.sendKeys("Deneme");
         Select slc = new Select(dropDownPriority);
@@ -178,19 +183,26 @@ public class SupportTicketPage extends BasePage {
         waitAndClick(submitButton);
 
     }
+    @Step("User click to submit button")
     public void clickToSubmitButton(){
-        JavascriptExecutor javascriptExecutor= (JavascriptExecutor) Driver.get(env);
-        javascriptExecutor.executeScript("arguments[0].scrollIntoViewIfNeeded(true);",mySupportTicketButton);
+//        JavascriptExecutor javascriptExecutor= (JavascriptExecutor) Driver.get(env);
+//        javascriptExecutor.executeScript("arguments[0].scrollIntoViewIfNeeded(true);",mySupportTicketButton);
+        actions.sendKeys(Keys.PAGE_DOWN).sendKeys(Keys.PAGE_DOWN).perform();
         waitAndClick(submitButton);
     }
+    @Step("User click to My Request button")
     public void clickToMyRequestButton(){
-        JavascriptExecutor javascriptExecutor= (JavascriptExecutor) Driver.get(env);
-        javascriptExecutor.executeScript("arguments[0].scrollIntoViewIfNeeded(true);",mySupportTicketButton);
+//        JavascriptExecutor javascriptExecutor= (JavascriptExecutor) Driver.get(env);
+//        javascriptExecutor.executeScript("arguments[0].scrollIntoViewIfNeeded(true);",mySupportTicketButton);
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
         waitAndClick(mySupportTicketButton);
     }
+    @Step("User reply to support ticket")
     public void replyToRequest(){
-        textareaMessage.sendKeys("Tesekkurler");
+        textareaMessage.sendKeys("Thanks");
+        log.info("Message sent");
         actions.sendKeys(Keys.PAGE_DOWN).perform();
+        log.info("Page down");
         waitAndClick(replyButton);
     }
 
