@@ -162,8 +162,10 @@ public class HomePage extends BasePage{
         return new UserLoginPage();
     }
 
+    @Step("I clicked to about button and expect access the about page")
     public AboutPage clickToAboutButton(){
         acceptCookies();
+        Assert.assertTrue(aboutButton.isDisplayed());
         waitAndClick(aboutButton);
         return new AboutPage();
 

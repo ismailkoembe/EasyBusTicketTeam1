@@ -345,7 +345,9 @@ public class AdminDashboardPage extends BasePage {
 
     @FindBy(xpath = "//*[text()='Manual Gateways']")
     public WebElement manualGatewaysButton;
+    /** Ayca Ovali*/
 
+    @Step("Admin clicked to automatic gateway submenu option")
     public GatewayPage clickToAutomaticGateway() {
         softAssert.assertTrue(paymentGatewaysButton.isDisplayed());
         waitAndClick(paymentGatewaysButton);
@@ -354,6 +356,22 @@ public class AdminDashboardPage extends BasePage {
         String actualTitleAutoGateway = Driver.get(env).getTitle();
         softAssert.assertEquals(actualTitleAutoGateway, expectedTitleAutoGateway);
         softAssert.assertAll();
+        log.info("Automatic Gateway page loaded");
+        return new GatewayPage();
+
+    }
+
+    /** Ayca Ovali*/
+    @Step("Admin clicked to manual gateway submenu option")
+    public GatewayPage clickToManualGateway() {
+        softAssert.assertTrue(paymentGatewaysButton.isDisplayed());
+        waitAndClick(paymentGatewaysButton);
+        waitAndClick(manualGatewaysButton);
+        String expectedTitleManualGateway = "Easy Bus Ticket - Manual Gateways";
+        String actualTitleManualGateway = Driver.get(env).getTitle();
+        softAssert.assertEquals(actualTitleManualGateway, expectedTitleManualGateway);
+        softAssert.assertAll();
+        log.info("Manual Gateway page loaded");
         return new GatewayPage();
 
     }
@@ -382,18 +400,6 @@ public class AdminDashboardPage extends BasePage {
         return new SeatLayoutsPage();
     }
 //=====================================================================//
-
-    public void clickToManualGateway() {
-        softAssert.assertTrue(paymentGatewaysButton.isDisplayed());
-        waitAndClick(paymentGatewaysButton);
-        waitAndClick(manualGatewaysButton);
-        String expectedTitleManualGateway = "Easy Bus Ticket - Manual Gateways";
-        String actualTitleManualGateway = Driver.get(env).getTitle();
-        softAssert.assertEquals(actualTitleManualGateway, expectedTitleManualGateway);
-        softAssert.assertAll();
-
-    }
-
 
     //Dropdown PaymentHistory option
     @FindBy(xpath = "//*[@id=\"sidebar__menuWrapper\"]/ul/li[3]/a")
