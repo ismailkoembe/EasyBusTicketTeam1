@@ -223,8 +223,7 @@ public class AdminDashboardPage extends BasePage {
     }
 
 
-        return new AdminTicketPage();
-    }
+
 
     /**
      * REYHAN  for Admin Booked Ticket
