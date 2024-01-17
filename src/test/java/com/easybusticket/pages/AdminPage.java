@@ -10,7 +10,7 @@ public class AdminPage extends BasePage {
 
 
     public AdminPage() {
-        PageFactory.initElements(Driver.get("stage"), this);
+        PageFactory.initElements(Driver.get(env), this);
     }
 
     //Username box for Admin
@@ -35,11 +35,16 @@ public class AdminPage extends BasePage {
     @FindBy(xpath = "//*[@class='text-muted text--small']")
     public WebElement linkForgotPassword;
 
+    /**
+     * REYHAN for admin login
+     */
     public void AdminPage(String url) {
-        Driver.get("stage").get("AdminUrl");
+        Driver.get(env).get("AdminUrl");
     }
 
-
+    /**
+     * REYHAN for positief admin login
+     */
 
     public AdminDashboardPage adminLogin() {
 
@@ -52,6 +57,86 @@ public class AdminPage extends BasePage {
         String expectedText = "Admin Login to Easy Bus Ticket dashboard";
         String actualText = Driver.get(env).getTitle();
         softAssert.assertEquals(actualText, expectedText);
+
+        return new AdminDashboardPage();
+
+    }
+
+    /**
+     * REYHAN for negative admin login with uncorrect username
+     */
+
+    public AdminDashboardPage negativeAdminLoginWithUncorrectUsername() {
+
+        waitAndClick(adminUsernameBox);
+        adminUsernameBox.sendKeys("ad");
+        adminPasswordBox.sendKeys("123123123");
+        waitAndClick(buttonAdminLogin);
+
+
+        String expectedText = "Admin Login to Easy Bus Ticket dashboard";
+        String actualText = Driver.get(env).getTitle();
+        softAssert.assertNotEquals(actualText,expectedText);
+
+        return new AdminDashboardPage();
+
+    }
+
+    /**
+     * REYHAN for negative admin login with uncorrect password
+     */
+
+    public AdminDashboardPage negativeAdminLoginWithUncorrectPassword() {
+
+        waitAndClick(adminUsernameBox);
+        adminUsernameBox.sendKeys("admin07");
+        adminPasswordBox.sendKeys("123");
+        waitAndClick(buttonAdminLogin);
+
+
+        String expectedText = "Admin Login to Easy Bus Ticket dashboard";
+        String actualText = Driver.get(env).getTitle();
+        softAssert.assertNotEquals(actualText,expectedText);
+
+        return new AdminDashboardPage();
+
+    }
+
+    /**
+     * REYHAN for negative admin login with uncorrect password
+     */
+
+    public AdminDashboardPage negativeAdminLoginWithUncorrectCredintial() {
+
+        waitAndClick(adminUsernameBox);
+        adminUsernameBox.sendKeys("admin");
+        adminPasswordBox.sendKeys("123");
+        waitAndClick(buttonAdminLogin);
+
+
+        String expectedText = "Admin Login to Easy Bus Ticket dashboard";
+        String actualText = Driver.get(env).getTitle();
+        softAssert.assertNotEquals(actualText,expectedText);
+
+        return new AdminDashboardPage();
+
+    }
+
+    /**
+     * REYHAN for negative admin login with uncorrect password
+     */
+
+    public AdminDashboardPage negativeAdminLoginWithEmptyCredintial() {
+
+        waitAndClick(adminUsernameBox);
+        adminUsernameBox.sendKeys(" ");
+        adminPasswordBox.sendKeys(" ");
+        waitAndClick(buttonAdminLogin);
+
+
+        String expectedText = "Admin Login to Easy Bus Ticket dashboard";
+        String actualText = Driver.get(env).getTitle();
+        softAssert.assertNotEquals(actualText,expectedText);
 
         return new AdminDashboardPage();
 
