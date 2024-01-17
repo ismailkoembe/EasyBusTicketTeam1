@@ -700,6 +700,23 @@ public class AdminDashboardPage extends BasePage {
     @FindBy(xpath = "//*[text()='All Users']")
     WebElement getAllUsersUnderTheManageUsers;
 
+    @FindBy(xpath = "//*[text()='Active Users']")
+    WebElement getActiveUsersUnderTheManageUsers;
+
+    @FindBy(xpath = "//*[text()='Banned Users']")
+    WebElement getBannedUsersUnderTheManageUsers;
+
+    @FindBy(xpath = "//*[text()='Email Unverified']")
+    WebElement getEmailUnverifiedUnderTheManageUsers;
+
+    @FindBy(xpath = "//*[text()='SMS Unverified']")
+    WebElement getSmsUnverifiedUnderTheManageUsers;
+
+    @FindBy(xpath = "//*[text()='Email to All']")
+    WebElement getEmailToAllUnderTheManageUsers;
+
+
+
     /**
      * REYHAN  for ManageUsers dropdown menu
      */
@@ -707,19 +724,15 @@ public class AdminDashboardPage extends BasePage {
         waitAndClick(manageUsers);
     }
 
-    /**
-     * REYHAN  for AllUsers under the ManageUsers dropdown menu
-     */
-    public AdminTicketPage allUsers() {
-        waitAndClick(getAllUsersUnderTheManageUsers);
-        return new AdminTicketPage();
-    }
 
 
-
-
-
-
+//    /**
+//     * REYHAN  for Email to All under the ManageUsers dropdown menu
+//     */
+//    public AdminTicketPage emailToAll() {
+//        waitAndClick(getEmailToAllUnderTheManageUsers);
+//        return new AdminTicketPage();
+//    }
 
 
 

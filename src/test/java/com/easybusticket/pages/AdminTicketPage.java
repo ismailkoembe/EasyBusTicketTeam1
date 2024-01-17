@@ -83,22 +83,10 @@ public class AdminTicketPage extends BasePage {
 
     }
 
-    /**
-     * REYHAN  for Admin AllUsers under the manageUsers
-     */
 
-    public void detailsOfAllUsers1() {
-        AdminTicketPage adminTicketPage = new AdminDashboardPage().allUsers();
-        String expectedUrl = "https://qa.easybusticket.com/admin/users";
-        String actualUrl = Driver.get("stage").getCurrentUrl();
-        softAssert.assertEquals(actualUrl, expectedUrl);
-        allUsersDetailsColumn1.isDisplayed();
-        allUsersFirstActionButton.isDisplayed();
-        }
 
-    public ManageActiveUsersPage detailsOfAllUser2(){
-      waitAndClick(allUsersFirstActionButton);
-        return new ManageActiveUsersPage();
-    }
+
+
+
 
 }
