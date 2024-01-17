@@ -16,14 +16,7 @@ public class PendingPaymentPage extends BasePage {
     public PendingPaymentPage(){
         PageFactory.initElements(Driver.get("stage"),this);
     }
-    public void titlePendingPaymentPage(){
 
-        String expectedTitle = "Easy Bus Ticket - Pending Payment";
-        String actualTitle = Driver.get(env).getTitle();
-        softAssert.assertEquals(actualTitle,expectedTitle);
-        softAssert.assertAll();
-
-    }
 
     @FindBy(xpath = "/html/body/div[1]/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr/td")
     public WebElement tablePendingPayment;
@@ -59,11 +52,9 @@ public class PendingPaymentPage extends BasePage {
 
         //enter a time period in the past when no tickets were received.
         dateSearchBox.sendKeys("12/20/2023 - 01/03/2024" + Keys.ENTER);
-
         String actualResultText = dataTableNoTicket.getText();
         softAssert.assertEquals(actualResultText, "No Payments Found");
-
-
+        log.info("verified that the text on the table as expected.");
         softAssert.assertAll();
     }
 
@@ -74,8 +65,17 @@ public class PendingPaymentPage extends BasePage {
 
         String actualResultText = getDataTableWithTicket.getText();
         softAssert.assertNotEquals(actualResultText, "No Payments Found");
+        log.info("verified that the text on the table as expected.");
         softAssert.assertAll();
     }
 
+    public void titlePendingPaymentPage(){
 
+        String expectedTitle = "Easy Bus Ticket - Pending Payment";
+        String actualTitle = Driver.get(env).getTitle();
+        softAssert.assertEquals(actualTitle,expectedTitle);
+        log.info("title checked.");
+        softAssert.assertAll();
+
+    }
 }

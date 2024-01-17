@@ -81,6 +81,7 @@ public class ProfilePage extends BasePage {
 
         //softAssert.assertEquals(actualresult, expectedresult);
 
+
         return new ProfilePage();
     }
 

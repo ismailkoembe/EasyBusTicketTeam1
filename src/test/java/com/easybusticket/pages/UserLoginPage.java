@@ -2,6 +2,7 @@ package com.easybusticket.pages;
 
 import com.easybusticket.utilities.Driver;
 import com.easybusticket.utilities.PropManager;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -29,6 +30,7 @@ public class UserLoginPage extends BasePage {
     @FindBy(xpath = "//a[text()='Sign Up']")
     public WebElement button_SignUp;
 
+    @Step("User logged in and navigated to the Dashboard")
     public UserDashboardPage login() {
 
         username_login.sendKeys(PropManager.getProperties(env, "username"));
@@ -44,6 +46,7 @@ public class UserLoginPage extends BasePage {
         return new UserDashboardPage();
     }
 
+    @Step("User logged in and navigated to the Dashboard")
     public UserDashboardPage login(String username, String password) {
 
         username_login.sendKeys(username);
@@ -59,6 +62,7 @@ public class UserLoginPage extends BasePage {
         return new UserDashboardPage();
     }
 
+    @Step("User logged in and navigated to the Dashboard")
     public UserDashboardPage loginWithRememberMe() {
         username_login.sendKeys(PropManager.getProperties(env, "username"));
         password_login.sendKeys(PropManager.getProperties(env, "password"));
@@ -68,6 +72,7 @@ public class UserLoginPage extends BasePage {
         return new UserDashboardPage();
     }
 
+    @Step("User navigated to the Password Reset Page")
     public UserPasswordResetPage clickToForgotPassword() {
         waitAndClick(link_forgotPassword);
 
@@ -79,6 +84,7 @@ public class UserLoginPage extends BasePage {
         return new UserPasswordResetPage();
     }
 
+    @Step("User navigated to the Sign Up Page")
     public RegisterPage clickToSignUp() {
         waitAndClick(button_SignUp);
         return new RegisterPage();
