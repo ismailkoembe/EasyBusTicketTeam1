@@ -287,15 +287,15 @@ public class UserDashboardPage extends BasePage {
     public WebElement bodyFirstTitle;
 
     //'Offered Facilities' Title
-    @FindBy(xpath = "//div[@class='col-lg-6 col-md-10'][2]")
+    @FindBy(xpath = "(//h2[@class='title'])[2]")
     public WebElement offeredFacilitiesTitle;
 
     //'Our Testimonials' Title
-    @FindBy(xpath = "//div[@class='col-lg-6 col-md-10'][3]")
+    @FindBy(xpath = "(//h2[@class='title'])[3]")
     public WebElement ourTestimonialsTitle;
 
     //'Recent Blog Post' Title
-    @FindBy(xpath = "//div[@class='col-lg-6 col-md-10'][4]")
+    @FindBy(xpath = "(//h2[@class='title'])[4]")
     public WebElement recentBlogPostTitle;
 
     //'Looking For a Bus' Title
@@ -331,19 +331,19 @@ public class UserDashboardPage extends BasePage {
     public WebElement customerComments;
 
     //Footer Twitter Icon Link
-    @FindBy(xpath = "(//a[@href='https://www.twitter.com'])[2]")
+    @FindBy(xpath = "(//*[local-name()='svg'])[1]")
     public WebElement getTwitterIconFooter;
 
     //Footer Facebook Icon Link
-    @FindBy(xpath = "(//a[@href='https://www.facebook.com'])[2]")
+    @FindBy(xpath = "(//*[local-name()='svg'])[2]")
     public WebElement getFacebookIconFooter;
 
     //Footer Youtube Icon Link
-    @FindBy(xpath = "//a[@href='https://www.youtube.com']")
+    @FindBy(xpath = "(//*[local-name()='svg'])[4]")
     public WebElement getYoutubeIconFooter;
 
     //Footer Instagram Icon Link
-    @FindBy(xpath = "/html/body/section[6]/div/div/div/div[1]/div/ul/li[4]/a")
+    @FindBy(xpath = "//a[@href='https://www.instagram.com']")
     public WebElement getInstagramIconFooter;
 
     //Footer About Title Link
