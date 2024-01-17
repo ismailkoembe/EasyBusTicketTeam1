@@ -20,7 +20,7 @@ public class AboutPage extends BasePage{
     @FindBy (xpath = "(//h2[@class='title'])[1]")
     public WebElement labelAboutPage;
 
-    @Step("I clicked titleCheckTest to compare page title")
+    @Step("Clicked titleCheckTest to compare page title")
     public void titleCheckTest(){
         String expectedAboutTitle = "Easy Bus Ticket - About";
         String actualAboutTitle = Driver.get(env).getTitle();
