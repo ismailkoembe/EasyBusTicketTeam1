@@ -23,6 +23,6 @@ public class AdminAutoPaymentGateway_US27 extends BaseTestAdmin{
         gatewayPage.automaticGatewaySearchBoxTest();
         log.info("Searched");
         log.info("Completed until the edit - delete steps. Edit - Delete buttons are not available on the page");
-
+        adminDashboardPage.logout();
     }
 }
