@@ -143,17 +143,17 @@ public class AdminDashboard_US22 extends BaseTestAdmin{
          softAssert.assertAll();
 
          //Login By Browser title should be display
-        softAssert.assertTrue(adminDashboardPage.labelLast30daysPaymentHistory.isDisplayed());
+        softAssert.assertTrue(adminDashboardPage.labelLoginByBrowser.isDisplayed());
         log.info("Login By Browser title displayed");
         softAssert.assertAll();
 
         //Login By OS title should be display
-        softAssert.assertTrue(adminDashboardPage.labelLast30daysPaymentHistory.isDisplayed());
+        softAssert.assertTrue(adminDashboardPage.labelLoginByOs.isDisplayed());
         log.info("Login By OS title displayed");
         softAssert.assertAll();
 
         //Login By Country title should be display
-        softAssert.assertTrue(adminDashboardPage.labelLast30daysPaymentHistory.isDisplayed());
+        softAssert.assertTrue(adminDashboardPage.labelLoginByCountry.isDisplayed());
         log.info("Login By Country title  displayed");
         softAssert.assertAll();
 
