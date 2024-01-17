@@ -45,17 +45,6 @@ public class FleetTypePage extends BasePage{
     @FindBy(xpath = "//i[@class='la la-pen']")
     public WebElement penIcon;
 
-    @FindBy(xpath = "//span[.='Wifi']")
-    public WebElement FleetTypeTextBoxFacilitiesWifi;
-
-    @FindBy(xpath = "//span[.='Water']")
-    public WebElement FleetTypeTextBoxFacilitiesWater;
-
-    @FindBy(xpath = "//span[.='Tea &amp; Coffee']")
-    public WebElement FleetTypeTextBoxFacilitiesTeaCoffee;
-
-    @FindBy(xpath = "//span[.='Pillow']")
-    public WebElement FleetTypeTextBoxFacilitiesPillow;
 
     @FindBy(xpath = "//option[.='1 x 2']")
     public WebElement firstDropdownOption;
