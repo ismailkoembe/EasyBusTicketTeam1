@@ -36,7 +36,7 @@ public class AdminTicketPage extends BasePage {
      * REYHAN  for Admin Pending Ticket
      */
     public void pendingTest() {
-        AdminTicketPage adminTicketPage = new AdminDashboardPage().pendingTickets();
+        //AdminTicketPage adminTicketPage = new AdminDashboardPage().pendingTickets();
         String expectedUrl = "https://qa.easybusticket.com/admin/ticket/pending";
         String actualUrl = Driver.get(env).getCurrentUrl();
         softAssert.assertEquals(actualUrl, expectedUrl);

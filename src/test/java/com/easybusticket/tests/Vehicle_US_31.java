@@ -8,7 +8,6 @@ import org.testng.annotations.Test;
 public class Vehicle_US_31 extends BaseTestAdmin {
 
 
-
     @Test
     public void ManageFleets() {
         AdminDashboardPage adminDashboardPage = new AdminPage().adminLogin();
@@ -25,4 +24,12 @@ public class Vehicle_US_31 extends BaseTestAdmin {
 
     }
 
+    @Test
+    public void AddNewVehicle() {
+
+        ManageFleets();
+        VehiclePage vehiclePage = new VehiclePage();
+        //vehiclePage.addNewVehicles();
+
+    }
 }

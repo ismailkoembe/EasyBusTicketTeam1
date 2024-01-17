@@ -36,9 +36,9 @@ public class ManageUsersPage extends BasePage{
     private WebElement searchButtonLink;
 
     public  AllUsersPage clikcToManageUsers() {
-        waitAndClick(manageUsersDropdownDashboard);
+       // waitAndClick(manageUsersDropdownDashboard);
 
-        waitAndClick(allUsersOption);
+        //waitAndClick(allUsersOption);
        
         return new AllUsersPage();
 
