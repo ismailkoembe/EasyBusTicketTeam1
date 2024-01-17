@@ -1,6 +1,7 @@
 package com.easybusticket.pages;
 
 import com.easybusticket.utilities.Driver;
+import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -24,7 +25,7 @@ public class NotificationsPage extends BasePage{
     @FindBy(xpath = "(//button[@type='button'])[5]")
     public WebElement buttonNotification;
 
-
+    @Step("I clicked the button Mark All as Read in admin")
     public void clickButtonMarkAllAsRead(){
         waitAndClick(buttonMarkAllAsRead);
         /*try {

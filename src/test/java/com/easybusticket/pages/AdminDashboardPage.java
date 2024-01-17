@@ -1,13 +1,10 @@
 package com.easybusticket.pages;
 
 import com.easybusticket.utilities.Driver;
+import com.github.javafaker.Faker;
+import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
-
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.FluentWait;
@@ -15,18 +12,23 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.Wait;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Function;
 
 
 @Slf4j
 public class AdminDashboardPage extends BasePage {
+
     public AdminDashboardPage() {
         PageFactory.initElements(Driver.get(env), this);
 
+
     }
 
+
     // Represents the title label on the Dashboard page
-    @FindBy(className = "page-title")
+    @FindBy(xpath = "//h6[@class='page-title']")
     public WebElement labelDashboard;
 
     // Represents the label of the 'Total Users' card
@@ -51,7 +53,7 @@ public class AdminDashboardPage extends BasePage {
 
     // Represents the label of the 'Pending Payment' card
 
-    @FindBy(xpath = "(//*[text()='Pending Payment'])[1]")
+    @FindBy(xpath = "(//*[text()='Pending Payment'])[2]")
 
     public WebElement labelpendingPayment;
 
@@ -75,7 +77,6 @@ public class AdminDashboardPage extends BasePage {
     // Represents the ' View All' button of the 'Total Users' card
 
 
-
     @FindBy(xpath = "(//a[@class='btn btn-sm text--small bg--white text--black box--shadow3 mt-3'])[1]")
 
     public WebElement viewAllOfTotalUsersButton;
@@ -97,7 +98,7 @@ public class AdminDashboardPage extends BasePage {
     public WebElement viewAllOfSuccessfulPaymentButton;
 
     // Represents the ' View All' button of the 'Pending Payment' card
-    @FindBy(xpath = "(//*[text()='Pending Payment'])[6]")
+    @FindBy(xpath = "(//*[text()='View All'])[6]")
     public WebElement viewAllAllOfPendingPaymentButton;
 
 
@@ -122,12 +123,8 @@ public class AdminDashboardPage extends BasePage {
     public WebElement labelLatestBookingHistory;
 
     //Table of the Last Booking History
-    @FindBy(xpath = "//table/tbody")
+    @FindBy(xpath = "(//div[@class='card-body'])[1]")
     public WebElement tableLatestBookingHistory;
-
-    //Row of the Last Booking History table
-    @FindBy(xpath = "//table/thead/tr")
-    public WebElement rowLatestBookingHistory;
 
     //Coloumn of User
     @FindBy(xpath = "(//table/thead/tr/th)[1] ")
@@ -186,6 +183,13 @@ public class AdminDashboardPage extends BasePage {
     @FindBy(xpath = "//*[text()='All Ticket']")
     public WebElement allTicketOnderTheSidebar;
 
+    @FindBy(xpath = "(//*[@class='menu-title'])[2]")
+    public WebElement manageUsers;
+
+
+    @FindBy(xpath = "(//*[@class='menu-title'])[2]")
+    public WebElement allUsersUnderTheManageUsers;
+
 
     /**
      * REYHAN  for Admin booking History
@@ -219,25 +223,7 @@ public class AdminDashboardPage extends BasePage {
     }
 
 
-    /**
-     * REYHAN  for Admin Pending Ticket
-     */
-    public AdminTicketPage pendingTickets() {
 
-        Wait<WebDriver> wait = new FluentWait<>(Driver.get("stage"))
-                .withTimeout(Duration.ofSeconds(30L))
-                .pollingEvery(Duration.ofSeconds(5L))
-                .ignoring(NoSuchElementException.class);
-        WebElement pendingTicket = wait.until(new Function<WebDriver, WebElement>() {
-            public WebElement apply(WebDriver driver) {
-                WebElement pendingTicket = Driver.get("stage").findElement(By.xpath("//*[text()='Pending Ticket']"));
-                pendingTicket.click();
-                return pendingTicket;
-            }
-
-        });
-        return new AdminTicketPage();
-    }
 
     /**
      * REYHAN  for Admin Booked Ticket
@@ -265,19 +251,9 @@ public class AdminDashboardPage extends BasePage {
      */
 
     public AdminTicketPage rejectedTickets() {
+        waitAndClick(rejectedTicketOnderTheSidebar);
 
-        Wait<WebDriver> wait = new FluentWait<>(Driver.get("stage"))
-                .withTimeout(Duration.ofSeconds(30L))
-                .pollingEvery(Duration.ofSeconds(5L))
-                .ignoring(NoSuchElementException.class);
-        WebElement rejectedTicket = wait.until(new Function<WebDriver, WebElement>() {
-            public WebElement apply(WebDriver driver) {
-                WebElement rejectedTicket = Driver.get("stage").findElement(By.xpath("//*[text()='Rejected Ticket']"));
-                rejectedTicket.click();
-                return rejectedTicket;
-            }
 
-        });
         return new AdminTicketPage();
     }
 
@@ -310,7 +286,7 @@ public class AdminDashboardPage extends BasePage {
     @FindBy(xpath = "//i[@class='fullscreen-close las la-compress-arrows-alt']")
     public WebElement buttonCloseFullScreenPage;
 
-
+    @Step("Maked the dashboard screen full screen and brings it back to normal")
     public void clickButtonFullScreenPage() {
         waitAndClick(buttonFullScreenPage);
         waitAndClick(buttonCloseFullScreenPage);
@@ -327,12 +303,20 @@ public class AdminDashboardPage extends BasePage {
     //search alt cubugu
     @FindBy(xpath = "//*[@id=\"navbar_search_result_area\"]/ul/li/a")
     public WebElement linkSearchSub;
-
+    @Step("I clicked button search")
     public void clickButtonSearch() {
         waitAndClick(buttonSearch);
         waitAndClick(linkSearch);
     }
-
+    @FindBy(xpath = "//*[@class='page-title']")
+    public WebElement labelContact;
+    @FindBy(xpath = "//*[@class='page-title']")
+    public WebElement labelBlog;
+    @FindBy(xpath = "//*[@class='page-title']")
+    public WebElement labelFaq;
+    @FindBy(xpath = "//*[@class='page-title']")
+    public WebElement labelAboutUs;
+    @Step("Page searched with data provider")
     public Object searchPage(String pages) {
         linkSearch.sendKeys(pages);
         waitAndClick(linkSearchSub);
@@ -365,7 +349,9 @@ public class AdminDashboardPage extends BasePage {
 
     @FindBy(xpath = "//*[text()='Manual Gateways']")
     public WebElement manualGatewaysButton;
+    /** Ayca Ovali*/
 
+    @Step("Admin clicked to automatic gateway submenu option")
     public GatewayPage clickToAutomaticGateway() {
         softAssert.assertTrue(paymentGatewaysButton.isDisplayed());
         waitAndClick(paymentGatewaysButton);
@@ -374,10 +360,25 @@ public class AdminDashboardPage extends BasePage {
         String actualTitleAutoGateway = Driver.get(env).getTitle();
         softAssert.assertEquals(actualTitleAutoGateway, expectedTitleAutoGateway);
         softAssert.assertAll();
+        log.info("Automatic Gateway page loaded");
         return new GatewayPage();
 
     }
 
+    /** Ayca Ovali*/
+    @Step("Admin clicked to manual gateway submenu option")
+    public GatewayPage clickToManualGateway() {
+        softAssert.assertTrue(paymentGatewaysButton.isDisplayed());
+        waitAndClick(paymentGatewaysButton);
+        waitAndClick(manualGatewaysButton);
+        String expectedTitleManualGateway = "Easy Bus Ticket - Manual Gateways";
+        String actualTitleManualGateway = Driver.get(env).getTitle();
+        softAssert.assertEquals(actualTitleManualGateway, expectedTitleManualGateway);
+        softAssert.assertAll();
+        log.info("Manual Gateway page loaded");
+        return new GatewayPage();
+
+    }
 
     //===================================================================//
 
@@ -394,26 +395,20 @@ public class AdminDashboardPage extends BasePage {
     @FindBy(xpath = "//span[text()='Vehicles']")
     public WebElement vehicle;
 
-    public SeatLayoutsPage manageFleets(){
+    public SeatLayoutsPage manageFleets() {
 
         waitAndClick(manageFleets);
         waitAndClick(seatLayout);
 
-     return new SeatLayoutsPage();
+        return new SeatLayoutsPage();
     }
-//=====================================================================//
+    public FleetTypePage manageFleets1(){
 
-    public void clickToManualGateway() {
-        softAssert.assertTrue(paymentGatewaysButton.isDisplayed());
-        waitAndClick(paymentGatewaysButton);
-        waitAndClick(manualGatewaysButton);
-        String expectedTitleManualGateway = "Easy Bus Ticket - Manual Gateways";
-        String actualTitleManualGateway = Driver.get(env).getTitle();
-        softAssert.assertEquals(actualTitleManualGateway, expectedTitleManualGateway);
-        softAssert.assertAll();
+        waitAndClick(manageFleets);
+        waitAndClick(fleetType);
 
+        return new FleetTypePage();
     }
-
 
 
     //Dropdown PaymentHistory option
@@ -529,7 +524,7 @@ public class AdminDashboardPage extends BasePage {
     //header daki notification butona basinca cikan notification yazisi
     @FindBy(xpath = "//span[text()='Notification']")
     public WebElement labelNotification;
-
+    @Step("I clicked button notification,I expect title Notification")
     public void clickButtonNotification() {
         waitAndClick(buttonNotification);
         softAssert.assertTrue(labelNotification.isDisplayed());
@@ -539,13 +534,14 @@ public class AdminDashboardPage extends BasePage {
     //view all notification butonu
     @FindBy(xpath = "//*[@class='view-all-message']")
     public WebElement buttonViewAllNotification;
-
+    @Step("I clicked button View All Notification,navigate to page Notification")
     public NotificationsPage clickViewAllNotification() {
         waitAndClick(buttonViewAllNotification);
         return new NotificationsPage();
     }
-
+//==========================Dashboard View All Button click===========================
     //Viewing total users card with view all button
+    @Step(" Clicked All Total Users")
     public ManageUsersPage clickViewAllTotalUsers() {
         waitAndClick(viewAllOfTotalUsersButton);
         String expectedUrl = "https://qa.easybusticket.com/admin/users";
@@ -556,9 +552,11 @@ public class AdminDashboardPage extends BasePage {
         return new ManageUsersPage();
 
     }
-    //Viewing Total Verified Users card with view all button
 
+    //Viewing Total Verified Users card with view all button
+    @Step("Clicked All Total Verified Users")
     public ManageActiveUsersPage clickViewAllTotalVerifiedUsers() {
+
         waitAndClick(viewAllOfTotalVerifiedUsersButton);
         String expectedUrl = "https://qa.easybusticket.com/admin/users/active";
         String actualUrl = Driver.get(env).getCurrentUrl();
@@ -567,9 +565,438 @@ public class AdminDashboardPage extends BasePage {
         waitAndClick(dashboardIconButton);
         return new ManageActiveUsersPage();
 
+    }
+
+    //Viewing Email Unverified Users card with view all button
+    @Step("Clicked All Email Unverified Users")
+    public EmailUnverifiedUsersPage clickViewAllEmailUnverifiedUsers() {
+        waitAndClick(viewAllTotalEmailUnverifiedUsersButton);
+        String expectedUrl = "https://qa.easybusticket.com/admin/users/email-unverified";
+        String actualUrl = Driver.get(env).getCurrentUrl();
+        softAssert.assertEquals(actualUrl, expectedUrl);
+        softAssert.assertAll();
+        waitAndClick(dashboardIconButton);
+        return new EmailUnverifiedUsersPage();
 
     }
+
+
+    //Viewing Total SMS Unverified Users card with view all button
+    @Step("Clicked All Total SMS Unverified Users")
+    public TotalSMSUnverifiedUsers clickViewAllTotalSMSUnverifiedUsers() {
+        waitAndClick(viewAllOfTotalSmSUnverifiedUsersButton);
+        String expectedUrl = "https://qa.easybusticket.com/admin/users/sms-unverified";
+        String actualUrl = Driver.get(env).getCurrentUrl();
+        softAssert.assertEquals(actualUrl, expectedUrl);
+        softAssert.assertAll();
+        waitAndClick(dashboardIconButton);
+        return new TotalSMSUnverifiedUsers();
+
+    }
+
+    //Viewing Succesful Payment card with view all button
+    @Step("Clicked View All of Successful Payments")
+    public SuccessfulPaymentPage clickViewAllSuccessfulPayment() {
+        waitAndClick(viewAllOfSuccessfulPaymentButton);
+        String expectedUrl = "https://qa.easybusticket.com/admin/payment/successful";
+        String actualUrl = Driver.get(env).getCurrentUrl();
+        softAssert.assertEquals(actualUrl, expectedUrl);
+        softAssert.assertAll();
+        waitAndClick(dashboardIconButton);
+        return new SuccessfulPaymentPage();
+    }
+
+    //Viewing Pending Payment card with view all button
+    @Step("Clicked View all of PendingPayment")
+    public PendingPaymentPage clickViewAllPendingPayment() {
+        waitAndClick(viewAllAllOfPendingPaymentButton);
+        String expectedUrl = "https://qa.easybusticket.com/admin/payment/pending";
+        String actualUrl = Driver.get(env).getCurrentUrl();
+        softAssert.assertEquals(actualUrl, expectedUrl);
+        softAssert.assertAll();
+        waitAndClick(dashboardIconButton);
+        return new PendingPaymentPage();
+    }
+
+    //Viewing Rejected Payment card with view all button
+    @Step("Clicked View all of RejectedPaymentPage")
+    public RejectedPaymentPage clickViewAllRejectedPayment() {
+        waitAndClick(viewAllOfRejectedPaymentButton);
+        String expectedUrl = "https://qa.easybusticket.com/admin/payment/rejected";
+        String actualUrl = Driver.get(env).getCurrentUrl();
+        softAssert.assertEquals(actualUrl, expectedUrl);
+        softAssert.assertAll();
+        waitAndClick(dashboardIconButton);
+        return new RejectedPaymentPage();
+    }
+
+
+    //Viewing AC Vehicles card with view all button
+    @Step("Clicked View all of AcVehicles")
+    public AllVehiclesPages clickViewAllAcVehicles() {
+        waitAndClick(viewAllOfAcVehicleButton);
+        String expectedUrl = "https://qa.easybusticket.com/admin/manage/vehicles";
+        String actualUrl = Driver.get(env).getCurrentUrl();
+        softAssert.assertEquals(actualUrl, expectedUrl);
+        softAssert.assertAll();
+        waitAndClick(dashboardIconButton);
+        return new AllVehiclesPages();
+
+    }
+
+    //Viewing Non-AC Vehicles card with view all button
+    @Step("Clicked View all of NonAcVehicles")
+    public AllVehiclesPages clickViewAllNonAcVehicles() {
+        waitAndClick(viewAllOfNonAcVehicleButton);
+        String expectedUrl = "https://qa.easybusticket.com/admin/manage/vehicles";
+        String actualUrl = Driver.get(env).getCurrentUrl();
+        softAssert.assertEquals(actualUrl, expectedUrl);
+        softAssert.assertAll();
+        waitAndClick(dashboardIconButton);
+        return new AllVehiclesPages();
+
+    }
+
+    //Viewing Total counter card with view all button
+    @Step("Clicked View all of TotalCounter")
+    public AllCounterPage clickViewAllTotalCounter() {
+        waitAndClick(viewAllOfTotalCounterButton);
+        String expectedUrl = "https://qa.easybusticket.com/admin/manage/counter";
+        String actualUrl = Driver.get(env).getCurrentUrl();
+        softAssert.assertEquals(actualUrl, expectedUrl);
+        softAssert.assertAll();
+        waitAndClick(dashboardIconButton);
+        return new AllCounterPage();
+
+    }
+
+
+    //Easy Bus Ticket radio Button
+    @FindBy(xpath = "//button[@class='navbar__expand']")
+    public WebElement buttonEasyBusTicketradioButton;
+
+    @Step("Clicked View all of ActionButton")
+    public BookingHistoryPage clickActionButton() {
+
+
+        waitAndClick(buttonActiondetails);
+        String expectedUrl = "https://qa.easybusticket.com/admin/ticket/booked";
+        String actualUrl = Driver.get(env).getCurrentUrl();
+        softAssert.assertEquals(actualUrl, expectedUrl);
+        softAssert.assertAll();
+        waitAndClick(dashboardIconButton);
+        return new BookingHistoryPage();
+    }
+
+
+    @FindBy(xpath = "//*[text()='All Users']")
+    WebElement getAllUsersUnderTheManageUsers;
+
+    @FindBy(xpath = "//*[text()='Active Users']")
+    WebElement getActiveUsersUnderTheManageUsers;
+
+    @FindBy(xpath = "//*[text()='Banned Users']")
+    WebElement getBannedUsersUnderTheManageUsers;
+
+    @FindBy(xpath = "//*[text()='Email Unverified']")
+    WebElement getEmailUnverifiedUnderTheManageUsers;
+
+    @FindBy(xpath = "//*[text()='SMS Unverified']")
+    WebElement getSmsUnverifiedUnderTheManageUsers;
+
+    @FindBy(xpath = "//*[text()='Email to All']")
+    WebElement getEmailToAllUnderTheManageUsers;
+
+
+    /**
+     * REYHAN  for ManageUsers dropdown menu
+     */
+    public void manageUsersDropdown() {
+        waitAndClick(manageUsers);
+    }
+
+
+    //TransportManager Counter section
+    @FindBy(xpath = "(//span[@class='menu-title'])[30]")
+    public WebElement counterTitle;
+
+    //All Counter Title
+    @FindBy(xpath = "//div[@class='col-lg-6 col-sm-6']")
+    public WebElement allCounterTitle;
+
+    //Name title of counter page
+    @FindBy(xpath = "//th[text()='Name']")
+    public WebElement nameTitle;
+
+    //Mobile Number title of counter page
+    @FindBy(xpath = "//th[text()='Mobile Number']")
+    public WebElement mobileNumberTitle;
+
+    //City title of counter page
+    @FindBy(xpath = "//th[text()='City']")
+    public WebElement cityTitle;
+
+    //Location title of counter page
+    @FindBy(xpath = "//th[text()='Location']")
+    public WebElement locationTitle;
+
+    //Status title of counter page
+    @FindBy(xpath = "//th[text()='Status']")
+    public WebElement statusTitle;
+
+    //Action title of counter page
+    @FindBy(xpath = "//th[text()='Action']")
+    public WebElement actionTitle;
+
+    //Add New ButtonLink
+    @FindBy(xpath = "//a[text()='Add New']")
+    public WebElement addNewButtonLink;
+
+    @FindBy(xpath = "(//input[@class='form-control'])[1]")
+    public WebElement namesection;
+
+    //Submit button
+    @FindBy(xpath = "(//button[@type='submit'])[2]")
+    public WebElement submitButton;
+
+    //New counter information is added.
+    public ManageUsersPage addedCounter() {
+        addNewButtonLink.click();
+        Faker faker = new Faker();
+        actions.click(namesection)
+                .sendKeys(faker.country().capital())
+                .sendKeys(Keys.TAB)
+                .sendKeys(faker.address().cityName())
+                .sendKeys(Keys.TAB)
+                .sendKeys(faker.address().cityName())
+                .sendKeys(Keys.TAB)
+                .sendKeys(faker.phoneNumber().subscriberNumber())
+                .sendKeys(Keys.TAB)
+                .perform();
+        submitButton.click();
+        return new ManageUsersPage();
+
+    }
+
+
+//===============================Report Button==============
+    //Report button
+    @FindBy(xpath = "//*[text()='Report ']")
+    public WebElement reportButton;
+    //Login History link
+    @FindBy(xpath = "//*[text()='Login History']")
+    public WebElement loginHistoryLink;
+
+    //Email History link
+    @FindBy(xpath = "//*[text()='Email History']")
+    public WebElement emailHistoryLink;
+
+    // User title of User Login History
+    @FindBy(xpath = "//thead/tr/th[1]")
+    public WebElement userTitle;
+
+    // Login at title of User Login History
+    @FindBy(xpath = "//thead/tr/th[2]")
+    public WebElement loginAtTitle;
+
+    // IP title of User Login History
+    @FindBy(xpath = "//thead/tr/th[3]")
+    public WebElement coloumnIp;
+
+    //Location title of User Login History
+    @FindBy(xpath = "//thead/tr/th[3]")
+    public WebElement coloumnLocation;
+
+    //Browser | OS title of User Login History
+    @FindBy(xpath = "//thead/tr/th[3]")
+    public WebElement coloumnBrowserOSTitle;
+
+    //Send title of Email History
+    @FindBy(xpath = "//thead/tr/th[2]")
+    public WebElement coloumnSent;
+
+    //Mail sender title of Email History
+    @FindBy(xpath = "//thead/tr/th[3]")
+    public WebElement coloumnMailSender;
+
+    //Subject title of Email History
+    @FindBy(xpath = "//thead/tr/th[4]")
+    public WebElement coloumnSubject;
+
+    //Action button of Email History
+    @FindBy(xpath = "//tr[1]/td[5]/a")
+    public WebElement coloumnActionButton;
+
+
+
+
+
+
+    //Report button should be clicked
+    @Step("Clicked Report und display Login History and Email History")
+    public void clickToReport() {
+        softAssert.assertTrue(reportButton.isDisplayed());
+        waitAndClick(reportButton);
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        softAssert.assertTrue(loginHistoryLink.isDisplayed());
+        softAssert.assertTrue(emailHistoryLink.isDisplayed());
+        softAssert.assertAll();
+
+    }
+
+    //Login History should be clicked
+    @Step("Clicked Login History")
+    public UserLoginHistoryPage clickLoginHistory() {
+
+
+        waitAndClick(loginHistoryLink);
+
+        String expectedUrl = "https://qa.easybusticket.com/admin/report/login/history";
+        String actualUrl = Driver.get(env).getCurrentUrl();
+        softAssert.assertEquals(actualUrl, expectedUrl);
+        log.info("URL  verified");
+        softAssert.assertTrue(userTitle.isDisplayed());
+        log.info("User title  displayed");
+        softAssert.assertTrue(loginAtTitle.isDisplayed());
+        log.info("login At Title  displayed");
+        softAssert.assertTrue(coloumnIp.isDisplayed());
+        log.info("coloumnIp title  displayed");
+        softAssert.assertTrue(coloumnLocation.isDisplayed());
+        log.info("Location title  verified");
+        softAssert.assertTrue(coloumnBrowserOSTitle.isDisplayed());
+        log.info("BrowserOSTitle verified");
+        softAssert.assertAll();
+        waitAndClick(dashboardIconButton);
+        return new UserLoginHistoryPage();
+
+
+    }
+
+    //Email History should be clicked
+    @Step("Clicked Email History")
+    public EmailHistoryPage clickEmailHistory() {
+        waitAndClick(reportButton);
+        waitAndClick(emailHistoryLink);
+        String expectedUrl = "https://qa.easybusticket.com/admin/report/email/history";
+        String actualUrl = Driver.get(env).getCurrentUrl();
+        softAssert.assertEquals(actualUrl, expectedUrl);
+        softAssert.assertTrue(userTitle.isDisplayed());
+        softAssert.assertTrue(coloumnSent.isDisplayed());
+        softAssert.assertTrue(coloumnMailSender.isDisplayed());
+        softAssert.assertTrue(coloumnSubject.isDisplayed());
+        softAssert.assertTrue(coloumnAction.isDisplayed());
+        softAssert.assertAll();
+
+        return new EmailHistoryPage();
+    }
+    //Action Button should be clicked und the page should open as "Email details" in another tab
+    @Step("Clicked ActionButton and vieved Emails of details")
+    public PaymentCompletedSuccessfully clickEmailHistoryActionButton() {
+
+        waitAndClick(coloumnActionButton);
+        driver.switchTo().newWindow(WindowType.TAB).get("https://qa.easybusticket.com/admin/users/email-details/911");
+        String expectedUrl = "https://qa.easybusticket.com/admin/users/email-details/911";
+        String actualUrl = Driver.get(env).getCurrentUrl();
+        softAssert.assertEquals(actualUrl, expectedUrl);
+        softAssert.assertAll();
+       driver.navigate().back();
+        return new PaymentCompletedSuccessfully();
+    }
+
+
+    @FindBy(xpath = "//*[@id=\"sidebar__menuWrapper\"]/ul/li[2]/a/span[1]")
+    public WebElement manageUsersDropdown;
+    @FindBy(xpath = "//*[@id=\"sidebar__menuWrapper\"]/ul/li[2]/div/ul/li[1]/a/span[1]")
+    public WebElement allUsersDropdown;
+    @FindBy(xpath = "//*[@id=\"sidebar__menuWrapper\"]/ul/li[2]/div/ul/li[2]/a/span[1]")
+    public WebElement activeUsersDropdown;
+    @FindBy(xpath = "//*[@id=\"sidebar__menuWrapper\"]/ul/li[2]/div/ul/li[3]/a/span[1]")
+    public WebElement bannedUsersDropdown;
+    @FindBy(xpath = "//*[@id=\"sidebar__menuWrapper\"]/ul/li[2]/div/ul/li[4]/a/span[1]")
+    public WebElement emailUnverified;
+    @FindBy(xpath = "//*[@id=\"sidebar__menuWrapper\"]/ul/li[2]/div/ul/li[5]/a/span[1]")
+    public WebElement smsUnverified;
+    @FindBy(xpath = "//*[@id=\"sidebar__menuWrapper\"]/ul/li[2]/div/ul/li[6]/a/span[1]")
+    public WebElement emailToAll;
+
+
+    public void openManageUsersDropdown() {
+        WebElement manageUsersDropdown = driver.findElement(By.id("manageUsersDropdownId"));
+        // Ensure the dropdown is visible or clickable before interacting
+        // You can use WebDriverWait to wait for the element to be clickable
+        manageUsersDropdown.click();
+    }
+
+    public void clickEmailUnverified() {
+        WebElement manageUsersDropdown = driver.findElement(By.id("manageUsersDropdownId"));
+        // Ensure the dropdown is visible or clickable before interacting
+        // You can use WebDriverWait to wait for the element to be clickable
+        manageUsersDropdown.click();
+    }
+
+    public void clickActiveUsersLink() {
+        WebElement manageUsersDropdown = driver.findElement(By.id("manageUsersDropdownId"));
+        // Ensure the dropdown is visible or clickable before interacting
+        // You can use WebDriverWait to wait for the element to be clickable
+        manageUsersDropdown.click();
+    }
+
+    public void clickBannedUsersLink() {
+        WebElement manageUsersDropdown = driver.findElement(By.id("manageUsersDropdownId"));
+        // Ensure the dropdown is visible or clickable before interacting
+        // You can use WebDriverWait to wait for the element to be clickable
+        manageUsersDropdown.click();
+    }
+
+    public void allUsers() {
+        WebElement manageUsersDropdown = driver.findElement(By.id("manageUsersDropdownId"));
+        // Ensure the dropdown is visible or clickable before interacting
+        // You can use WebDriverWait to wait for the element to be clickable
+        manageUsersDropdown.click();
+    }
+
+    public void clickSmsUnverified() {
+        WebElement manageUsersDropdown = driver.findElement(By.id("manageUsersDropdownId"));
+        // Ensure the dropdown is visible or clickable before interacting
+        // You can use WebDriverWait to wait for the element to be clickable
+        manageUsersDropdown.click();
+    }
+
+    public void clickEmailToAllLink() {
+        WebElement manageUsersDropdown = driver.findElement(By.id("manageUsersDropdownId"));
+        // Ensure the dropdown is visible or clickable before interacting
+        // You can use WebDriverWait to wait for the element to be clickable
+        manageUsersDropdown.click();
+    }
+
+    /**
+     * REYHAN  for Admin Pending Ticket
+     */
+    public AdminTicketPage pendingTickets(){
+
+        Wait<WebDriver> wait = new FluentWait<>(Driver.get("stage"))
+                .withTimeout(Duration.ofSeconds(30L))
+                .pollingEvery(Duration.ofSeconds(5L))
+                .ignoring(NoSuchElementException.class);
+        WebElement pendingTicket = wait.until(new Function<WebDriver, WebElement>() {
+            public WebElement apply(WebDriver driver) {
+                WebElement pendingTicket = Driver.get("stage").findElement(By.xpath("//*[text()='Pending Ticket']"));
+                pendingTicket.click();
+                return pendingTicket;
+            }
+
+        });
+        return new AdminTicketPage();
 }
+
+
+}
+
+
 
 
 

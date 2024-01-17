@@ -3,6 +3,9 @@ package com.easybusticket.tests;
 import com.easybusticket.pages.HomePage;
 import com.easybusticket.pages.UserLoginPage;
 import com.easybusticket.utilities.Driver;
+import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -20,6 +23,8 @@ public class UserLoginNegativeTest_US10 extends BaseTest {
         };
     }
     @Test (dataProvider = "loginData")
+    @Severity(value = SeverityLevel.CRITICAL)
+    @Description("User log in negative tests")
     public void loginAttemptWithInvalidInformationTest(String username, String password){
         UserLoginPage userLoginPage = new HomePage().clickToSignIn();
         userLoginPage.username_login.sendKeys(username);

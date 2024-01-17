@@ -53,8 +53,7 @@ public class SuccessfulPaymentPage extends BasePage{
 
         String actualResultText = dataTableNoTicket.getText();
         softAssert.assertEquals(actualResultText, "No Payments Found");
-
-
+        log.info("verified that the text on the table as expected.");
         softAssert.assertAll();
     }
 
@@ -62,19 +61,18 @@ public class SuccessfulPaymentPage extends BasePage{
         //Searching mit date without Ticket Scenerio with Ticket
         waitAndClick(dateSearchBox);
         dateSearchBox.sendKeys("" + Keys.ENTER);
-
         String actualResultText = getDataTableWithTicket.getText();
         softAssert.assertNotEquals(actualResultText, "No Payments Found");
+        log.info("verified that the text on the table as expected.");
         softAssert.assertAll();
     }
-
-
 
     public void titleSuccessfulPaymentPage(){
 
         String expectedTitle = "Easy Bus Ticket - Successful Payment";
         String actualTitle = Driver.get(env).getTitle();
         softAssert.assertEquals(actualTitle,expectedTitle);
+        log.info("Title checked.");
         softAssert.assertAll();
 
     }
