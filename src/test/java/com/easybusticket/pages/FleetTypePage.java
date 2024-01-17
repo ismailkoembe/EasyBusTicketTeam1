@@ -52,8 +52,6 @@ public class FleetTypePage extends BasePage{
     @FindBy(xpath = "//button[.='Update']")
     public WebElement updateButton;
 
-    @FindBy(xpath = "//p[@class='iziToast-texts']")
-    public WebElement successfulyMessage;
 
 
 
