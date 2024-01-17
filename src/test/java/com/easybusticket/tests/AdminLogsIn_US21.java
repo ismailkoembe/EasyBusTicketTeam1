@@ -1,6 +1,9 @@
 package com.easybusticket.tests;
 
 import com.easybusticket.pages.*;
+import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.Test;
 
@@ -9,7 +12,8 @@ import org.testng.annotations.Test;
 public class AdminLogsIn_US21 extends BaseTestAdmin {
 
     @Test
-
+    @Severity(value = SeverityLevel.BLOCKER)
+    @Description("The admin logs in admin dashboard page")
     public void AdminLogin1(){
 
 
