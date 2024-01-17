@@ -9,10 +9,10 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
 
-public class HomePage extends BasePage{
+public class HomePage extends BasePage {
 
-    public HomePage(){
-        PageFactory.initElements(Driver.get("stage"),this);
+    public HomePage() {
+        PageFactory.initElements(Driver.get("stage"), this);
     }
 
     //Cookie Allow Button
@@ -74,7 +74,7 @@ public class HomePage extends BasePage{
     @FindBy(xpath = "//div[@class='d-flex flex-wrap algin-items-center']")
     public WebElement buyTicketButtonLink;
 
-    @FindBy (xpath = "/html/body/section[6]")
+    @FindBy(xpath = "/html/body/section[6]")
     public WebElement footerSection;
 
     @FindBy(xpath = "/html/body/section[6]/div/div/div/div[2]/div/h4")
@@ -87,6 +87,7 @@ public class HomePage extends BasePage{
     public WebElement footerContactInfo;
 
     //Footer Twitter Icon Link
+
     @FindBy(xpath = "//a[@href='https://www.twitter.com']")
     public  WebElement getTwitterIconFooter;
 
@@ -103,8 +104,8 @@ public class HomePage extends BasePage{
     public WebElement getInstagramIconFooter;
 
     //Footer About Title Linkhttps://www.youtube.com
-    @FindBy(xpath="(//*[@href='https://qa.easybusticket.com/about-us'])[2]")
-    public  WebElement  getAboutTitleFooter;
+    @FindBy(xpath = "(//*[@href='https://qa.easybusticket.com/about-us'])[2]")
+    public WebElement getAboutTitleFooter;
 
     //Footer FAQs Title Link
     @FindBy(xpath = "/html/body/section[6]/div/div/div/div[2]/div/ul/li[2]/a")
@@ -123,12 +124,12 @@ public class HomePage extends BasePage{
     public WebElement getPrivacyPolicyTitleFooter;
 
     //Footer Terms and Conditions Title Link
-    @FindBy (xpath = "/html/body/section[6]/div/div/div/div[3]/div/ul/li[2]/a")
+    @FindBy(xpath = "/html/body/section[6]/div/div/div/div[3]/div/ul/li[2]/a")
     public WebElement getTermsAndConditionsTitleFooter;
 
     //Footer Ticket Policies Title Link
-    @FindBy(xpath ="/html/body/section[6]/div/div/div/div[3]/div/ul/li[3]/a")
-    public  WebElement getTicketPoliciesFooter;
+    @FindBy(xpath = "/html/body/section[6]/div/div/div/div[3]/div/ul/li[3]/a")
+    public WebElement getTicketPoliciesFooter;
 
     @FindBy(xpath = "/html/body/section[6]/div/div/div/div[4]/div/ul/li[1]")
     public WebElement footerContactInfoAdresse;
@@ -138,6 +139,45 @@ public class HomePage extends BasePage{
 
     @FindBy(xpath = "/html/body/section[6]/div/div/div/div[4]/div/ul/li[3]/a")
     public WebElement footerEmailAdresseLink;
+
+    //Body Section
+    @FindBy(xpath = "/html/body")
+    public WebElement bodySection;
+
+
+    //Choose Your Ticket
+    @FindBy(xpath = "/html/body/section[6]/div/div/div/div[2]/div/ul/li[3]/a")
+    public WebElement chooseYourTicket;
+
+    //Body Pickup Point Button
+    @FindBy(xpath = "//*[@id=\"one-way\"]/form/div[2]/div/span/span[1]/span")
+    public WebElement bodyPickupPointButton;
+
+    //Body Dropping Point Button
+    @FindBy(xpath = "//*[@id=\"one-way\"]/form/div[3]/div/span/span[1]/span")
+    public WebElement bodyDroppingPointButton;
+
+
+    //Body Departure Date Button
+    @FindBy(xpath = "//*[@id=\"dp1705089140317\"]")
+    public WebElement bodyDepartureDateButton;
+
+    //Body Get Ticket Button
+    @FindBy(xpath = "//html/body/section[1]/div[1]/div/div[2]/a")
+    public WebElement bodyTicketButton;
+
+    //Body Offered Facilities Title Text
+    @FindBy(xpath = "//section[@class='amenities-section padding-bottom']")
+    public WebElement bodyOfferedFacilitiesTitle;
+
+    //Body Our Testemonials Title Text
+    @FindBy(xpath = "//section[@class='padding-bottom padding-top testimonial-section']")
+    public WebElement bodyOurTestemonialsTitle;
+    //Body Recent Blog Post Title Text
+
+    @FindBy(xpath = "//section[@class='blog-section padding-top padding-bottom']")
+    public WebElement bodyRecentBlogPostTitle;
+
 
     public RegisterPage register = new RegisterPage();
 
@@ -151,8 +191,9 @@ public class HomePage extends BasePage{
         waitAndClick(signUpLink);
         String expectedText = "Sign Up your Account";
         String actualText = register.textOfSignUpyourAccount.getText();
-        softAssert.assertEquals(actualText,expectedText);
-        softAssert.assertAll();
+
+        softAssert.assertEquals(actualText, expectedText);
+
         return new RegisterPage();
     }
 
@@ -162,8 +203,9 @@ public class HomePage extends BasePage{
         return new UserLoginPage();
     }
 
-    @Step("I clicked to about button and expect access the about page")
+
     public AboutPage clickToAboutButton(){
+
         acceptCookies();
         Assert.assertTrue(aboutButton.isDisplayed());
         waitAndClick(aboutButton);
@@ -171,39 +213,41 @@ public class HomePage extends BasePage{
 
     }
 
-    public ContactPage clickToContactTitle(){
+    public ContactPage clickToContactTitle() {
         acceptCookies();
         waitAndClick(contactTitle);
         return new ContactPage();
 
     }
 
-    public void clickToFAQsTitle(){
+    public void clickToFAQsTitle() {
         acceptCookies();
         waitAndClick(faqsTitle);
 
     }
 
-    /**
-     * REYHAN Blog page control
-     */
-    public BlogPage clickToBlogTitle(){
-        acceptCookies();
-        waitAndClick(blogTitle);
-        return new BlogPage();
+
+
+        /**
+         * REYHAN Blog page control
+         */
+        public BlogPage clickToBlogTitle(){
+            acceptCookies();
+            waitAndClick(blogTitle);
+            return new BlogPage();
+        }
+
+        public void clickToHomeTitle(){
+            acceptCookies();
+            waitAndClick(homeTitle);
+        }
+        public  void scrollToBottom (){
+            ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight);");
+        }
+
+
     }
 
-    public void clickToHomeTitle(){
-        acceptCookies();
-        waitAndClick(homeTitle);
-    }
-    public  void scrollToBottom (){
-        ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight);");
-    }
-
-    
-
-}
 
 
 

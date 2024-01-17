@@ -19,8 +19,10 @@ import java.util.function.Function;
 
 @Slf4j
 public class AdminDashboardPage extends BasePage {
+
     public AdminDashboardPage() {
         PageFactory.initElements(Driver.get(env), this);
+
 
     }
 
@@ -221,13 +223,7 @@ public class AdminDashboardPage extends BasePage {
     }
 
 
-    /**
-     * REYHAN  for Admin Pending Ticket
-     */
-    public AdminTicketPage pendingTickets() {
-        waitAndClick(pendingTicketOnderTheSidebar);
-        return new AdminTicketPage();
-    }
+
 
     /**
      * REYHAN  for Admin Booked Ticket
@@ -376,7 +372,6 @@ public class AdminDashboardPage extends BasePage {
 
     }
 
-
     //===================================================================//
 
     //Manage Fleets Dropdown
@@ -406,7 +401,7 @@ public class AdminDashboardPage extends BasePage {
 
         return new FleetTypePage();
     }
-//=====================================================================//
+
 
     //Dropdown PaymentHistory option
     @FindBy(xpath = "//*[@id=\"sidebar__menuWrapper\"]/ul/li[3]/a")
@@ -798,6 +793,70 @@ public class AdminDashboardPage extends BasePage {
 
     }
 
+    @FindBy(xpath = "//*[@id=\"sidebar__menuWrapper\"]/ul/li[2]/a/span[1]")
+    public WebElement manageUsersDropdown;
+    @FindBy(xpath = "//*[@id=\"sidebar__menuWrapper\"]/ul/li[2]/div/ul/li[1]/a/span[1]")
+    public WebElement allUsersDropdown;
+    @FindBy(xpath = "//*[@id=\"sidebar__menuWrapper\"]/ul/li[2]/div/ul/li[2]/a/span[1]")
+    public WebElement activeUsersDropdown;
+    @FindBy(xpath = "//*[@id=\"sidebar__menuWrapper\"]/ul/li[2]/div/ul/li[3]/a/span[1]")
+    public WebElement bannedUsersDropdown;
+    @FindBy(xpath = "//*[@id=\"sidebar__menuWrapper\"]/ul/li[2]/div/ul/li[4]/a/span[1]")
+    public WebElement emailUnverified;
+    @FindBy(xpath = "//*[@id=\"sidebar__menuWrapper\"]/ul/li[2]/div/ul/li[5]/a/span[1]")
+    public WebElement smsUnverified;
+    @FindBy(xpath = "//*[@id=\"sidebar__menuWrapper\"]/ul/li[2]/div/ul/li[6]/a/span[1]")
+    public WebElement emailToAll;
+
+
+    public void openManageUsersDropdown() {
+        WebElement manageUsersDropdown = driver.findElement(By.id("manageUsersDropdownId"));
+        // Ensure the dropdown is visible or clickable before interacting
+        // You can use WebDriverWait to wait for the element to be clickable
+        manageUsersDropdown.click();
+    }
+
+    public void clickEmailUnverified() {
+        WebElement manageUsersDropdown = driver.findElement(By.id("manageUsersDropdownId"));
+        // Ensure the dropdown is visible or clickable before interacting
+        // You can use WebDriverWait to wait for the element to be clickable
+        manageUsersDropdown.click();
+    }
+
+    public void clickActiveUsersLink() {
+        WebElement manageUsersDropdown = driver.findElement(By.id("manageUsersDropdownId"));
+        // Ensure the dropdown is visible or clickable before interacting
+        // You can use WebDriverWait to wait for the element to be clickable
+        manageUsersDropdown.click();
+    }
+
+    public void clickBannedUsersLink() {
+        WebElement manageUsersDropdown = driver.findElement(By.id("manageUsersDropdownId"));
+        // Ensure the dropdown is visible or clickable before interacting
+        // You can use WebDriverWait to wait for the element to be clickable
+        manageUsersDropdown.click();
+    }
+
+    public void allUsers() {
+        WebElement manageUsersDropdown = driver.findElement(By.id("manageUsersDropdownId"));
+        // Ensure the dropdown is visible or clickable before interacting
+        // You can use WebDriverWait to wait for the element to be clickable
+        manageUsersDropdown.click();
+    }
+
+    public void clickSmsUnverified() {
+        WebElement manageUsersDropdown = driver.findElement(By.id("manageUsersDropdownId"));
+        // Ensure the dropdown is visible or clickable before interacting
+        // You can use WebDriverWait to wait for the element to be clickable
+        manageUsersDropdown.click();
+    }
+
+    public void clickEmailToAllLink() {
+        WebElement manageUsersDropdown = driver.findElement(By.id("manageUsersDropdownId"));
+        // Ensure the dropdown is visible or clickable before interacting
+        // You can use WebDriverWait to wait for the element to be clickable
+        manageUsersDropdown.click();
+    }
 
 }
 
