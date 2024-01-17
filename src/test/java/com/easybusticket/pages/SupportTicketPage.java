@@ -106,9 +106,8 @@ public class SupportTicketPage extends BasePage {
 
 
     /** Ayça Ovali */
-
+    @Step("registered user verified last tickets on the request history section")
     public void requestHistoryPageVerifyTest() {
-
         softAssert.assertTrue(columnSubject.isDisplayed());
         softAssert.assertTrue(columnStatus.isDisplayed());
         softAssert.assertTrue(columnPriority.isDisplayed());
@@ -117,7 +116,6 @@ public class SupportTicketPage extends BasePage {
         softAssert.assertTrue(newTicketButton.isDisplayed());
         softAssert.assertTrue(rowFirstRequest.isDisplayed());
         softAssert.assertTrue(actionButton.isDisplayed());
-
         waitAndClick(actionButton);
         log.info("Request Detail Page loaded");
 
@@ -131,17 +129,14 @@ public class SupportTicketPage extends BasePage {
         waitAndClick(requestsOption);
         String expectedRequestHistoryPageTitle = "Easy Bus Ticket - Support Tickets";
         String actualRequestHistoryPageTitle = Driver.get(env).getTitle();
-
         softAssert.assertEquals(actualRequestHistoryPageTitle, expectedRequestHistoryPageTitle);
-
         log.info("returned history page");
         softAssert.assertAll();
 
     }
 
-    /**
-     * Ayça Ovali
-     */
+    /** Ayca Ovali */
+    @Step("registered user clicked the new add ticket from request history")
     public void requestHistoryNewTicketTest() {
         waitAndClick(newTicketButton);
         softAssert.assertTrue(mySupportTicketButton.isDisplayed());
@@ -155,9 +150,11 @@ public class SupportTicketPage extends BasePage {
         dropdown.selectByValue("2");
         softAssert.assertTrue(textBoxOfMessage.isDisplayed());
         textBoxOfMessage.sendKeys(PropManager.getProperties(env, "us16Message"));
-        softAssert.assertTrue(selectFileButton.isDisplayed());
+        String path = GetAbsolutePath.getAbsolutePath(PropManager.getProperties(env, "imgPathLogo"));
+        selectFileButton.sendKeys(path);
         softAssert.assertTrue(extraFileButton.isDisplayed());
         waitAndClick(submitButton);
+        log.info("The file was uploaded and the submit button was pressed.\n");
 
         String expectedRequestHistoryPageUrl = "https://qa.easybusticket.com/ticket";
         String actualRequestHistoryPageUrl = Driver.get(env).getCurrentUrl();
@@ -165,7 +162,6 @@ public class SupportTicketPage extends BasePage {
         softAssert.assertTrue(rowFirstRequest.isDisplayed());
         log.info("new ticket created");
         softAssert.assertAll();
-
 
     }
 

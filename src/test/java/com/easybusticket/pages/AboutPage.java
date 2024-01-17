@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
 @Slf4j
 public class AboutPage extends BasePage{
@@ -19,11 +20,10 @@ public class AboutPage extends BasePage{
     @FindBy (xpath = "(//h2[@class='title'])[1]")
     public WebElement labelAboutPage;
 
-    @Step("I clicked titleCheckTest for About Page")
+    @Step("I clicked titleCheckTest to compare page title")
     public void titleCheckTest(){
         String expectedAboutTitle = "Easy Bus Ticket - About";
         String actualAboutTitle = Driver.get(env).getTitle();
-        softAssert.assertEquals(actualAboutTitle,expectedAboutTitle);
-        softAssert.assertAll();
+        Assert.assertEquals(actualAboutTitle,expectedAboutTitle);
     }
 }

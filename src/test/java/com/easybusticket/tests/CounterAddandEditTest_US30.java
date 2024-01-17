@@ -4,6 +4,9 @@ import com.easybusticket.pages.AdminDashboardPage;
 import com.easybusticket.pages.AdminPage;
 import com.easybusticket.utilities.Driver;
 import com.github.javafaker.Faker;
+import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
@@ -16,6 +19,8 @@ import java.security.PublicKey;
 public class CounterAddandEditTest_US30 extends BaseTestAdmin{
 
     @Test
+    @Severity(value = SeverityLevel.NORMAL)
+    @Description("Added a new terminal info as admin and the new terminal info is displayed.")
     public void counterAddandEditTest(){
         //The admin can manage the admin dashboard page after successful login.
         AdminDashboardPage adminDashboardPage = new AdminPage().adminLogin();

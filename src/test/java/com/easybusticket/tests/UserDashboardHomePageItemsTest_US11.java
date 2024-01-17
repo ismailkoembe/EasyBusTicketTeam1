@@ -3,6 +3,9 @@ package com.easybusticket.tests;
 import com.easybusticket.pages.HomePage;
 import com.easybusticket.pages.UserDashboardPage;
 import com.easybusticket.pages.UserLoginPage;
+import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -10,6 +13,8 @@ import org.testng.annotations.Test;
 
 public class UserDashboardHomePageItemsTest_US11 extends BaseTest{
     @Test
+    @Severity(value = SeverityLevel.BLOCKER)
+    @Description("The registered user clicks on the logo on the dashboard, accesses the homepage and verifies that all elements are functional.")
     public void userDashboardHomePageItemsTest(){
         //Navigate to the login page
         UserLoginPage userLoginPage = new HomePage().clickToSignIn();
@@ -62,7 +67,7 @@ public class UserDashboardHomePageItemsTest_US11 extends BaseTest{
         softAssert.assertTrue(userDashboardPage.safetyMeasuresBlogTitle.isEnabled());
 
         //Footer section
-        softAssert.assertTrue(userDashboardPage.getTwitterIconFooter.isEnabled());
+        softAssert.assertTrue(userDashboardPage.getTwitterIconFooter.isDisplayed());
         softAssert.assertTrue(userDashboardPage.getFacebookIconFooter.isEnabled());
         softAssert.assertTrue(userDashboardPage.getYoutubeIconFooter.isEnabled());
         softAssert.assertTrue(userDashboardPage.getInstagramIconFooter.isEnabled());
