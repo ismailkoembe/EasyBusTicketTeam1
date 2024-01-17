@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="End2End Suit">
+    <test name="End2End Test">
+        <packages>
+            <package name="com.easybusticket.tests"/>
+        </packages>
+    </test>
+</suite>

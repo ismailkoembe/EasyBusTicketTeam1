@@ -36,7 +36,7 @@ public class Driver {
                     WebDriverManager.chromedriver().setup();
                     options.addArguments("--headless=new");
                     driver = new ChromeDriver(options);
-                    break;
+                   break;
                     case "firefox":
                         WebDriverManager.firefoxdriver().setup();
                         driver = new FirefoxDriver();

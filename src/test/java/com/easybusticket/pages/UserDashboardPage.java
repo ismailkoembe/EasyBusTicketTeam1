@@ -1,6 +1,7 @@
 package com.easybusticket.pages;
 
 import com.easybusticket.utilities.Driver;
+import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -27,13 +28,14 @@ public class UserDashboardPage extends BasePage {
     @FindBy(xpath = "//h2[text()='Dashboard']")
     public WebElement titleDashboard;
 
+    @Step("I clicked to logo Easy Bus Ticket,Redirected to home page")
     public HomePage logoEasyBusTicket() {
         waitAndClick(logoEasybusticket);
         softAssert.assertTrue(linkDashboard.isDisplayed());
         softAssert.assertAll();
         return new HomePage();
     }
-
+    @Step("Clicked on the dashboard link on the home page,I expect title Dashboard")
     public void linkDashboard() {
         waitAndClick(linkDashboard);
         softAssert.assertTrue(titleDashboard.isDisplayed());
@@ -202,19 +204,18 @@ public class UserDashboardPage extends BasePage {
 
     }
 
-
+    @Step("Registered user logout")
     public UserLoginPage logout() {
 
         waitAndClick(dropDownProfile);
         waitAndClick(logoutOption);
         String expectedTitle = "Easy Bus Ticket - Sign In";
         String actualTitle = Driver.get(env).getTitle();
-        softAssert.assertEquals(actualTitle, expectedTitle);
-        softAssert.assertAll();
+        Assert.assertEquals(actualTitle,expectedTitle);
+        log.info("logout method was run");
         return new UserLoginPage();
-
-
     }
+
 
     public SupportTicketPage requestHistory() {
         waitAndClick(dropDownSupportRequest);
@@ -395,6 +396,7 @@ public class UserDashboardPage extends BasePage {
         return new SupportTicketPage();
     }
 
+    @Step("User navigated to the New Support Ticket Page")
     public SupportTicketPage createNewRequestPage() {
         waitAndClick(dropDownSupportRequest);
         waitAndClick(createNewOption);

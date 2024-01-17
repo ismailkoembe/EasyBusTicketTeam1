@@ -287,7 +287,7 @@ public class AdminDashboardPage extends BasePage {
     @FindBy(xpath = "//i[@class='fullscreen-close las la-compress-arrows-alt']")
     public WebElement buttonCloseFullScreenPage;
 
-
+    @Step("Maked the dashboard screen full screen and brings it back to normal")
     public void clickButtonFullScreenPage() {
         waitAndClick(buttonFullScreenPage);
         waitAndClick(buttonCloseFullScreenPage);
@@ -304,12 +304,12 @@ public class AdminDashboardPage extends BasePage {
     //search alt cubugu
     @FindBy(xpath = "//*[@id=\"navbar_search_result_area\"]/ul/li/a")
     public WebElement linkSearchSub;
-
+    @Step("I clicked button search")
     public void clickButtonSearch() {
         waitAndClick(buttonSearch);
         waitAndClick(linkSearch);
     }
-
+    @Step("Page searched with data provider")
     public Object searchPage(String pages) {
         linkSearch.sendKeys(pages);
         waitAndClick(linkSearchSub);
@@ -354,6 +354,37 @@ public class AdminDashboardPage extends BasePage {
         return new GatewayPage();
 
     }
+
+    //===================================================================//
+
+    //Manage Fleets Dropdown
+    @FindBy(xpath = "(//i[@class='menu-icon las la-bus'])[1]")
+    public WebElement manageFleets;
+
+    @FindBy(xpath = "//span[.='Seat Layouts']")
+    public WebElement seatLayout;
+
+    @FindBy(xpath = "//span[text()='Fleet Type']")
+    public WebElement fleetType;
+
+    @FindBy(xpath = "//span[text()='Vehicles']")
+    public WebElement vehicle;
+
+    public SeatLayoutsPage manageFleets() {
+
+        waitAndClick(manageFleets);
+        waitAndClick(seatLayout);
+
+        return new SeatLayoutsPage();
+    }
+    public FleetTypePage manageFleets1(){
+
+        waitAndClick(manageFleets);
+        waitAndClick(fleetType);
+
+        return new FleetTypePage();
+    }
+
 
     public void clickToManualGateway() {
         softAssert.assertTrue(paymentGatewaysButton.isDisplayed());
@@ -480,7 +511,7 @@ public class AdminDashboardPage extends BasePage {
     //header daki notification butona basinca cikan notification yazisi
     @FindBy(xpath = "//span[text()='Notification']")
     public WebElement labelNotification;
-
+    @Step("I clicked button notification,I expect title Notification")
     public void clickButtonNotification() {
         waitAndClick(buttonNotification);
         softAssert.assertTrue(labelNotification.isDisplayed());
@@ -490,7 +521,7 @@ public class AdminDashboardPage extends BasePage {
     //view all notification butonu
     @FindBy(xpath = "//*[@class='view-all-message']")
     public WebElement buttonViewAllNotification;
-
+    @Step("I clicked button View All Notification,navigate to page Notification")
     public NotificationsPage clickViewAllNotification() {
         waitAndClick(buttonViewAllNotification);
         return new NotificationsPage();

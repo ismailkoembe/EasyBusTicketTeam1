@@ -3,6 +3,9 @@ package com.easybusticket.tests;
 import com.easybusticket.pages.AdminDashboardPage;
 import com.easybusticket.pages.AdminPage;
 import com.easybusticket.utilities.Driver;
+import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.Keys;
 import org.testng.annotations.DataProvider;
@@ -17,6 +20,8 @@ public class PageSearchInAdminDashboard_US33 extends BaseTestAdmin{
     }
 
     @Test(dataProvider = "pages")
+    @Severity(value = SeverityLevel.MINOR)
+    @Description("Clicks button search, searches for a page and reaches the page")
     public void pagesSearchAdminDashboard(String page){
 
         //The admin can manage the admin dashboard page after successful login.
@@ -29,6 +34,7 @@ public class PageSearchInAdminDashboard_US33 extends BaseTestAdmin{
 
         //Clicks the search bar and searches the sent page
         adminDashboardPage.searchPage(page);
+        log.info("Page searched with data provider");
 
         String expectedUrl="/https://qa.easybusticket.com/admin/frontend/frontend-sections/blog";
         String actualUrl= Driver.get(env).getCurrentUrl();
@@ -45,7 +51,7 @@ public class PageSearchInAdminDashboard_US33 extends BaseTestAdmin{
         expectedUrl="https://qa.easybusticket.com/admin/frontend/frontend-sections/contact";
         actualUrl=Driver.get(env).getCurrentUrl();
         softAssert.assertEquals(actualUrl,expectedUrl);
-
+        softAssert.assertAll();
         log.info("Clicked on the bar search and  found the sent page");
     }
 }
