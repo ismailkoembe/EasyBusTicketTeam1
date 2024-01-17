@@ -286,8 +286,7 @@ public class GatewayPage extends BasePage{
         String expectedStatus = "Disabled";
         String actualStatus = rowFirstValueStatus.getText();
         Assert.assertEquals(actualStatus,expectedStatus);
-        System.out.println("method disabled edildi");
-
+        log.info("method status is disabled");
     }
 
 }
