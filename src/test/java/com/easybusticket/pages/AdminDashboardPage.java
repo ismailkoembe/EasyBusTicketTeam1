@@ -342,7 +342,9 @@ public class AdminDashboardPage extends BasePage {
 
     @FindBy(xpath = "//*[text()='Manual Gateways']")
     public WebElement manualGatewaysButton;
+    /** Ayca Ovali*/
 
+    @Step("Admin clicked to automatic gateway submenu option")
     public GatewayPage clickToAutomaticGateway() {
         softAssert.assertTrue(paymentGatewaysButton.isDisplayed());
         waitAndClick(paymentGatewaysButton);
@@ -351,6 +353,22 @@ public class AdminDashboardPage extends BasePage {
         String actualTitleAutoGateway = Driver.get(env).getTitle();
         softAssert.assertEquals(actualTitleAutoGateway, expectedTitleAutoGateway);
         softAssert.assertAll();
+        log.info("Automatic Gateway page loaded");
+        return new GatewayPage();
+
+    }
+
+    /** Ayca Ovali*/
+    @Step("Admin clicked to manual gateway submenu option")
+    public GatewayPage clickToManualGateway() {
+        softAssert.assertTrue(paymentGatewaysButton.isDisplayed());
+        waitAndClick(paymentGatewaysButton);
+        waitAndClick(manualGatewaysButton);
+        String expectedTitleManualGateway = "Easy Bus Ticket - Manual Gateways";
+        String actualTitleManualGateway = Driver.get(env).getTitle();
+        softAssert.assertEquals(actualTitleManualGateway, expectedTitleManualGateway);
+        softAssert.assertAll();
+        log.info("Manual Gateway page loaded");
         return new GatewayPage();
 
     }
@@ -383,18 +401,6 @@ public class AdminDashboardPage extends BasePage {
         waitAndClick(fleetType);
 
         return new FleetTypePage();
-    }
-
-
-    public void clickToManualGateway() {
-        softAssert.assertTrue(paymentGatewaysButton.isDisplayed());
-        waitAndClick(paymentGatewaysButton);
-        waitAndClick(manualGatewaysButton);
-        String expectedTitleManualGateway = "Easy Bus Ticket - Manual Gateways";
-        String actualTitleManualGateway = Driver.get(env).getTitle();
-        softAssert.assertEquals(actualTitleManualGateway, expectedTitleManualGateway);
-        softAssert.assertAll();
-
     }
 
 
@@ -690,6 +696,23 @@ public class AdminDashboardPage extends BasePage {
     @FindBy(xpath = "//*[text()='All Users']")
     WebElement getAllUsersUnderTheManageUsers;
 
+    @FindBy(xpath = "//*[text()='Active Users']")
+    WebElement getActiveUsersUnderTheManageUsers;
+
+    @FindBy(xpath = "//*[text()='Banned Users']")
+    WebElement getBannedUsersUnderTheManageUsers;
+
+    @FindBy(xpath = "//*[text()='Email Unverified']")
+    WebElement getEmailUnverifiedUnderTheManageUsers;
+
+    @FindBy(xpath = "//*[text()='SMS Unverified']")
+    WebElement getSmsUnverifiedUnderTheManageUsers;
+
+    @FindBy(xpath = "//*[text()='Email to All']")
+    WebElement getEmailToAllUnderTheManageUsers;
+
+
+
     /**
      * REYHAN  for ManageUsers dropdown menu
      */
@@ -697,19 +720,15 @@ public class AdminDashboardPage extends BasePage {
         waitAndClick(manageUsers);
     }
 
-    /**
-     * REYHAN  for AllUsers under the ManageUsers dropdown menu
-     */
-    public AdminTicketPage allUsers() {
-        waitAndClick(getAllUsersUnderTheManageUsers);
-        return new AdminTicketPage();
-    }
 
 
-
-
-
-
+//    /**
+//     * REYHAN  for Email to All under the ManageUsers dropdown menu
+//     */
+//    public AdminTicketPage emailToAll() {
+//        waitAndClick(getEmailToAllUnderTheManageUsers);
+//        return new AdminTicketPage();
+//    }
 
 
 

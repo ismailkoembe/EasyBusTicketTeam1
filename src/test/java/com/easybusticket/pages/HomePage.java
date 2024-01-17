@@ -203,8 +203,11 @@ public class HomePage extends BasePage {
         return new UserLoginPage();
     }
 
-    public AboutPage clickToAboutButton() {
+
+    public AboutPage clickToAboutButton(){
+
         acceptCookies();
+        Assert.assertTrue(aboutButton.isDisplayed());
         waitAndClick(aboutButton);
         return new AboutPage();
 

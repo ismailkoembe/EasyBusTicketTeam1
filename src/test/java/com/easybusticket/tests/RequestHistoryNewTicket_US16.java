@@ -2,6 +2,9 @@ package com.easybusticket.tests;
 
 import com.easybusticket.pages.*;
 import com.easybusticket.utilities.Driver;
+import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.Test;
 
@@ -9,6 +12,8 @@ import org.testng.annotations.Test;
 public class RequestHistoryNewTicket_US16 extends BaseTest {
 
     @Test
+    @Severity(value = SeverityLevel.NORMAL)
+    @Description("A registered user should be able to create a new ticket request from the history request section")
     public void requestHistoryPageNewTicketTest(){
 
         // navigate to the login page
