@@ -79,7 +79,6 @@ public class FleetTypePage extends BasePage{
 
     }
 
-
    public void updateFleetType(){
 
         waitAndClick(penIcon);
