@@ -713,13 +713,13 @@ public class AdminDashboardPage extends BasePage {
 
 
 
-//    /**
-//     * REYHAN  for Email to All under the ManageUsers dropdown menu
-//     */
-//    public AdminTicketPage emailToAll() {
-//        waitAndClick(getEmailToAllUnderTheManageUsers);
-//        return new AdminTicketPage();
-//    }
+    /**
+     * REYHAN  for Email to All under the ManageUsers dropdown menu
+     */
+    public AdminTicketPage emailToAll() {
+        waitAndClick(getEmailToAllUnderTheManageUsers);
+        return new AdminTicketPage();
+    }
 
 
 
