@@ -11,11 +11,10 @@ public class AboutPageTest_US05 extends BaseTest
 {
     @Test
     @Severity(value = SeverityLevel.MINOR)
-    @Description("I expect to see correct title")
-    @Story("1. Some story")
+    @Description("As a visitor, Access to the about page and viewed the information")
     public void AboutPageTest(){
         AboutPage aboutPage = new HomePage().clickToAboutButton();
         aboutPage.titleCheckTest();
-        log.info(" About page sayfası yüklendi ");
+        log.info(" About page loaded ");
     }
 }

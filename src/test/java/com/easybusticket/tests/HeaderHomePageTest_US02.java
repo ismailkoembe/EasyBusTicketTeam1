@@ -2,6 +2,9 @@ package com.easybusticket.tests;
 
 import com.easybusticket.pages.HomePage;
 import com.easybusticket.utilities.Driver;
+import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -10,6 +13,8 @@ import org.testng.annotations.Test;
 public class HeaderHomePageTest_US02 extends BaseTest {
 
     @Test
+    @Severity(value = SeverityLevel.NORMAL)
+    @Description("Displays the items in the header section on the user homepage.")
     public void homePageHeaderTest(){
 
         // navigate to the HomePage page
@@ -83,6 +88,7 @@ public class HeaderHomePageTest_US02 extends BaseTest {
         softAssert.assertEquals(actualTitle, expectedTitle);
         log.info("youtube displayed  ");
         Driver.get(env).navigate().back();
+        softAssert.assertAll();
 
     }
 }
