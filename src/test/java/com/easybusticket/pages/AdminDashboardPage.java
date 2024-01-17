@@ -19,8 +19,10 @@ import java.util.function.Function;
 
 @Slf4j
 public class AdminDashboardPage extends BasePage {
+
     public AdminDashboardPage() {
         PageFactory.initElements(Driver.get(env), this);
+
 
     }
 
@@ -221,13 +223,7 @@ public class AdminDashboardPage extends BasePage {
     }
 
 
-    /**
-     * REYHAN  for Admin Pending Ticket
-     */
-    public AdminTicketPage pendingTickets() {
-        waitAndClick(pendingTicketOnderTheSidebar);
-        return new AdminTicketPage();
-    }
+
 
     /**
      * REYHAN  for Admin Booked Ticket
@@ -345,7 +341,9 @@ public class AdminDashboardPage extends BasePage {
 
     @FindBy(xpath = "//*[text()='Manual Gateways']")
     public WebElement manualGatewaysButton;
+    /** Ayca Ovali*/
 
+    @Step("Admin clicked to automatic gateway submenu option")
     public GatewayPage clickToAutomaticGateway() {
         softAssert.assertTrue(paymentGatewaysButton.isDisplayed());
         waitAndClick(paymentGatewaysButton);
@@ -354,10 +352,25 @@ public class AdminDashboardPage extends BasePage {
         String actualTitleAutoGateway = Driver.get(env).getTitle();
         softAssert.assertEquals(actualTitleAutoGateway, expectedTitleAutoGateway);
         softAssert.assertAll();
+        log.info("Automatic Gateway page loaded");
         return new GatewayPage();
 
     }
 
+    /** Ayca Ovali*/
+    @Step("Admin clicked to manual gateway submenu option")
+    public GatewayPage clickToManualGateway() {
+        softAssert.assertTrue(paymentGatewaysButton.isDisplayed());
+        waitAndClick(paymentGatewaysButton);
+        waitAndClick(manualGatewaysButton);
+        String expectedTitleManualGateway = "Easy Bus Ticket - Manual Gateways";
+        String actualTitleManualGateway = Driver.get(env).getTitle();
+        softAssert.assertEquals(actualTitleManualGateway, expectedTitleManualGateway);
+        softAssert.assertAll();
+        log.info("Manual Gateway page loaded");
+        return new GatewayPage();
+
+    }
 
     //===================================================================//
 
@@ -381,17 +394,12 @@ public class AdminDashboardPage extends BasePage {
 
         return new SeatLayoutsPage();
     }
-//=====================================================================//
+    public FleetTypePage manageFleets1(){
 
-    public void clickToManualGateway() {
-        softAssert.assertTrue(paymentGatewaysButton.isDisplayed());
-        waitAndClick(paymentGatewaysButton);
-        waitAndClick(manualGatewaysButton);
-        String expectedTitleManualGateway = "Easy Bus Ticket - Manual Gateways";
-        String actualTitleManualGateway = Driver.get(env).getTitle();
-        softAssert.assertEquals(actualTitleManualGateway, expectedTitleManualGateway);
-        softAssert.assertAll();
+        waitAndClick(manageFleets);
+        waitAndClick(fleetType);
 
+        return new FleetTypePage();
     }
 
 
@@ -687,6 +695,23 @@ public class AdminDashboardPage extends BasePage {
     @FindBy(xpath = "//*[text()='All Users']")
     WebElement getAllUsersUnderTheManageUsers;
 
+    @FindBy(xpath = "//*[text()='Active Users']")
+    WebElement getActiveUsersUnderTheManageUsers;
+
+    @FindBy(xpath = "//*[text()='Banned Users']")
+    WebElement getBannedUsersUnderTheManageUsers;
+
+    @FindBy(xpath = "//*[text()='Email Unverified']")
+    WebElement getEmailUnverifiedUnderTheManageUsers;
+
+    @FindBy(xpath = "//*[text()='SMS Unverified']")
+    WebElement getSmsUnverifiedUnderTheManageUsers;
+
+    @FindBy(xpath = "//*[text()='Email to All']")
+    WebElement getEmailToAllUnderTheManageUsers;
+
+
+
     /**
      * REYHAN  for ManageUsers dropdown menu
      */
@@ -694,19 +719,15 @@ public class AdminDashboardPage extends BasePage {
         waitAndClick(manageUsers);
     }
 
-    /**
-     * REYHAN  for AllUsers under the ManageUsers dropdown menu
-     */
-    public AdminTicketPage allUsers() {
-        waitAndClick(getAllUsersUnderTheManageUsers);
-        return new AdminTicketPage();
-    }
 
 
-
-
-
-
+//    /**
+//     * REYHAN  for Email to All under the ManageUsers dropdown menu
+//     */
+//    public AdminTicketPage emailToAll() {
+//        waitAndClick(getEmailToAllUnderTheManageUsers);
+//        return new AdminTicketPage();
+//    }
 
 
 
@@ -772,6 +793,70 @@ public class AdminDashboardPage extends BasePage {
 
     }
 
+    @FindBy(xpath = "//*[@id=\"sidebar__menuWrapper\"]/ul/li[2]/a/span[1]")
+    public WebElement manageUsersDropdown;
+    @FindBy(xpath = "//*[@id=\"sidebar__menuWrapper\"]/ul/li[2]/div/ul/li[1]/a/span[1]")
+    public WebElement allUsersDropdown;
+    @FindBy(xpath = "//*[@id=\"sidebar__menuWrapper\"]/ul/li[2]/div/ul/li[2]/a/span[1]")
+    public WebElement activeUsersDropdown;
+    @FindBy(xpath = "//*[@id=\"sidebar__menuWrapper\"]/ul/li[2]/div/ul/li[3]/a/span[1]")
+    public WebElement bannedUsersDropdown;
+    @FindBy(xpath = "//*[@id=\"sidebar__menuWrapper\"]/ul/li[2]/div/ul/li[4]/a/span[1]")
+    public WebElement emailUnverified;
+    @FindBy(xpath = "//*[@id=\"sidebar__menuWrapper\"]/ul/li[2]/div/ul/li[5]/a/span[1]")
+    public WebElement smsUnverified;
+    @FindBy(xpath = "//*[@id=\"sidebar__menuWrapper\"]/ul/li[2]/div/ul/li[6]/a/span[1]")
+    public WebElement emailToAll;
+
+
+    public void openManageUsersDropdown() {
+        WebElement manageUsersDropdown = driver.findElement(By.id("manageUsersDropdownId"));
+        // Ensure the dropdown is visible or clickable before interacting
+        // You can use WebDriverWait to wait for the element to be clickable
+        manageUsersDropdown.click();
+    }
+
+    public void clickEmailUnverified() {
+        WebElement manageUsersDropdown = driver.findElement(By.id("manageUsersDropdownId"));
+        // Ensure the dropdown is visible or clickable before interacting
+        // You can use WebDriverWait to wait for the element to be clickable
+        manageUsersDropdown.click();
+    }
+
+    public void clickActiveUsersLink() {
+        WebElement manageUsersDropdown = driver.findElement(By.id("manageUsersDropdownId"));
+        // Ensure the dropdown is visible or clickable before interacting
+        // You can use WebDriverWait to wait for the element to be clickable
+        manageUsersDropdown.click();
+    }
+
+    public void clickBannedUsersLink() {
+        WebElement manageUsersDropdown = driver.findElement(By.id("manageUsersDropdownId"));
+        // Ensure the dropdown is visible or clickable before interacting
+        // You can use WebDriverWait to wait for the element to be clickable
+        manageUsersDropdown.click();
+    }
+
+    public void allUsers() {
+        WebElement manageUsersDropdown = driver.findElement(By.id("manageUsersDropdownId"));
+        // Ensure the dropdown is visible or clickable before interacting
+        // You can use WebDriverWait to wait for the element to be clickable
+        manageUsersDropdown.click();
+    }
+
+    public void clickSmsUnverified() {
+        WebElement manageUsersDropdown = driver.findElement(By.id("manageUsersDropdownId"));
+        // Ensure the dropdown is visible or clickable before interacting
+        // You can use WebDriverWait to wait for the element to be clickable
+        manageUsersDropdown.click();
+    }
+
+    public void clickEmailToAllLink() {
+        WebElement manageUsersDropdown = driver.findElement(By.id("manageUsersDropdownId"));
+        // Ensure the dropdown is visible or clickable before interacting
+        // You can use WebDriverWait to wait for the element to be clickable
+        manageUsersDropdown.click();
+    }
 
 }
 

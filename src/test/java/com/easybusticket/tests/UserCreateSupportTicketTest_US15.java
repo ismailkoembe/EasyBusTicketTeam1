@@ -35,6 +35,8 @@ public class UserCreateSupportTicketTest_US15 extends BaseTest {
     }
 
     @Test
+    @Severity(value = SeverityLevel.NORMAL)
+    @Description("User create a new support ticket negative test")
     public void createSupportTicketTestNegative() {
         UserLoginPage userLoginPage = new HomePage().clickToSignIn();
         UserDashboardPage userDashboardPage = userLoginPage.login(PropManager.getProperties(env, "usernameRegistered"), PropManager.getProperties(env, "passwordRegistered"));
@@ -46,7 +48,9 @@ public class UserCreateSupportTicketTest_US15 extends BaseTest {
     }
 
     @Test
-    public void displayingRequestTicketTest() {
+    @Severity(value = SeverityLevel.NORMAL)
+    @Description("User display request ticket and reply test")
+    public void displayingRequestTicketAndReplyTest() {
         UserLoginPage userLoginPage = new HomePage().clickToSignIn();
         UserDashboardPage userDashboardPage = userLoginPage.login(PropManager.getProperties(env, "usernameRegistered"), PropManager.getProperties(env, "passwordRegistered"));
         SupportTicketPage supportTicketPage = userDashboardPage.createNewRequestPage();
