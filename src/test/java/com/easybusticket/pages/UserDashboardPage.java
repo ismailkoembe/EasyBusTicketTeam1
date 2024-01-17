@@ -204,19 +204,18 @@ public class UserDashboardPage extends BasePage {
 
     }
 
-
+    @Step("Registered user logout")
     public UserLoginPage logout() {
 
         waitAndClick(dropDownProfile);
         waitAndClick(logoutOption);
         String expectedTitle = "Easy Bus Ticket - Sign In";
         String actualTitle = Driver.get(env).getTitle();
-        softAssert.assertEquals(actualTitle, expectedTitle);
-        softAssert.assertAll();
+        Assert.assertEquals(actualTitle,expectedTitle);
+        log.info("logout method was run");
         return new UserLoginPage();
-
-
     }
+
 
     public SupportTicketPage requestHistory() {
         waitAndClick(dropDownSupportRequest);

@@ -381,6 +381,13 @@ public class AdminDashboardPage extends BasePage {
 
         return new SeatLayoutsPage();
     }
+    public FleetTypePage manageFleets1(){
+
+        waitAndClick(manageFleets);
+        waitAndClick(fleetType);
+
+        return new FleetTypePage();
+    }
 //=====================================================================//
 
     public void clickToManualGateway() {
