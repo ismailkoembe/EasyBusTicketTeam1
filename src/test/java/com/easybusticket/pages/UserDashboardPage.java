@@ -203,10 +203,9 @@ public class UserDashboardPage extends BasePage {
 
 
     }
-
+    /**Ayça Ovalı */
     @Step("Registered user logout")
     public UserLoginPage logout() {
-
         waitAndClick(dropDownProfile);
         waitAndClick(logoutOption);
         String expectedTitle = "Easy Bus Ticket - Sign In";
@@ -215,17 +214,18 @@ public class UserDashboardPage extends BasePage {
         log.info("logout method was run");
         return new UserLoginPage();
     }
-
-
+    /**Ayça Ovalı */
+    @Step("registered user clicks on the request history section")
     public SupportTicketPage requestHistory() {
         waitAndClick(dropDownSupportRequest);
         waitAndClick(requestsOption);
         String expectedTitle = "Easy Bus Ticket - Support Tickets";
         String actualTitle = Driver.get(env).getTitle();
-        softAssert.assertEquals(actualTitle, expectedTitle);
-        softAssert.assertAll();
+        Assert.assertEquals(actualTitle, expectedTitle);
+        log.info("request history option clicked");
         return new SupportTicketPage();
     }
+
 
     public BookingHistoryPage clickToBookingHistory() {
         waitAndClick(dropDownBooking);
