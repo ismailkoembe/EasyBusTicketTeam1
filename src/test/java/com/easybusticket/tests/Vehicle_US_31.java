@@ -23,6 +23,6 @@ public class Vehicle_US_31 extends BaseTestAdmin {
         VehiclePage vehiclePage = new VehiclePage();
         vehiclePage.Vehicles();
 
-
     }
+
 }

@@ -18,6 +18,15 @@ public class VehiclePage extends BasePage{
     @FindBy(xpath = "//button[@type='submit']")
     public WebElement searchButton;
 
+    @FindBy(xpath = "//i[.='Add New']")
+    public WebElement addNewVehicles;
+
+    @FindBy(xpath = "//input[@placeholder='Enter nick name']")
+    public WebElement nickNameTexBoxVehicles;
+
+    @FindBy(xpath = "//select[@name='fleet_type']")
+    public WebElement fleetTypeTexBoxVehicles;
+
 
 
 
