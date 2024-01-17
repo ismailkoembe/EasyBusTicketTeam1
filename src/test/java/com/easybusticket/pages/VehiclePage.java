@@ -12,13 +12,13 @@ public class VehiclePage extends BasePage{
     }
 
 
-    @FindBy(xpath = "//input[@placeholder='Reg. No.']")
+    @FindBy(xpath = "(//input[@placeholder='Reg. No.'])[1]")
     public WebElement regNoTexBox;
 
     @FindBy(xpath = "//button[@class='btn btn--primary']")
     public WebElement searchButton;
 
-    @FindBy(xpath = "//i[.='Add New']")
+    @FindBy(xpath = "//a[@class='btn btn--primary box--shadow1 addBtn']")
     public WebElement addNewVehicles;
 
     @FindBy(xpath = "//input[@placeholder='Enter nick name']")
@@ -27,10 +27,13 @@ public class VehiclePage extends BasePage{
     @FindBy(xpath = "(//input[@placeholder='Enter Reg. No.'])[1]")
     public WebElement registreNoTexBoxVehicles;
 
-    @FindBy(xpath = "(//input[@placeholder='Enter Reg. No.'])[2]")
+    @FindBy(xpath = "//option[@value='47']")
+    public WebElement selectAnOption;
+
+    @FindBy(xpath = "(//input[@placeholder='Enter Eng. No.'])[1]")
     public WebElement engineNoTexBoxVehicles;
 
-    @FindBy(xpath = "(//input[@placeholder='Enter Chasis No.'])[2]")
+    @FindBy(xpath = "(//input[@placeholder='Enter Chasis No.'])[1]")
     public WebElement chasisNoTexBoxVehicles;
 
     @FindBy(xpath = "(//input[@placeholder='Enter Model No.'])[1]")
@@ -38,6 +41,9 @@ public class VehiclePage extends BasePage{
 
     @FindBy(xpath = "//select[@name='fleet_type']")
     public WebElement fleetTypeTexBoxVehicles;
+
+    @FindBy(xpath = "//button[.='Save']")
+    public WebElement saveVehicles;
 
 
 
@@ -53,6 +59,27 @@ public class VehiclePage extends BasePage{
     }
 
     public void AddVehicle(){
+
+        waitAndClick(addNewVehicles);
+        waitAndClick(nickNameTexBoxVehicles);
+        nickNameTexBoxVehicles.sendKeys(faker.name().firstName());
+        waitAndClick(fleetTypeTexBoxVehicles);
+        fleetTypeTexBoxVehicles.click();
+        waitAndClick(selectAnOption);
+
+        waitAndClick(registreNoTexBoxVehicles);
+        registreNoTexBoxVehicles.sendKeys(faker.numerify("#########"));
+
+        waitAndClick(engineNoTexBoxVehicles);
+        engineNoTexBoxVehicles.sendKeys(faker.numerify("####"));
+
+        waitAndClick(chasisNoTexBoxVehicles);
+        chasisNoTexBoxVehicles.sendKeys(faker.letterify("???????????????????????").toUpperCase());
+
+        waitAndClick(modelNoTexBoxVehicles);
+        modelNoTexBoxVehicles.sendKeys(faker.numerify("####"));
+
+        waitAndClick(saveVehicles);
 
 
 

@@ -25,11 +25,11 @@ public class Vehicle_US_31 extends BaseTestAdmin {
     }
 
     @Test
-    public void AddNewVehicle() {
+    public void AddVehicle() {
 
         ManageFleets();
         VehiclePage vehiclePage = new VehiclePage();
-        //vehiclePage.addNewVehicles();
+        vehiclePage.AddVehicle();
 
     }
 }
