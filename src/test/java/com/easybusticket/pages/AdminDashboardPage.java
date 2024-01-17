@@ -711,46 +711,6 @@ public class AdminDashboardPage extends BasePage {
         waitAndClick(manageUsers);
     }
 
-    /**
-     * REYHAN  for AllUsers under the ManageUsers dropdown menu
-     */
-    public AdminTicketPage allUsers() {
-        waitAndClick(getAllUsersUnderTheManageUsers);
-        return new AdminTicketPage();
-    }
-
-    /**
-     * REYHAN  for Active Users under the ManageUsers dropdown menu
-     */
-    public AdminTicketPage activeUsers() {
-        waitAndClick(getActiveUsersUnderTheManageUsers);
-        return new AdminTicketPage();
-    }
-
-    /**
-     * REYHAN  for Banned Users under the ManageUsers dropdown menu
-     */
-    public AdminTicketPage bannedUsers() {
-        waitAndClick(getBannedUsersUnderTheManageUsers);
-        return new AdminTicketPage();
-    }
-
-
-    /**
-     * REYHAN  for Email Unverified under the ManageUsers dropdown menu
-     */
-    public AdminTicketPage emailUnverified() {
-        waitAndClick(getEmailUnverifiedUnderTheManageUsers);
-        return new AdminTicketPage();
-    }
-
-    /**
-     * REYHAN  for Sms Unverified under the ManageUsers dropdown menu
-     */
-    public AdminTicketPage smsUnverified() {
-        waitAndClick(getSmsUnverifiedUnderTheManageUsers);
-        return new AdminTicketPage();
-    }
 
 
 //    /**
@@ -760,12 +720,6 @@ public class AdminDashboardPage extends BasePage {
 //        waitAndClick(getEmailToAllUnderTheManageUsers);
 //        return new AdminTicketPage();
 //    }
-
-
-
-
-
-
 
 
 

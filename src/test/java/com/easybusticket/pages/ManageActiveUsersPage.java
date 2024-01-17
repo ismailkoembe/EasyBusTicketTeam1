@@ -25,17 +25,4 @@ public class ManageActiveUsersPage extends  BasePage{
 
 
 
-    /**
-     * REYHAN for All Users Under the manage users
-     */
-    public void userActionVisibility(){
-        ManageActiveUsersPage manageActiveUsersPage = new ManageActiveUsersPage();
-        softAssert.assertTrue(manageActiveUsersPage.loginLogs.isDisplayed());
-        softAssert.assertTrue(manageActiveUsersPage.sendEmail.isDisplayed());
-        softAssert.assertTrue(manageActiveUsersPage.loginAsUser.isDisplayed());
-        softAssert.assertTrue(manageActiveUsersPage.emailLog.isDisplayed());
-        softAssert.assertAll();
-
-
-    }
 }
