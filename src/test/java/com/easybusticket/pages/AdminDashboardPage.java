@@ -536,6 +536,7 @@ public class AdminDashboardPage extends BasePage {
         return new ManageUsersPage();
 
     }
+
     //Viewing Total Verified Users card with view all button
     @Step("I clicked AllTotalVerifiedUsers")
     public ManageActiveUsersPage clickViewAllTotalVerifiedUsers() {
@@ -671,7 +672,7 @@ public class AdminDashboardPage extends BasePage {
     public WebElement buttonEasyBusTicketradioButton;
 
     @Step("I clicked ActionButton")
-    public BookingHistoryPage clickActionButton(){
+    public BookingHistoryPage clickActionButton() {
 
 
         waitAndClick(buttonActiondetails);
@@ -701,13 +702,6 @@ public class AdminDashboardPage extends BasePage {
         waitAndClick(getAllUsersUnderTheManageUsers);
         return new AdminTicketPage();
     }
-
-
-
-
-
-
-
 
 
     //TransportManager Counter section
@@ -771,6 +765,128 @@ public class AdminDashboardPage extends BasePage {
         return new ManageUsersPage();
 
     }
+
+
+    //Report button
+    @FindBy(xpath = "//*[text()='Report ']")
+    public WebElement reportButton;
+    //Login History link
+    @FindBy(xpath = "//*[text()='Login History']")
+    public WebElement loginHistoryLink;
+
+    //Email History link
+    @FindBy(xpath = "//*[text()='Email History']")
+    public WebElement emailHistoryLink;
+
+    // User title of User Login History
+    @FindBy(xpath = "//thead/tr/th[1]")
+    public WebElement userTitle;
+
+    // Login at title of User Login History
+    @FindBy(xpath = "//thead/tr/th[2]")
+    public WebElement loginAtTitle;
+
+    // IP title of User Login History
+    @FindBy(xpath = "//thead/tr/th[3]")
+    public WebElement coloumnIp;
+
+    //Location title of User Login History
+    @FindBy(xpath = "//thead/tr/th[3]")
+    public WebElement coloumnLocation;
+
+    //Browser | OS title of User Login History
+    @FindBy(xpath = "//thead/tr/th[3]")
+    public WebElement coloumnBrowserOSTitle;
+
+    //Send title of Email History
+    @FindBy(xpath = "//thead/tr/th[2]")
+    public WebElement coloumnSent;
+
+    //Mail sender title of Email History
+    @FindBy(xpath = "//thead/tr/th[3]")
+    public WebElement coloumnMailSender;
+
+    //Subject title of Email History
+    @FindBy(xpath = "//thead/tr/th[4]")
+    public WebElement coloumnSubject;
+
+    //Action button of Email History
+    @FindBy(xpath = "//tr[1]/td[5]/a")
+    public WebElement coloumnActionButton;
+
+
+
+
+
+
+    //Report button should be clicked
+    @Step("I clicked Login History")
+    public void clickToReport() {
+        waitAndClick(reportButton);
+        softAssert.assertTrue(reportButton.isDisplayed());
+        //softAssert.assertTrue(loginHistoryLink.isDisplayed());
+        //softAssert.assertTrue(emailHistoryLink.isDisplayed());
+        softAssert.assertAll();
+
+    }
+
+    //Login History should be clicked
+    @Step("I clicked Login History")
+    public UserLoginHistoryPage clickLoginHistory() {
+
+
+        waitAndClick(loginHistoryLink);
+
+        String expectedUrl = "https://qa.easybusticket.com/admin/report/login/history";
+        String actualUrl = Driver.get(env).getCurrentUrl();
+        softAssert.assertEquals(actualUrl, expectedUrl);
+        softAssert.assertAll();
+        log.info("URL is verified");
+        softAssert.assertTrue(userTitle.isDisplayed());
+        softAssert.assertTrue(loginAtTitle.isDisplayed());
+        softAssert.assertTrue(coloumnIp.isDisplayed());
+        softAssert.assertTrue(coloumnLocation.isDisplayed());
+        softAssert.assertTrue(coloumnBrowserOSTitle.isDisplayed());
+        softAssert.assertAll();
+        waitAndClick(dashboardIconButton);
+        return new UserLoginHistoryPage();
+
+
+    }
+
+    //Email History should be clicked
+    @Step("I clicked Email History")
+    public EmailHistoryPage clickEmailHistory() {
+        waitAndClick(reportButton);
+        waitAndClick(emailHistoryLink);
+        String expectedUrl = "https://qa.easybusticket.com/admin/report/email/history";
+        String actualUrl = Driver.get(env).getCurrentUrl();
+        softAssert.assertEquals(actualUrl, expectedUrl);
+        softAssert.assertTrue(userTitle.isDisplayed());
+        softAssert.assertTrue(coloumnSent.isDisplayed());
+        softAssert.assertTrue(coloumnMailSender.isDisplayed());
+        softAssert.assertTrue(coloumnSubject.isDisplayed());
+        softAssert.assertTrue(coloumnAction.isDisplayed());
+        softAssert.assertAll();
+        //waitAndClick(dashboardIconButton);
+        return new EmailHistoryPage();
+    }
+    //Action Button should be clicked und the page should open as "Email details" in another tab
+    @Step("I clicked ActionButton")
+    public PaymentCompletedSuccessfully clickEmailHistoryActionButton() {
+
+        waitAndClick(coloumnActionButton);
+        driver.switchTo().newWindow(WindowType.TAB).get("https://qa.easybusticket.com/admin/users/email-details/911");
+        String expectedUrl = "https://qa.easybusticket.com/admin/users/email-details/911";
+        String actualUrl = Driver.get(env).getCurrentUrl();
+        softAssert.assertEquals(actualUrl, expectedUrl);
+        softAssert.assertAll();
+       driver.navigate().back();
+        return new PaymentCompletedSuccessfully();
+    }
+
+
+
 
 
 }
