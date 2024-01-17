@@ -27,8 +27,8 @@ public class VehiclePage extends BasePage{
     @FindBy(xpath = "(//input[@placeholder='Enter Reg. No.'])[1]")
     public WebElement registreNoTexBoxVehicles;
 
-    @FindBy(xpath = "//option[@value='47']")
-    public WebElement selectAnOption;
+    @FindBy(xpath = "//option[@value='1']")
+    public WebElement selectAnOption1;
 
     @FindBy(xpath = "(//input[@placeholder='Enter Eng. No.'])[1]")
     public WebElement engineNoTexBoxVehicles;
@@ -44,6 +44,33 @@ public class VehiclePage extends BasePage{
 
     @FindBy(xpath = "//button[.='Save']")
     public WebElement saveVehicles;
+
+    @FindBy(xpath = "(//i[@class='la la-pen'])[1]")
+    public WebElement penIcon;
+
+    @FindBy(xpath = "(//input[@placeholder='Enter nick name'])[2]")
+    public WebElement nickNameTexBoxUpdateVehicles;
+
+    @FindBy(xpath = "(//select[@name='fleet_type'])[2]")
+    public WebElement fleetTypeTexBoxUpdateVehicles;
+
+    @FindBy(xpath = "(//input[@placeholder='Enter Reg. No.'])[2]")
+    public WebElement registreNoTexBoxUpdateVehicles;
+
+    @FindBy(xpath = "//option[@value='47']")
+    public WebElement selectAnOption2;
+
+    @FindBy(xpath = "(//input[@placeholder='Enter Eng. No.'])[2]")
+    public WebElement engineNoTexBoxUpdateVehicles;
+
+    @FindBy(xpath = "(//input[@placeholder='Enter Chasis No.'])[2]")
+    public WebElement chasisNoTexBoxUpdateVehicles;
+
+    @FindBy(xpath = "(//input[@placeholder='Enter Model No.'])[2]")
+    public WebElement modelNoTexBoxUpdateVehicles;
+
+    @FindBy(xpath = "//button[.='Update']")
+    public WebElement updateVehicles;
 
 
 
@@ -61,11 +88,13 @@ public class VehiclePage extends BasePage{
     public void AddVehicle(){
 
         waitAndClick(addNewVehicles);
+
         waitAndClick(nickNameTexBoxVehicles);
         nickNameTexBoxVehicles.sendKeys(faker.name().firstName());
+
         waitAndClick(fleetTypeTexBoxVehicles);
         fleetTypeTexBoxVehicles.click();
-        waitAndClick(selectAnOption);
+        waitAndClick(selectAnOption1);
 
         waitAndClick(registreNoTexBoxVehicles);
         registreNoTexBoxVehicles.sendKeys(faker.numerify("#########"));
@@ -81,6 +110,38 @@ public class VehiclePage extends BasePage{
 
         waitAndClick(saveVehicles);
 
+    }
+
+    public void UpdateVehicle(){
+
+        waitAndClick(penIcon);
+
+        waitAndClick(nickNameTexBoxUpdateVehicles);
+        nickNameTexBoxUpdateVehicles.clear();
+        nickNameTexBoxUpdateVehicles.sendKeys(faker.name().firstName());
+
+        waitAndClick(fleetTypeTexBoxUpdateVehicles);
+        fleetTypeTexBoxUpdateVehicles.click();
+        fleetTypeTexBoxUpdateVehicles.clear();
+        waitAndClick(selectAnOption2);
+
+        waitAndClick(registreNoTexBoxUpdateVehicles);
+        registreNoTexBoxUpdateVehicles.clear();
+        registreNoTexBoxUpdateVehicles.sendKeys(faker.numerify("#########"));
+
+        waitAndClick(engineNoTexBoxUpdateVehicles);
+        engineNoTexBoxUpdateVehicles.clear();
+       engineNoTexBoxUpdateVehicles.sendKeys(faker.numerify("####"));
+
+        waitAndClick(chasisNoTexBoxUpdateVehicles);
+        chasisNoTexBoxUpdateVehicles.clear();
+       chasisNoTexBoxUpdateVehicles.sendKeys(faker.letterify("???????????????????????").toUpperCase());
+
+        waitAndClick(modelNoTexBoxUpdateVehicles);
+        modelNoTexBoxUpdateVehicles.clear();
+        modelNoTexBoxUpdateVehicles.sendKeys(faker.numerify("####"));
+
+        waitAndClick(updateVehicles);
 
 
     }
