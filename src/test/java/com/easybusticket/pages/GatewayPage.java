@@ -3,16 +3,13 @@ package com.easybusticket.pages;
 import com.easybusticket.utilities.Driver;
 import com.easybusticket.utilities.GetAbsolutePath;
 import com.easybusticket.utilities.PropManager;
+import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
-
-import javax.swing.plaf.TableHeaderUI;
 
 
 @Slf4j
@@ -59,6 +56,10 @@ public class GatewayPage extends BasePage{
     public WebElement automaticGatewaysButton;
 
 /*-------------------------------------------------------------------------------------------------------------------*/
+
+    @FindBy(xpath = "//*[text()='Manual Gateways']")
+    public WebElement manualGatewaysButton;
+
     @FindBy(xpath = "(//*[text()='Manual Gateways'])[2]")
     public WebElement labelManualGateway;
     @FindBy(xpath = "//a[@class='btn btn-sm btn--primary box--shadow1 text--small']")
@@ -72,13 +73,6 @@ public class GatewayPage extends BasePage{
 
     @FindBy(xpath = "//*[@class='la la-eye']")
     public WebElement firstElementActivationButton;
-
-    @FindBy(xpath = "//*[@class='btn btn--primary']")
-    public WebElement activationChangeButton;
-
-
-    @FindBy(xpath = "//*[text()='New Manual Gateway']")
-    public WebElement labelEditPageManualGateway;
 
     @FindBy(xpath = "//*[@class='profilePicUpload']")
     public WebElement imageUploadButton;
@@ -142,6 +136,8 @@ public class GatewayPage extends BasePage{
     public WebElement methodDisabledButton;
 
 
+    /** Ayca Ovali */
+    @Step("Admin clicked the automaticGatewayVerifyTest method and verified all page information")
     public void automaticGatewayVerifyTest(){
 
         softAssert.assertTrue(labelAutomaticGateway.isDisplayed());
@@ -154,22 +150,26 @@ public class GatewayPage extends BasePage{
         softAssert.assertTrue(rowFirstValueSupportedCurrency.isDisplayed());
         softAssert.assertTrue(rowFirstValueEnabledCurrency.isDisplayed());
         softAssert.assertTrue(rowFirstValueStatus.isDisplayed());
-
-        waitAndClick(searchBox);
-        String expectedIcerik = "Blockchain";
-        searchBox.sendKeys(expectedIcerik);
-        String actualIcerik = rowFirstValueGateway.getText();
-        softAssert.assertEquals(actualIcerik,expectedIcerik);
         softAssert.assertAll();
-        log.info("Automatic gateway searchbox'da arama yapıldı");
+        log.info("The information on the page was viewed");
+
+    }
+    @Step("Admin searched payment method in automatic gateway menu searchbox")
+    public void automaticGatewaySearchBoxTest(){
+        waitAndClick(searchBox);
+        String expectedSearch = "Blockchain";
+        searchBox.sendKeys(expectedSearch);
+        String actualSearch = rowFirstValueGateway.getText();
+        Assert.assertEquals(actualSearch,expectedSearch);
+        log.info("Searched in automatic gateway search box");
 
         waitAndClick(paymentGatewaysButton);
         waitAndClick(automaticGatewaysButton);
-        log.info("Automatic gateway page sayfasına dönüş yapıldı");
-
+        log.info("Returned to Automatic Gateway Page");
     }
-
-    public void manualGatewayVerifyTest(){
+    /**========MANUAL GATEWAY METHODS========*/
+    @Step("Admin clicked the manualGatewayMenuVerifyTest method and verified all page information")
+    public void manualGatewayMenuVerifyTest(){
 
         softAssert.assertTrue(labelManualGateway.isDisplayed());
         softAssert.assertTrue(manualGatewayAddNewButton.isDisplayed());
@@ -181,15 +181,28 @@ public class GatewayPage extends BasePage{
         softAssert.assertTrue(rowFirstValueStatus.isDisplayed());
         softAssert.assertTrue(firstElementEditButton.isDisplayed());
         softAssert.assertTrue(firstElementActivationButton.isDisplayed());
+        softAssert.assertAll();
+        log.info("The information on the page was viewed");
 
-        String expectedIcerik = "WISE PAY";
+    }
+
+    @Step("Clicked the manualGatewaySearchBoxTest and searched in manual gateway page")
+    public void manualGatewaySearchBoxTest(){
+
+        String expectedIcerik = "hello";
         searchBox.sendKeys(expectedIcerik);
         String actualIcerik = rowFirstValueGateway.getText();
-        softAssert.assertEquals(actualIcerik,expectedIcerik);
-        log.info("Manual gateway searchbox'da arama yapıldı");
+        Assert.assertEquals(actualIcerik,expectedIcerik);
+        log.info("Searched in manual gateway search box");
+        waitAndClick(paymentGatewaysButton);
+        waitAndClick(manualGatewaysButton);
+        log.info("Returned to Manual Gateway Page");
+
+    }
+
+    @Step("Clicked the manualGatewayNewAddPaymentTest and added a new manual payment method")
+    public void manualGatewayNewAddPaymentTest(){
         waitAndClick(manualGatewayAddNewButton);
-
-
         String path = GetAbsolutePath.getAbsolutePath(PropManager.getProperties(env, "imgPathLogo"));
         imageUploadButton.sendKeys(path);
         textOfBoxGatewayName.sendKeys("hello");
@@ -199,9 +212,17 @@ public class GatewayPage extends BasePage{
         textOfBoxMaximumAmount.sendKeys("1000");
         textOfBoxFixedCharge.sendKeys("10");
         textOfBoxPercentCharge.sendKeys("10");
-        textOfBoxMessage.sendKeys("yeni ödeme methodu eklendi");
-
+        textOfBoxMessage.sendKeys("New Manual Payment Method");
+        log.info("new payment method information has been entered");
         actions.sendKeys(Keys.PAGE_DOWN).sendKeys(Keys.PAGE_DOWN).perform();
+        waitAndClick(addNewUserDataButton);
+        actions.sendKeys(Keys.PAGE_DOWN).sendKeys(Keys.PAGE_DOWN).perform();
+        softAssert.assertTrue(textOfBoxFieldName.isDisplayed());
+        softAssert.assertTrue(dropDownUserDataInput.isDisplayed());
+        softAssert.assertTrue(dropDownUserDataValue.isDisplayed());
+        softAssert.assertAll();
+        waitAndClick(userDataRemove);
+
 
         try {
             Thread.sleep(2000);
@@ -210,17 +231,21 @@ public class GatewayPage extends BasePage{
         }
         saveMethodButton.submit();
         log.info("Clicked the Save Method Button");
-
-
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
         goBackButton.click();
+        log.info("Returned Manual gateway page");
+
+    }
+    @Step("Clicked the manualGatewayPaymentUpdateTest and updated and saved method information")
+    public void manualGatewayPaymentUpdateTest(){
+
         waitAndClick(firstElementEditButton);
         waitAndClick(textOfBoxCurrency);
-        textOfBoxCurrency.sendKeys(Keys.DELETE);
+        textOfBoxCurrency.clear();
         textOfBoxCurrency.sendKeys("dolar");
 
         actions.sendKeys(Keys.PAGE_DOWN).sendKeys(Keys.PAGE_DOWN).perform();
@@ -239,11 +264,18 @@ public class GatewayPage extends BasePage{
             throw new RuntimeException(e);
         }
         goBackButton.click();
+        log.info("Returned Manual gateway page");
+
+    }
+
+    @Step("Clicked the manualGatewayActivationTest and checked buttons")
+    public void manualGatewayActivationTest(){
 
         waitAndClick(firstElementActivationButton);
         waitAndClick(methodActivateButton);
         waitAndClick(methodDeactivatedButton);
         waitAndClick(methodDisabledButton);
+        log.info("Activate and Desibled buttons checked");
 
         try {
             Thread.sleep(2000);
@@ -254,10 +286,7 @@ public class GatewayPage extends BasePage{
         String expectedStatus = "Disabled";
         String actualStatus = rowFirstValueStatus.getText();
         Assert.assertEquals(actualStatus,expectedStatus);
-
-
-
+        log.info("method status is disabled");
     }
-
 
 }

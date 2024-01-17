@@ -5,12 +5,17 @@ import com.easybusticket.pages.SupportTicketPage;
 import com.easybusticket.pages.UserDashboardPage;
 import com.easybusticket.pages.UserLoginPage;
 import com.easybusticket.utilities.Driver;
+import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.Test;
 
 @Slf4j
 public class RequestHistoryTest_US16 extends BaseTest{
     @Test
+    @Severity(value = SeverityLevel.NORMAL)
+    @Description("A registered user should be able to access my ticket history from the Ticket menu")
     public void requestCheckTest(){
         // navigate to the login page
         UserLoginPage userLoginPage = new HomePage().clickToSignIn();
