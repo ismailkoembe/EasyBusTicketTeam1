@@ -308,6 +308,14 @@ public class AdminDashboardPage extends BasePage {
         waitAndClick(buttonSearch);
         waitAndClick(linkSearch);
     }
+    @FindBy(xpath = "//*[@class='page-title']")
+    public WebElement labelContact;
+    @FindBy(xpath = "//*[@class='page-title']")
+    public WebElement labelBlog;
+    @FindBy(xpath = "//*[@class='page-title']")
+    public WebElement labelFaq;
+    @FindBy(xpath = "//*[@class='page-title']")
+    public WebElement labelAboutUs;
     @Step("Page searched with data provider")
     public Object searchPage(String pages) {
         linkSearch.sendKeys(pages);
