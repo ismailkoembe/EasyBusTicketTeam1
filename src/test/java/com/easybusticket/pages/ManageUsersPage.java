@@ -35,10 +35,15 @@ public class ManageUsersPage extends BasePage{
     @FindBy(xpath = "/html/body/div/div[2]/div/div[1]/div[2]/form/div/div/button")
     private WebElement searchButtonLink;
 
+
+    public  AllUsersPage clikcToManageUsers() {
+       // waitAndClick(manageUsersDropdownDashboard);
+
    /* public  AllUsersPage clikcToManageUsers() {
         waitAndClick(manageUsersDropdownDashboard);
 
-        waitAndClick(allUsersOption);
+
+        //waitAndClick(allUsersOption);
        
         return new AllUsersPage();
 

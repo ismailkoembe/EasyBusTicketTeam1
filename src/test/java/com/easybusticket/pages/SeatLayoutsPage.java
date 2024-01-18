@@ -16,7 +16,7 @@ public class SeatLayoutsPage extends BasePage{
     @FindBy(xpath = "//i[@class='fa fa-fw fa-plus']")
     public WebElement addNewButton;
 
-    @FindBy(xpath = "(//input[@placeholder='2 x 3'])[1]")
+    @FindBy(xpath = "(//input[@class='form-control'])[1]")
     public WebElement layoutTextBox;
 
     @FindBy(xpath = "//button[.='Save']")
@@ -45,10 +45,9 @@ public class SeatLayoutsPage extends BasePage{
         waitAndClick(addNewButton);
         softAssert.assertTrue(layoutTextBox.isDisplayed());
         softAssert.assertAll();
-        waitAndClick(layoutTextBox);
 
-        String fakeLayout = faker.numerify("##");
-        layoutTextBox.sendKeys(fakeLayout);
+        waitAndClick(layoutTextBox);
+        layoutTextBox.sendKeys(faker.numerify("##"));
         waitAndClick(saveButton);
 
     }
