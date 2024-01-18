@@ -56,6 +56,85 @@ public class AdminPage extends BasePage {
         return new AdminDashboardPage();
 
     }
+    /**
+     * REYHAN for negative admin login with uncorrect username
+     */
+
+    public AdminDashboardPage negativeAdminLoginWithUncorrectUsername() {
+
+        waitAndClick(adminUsernameBox);
+        adminUsernameBox.sendKeys("ad");
+        adminPasswordBox.sendKeys("123123123");
+        waitAndClick(buttonAdminLogin);
+
+
+        String expectedText = "Admin Login to Easy Bus Ticket dashboard";
+        String actualText = Driver.get(env).getTitle();
+        softAssert.assertNotEquals(actualText,expectedText);
+
+        return new AdminDashboardPage();
+
+    }
+
+    /**
+     * REYHAN for negative admin login with uncorrect password
+     */
+
+    public AdminDashboardPage negativeAdminLoginWithUncorrectPassword() {
+
+        waitAndClick(adminUsernameBox);
+        adminUsernameBox.sendKeys("admin07");
+        adminPasswordBox.sendKeys("123");
+        waitAndClick(buttonAdminLogin);
+
+
+        String expectedText = "Admin Login to Easy Bus Ticket dashboard";
+        String actualText = Driver.get(env).getTitle();
+        softAssert.assertNotEquals(actualText,expectedText);
+
+        return new AdminDashboardPage();
+
+    }
+
+    /**
+     * REYHAN for negative admin login with uncorrect password
+     */
+
+    public AdminDashboardPage negativeAdminLoginWithUncorrectCredintial() {
+
+        waitAndClick(adminUsernameBox);
+        adminUsernameBox.sendKeys("admin");
+        adminPasswordBox.sendKeys("123");
+        waitAndClick(buttonAdminLogin);
+
+
+        String expectedText = "Admin Login to Easy Bus Ticket dashboard";
+        String actualText = Driver.get(env).getTitle();
+        softAssert.assertNotEquals(actualText,expectedText);
+
+        return new AdminDashboardPage();
+
+    }
+
+    /**
+     * REYHAN for negative admin login with uncorrect password
+     */
+
+    public AdminDashboardPage negativeAdminLoginWithEmptyCredintial() {
+
+        waitAndClick(adminUsernameBox);
+        adminUsernameBox.sendKeys(" ");
+        adminPasswordBox.sendKeys(" ");
+        waitAndClick(buttonAdminLogin);
+
+
+        String expectedText = "Admin Login to Easy Bus Ticket dashboard";
+        String actualText = Driver.get(env).getTitle();
+        softAssert.assertNotEquals(actualText,expectedText);
+
+        return new AdminDashboardPage();
+
+    }
 
 
 }
