@@ -4,17 +4,14 @@ import com.easybusticket.pages.AdminDashboardPage;
 import com.easybusticket.pages.AdminPage;
 import com.easybusticket.pages.PaymentDetailsPage;
 import com.easybusticket.pages.PendingPaymentPage;
-import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.Test;
 
-import static com.easybusticket.pages.BasePage.env;
-
 @Slf4j
 @Severity(SeverityLevel.NORMAL)
-public class PendingTicketRejectTestNegativ_U25 extends BaseTestAdmin {
+public class US25_PendingTicketRejectTestNegativ extends BaseTestAdmin {
 
     @Test
     public void PendingTicketRejectTestNegativ(){
