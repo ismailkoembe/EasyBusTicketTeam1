@@ -75,6 +75,21 @@ public WebElement detailActionButtonLink;
 
     @FindBy(xpath = "(//*[@class='ticket-no'])[1]")
     public WebElement expectedPnrNumber;
+
+    public void printTicket() {
+        //String actualPnrNumber = actualPnrNumberOnTicket.getText();
+        waitAndClick(printButton);
+
+        softAssert.assertTrue(downloadButton.isDisplayed());
+        log.info("ticket is ready to download");
+        //softAssert.assertEquals(actualPnrNumber, expectedPnrNumber);
+        softAssert.assertEquals(actualNameOnTicket, "Asli ekm");
+        log.info("ticket informations are true");
+
+    }
+
+
+
     public void titleCheckTestBookingHistory() {
         String expectedAboutTitle = "Easy Bus Ticket - Booking History";
         String actualAboutTitle = Driver.get(env).getTitle();
@@ -98,17 +113,6 @@ public WebElement detailActionButtonLink;
         softAssert.assertFalse(tableCells.isEmpty());
         log.info("verified that there is no Ticket on the Table");
         softAssert.assertAll();
-
-    }
-    public void printTicket() {
-        //String actualPnrNumber = actualPnrNumberOnTicket.getText();
-        waitAndClick(printButton);
-
-        softAssert.assertTrue(downloadButton.isDisplayed());
-        log.info("ticket is ready to download");
-        //softAssert.assertEquals(actualPnrNumber, expectedPnrNumber);
-        softAssert.assertEquals(actualNameOnTicket, "Asli ekm");
-        log.info("ticket informations are true");
 
     }
     public void isTheHeaderListAsExpected (List<WebElement> tableHeaderList ) {
