@@ -227,6 +227,12 @@ public class HomePage extends BasePage {
 
     }
 
+    public FaqPage clickToFaqTitle() {
+        acceptCookies();
+        waitAndClick(faqsTitle);
+        return new FaqPage();
+    }
+
 
     /**
      * REYHAN Blog page control
