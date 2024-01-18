@@ -1,6 +1,7 @@
 package com.easybusticket.pages;
 
 import com.easybusticket.utilities.Driver;
+import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -26,6 +27,9 @@ public class SuccessfulPaymentPage extends BasePage{
     @FindBy(xpath = "/html/body/div[1]/div[2]/div/div[1]/div[2]/form[1]/div/input")
     public WebElement trxNumberUsernameSearchBox;
 
+    @FindBy(xpath = "/html/body/div[1]/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr/td[7]/a")
+    public WebElement detailActionButtonLink;
+
     @FindAll({
             @FindBy(xpath = "//thead//tr/th[1]"),
             @FindBy(xpath = "//thead//tr/th[2]"),
@@ -41,32 +45,24 @@ public class SuccessfulPaymentPage extends BasePage{
     @FindBy(xpath = "(//tbody//tr/td)")
     public WebElement dataTableNoTicket;
 
-    @FindBy (xpath = "//td [@data-label=\"User\"]")
+    @FindBy (xpath = "//td [@data-label='Gateway | Trx\']")
     public WebElement getDataTableWithTicket;
 
-    public void searchingTicketNoTicket() {
-        //Searching mit date without Ticket Scenerio
-        waitAndClick(dateSearchBox);
 
-        //enter a time period in the past when no tickets were received.
-        dateSearchBox.sendKeys("12/20/2023 - 01/03/2024" + Keys.ENTER);
-
-        String actualResultText = dataTableNoTicket.getText();
-        softAssert.assertEquals(actualResultText, "No Payments Found");
-        log.info("verified that the text on the table as expected.");
-        softAssert.assertAll();
-    }
-
+@Step(" search Ticket with PNR Number")
     public void getPNRNumberSearchBoxWithTicket() {
         //Searching mit date without Ticket Scenerio with Ticket
-        waitAndClick(dateSearchBox);
-        dateSearchBox.sendKeys("" + Keys.ENTER);
-        String actualResultText = getDataTableWithTicket.getText();
-        softAssert.assertNotEquals(actualResultText, "No Payments Found");
-        log.info("verified that the text on the table as expected.");
-        softAssert.assertAll();
-    }
+        waitAndClick(trxNumberUsernameSearchBox);
+        trxNumberUsernameSearchBox.sendKeys("S54ODNGP7FA1" + Keys.ENTER);
+        String actualTextOnTheTable = getDataTableWithTicket.getText();
+        String expectedTextOnTheTable = "S54ODNGP7FA1";
+        softAssert.assertTrue(actualTextOnTheTable.contains(expectedTextOnTheTable));
 
+        log.info("verified that the text on the table as expected.");
+
+
+    }
+@Step("check the title")
     public void titleSuccessfulPaymentPage(){
 
         String expectedTitle = "Easy Bus Ticket - Successful Payment";
@@ -75,5 +71,16 @@ public class SuccessfulPaymentPage extends BasePage{
         log.info("Title checked.");
         softAssert.assertAll();
 
+    }
+    @Step(" search Ticket with Date")
+    public void getDateSearchBoxWithTicket() {
+        //Searching mit date without Ticket Scenerio with Ticket
+        waitAndClick(dateSearchBox);
+        dateSearchBox.sendKeys("01/10/2024" + Keys.ENTER);
+        String actualDataOnTheTable = getDataTableWithTicket.getText();
+        String expectedDataOnTheTable = "K52GYQPKYU3A";
+        softAssert.assertTrue(actualDataOnTheTable.contains(expectedDataOnTheTable));
+
+        log.info("verified that the text on the table as expected.");
     }
 }

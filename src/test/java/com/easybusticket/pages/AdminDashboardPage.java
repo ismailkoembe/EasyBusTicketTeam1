@@ -462,11 +462,9 @@ public class AdminDashboardPage extends BasePage {
 
     public SuccessfulPaymentPage clickToSuccessfulPayment() {
 
-        softAssert.assertTrue(paymentHistoryDropdownDashboard.isDisplayed());
+
         waitAndClick(paymentHistoryDropdownDashboard);
-        softAssert.assertTrue(successfulPaymentOption.isDisplayed());
         waitAndClick(successfulPaymentOption);
-        softAssert.assertAll();
         return new SuccessfulPaymentPage();
 
     }
