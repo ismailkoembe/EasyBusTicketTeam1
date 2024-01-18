@@ -4,6 +4,7 @@ import com.easybusticket.utilities.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
 public class ManageActiveUsersPage extends  BasePage{
     public ManageActiveUsersPage() {
@@ -13,12 +14,15 @@ public class ManageActiveUsersPage extends  BasePage{
     @FindBy(xpath = "//*[@class='btn btn--primary btn--shadow btn-block btn-lg']")
     WebElement loginLogs;
 
-    /**
-     * REYHAN for All Users Under the manage users
-     */
-    public void loginLogs(){
+    @FindBy(xpath = "//*[@class='btn btn--info btn--shadow btn-block btn-lg']")
+    WebElement sendEmail;
 
-        loginLogs.isDisplayed();
+    @FindBy(xpath = "//*[@class='btn btn--dark btn--shadow btn-block btn-lg']")
+    WebElement loginAsUser;
 
-    }
+    @FindBy(xpath = "//*[@class='btn btn--warning btn--shadow btn-block btn-lg']")
+    WebElement emailLog;
+
+
+
 }

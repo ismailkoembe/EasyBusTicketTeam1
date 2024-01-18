@@ -33,7 +33,6 @@ public abstract class BasePage {
     public final SoftAssert softAssert=new SoftAssert();
 
 
-
     public void waitAndClick(WebElement element){
         long start = System.currentTimeMillis();
         wait.until(ExpectedConditions.elementToBeClickable(element)).click();
