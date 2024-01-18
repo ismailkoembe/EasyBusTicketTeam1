@@ -39,6 +39,8 @@ public class PendingPaymentPage extends BasePage {
     })
     public List<WebElement> tablePendingPaymentHeaderList;
 
+    @FindBy (xpath = "/html/body/div[1]/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr/td[7]/a")
+     public    WebElement detailButton;
     @FindBy(xpath = "(//tbody//tr/td)")
     public WebElement dataTableNoTicket;
 
@@ -78,4 +80,13 @@ public class PendingPaymentPage extends BasePage {
         softAssert.assertAll();
 
     }
+
+
+    public PaymentDetailsPage clickToDetailButton() {
+        waitAndClick(detailButton);
+        return new PaymentDetailsPage();
+    }
+
+
+
 }
