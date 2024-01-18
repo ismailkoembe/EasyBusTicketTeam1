@@ -191,7 +191,7 @@ public class UserDashboardPage extends BasePage {
     @FindBy(xpath = "(//*[@class='action-button-wrapper'])[1]")
     public WebElement actionButton;
 
-
+    @Step("Clicks to buy tickets button")
     public BuyTicketsPage clickToBuyTicketsButton() {
         waitAndClick(dropDownBooking);
         waitAndClick(buyTicketOption);
@@ -201,9 +201,7 @@ public class UserDashboardPage extends BasePage {
 
         softAssert.assertAll();
 
-
         return new BuyTicketsPage();
-
 
     }
 
