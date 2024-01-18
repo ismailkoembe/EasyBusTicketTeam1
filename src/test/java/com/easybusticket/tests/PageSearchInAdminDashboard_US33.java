@@ -9,7 +9,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 @Slf4j
-public class PageSearchInAdminDashboard_US33 extends BaseTestAdmin{
+    public class PageSearchInAdminDashboard_US33 extends BaseTestAdmin{
 
     @DataProvider(name="pages")
     public Object[][] getPages() {
