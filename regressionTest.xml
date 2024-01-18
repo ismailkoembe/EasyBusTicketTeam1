@@ -1,8 +1,8 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Regression Suit">
     <test name="Regression Test">
-        <packages>
-            <package name="com.easybusticket.tests"/>
-        </packages>
+        <classes>
+            <class name="com.easybusticket.tests.US07_BlogPageTest"></class>
+        </classes>
     </test>
 </suite>
