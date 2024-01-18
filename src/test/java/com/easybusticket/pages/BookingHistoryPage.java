@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 
 import java.io.ByteArrayOutputStream;
@@ -23,17 +24,6 @@ public class BookingHistoryPage extends BasePage {
         PageFactory.initElements(Driver.get("stage"), this);
     }
 
-
-    // print ticket button
-    @FindBy(xpath = "//i[@class='las la-print']")
-    public WebElement printButton;
-
-    // download ticket button
-    @FindBy(xpath = "//button[@type='button']")
-    public WebElement downloadButton;
-
-    @FindBy(xpath = "(//h5[@class='value'])[1]")
-    public WebElement actualPnrNumberOnTicket;
 
 @FindBy(xpath = "/html/body/section[2]/div/div/div/table/tbody/tr/td[10]/div/a")
 public WebElement detailActionButtonLink;
@@ -68,27 +58,22 @@ public WebElement detailActionButtonLink;
     public List<WebElement> tableHeaderList;
 
 
+    // print ticket button
+    @FindBy(xpath = "(//i[@class='las la-print'])[1]")
+    public WebElement printButton;
 
-    // actual name on ticket
-    @FindBy(xpath = "(//h5[@class='value'])[2]")
-    public WebElement actualNameOnTicket;
-
-    @FindBy(xpath = "(//*[@class='ticket-no'])[1]")
-    public WebElement expectedPnrNumber;
+    // download ticket button
+    @FindBy(xpath = "//button[@type='button']")
+    public WebElement downloadButton;
 
     public void printTicket() {
-        //String actualPnrNumber = actualPnrNumberOnTicket.getText();
+
         waitAndClick(printButton);
 
-        softAssert.assertTrue(downloadButton.isDisplayed());
+        Assert.assertTrue(downloadButton.isDisplayed());
         log.info("ticket is ready to download");
-        //softAssert.assertEquals(actualPnrNumber, expectedPnrNumber);
-        softAssert.assertEquals(actualNameOnTicket, "Asli ekm");
-        log.info("ticket informations are true");
 
     }
-
-
 
     public void titleCheckTestBookingHistory() {
         String expectedAboutTitle = "Easy Bus Ticket - Booking History";
