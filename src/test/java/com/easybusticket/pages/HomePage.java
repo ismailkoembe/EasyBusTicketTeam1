@@ -227,6 +227,12 @@ public class HomePage extends BasePage {
 
     }
 
+    public FaqPage clickToFaqTitle() {
+        acceptCookies();
+        waitAndClick(faqsTitle);
+        return new FaqPage();
+    }
+
 
     /**
      * REYHAN Blog page control
@@ -303,10 +309,16 @@ public class HomePage extends BasePage {
     }
 
 
-    public FaqPage clickToFaqTitle() {
+
+    @FindBy(xpath = "//*[text()='Every Journey is an Adventure, Every Ticket is a Story']")
+    public WebElement homePageText;
+    @Step("Go to url and check text")
+    public void websiteTest() {
         acceptCookies();
-        waitAndClick(faqsTitle);
-        return new FaqPage();
+        String expectedTitle = "Every Journey is an Adventure, Every Ticket is a Story";
+        String actualTitle = homePageText.getText();
+        Assert.assertEquals(actualTitle,expectedTitle);
+        log.info("text is visible");
     }
 }
 

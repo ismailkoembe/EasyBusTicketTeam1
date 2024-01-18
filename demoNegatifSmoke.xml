@@ -1,1 +1,10 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Negatif SmokeTest">
+    <test name="Negatif Smoke Test">
+        <!--        <parameter name="username" value="your_username"/>-->
+        <!--        <parameter name="password" value="your_password"/>-->
+        <classes>
+            <class name="com.easybusticket.tests.US10_UserLoginNegativeTest"> </class>
+        </classes>
+    </test>
+</suite>

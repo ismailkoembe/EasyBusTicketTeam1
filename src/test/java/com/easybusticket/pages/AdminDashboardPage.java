@@ -408,9 +408,17 @@ public class AdminDashboardPage extends BasePage {
         waitAndClick(fleetType);
 
         return new FleetTypePage();
+
     }
 
+    public VehiclePage manageFleets2() {
 
+        waitAndClick(manageFleets);
+        waitAndClick(vehicle);
+
+        return new VehiclePage();
+
+    }
     //Dropdown PaymentHistory option
     @FindBy(xpath = "//*[@id=\"sidebar__menuWrapper\"]/ul/li[3]/a")
     public WebElement paymentHistoryDropdownDashboard;
