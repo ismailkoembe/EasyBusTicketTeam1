@@ -43,12 +43,9 @@ public class SeatLayoutsPage extends BasePage{
     public void addSeatLayouts() {
 
         waitAndClick(addNewButton);
-        //softAssert.assertTrue(layoutTextBox.isDisplayed());
-        //softAssert.assertAll();
+
         waitAndClick(layoutTextBox);
         layoutTextBox.sendKeys(faker.numerify("##"));
-
-
         waitAndClick(saveButton);
 
     }
