@@ -17,7 +17,14 @@ public WebElement approveButton;
 @FindBy(xpath = "//*[@id=\"approveModal\"]/div/div/form/div[2]/button[2]")
 public  WebElement approveButtonDeposit;
 
+@FindBy (xpath = "/html/body/div/div[2]/div/div[2]/div[2]/div/div/div/div/button[2]")
+public WebElement rejectButton;
 
+@FindBy (xpath = "//*[@id=\"message\"]")
+public WebElement messageBoxRejectedTicket;
+
+@FindBy (xpath = "//*[@id=\"rejectModal\"]/div/div/form/div[2]/button[2]")
+public WebElement rejectDeposit;
 
     public void checkPendingPaymentPageURL(){
 
@@ -29,9 +36,18 @@ public  WebElement approveButtonDeposit;
 
     }
 
-    public void approvePendingTicket(){
+    public ApprovePaymentPage clickToApprovePendingTicket(){
         waitAndClick(approveButton);
+
         waitAndClick(approveButtonDeposit);
+        return new ApprovePaymentPage();
+    }
+
+    public RejectTicketPage clickToRejectPendingTicket(){
+        waitAndClick(approveButton);
+
+        waitAndClick(approveButtonDeposit);
+        return new RejectTicketPage();
     }
 
 
