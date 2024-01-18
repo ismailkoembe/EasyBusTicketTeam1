@@ -6,10 +6,12 @@ import com.easybusticket.utilities.HardWait;
 import com.easybusticket.utilities.PropManager;
 import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 
 
@@ -228,6 +230,12 @@ public class GatewayPage extends BasePage{
 
         saveMethodButton.submit();
         log.info("Clicked the Save Method Button");
+
+        WebElement popupMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".iziToast-message")));
+        Assert.assertTrue(popupMessage.isDisplayed(), "popup message is not displayed.");
+        String messageText = popupMessage.getText();
+        Assert.assertEquals(messageText, "hello Manual gateway has been added.", "popup message text does not match.");
+        log.info("hello Manual gateway has been added. message is displayed");
 
         HardWait.hardWait(2000);
 

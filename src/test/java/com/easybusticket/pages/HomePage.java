@@ -3,10 +3,12 @@ package com.easybusticket.pages;
 import com.easybusticket.utilities.Driver;
 import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 
 @Slf4j
@@ -185,6 +187,12 @@ public class HomePage extends BasePage {
     @Step("I clicked Cookies")
     public void acceptCookies() {
         waitAndClick(cookies);
+        WebElement cookieMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".iziToast-message")));
+        Assert.assertTrue(cookieMessage.isDisplayed(), "Cookie accepted successfully");
+        String messageText = cookieMessage.getText();
+        System.out.println(messageText);
+        Assert.assertEquals(messageText, "Cookie accepted successfully", "Cookie message text does not match.");
+
     }
 
     @Step("I clicked SignUp link,I expect Sign Up your Account text")
