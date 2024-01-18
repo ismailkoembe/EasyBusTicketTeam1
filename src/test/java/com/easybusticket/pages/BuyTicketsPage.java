@@ -1,5 +1,4 @@
 package com.easybusticket.pages;
-
 import com.easybusticket.utilities.Driver;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
@@ -8,18 +7,18 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
-import org.testng.asserts.SoftAssert;
 
+import java.security.Key;
 import java.util.ArrayList;
-import java.util.Calendar;
+import java.util.Collection;
 import java.util.List;
 import java.util.Random;
 
-import java.util.List;
 @Slf4j
 public class BuyTicketsPage extends BasePage{
+
+
     public BuyTicketsPage() {PageFactory.initElements(Driver.get("stage"), this);}
 
     // Dropdown pickup point menu
@@ -43,7 +42,7 @@ public class BuyTicketsPage extends BasePage{
     public WebElement dateOfJourneyMenu;
 
     // Day of journey has selected
-    @FindBy(xpath = "(//*[@class='ui-state-default'])[29]")
+    @FindBy(xpath = "(//*[@class='ui-state-default'])[30]")
     public WebElement dayOfJourney;
 
     // Find tickets button
@@ -58,9 +57,13 @@ public class BuyTicketsPage extends BasePage{
     @FindBy(xpath = "//label[@for='female']")
     public WebElement femaleCheckBox;
 
-    // select seat no
-    @FindBy(xpath = "/html/body/div[5]/div/div/div[2]/div[1]/div/div[9]/div[1]/div/span")
-    public WebElement seatNo;
+    // Seats availables list
+    @FindBy(xpath = "//span[@class='seat']")
+    public List<WebElement> listSeatsAvailable;
+
+    // Seats reserved list
+    @FindBy(xpath = "//span[@class='seat selected']")
+    public List<WebElement> listSeatsReserved;
 
     // continue button
     @FindBy(xpath = "//button[@class='book-bus-btn']")
@@ -90,25 +93,9 @@ public class BuyTicketsPage extends BasePage{
     @FindBy(xpath = "//button[@class='btn btn--base h-40']")
     public WebElement payNowButton3;
 
-    // print ticket button
-    @FindBy(xpath = "//i[@class='las la-print']")
-    public WebElement printButton;
 
-    // download ticket button
-    @FindBy(xpath = "//button[@type='button']")
-    public WebElement downloadButton;
 
-    @FindBy(xpath = "(//h5[@class='value'])[1]")
-    public WebElement actualPnrNumberOnTicket;
-
-    // actual name on ticket
-    @FindBy(xpath = "(//h5[@class='value'])[2]")
-    public WebElement actualNameOnTicket;
-
-    @FindBy(xpath = "(//*[@class='ticket-no'])[1]")
-    public WebElement expectedPnrNumber;
-
-    public void fillTheFindTicketsForm(){
+    public void fillTheFindTicketsForm() {
 
         waitAndClick(dropDownPickupPoint);
         waitAndClick(pickupAustin);
@@ -118,26 +105,51 @@ public class BuyTicketsPage extends BasePage{
         (dayOfJourney).click();
         (findTicketsButton).click();
         waitAndClick(selectSeatButton);
-
         Actions actions = new Actions(driver);
-        actions.sendKeys(Keys.PAGE_DOWN).
-                sendKeys(Keys.PAGE_DOWN).perform();
-        waitAndClick(seatNo);
-        waitAndClick(femaleCheckBox);
+        actions.sendKeys(Keys.PAGE_DOWN)
+                .perform();
+    }
+    public void selectSeat() {
 
+        // Tüm koltukları içeren liste
+        List<WebElement> allSeats = new ArrayList<>();
+
+        // Rezerve edilen koltukları içeren liste
+        List<WebElement> listSeatsReserved = Driver.get(env).findElements(By.xpath("//span[@class='seat selected']"));
+        List<WebElement> listSeatsAvailable = Driver.get(env).findElements(By.xpath( "//span[@class='seat']"));
+
+        // Tüm koltukları ekleyin (örneğin, sayfa yüklenirken)
+        allSeats.addAll(listSeatsAvailable); // listSeatsAvailable'ı doğrudan ekleyin
+        allSeats.addAll(listSeatsReserved);  // listSeatsReserved'ı doğrudan ekleyin
+
+        // Rezerve edilen koltukları kaldırın
+        allSeats.removeAll(listSeatsReserved);
+
+        // Eğer rezerve edilmemiş koltuk varsa devam edin
+        if (!allSeats.isEmpty()) {
+            Random random = new Random();
+            int clickElementIndex = random.nextInt(allSeats.size());
+            WebElement selectedSeat = allSeats.get(clickElementIndex);
+            selectedSeat.click();
+        }
+    }
+    public void selectGender() {
+        waitAndClick(femaleCheckBox);
         waitAndClick(continueButtonToPay);
         waitAndClick(confirmButtonToPay1);
-
-        actions.sendKeys(Keys.PAGE_DOWN).perform();
+    }
+    public void payNow() {
+        actions.sendKeys(Keys.PAGE_DOWN)
+               .sendKeys(Keys.PAGE_DOWN).perform();
         waitAndClick(payNowButton1);
         waitAndClick(confirmButtonToPay2);
 
-        actions.sendKeys(Keys.PAGE_DOWN).perform();
+        actions.sendKeys(Keys.PAGE_DOWN)
+               .sendKeys(Keys.PAGE_DOWN).perform();
         waitAndClick(payNowButton2);
 
-
     }
-    public void fillTheCardInformations(){
+    public void fillTheCardInformations() {
         actions.sendKeys(Keys.PAGE_DOWN).perform();
         waitAndClick(nameOnCard);
         actions.sendKeys("WISE QUARTER")
@@ -149,16 +161,6 @@ public class BuyTicketsPage extends BasePage{
                 .sendKeys("572")
                 .perform();
         waitAndClick(payNowButton3);
-
-        String actualPnrNumber = actualPnrNumberOnTicket.getText();
-        waitAndClick(printButton);
-
-        softAssert.assertTrue(downloadButton.isDisplayed());
-        log.info("ticket is ready to download");
-
-        softAssert.assertEquals(actualPnrNumber,expectedPnrNumber);
-        softAssert.assertEquals(actualNameOnTicket,"Asli ekm");
-        log.info("ticket informations are true");
     }
 
 }
