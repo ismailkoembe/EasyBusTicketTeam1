@@ -65,16 +65,18 @@ public class ContactPage extends BasePage {
     @FindBy(xpath = "/html/body/section[2]/div/div[3]/div[2]/div/iframe")
     public WebElement labelMap;
 
+
+
     @Step(" Confirms that they are on the Contact page by seeing the 'Contact Us' banner on the opening page.")
     public void titleContactTest() {
         String expectedContactTitle = "Easy Bus Ticket - Contact Us";
         String actualContactTitle = Driver.get(env).getTitle();
-        softAssert.assertEquals(actualContactTitle,expectedContactTitle);
+        softAssert.assertEquals(actualContactTitle, expectedContactTitle);
         softAssert.assertAll();
     }
 
     @Step("Filling in the Form und click the Send Us Message button")
-    public  void fillTheContactForm(){
+    public void fillTheContactForm() {
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
@@ -91,10 +93,13 @@ public class ContactPage extends BasePage {
                 .sendKeys(faker.letterify("loss"))
                 .sendKeys(Keys.PAGE_DOWN)
                 .perform();
-                  sendUsMessageButton.click();
+        sendUsMessageButton.click();
 
-        }
+
+    }
 }
+
+
 
 
 

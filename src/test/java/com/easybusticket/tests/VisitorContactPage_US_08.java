@@ -13,6 +13,9 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import static com.easybusticket.pages.BasePage.driver;
+
 @Slf4j
 public class VisitorContactPage_US_08 extends BaseTest {
 
@@ -60,6 +63,12 @@ public class VisitorContactPage_US_08 extends BaseTest {
         // The visitor should enter the necessary information in the "Name, E-mail, Subject and Message"
         // section and click on the "Send Us a Message" button and submit the form
         contactPage.fillTheContactForm();
+
+        //Visitor should be Map display
+        softAssert.assertTrue(contactPage.labelMap.isDisplayed());
+        log.info("Map  displayed ");
+        softAssert.assertAll();
+
     }
 
 }
