@@ -190,15 +190,15 @@ public class SupportTicketPage extends BasePage {
     public void clickToMyRequestButton(){
 //        JavascriptExecutor javascriptExecutor= (JavascriptExecutor) Driver.get(env);
 //        javascriptExecutor.executeScript("arguments[0].scrollIntoViewIfNeeded(true);",mySupportTicketButton);
-        actions.sendKeys(Keys.PAGE_DOWN).perform();
+        //actions.sendKeys(Keys.PAGE_DOWN).perform();
         waitAndClick(mySupportTicketButton);
     }
     @Step("User reply to support ticket")
     public void replyToRequest(){
         textareaMessage.sendKeys("Thanks");
         log.info("Message sent");
-        actions.sendKeys(Keys.PAGE_DOWN).perform();
-        log.info("Page down");
+        //actions.sendKeys(Keys.PAGE_DOWN).perform();
+        //log.info("Page down");
         waitAndClick(replyButton);
     }
 
