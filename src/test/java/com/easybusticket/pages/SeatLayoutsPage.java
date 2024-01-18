@@ -38,7 +38,7 @@ public class SeatLayoutsPage extends BasePage{
     @FindBy(xpath = "//button[.='Delete']")
     public WebElement deleteButton;
 
-//============================================================================================================//
+//------------------------------------------------------------------------------------------------------------------//
 
     public void addSeatLayouts() {
 
@@ -49,8 +49,6 @@ public class SeatLayoutsPage extends BasePage{
         waitAndClick(saveButton);
 
     }
-
-
 
     public void updateLayout(){
 
