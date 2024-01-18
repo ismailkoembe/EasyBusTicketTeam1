@@ -5,7 +5,7 @@ import com.easybusticket.pages.AdminPage;
 import com.easybusticket.pages.VehiclePage;
 import org.testng.annotations.Test;
 
-public class Vehicle_US_31 extends BaseTestAdmin {
+public class US31_Vehicle extends BaseTestAdmin {
 
 
     @Test
