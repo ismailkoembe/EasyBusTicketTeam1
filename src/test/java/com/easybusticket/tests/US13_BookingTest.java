@@ -13,7 +13,7 @@ public class US13_BookingTest extends BaseTest{
     // The reservation menu and the items below are displayed on the User Dashboard page.
     @Test
     @Severity(value = SeverityLevel.CRITICAL)
-    @Description("the user directed to Buy Ticket Page")
+    @Description("The user directed to Buy Ticket Page")
 
     public void BookingTest(){
         UserDashboardPage userDashboardPage = new HomePage().clickToSignIn().login();
@@ -41,7 +41,7 @@ public class US13_BookingTest extends BaseTest{
         softAssert.assertAll();
 
         userDashboardPage.clickToBuyTicketsButton();
-        log.info("The user directed to Buy Ticket Page "+env);
+        log.info("The user directed to Buy Ticket Page ");
     }
 
 }
