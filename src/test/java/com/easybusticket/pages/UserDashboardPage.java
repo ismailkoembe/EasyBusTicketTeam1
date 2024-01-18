@@ -1,12 +1,15 @@
 package com.easybusticket.pages;
 
 import com.easybusticket.utilities.Driver;
+import com.easybusticket.utilities.HardWait;
 import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 
 @Slf4j
@@ -188,7 +191,7 @@ public class UserDashboardPage extends BasePage {
     @FindBy(xpath = "(//*[@class='action-button-wrapper'])[1]")
     public WebElement actionButton;
 
-
+    @Step("Clicks to buy tickets button")
     public BuyTicketsPage clickToBuyTicketsButton() {
         waitAndClick(dropDownBooking);
         waitAndClick(buyTicketOption);
@@ -198,16 +201,22 @@ public class UserDashboardPage extends BasePage {
 
         softAssert.assertAll();
 
-
         return new BuyTicketsPage();
 
-
     }
+
     /**Ayça Ovalı */
     @Step("Registered user logout")
     public UserLoginPage logout() {
         waitAndClick(dropDownProfile);
         waitAndClick(logoutOption);
+
+        WebElement logoutMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".iziToast-message")));
+        Assert.assertTrue(logoutMessage.isDisplayed(), "Logout message is not displayed.");
+        String messageText = logoutMessage.getText();
+        Assert.assertEquals(messageText, "You have been logged out.", "Logout message text does not match.");
+        log.info("You have been logout. message is displayed");
+
         String expectedTitle = "Easy Bus Ticket - Sign In";
         String actualTitle = Driver.get(env).getTitle();
         Assert.assertEquals(actualTitle,expectedTitle);

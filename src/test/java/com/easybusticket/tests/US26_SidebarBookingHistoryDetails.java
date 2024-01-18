@@ -4,6 +4,9 @@ import com.easybusticket.pages.AdminDashboardPage;
 import com.easybusticket.pages.AdminPage;
 import com.easybusticket.pages.AdminTicketPage;
 import com.easybusticket.utilities.Driver;
+import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.Test;
 
@@ -12,6 +15,8 @@ import org.testng.annotations.Test;
 public class US26_SidebarBookingHistoryDetails extends BaseTestAdmin {
 
     @Test
+    @Severity(value = SeverityLevel.NORMAL)
+    @Description("The admin reachs detail of under the History dropdown ")
             public void sidebarBookingHistoryDetails() {
 
         /**

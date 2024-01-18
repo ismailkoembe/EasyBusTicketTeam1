@@ -1,6 +1,7 @@
 package com.easybusticket.pages;
 
 import com.easybusticket.utilities.Driver;
+import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -28,6 +29,7 @@ public class AdminProfilePage extends BasePage{
     @FindBy(xpath = "//*[@class='card-title mb-50 border-bottom pb-2']")
     public WebElement passwordSettingsTitle;
 
+    @Step("Admin password changes succesfully")
     public void changePasswordAdmin(){
 
         waitAndClick(passwordSettingsButton);
