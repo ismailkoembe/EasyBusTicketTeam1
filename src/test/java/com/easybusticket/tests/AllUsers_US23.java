@@ -2,6 +2,7 @@ package com.easybusticket.tests;
 
 import com.easybusticket.pages.*;
 import lombok.extern.slf4j.Slf4j;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -19,6 +20,7 @@ public class AllUsers_US23 extends BaseTestAdmin {
     public void allUsersTest() {
         // Log in as an administrator and navigate to the admin Dashboard.
         AdminDashboardPage adminDashboardPage = new AdminPage().adminLogin();
+
       
         // Navigate to the "All Users" page.
         AllUsersPage allUsersPage = new AllUsersPage();
@@ -62,3 +64,4 @@ public class AllUsers_US23 extends BaseTestAdmin {
 
     }
 }
+

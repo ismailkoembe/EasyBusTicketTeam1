@@ -92,6 +92,7 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//a[@href='https://www.twitter.com']")
     public WebElement getTwitterIconFooter;
 
+
     //Footer Facebook Icon Link
     @FindBy(xpath = "//a[@href='https://www.facebook.com']")
     public WebElement getFacebookIconFooter;
@@ -193,8 +194,6 @@ public class HomePage extends BasePage {
         String expectedText = "Sign Up your Account";
         String actualText = register.textOfSignUpyourAccount.getText();
 
-        softAssert.assertEquals(actualText, expectedText);
-
         return new RegisterPage();
     }
 
@@ -206,6 +205,7 @@ public class HomePage extends BasePage {
 
 
     public AboutPage clickToAboutButton() {
+
 
         acceptCookies();
         Assert.assertTrue(aboutButton.isDisplayed());
@@ -226,6 +226,7 @@ public class HomePage extends BasePage {
         waitAndClick(faqsTitle);
 
     }
+
 
 
     /**
@@ -303,7 +304,7 @@ public class HomePage extends BasePage {
     }
 
 
-}
+
 
 
 

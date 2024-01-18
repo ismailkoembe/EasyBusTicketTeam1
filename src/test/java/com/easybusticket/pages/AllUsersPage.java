@@ -1,12 +1,10 @@
 package com.easybusticket.pages;
 
 
-import com.easybusticket.utilities.Driver;
-import lombok.extern.slf4j.Slf4j;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
 
     @Slf4j
     public class AllUsersPage extends BasePage {
@@ -71,3 +69,4 @@ import org.openqa.selenium.support.PageFactory;
 
 
 }
+
