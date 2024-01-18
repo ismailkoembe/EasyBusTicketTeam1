@@ -14,9 +14,13 @@ import org.testng.Assert;
 @Slf4j
 public class HomePage extends BasePage {
 
+
+    public HomePage(){
+        PageFactory.initElements(Driver.get("env"),this);
+
     public HomePage() {
         PageFactory.initElements(Driver.get("stage"), this);
-    }
+
 
     //Cookie Allow Button
     @FindBy(xpath = "//a[text()='Allow']")

@@ -701,27 +701,6 @@ public class AdminDashboardPage extends BasePage {
     @FindBy(xpath = "//*[text()='Active Users']")
     WebElement getActiveUsersUnderTheManageUsers;
 
-    @FindBy(xpath = "//*[text()='Banned Users']")
-    WebElement getBannedUsersUnderTheManageUsers;
-
-    @FindBy(xpath = "//*[text()='Email Unverified']")
-    WebElement getEmailUnverifiedUnderTheManageUsers;
-
-    @FindBy(xpath = "//*[text()='SMS Unverified']")
-    WebElement getSmsUnverifiedUnderTheManageUsers;
-
-    @FindBy(xpath = "//*[text()='Email to All']")
-    WebElement getEmailToAllUnderTheManageUsers;
-
-
-    /**
-     * REYHAN  for ManageUsers dropdown menu
-     */
-    public void manageUsersDropdown() {
-        waitAndClick(manageUsers);
-    }
-
-
     //TransportManager Counter section
     @FindBy(xpath = "(//span[@class='menu-title'])[30]")
     public WebElement counterTitle;
@@ -784,7 +763,22 @@ public class AdminDashboardPage extends BasePage {
 
     }
 
+    //===================================================================//
 
+/*<<<<<<< Feature_EmailToAll
+    //Support Requests Dropdown
+    @FindBy(xpath = "//*[@id=\"sidebar__menuWrapper\"]/ul/li[6]/a/i")
+    public WebElement supportRequests;
+
+    @FindBy(xpath = "//*[@id=\"sidebar__menuWrapper\"]/ul/li[6]/div/ul/li[1]/a/span")
+    public WebElement allRequests;
+
+    @FindBy(xpath = "//*[@id=\"sidebar__menuWrapper\"]/ul/li[6]/div/ul/li[2]/a/span[1]")
+    public WebElement pendingRequests;
+
+    @FindBy(xpath = "//*[@id=\"sidebar__menuWrapper\"]/ul/li[6]/div/ul/li[3]/a/span")
+    public WebElement closedRequests;
+=======
 //===============================Report Button==============
     //Report button
     @FindBy(xpath = "//*[text()='Report ']")
@@ -1001,9 +995,19 @@ public class AdminDashboardPage extends BasePage {
 
 
 }
+*/
 
+    @FindBy(xpath = "//*[@id=\"sidebar__menuWrapper\"]/ul/li[6]/div/ul/li[4]/a/span")
+    public WebElement answeredRequests;
 
+    public AllRequestsPage supportRequests(){
 
+        waitAndClick(supportRequests);
+        waitAndClick(allRequests);
+
+        return new AllRequestsPage();
+    }
+}
 
 
 
