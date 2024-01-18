@@ -3,7 +3,7 @@
 
 # Run single test from terminal
 mvn clean test -Dtest=com.easybusticket.tests.<TestName>
-Example: mvn clean test -Dtest=com.easybusticket.tests.AboutPageTest_US05
+Example: mvn clean test -Dtest=com.easybusticket.tests.US05_AboutPageTest
 
 # Run single test suit
 mvn clean test -DsuiteXmlFile=<name.xml>

@@ -2,14 +2,14 @@
 <suite name="SanityTest">
 <test name="Sanity Example">
     <classes>
-        <class name="com.easybusticket.tests.AboutPageTest_US05">
+        <class name="com.easybusticket.tests.US05_AboutPageTest">
             <methods>
                 <include name="AboutPageTest"/>
                 <!--                    <include name="testMethod2"/>-->
                 <!-- Add more method names if needed -->
             </methods>
         </class>
-        <class name="com.easybusticket.tests.HeaderHomePageTest_US02">
+        <class name="com.easybusticket.tests.US02_HeaderHomePageTest">
             <methods>
                 <include name="homePageHeaderTest"/>
                 <!-- Add more method names if needed -->

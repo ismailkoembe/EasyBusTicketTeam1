@@ -4,7 +4,7 @@
         <!--        <parameter name="username" value="your_username"/>-->
         <!--        <parameter name="password" value="your_password"/>-->
         <classes>
-            <class name="com.easybusticket.tests.UserLoginNegativeTest_US10"> </class>
+            <class name="com.easybusticket.tests.US10_UserLoginNegativeTest"> </class>
         </classes>
     </test>
 </suite>
