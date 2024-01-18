@@ -58,22 +58,6 @@ public WebElement detailActionButtonLink;
     public List<WebElement> tableHeaderList;
 
 
-    // print ticket button
-    @FindBy(xpath = "(//i[@class='las la-print'])[1]")
-    public WebElement printButton;
-
-    // download ticket button
-    @FindBy(xpath = "//button[@type='button']")
-    public WebElement downloadButton;
-
-    public void printTicket() {
-
-        waitAndClick(printButton);
-
-        Assert.assertTrue(downloadButton.isDisplayed());
-        log.info("ticket is ready to download");
-
-    }
 
     public void titleCheckTestBookingHistory() {
         String expectedAboutTitle = "Easy Bus Ticket - Booking History";
