@@ -5,6 +5,9 @@ import com.easybusticket.pages.BuyTicketsPage;
 import com.easybusticket.pages.HomePage;
 import com.easybusticket.pages.UserDashboardPage;
 import com.easybusticket.utilities.PropManager;
+import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.Test;
 
@@ -12,6 +15,9 @@ import org.testng.annotations.Test;
 public class US13_BuyTicketsTest extends BaseTest{
 
     @Test
+    @Severity(value = SeverityLevel.CRITICAL)
+    @Description("Ticket purchase is successfully")
+
     public void BuyTicketTest() {
 
         UserDashboardPage userDashboardPage = new HomePage().clickToSignIn()
