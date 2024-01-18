@@ -1,5 +1,6 @@
 package com.easybusticket.pages;
 import com.easybusticket.utilities.Driver;
+import com.easybusticket.utilities.HardWait;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -7,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 
 import java.security.Key;
@@ -26,23 +28,23 @@ public class BuyTicketsPage extends BasePage{
     public WebElement dropDownPickupPoint ;
 
     // Austin has selected for pickup point
-    @FindBy(xpath = "(//option[@value='1'])[1]")
-    public WebElement pickupAustin;
+    @FindBy(xpath = "(//option[@value='2'])[1]")
+    public WebElement pickupPoint;
 
     // Dropdown dropping point menu
     @FindBy(xpath = "(//div[@class='form--group'])[2]")
     public WebElement dropDownDroppingPoint;
 
     // Dallas has selected for dropping point
-    @FindBy(xpath = "(//option[@value='2'])[2]")
-    public WebElement droppingDallas;
+    @FindBy(xpath = "(//option[@value='1'])[2]")
+    public WebElement droppingPoint;
 
     // Date of journey menu
     @FindBy(xpath = "(//div[@class='form--group'])[3]")
     public WebElement dateOfJourneyMenu;
 
     // Day of journey has selected
-    @FindBy(xpath = "(//*[@class='ui-state-default'])[30]")
+    @FindBy(xpath = "(//*[@class='ui-state-default'])[23]")
     public WebElement dayOfJourney;
 
     // Find tickets button
@@ -98,9 +100,9 @@ public class BuyTicketsPage extends BasePage{
     public void fillTheFindTicketsForm() {
 
         waitAndClick(dropDownPickupPoint);
-        waitAndClick(pickupAustin);
+        waitAndClick(pickupPoint);
         waitAndClick(dropDownDroppingPoint);
-        waitAndClick(droppingDallas);
+        waitAndClick(droppingPoint);
         (dateOfJourneyMenu).click();
         (dayOfJourney).click();
         (findTicketsButton).click();
@@ -130,7 +132,7 @@ public class BuyTicketsPage extends BasePage{
             Random random = new Random();
             int clickElementIndex = random.nextInt(allSeats.size());
             WebElement selectedSeat = allSeats.get(clickElementIndex);
-            selectedSeat.click();
+            waitAndClick(selectedSeat);
         }
     }
     public void selectGender() {
@@ -161,6 +163,32 @@ public class BuyTicketsPage extends BasePage{
                 .sendKeys("572")
                 .perform();
         waitAndClick(payNowButton3);
+
     }
 
+    // print ticket button
+    @FindBy(xpath = "//i[@class='las la-print']")
+    public WebElement printButton;
+
+    // download ticket button
+    @FindBy(xpath = "//button[@class='cmn-btn btn-download']")
+    public WebElement downloadButton;
+
+    public void printTicket() {
+
+        waitAndClick(printButton);
+
+        HardWait.hardWait(2000);
+        //Assert.assertTrue(downloadButton.isDisplayed());
+
+        log.info("Ticket is ready to download");
+    }
+    /*
+    public void printTicket() {
+
+        waitAndClick(printButton);
+        Assert.assertTrue(downloadButton.isDisplayed());
+        log.info("ticket is ready to download");
+
+    }*/
 }

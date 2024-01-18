@@ -4,6 +4,7 @@ import com.easybusticket.pages.BookingHistoryPage;
 import com.easybusticket.pages.BuyTicketsPage;
 import com.easybusticket.pages.HomePage;
 import com.easybusticket.pages.UserDashboardPage;
+import com.easybusticket.utilities.PropManager;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.Test;
 
@@ -13,7 +14,8 @@ public class US13_BuyTicketsTest extends BaseTest{
     @Test
     public void BuyTicketTest() {
 
-        UserDashboardPage userDashboardPage = new HomePage().clickToSignIn().login();
+        UserDashboardPage userDashboardPage = new HomePage().clickToSignIn()
+                .login(PropManager.getProperties(env,"usernameRegistered"),PropManager.getProperties(env,"passwordRegistered"));
         BuyTicketsPage buyTicketsPage = userDashboardPage.clickToBuyTicketsButton();
         log.info("Buy tickets button is work");
         buyTicketsPage.fillTheFindTicketsForm();
@@ -26,9 +28,7 @@ public class US13_BuyTicketsTest extends BaseTest{
         log.info("Pay now button is work");
         buyTicketsPage.fillTheCardInformations();
         log.info("Card information has been written");
-
-        BookingHistoryPage bookingHistoryPage = new BookingHistoryPage();
-        bookingHistoryPage.printTicket();
+        buyTicketsPage.printTicket();
         log.info("Ticket is purchased");
 
     }

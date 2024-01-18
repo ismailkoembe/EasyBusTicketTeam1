@@ -24,9 +24,7 @@ public class End2End extends BaseTest{
 
         buyTicketsPage.fillTheCardInformations();
 
-        BookingHistoryPage bookingHistoryPage = new BookingHistoryPage();
-
-        bookingHistoryPage.printTicket();
+        buyTicketsPage.printTicket();
 
         userDashboardPage.logout();
 
