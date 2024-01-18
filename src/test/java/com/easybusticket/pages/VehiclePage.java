@@ -57,7 +57,7 @@ public class VehiclePage extends BasePage{
     @FindBy(xpath = "(//input[@placeholder='Enter Reg. No.'])[2]")
     public WebElement registreNoTexBoxUpdateVehicles;
 
-    @FindBy(xpath = "//option[@value='47']")
+    @FindBy(xpath = "//option[@value='77']")
     public WebElement selectAnOption2;
 
     @FindBy(xpath = "(//input[@placeholder='Enter Eng. No.'])[2]")
@@ -121,9 +121,8 @@ public class VehiclePage extends BasePage{
         nickNameTexBoxUpdateVehicles.sendKeys(faker.name().firstName());
 
         waitAndClick(fleetTypeTexBoxUpdateVehicles);
+        fleetTypeTexBoxUpdateVehicles.sendKeys("topcam");
         fleetTypeTexBoxUpdateVehicles.click();
-        fleetTypeTexBoxUpdateVehicles.clear();
-        waitAndClick(selectAnOption2);
 
         waitAndClick(registreNoTexBoxUpdateVehicles);
         registreNoTexBoxUpdateVehicles.clear();
