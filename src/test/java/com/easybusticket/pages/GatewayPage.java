@@ -2,6 +2,7 @@ package com.easybusticket.pages;
 
 import com.easybusticket.utilities.Driver;
 import com.easybusticket.utilities.GetAbsolutePath;
+import com.easybusticket.utilities.HardWait;
 import com.easybusticket.utilities.PropManager;
 import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
@@ -223,19 +224,13 @@ public class GatewayPage extends BasePage{
         softAssert.assertAll();
         waitAndClick(userDataRemove);
 
+        HardWait.hardWait(2000);
 
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
         saveMethodButton.submit();
         log.info("Clicked the Save Method Button");
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+
+        HardWait.hardWait(2000);
+
         goBackButton.click();
         log.info("Returned Manual gateway page");
 
@@ -250,19 +245,13 @@ public class GatewayPage extends BasePage{
 
         actions.sendKeys(Keys.PAGE_DOWN).sendKeys(Keys.PAGE_DOWN).perform();
 
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        HardWait.hardWait(2000);
+
         updateSaveMethod.submit();
         log.info("Saved Changed");
 
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        HardWait.hardWait(2000);
+
         goBackButton.click();
         log.info("Returned Manual gateway page");
 
@@ -277,11 +266,7 @@ public class GatewayPage extends BasePage{
         waitAndClick(methodDisabledButton);
         log.info("Activate and Desibled buttons checked");
 
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        HardWait.hardWait(2000);
 
         String expectedStatus = "Disabled";
         String actualStatus = rowFirstValueStatus.getText();

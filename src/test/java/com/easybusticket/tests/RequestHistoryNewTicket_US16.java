@@ -29,5 +29,6 @@ public class RequestHistoryNewTicket_US16 extends BaseTest {
         supportTicketPage.requestHistoryNewTicketTest();
         log.info(" A new ticket was created from the request history page and Returned to request history page ");
 
+        userDashboardPage.logout();
     }
 }

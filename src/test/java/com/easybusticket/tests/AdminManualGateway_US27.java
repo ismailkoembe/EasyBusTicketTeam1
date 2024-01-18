@@ -30,6 +30,7 @@ public class AdminManualGateway_US27 extends BaseTestAdmin{
         gatewayPage.manualGatewayActivationTest();
         log.info("Checked the buttons");
         log.info("There is no delete button in method edit");
+        adminDashboardPage.logout();
     }
 
 
