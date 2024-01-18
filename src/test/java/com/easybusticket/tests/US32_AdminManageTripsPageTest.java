@@ -1,10 +1,9 @@
 package com.easybusticket.tests;
 
 import com.easybusticket.pages.AdminManageTripsPage;
-import com.easybusticket.pages.HomePage;
 import org.testng.annotations.Test;
 
-public class AdminManageTripsPageTest_US32 extends BaseTestAdmin{
+public class US32_AdminManageTripsPageTest extends BaseTestAdmin{
 
     @Test
     public void accessToManageTripsMenu() {
