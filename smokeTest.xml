@@ -5,6 +5,9 @@
 <!--        <parameter name="password" value="your_password"/>-->
         <classes>
             <class name="com.easybusticket.tests.AboutPageTest_US05"/>
+            <class name="com.easybusticket.tests.RequestHistoryTest_US16"/>
+            <class name="com.easybusticket.tests.Register_US09"/>
+            <class name="com.easybusticket.tests.UserLoginTest_US10"/>
         </classes>
     </test>
 </suite>
