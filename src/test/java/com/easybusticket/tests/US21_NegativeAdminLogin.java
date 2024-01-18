@@ -8,11 +8,10 @@ import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import lombok.extern.slf4j.Slf4j;
-    import org.apache.commons.validator.GenericValidator;
     import org.testng.annotations.Test;
 
     @Slf4j
-    public class NegativeAdminLogin extends BaseTestAdmin{
+    public class US21_NegativeAdminLogin extends BaseTestAdmin{
 
 
 
