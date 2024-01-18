@@ -1,6 +1,7 @@
 package com.easybusticket.pages;
 
 import com.easybusticket.utilities.Driver;
+import io.qameta.allure.Step;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -86,11 +87,12 @@ public class HomePage extends BasePage {
     public WebElement footerContactInfo;
 
     //Footer Twitter Icon Link
-    @FindBy(xpath = "(//a[@href='https://www.twitter.com'])[2]")
-    public WebElement getTwitterIconFooter;
+
+    @FindBy(xpath = "//a[@href='https://www.twitter.com']")
+    public  WebElement getTwitterIconFooter;
 
     //Footer Facebook Icon Link
-    @FindBy(xpath = "(//a[@href='https://www.facebook.com'])[2]")
+    @FindBy(xpath = "//a[@href='https://www.facebook.com']")
     public WebElement getFacebookIconFooter;
 
     //Footer Youtube Icon Link
@@ -179,15 +181,17 @@ public class HomePage extends BasePage {
 
     public RegisterPage register = new RegisterPage();
 
-
+    @Step("I clicked Cookies")
     public void acceptCookies() {
         waitAndClick(cookies);
     }
 
+    @Step("I clicked SignUp link,I expect Sign Up your Account text")
     public RegisterPage clickSignUp() {
         waitAndClick(signUpLink);
         String expectedText = "Sign Up your Account";
         String actualText = register.textOfSignUpyourAccount.getText();
+
         softAssert.assertEquals(actualText, expectedText);
 
         return new RegisterPage();
@@ -199,8 +203,11 @@ public class HomePage extends BasePage {
         return new UserLoginPage();
     }
 
-    public AboutPage clickToAboutButton() {
+
+    public AboutPage clickToAboutButton(){
+
         acceptCookies();
+        Assert.assertTrue(aboutButton.isDisplayed());
         waitAndClick(aboutButton);
         return new AboutPage();
 

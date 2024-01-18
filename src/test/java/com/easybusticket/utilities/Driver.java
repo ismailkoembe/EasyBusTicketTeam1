@@ -8,6 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.safari.SafariDriver;
@@ -31,19 +32,19 @@ public class Driver {
                         WebDriverManager.chromedriver().setup();
                         driver = new ChromeDriver(options);
                         break;
-//                case "chrome-headless":
-//                    WebDriverManager.chromedriver().setup();
-//                    options.setHeadless(true);
-//                    driver = new ChromeDriver(options);
-//                    break;
+                case "chrome-headless":
+                    WebDriverManager.chromedriver().setup();
+                    options.addArguments("--headless=new");
+                    driver = new ChromeDriver(options);
+                   break;
                     case "firefox":
                         WebDriverManager.firefoxdriver().setup();
                         driver = new FirefoxDriver();
                         break;
-//                case "firefox-headless":
-//                    WebDriverManager.firefoxdriver().setup();
-//                    driver = new FirefoxDriver(new FirefoxOptions().setHeadless(true));
-//                    break;
+                case "firefox-headless":
+                    WebDriverManager.firefoxdriver().setup();
+                    driver = new FirefoxDriver(new FirefoxOptions().addArguments("--headless=new"));
+                    break;
                     case "edge":
                         if (!System.getProperty("os.name").toLowerCase().contains("windows"))
                             throw new WebDriverException("Your OS doesn't support Edge");
