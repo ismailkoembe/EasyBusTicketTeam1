@@ -13,12 +13,15 @@ import org.testng.annotations.Test;
 @Slf4j
 public class AdminDashboard_US22 extends BaseTestAdmin{
     @Test
-    @Severity(value = SeverityLevel.MINOR)
-    @Description("Admin Dashboard page viewed and verified")
-    @Story("1. Some story")
-    public void displayOfDashboardItems(){
+    @Severity(value = SeverityLevel.CRITICAL)
+    @Description("Admin Dashboard page viewed and verified and The details are displayed " +
+            "with the View All button.\n" +
+            "Latest Booking History page ,\n" +
+            "Last 30 days Payment History page and the following graphs were displayed ")
+
+    public void displayOfDashboardItems() {
         // Navigate to the login page
-        AdminDashboardPage adminDashboardPage=new AdminPage().adminLogin();
+        AdminDashboardPage adminDashboardPage = new AdminPage().adminLogin();
 
         //Dashboard title should be displayed
         softAssert.assertTrue(adminDashboardPage.labelDashboard.isDisplayed());
@@ -45,7 +48,7 @@ public class AdminDashboard_US22 extends BaseTestAdmin{
         log.info("Successful Payment item  displayed");
 
         //Pending Payment item should be displayed
-        softAssert.assertTrue( adminDashboardPage.labelpendingPayment.isDisplayed());
+        softAssert.assertTrue(adminDashboardPage.labelpendingPayment.isDisplayed());
         log.info("Pending Payment item  displayed");
 
         //Rejected Payment item  should be displayed
@@ -53,21 +56,18 @@ public class AdminDashboard_US22 extends BaseTestAdmin{
         log.info("Rejected Payment item   displayed");
 
         //AC Vehicle item should be displayed
-        softAssert.assertTrue(  adminDashboardPage.labelAcVehicle.isDisplayed());
+        softAssert.assertTrue(adminDashboardPage.labelAcVehicle.isDisplayed());
         log.info("AC Vehicle item displayed");
 
         //Non-AC Vehicle item  should be displayed
-        softAssert.assertTrue( adminDashboardPage.labelNonAcVehicle.isDisplayed());
+        softAssert.assertTrue(adminDashboardPage.labelNonAcVehicle.isDisplayed());
         log.info("Non-AC Vehicle item displayed");
 
         //Total Counter item should be displayed
-        softAssert.assertTrue( adminDashboardPage.labelTotalCounter.isDisplayed());
+        softAssert.assertTrue(adminDashboardPage.labelTotalCounter.isDisplayed());
         log.info("Total Counter item  displayed");
         softAssert.assertAll();
 
-
-
-  
 
         //Viewing TotalUsers card with view all button
         adminDashboardPage.clickViewAllTotalUsers();
@@ -104,14 +104,14 @@ public class AdminDashboard_US22 extends BaseTestAdmin{
         JavascriptExecutor javascriptExecutor= (JavascriptExecutor) Driver.get(env);
         javascriptExecutor.executeScript("arguments[0].scrollIntoViewIfNeeded(true);",adminDashboardPage.tableLatestBookingHistory);
 
-        //Last Booking History heading should be displayed
+        //Latest Booking History heading should be displayed
         softAssert.assertTrue(adminDashboardPage.labelLatestBookingHistory.isDisplayed());
-        log.info("Last Booking History' heading displayed");
+        log.info("Latest Booking History' heading displayed");
 
 
-        //Table of the Last Booking History should be displayed
+        //Table of the Latest Booking History should be displayed
         softAssert.assertTrue(adminDashboardPage.tableLatestBookingHistory.isDisplayed());
-        log.info("Table of the Last Booking History displayed");
+        log.info("Table of the Latest Booking History displayed");
 
         //User title should be displayed
         softAssert.assertTrue(adminDashboardPage.coloumnUser.isDisplayed());
@@ -133,13 +133,29 @@ public class AdminDashboard_US22 extends BaseTestAdmin{
          softAssert.assertTrue(adminDashboardPage.coloumnAction.isDisplayed());
          log.info("Action title  displayed ");
 
-        //Action Button details  button should be display
-        adminDashboardPage.clickActionButton();
+
+         //Action Button details  button should be display
+         adminDashboardPage.clickActionButton();
 
         //Last 30 Days Payment History should be displayed
          softAssert.assertTrue(adminDashboardPage.labelLast30daysPaymentHistory.isDisplayed());
          log.info("Last 30 Days Payment History displayed");
          softAssert.assertAll();
+
+         //Login By Browser title should be display
+        softAssert.assertTrue(adminDashboardPage.labelLoginByBrowser.isDisplayed());
+        log.info("Login By Browser title displayed");
+        softAssert.assertAll();
+
+        //Login By OS title should be display
+        softAssert.assertTrue(adminDashboardPage.labelLoginByOs.isDisplayed());
+        log.info("Login By OS title displayed");
+        softAssert.assertAll();
+
+        //Login By Country title should be display
+        softAssert.assertTrue(adminDashboardPage.labelLoginByCountry.isDisplayed());
+        log.info("Login By Country title  displayed");
+        softAssert.assertAll();
 
 
 

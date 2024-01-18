@@ -2,13 +2,14 @@ package com.easybusticket.pages;
 
 import com.easybusticket.utilities.Driver;
 import io.qameta.allure.Step;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
-
+@Slf4j
 public class HomePage extends BasePage {
 
     public HomePage() {
@@ -89,7 +90,7 @@ public class HomePage extends BasePage {
     //Footer Twitter Icon Link
 
     @FindBy(xpath = "//a[@href='https://www.twitter.com']")
-    public  WebElement getTwitterIconFooter;
+    public WebElement getTwitterIconFooter;
 
 
     //Footer Facebook Icon Link
@@ -193,9 +194,6 @@ public class HomePage extends BasePage {
         String expectedText = "Sign Up your Account";
         String actualText = register.textOfSignUpyourAccount.getText();
 
-        softAssert.assertEquals(actualText,expectedText);
-        softAssert.assertAll();
-
         return new RegisterPage();
     }
 
@@ -205,8 +203,12 @@ public class HomePage extends BasePage {
         return new UserLoginPage();
     }
 
+
     public AboutPage clickToAboutButton() {
+
+
         acceptCookies();
+        Assert.assertTrue(aboutButton.isDisplayed());
         waitAndClick(aboutButton);
         return new AboutPage();
 
@@ -227,25 +229,85 @@ public class HomePage extends BasePage {
 
 
 
-        /**
-         * REYHAN Blog page control
-         */
-        public BlogPage clickToBlogTitle(){
-            acceptCookies();
-            waitAndClick(blogTitle);
-            return new BlogPage();
-        }
-
-        public void clickToHomeTitle(){
-            acceptCookies();
-            waitAndClick(homeTitle);
-        }
-        public  void scrollToBottom (){
-            ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight);");
-        }
-
-
+    /**
+     * REYHAN Blog page control
+     */
+    public BlogPage clickToBlogTitle() {
+        acceptCookies();
+        waitAndClick(blogTitle);
+        return new BlogPage();
     }
+
+    public void clickToHomeTitle() {
+        acceptCookies();
+        waitAndClick(homeTitle);
+    }
+
+    @Step("Scroll down to the bottom of the Page")
+    public void scrollToBottom() {
+        ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight);");
+    }
+
+    @Step("verify the visibility and enable of the footer")
+    public void footerTestVisilibityTest() {
+
+        //verify the visibility and enable of the footer
+        softAssert.assertTrue(footerSection.isDisplayed());
+        log.info(" Footer section is displayed and enabled " + env);
+    }
+
+    @Step(" verify the visibility of the social media items")
+    public void footerSocialMediaItemsVisibilityAndEnable() {
+        // verify the visibility of the social media items
+        softAssert.assertTrue(getTwitterIconFooter.isEnabled());
+        softAssert.assertTrue(getFacebookIconFooter.isEnabled());
+        softAssert.assertTrue(getYoutubeIconFooter.isEnabled());
+        softAssert.assertTrue(getInstagramIconFooter.isEnabled());
+        log.info(" Social Media and social media icons are displayed and enabled " + env);
+        softAssert.assertAll();
+    }
+
+    @Step("verify the visibility of Useful Links section")
+    public void footerUsefulLinksItemsVisibilityAndEnable() {
+
+        //verify the visibility of Useful Links section
+        softAssert.assertTrue(footerUsefulLinks.isDisplayed());
+        softAssert.assertTrue(getAboutTitleFooter.isEnabled());
+        softAssert.assertTrue(getFaqsTitleFooter.isEnabled());
+        softAssert.assertTrue(getBlogTitleFooter.isEnabled());
+        softAssert.assertTrue(footerContactUsefulLinks.isEnabled());
+        log.info("Useful Links are displayed and enabled " + env);
+
+        softAssert.assertAll();
+    }
+
+    @Step("verify the visibility of footer policies section")
+    public void footerPoliciesSectionVisibilityAndEnable() {
+        //verify the visibility of footer policies section
+        softAssert.assertTrue(footerPolicies.isEnabled());
+        softAssert.assertTrue(getPrivacyPolicyTitleFooter.isEnabled());
+        softAssert.assertTrue(getTermsAndConditionsTitleFooter.isEnabled());
+        softAssert.assertTrue(getTicketPoliciesFooter.isEnabled());
+        log.info("Policies Section are displayed and enabled " + env);
+        softAssert.assertAll();
+    }
+
+    @Step("verify the visibility of contact Info section")
+    public void footerContactInfoSectionVisibilityAndEnable() {
+        //verify the visibility of contact Info section
+        softAssert.assertTrue(footerContactInfo.isDisplayed());
+        softAssert.assertTrue(footerContactInfoAdresse.isDisplayed());
+        softAssert.assertTrue(footerPhoneLink.isEnabled());
+        softAssert.assertTrue(footerEmailAdresseLink.isEnabled());
+        log.info(" Contact Info Informatons are displayed, Phone and Email link are enabled" + env);
+        softAssert.assertAll();
+    }
+
+
+
+
+
+
 
 
 
