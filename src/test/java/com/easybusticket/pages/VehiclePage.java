@@ -144,4 +144,13 @@ public class VehiclePage extends BasePage{
 
 
     }
+
+    public void titleCheckTest() {
+
+        String expectedTitle = "Vehicle";
+        String actualTitle = Driver.get(env).getTitle();
+        softAssert.assertEquals(actualTitle, expectedTitle);
+        softAssert.assertAll();
+
+    }
 }
