@@ -7,9 +7,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 @Slf4j
-public class AllUsersPage extends BasePage {
+public class AllUsersPages extends BasePage {
 
-    public AllUsersPage() {
+    public AllUsersPages() {
         PageFactory.initElements(Driver.get("stage"), this);
     }
 
