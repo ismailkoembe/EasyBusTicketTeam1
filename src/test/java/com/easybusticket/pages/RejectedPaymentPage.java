@@ -1,6 +1,7 @@
 package com.easybusticket.pages;
 
 import com.easybusticket.utilities.Driver;
+import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -40,7 +41,7 @@ public class RejectedPaymentPage extends BasePage {
 
     @FindBy (xpath = "//td [@data-label=\"User\"]")
     public WebElement getDataTableWithTicket;
-
+@Step("check the title")
     public void titleRejectedPaymentPage() {
 
         String expectedTitle = "Easy Bus Ticket - Rejected Payment";
@@ -51,6 +52,7 @@ public class RejectedPaymentPage extends BasePage {
 
     }
 
+    @Step("search the ticket with date")
     public void searchingTicketNoTicket() {
         //Searching mit date without Ticket Scenerio
         waitAndClick(dateSearchBox);
@@ -61,7 +63,7 @@ public class RejectedPaymentPage extends BasePage {
         log.info("verified that the text on the table as expected.");
         softAssert.assertAll();
     }
-
+    @Step("search the ticket with PNR ")
     public void getPNRNumberSearchBoxWithTicket() {
         //Searching mit date without Ticket Scenerio with Ticket
         waitAndClick(dateSearchBox);

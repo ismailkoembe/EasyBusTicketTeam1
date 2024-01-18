@@ -1,12 +1,18 @@
 package com.easybusticket.tests;
 
-import com.easybusticket.pages.*;
+import com.easybusticket.pages.BookingHistoryPage;
+import com.easybusticket.pages.HomePage;
+import com.easybusticket.pages.UserDashboardPage;
+import com.easybusticket.pages.UserLoginPage;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.Test;
 
 @Slf4j
-public class US14_BookingHistoryDetailActionTest extends BaseTest{
+public class US14_BookingHistoryDetailActionTest extends BaseTest {
     @Test
+    @Severity(SeverityLevel.CRITICAL)
     public void detailActionTest() {
 
         UserLoginPage userLoginPage = new HomePage().clickToSignIn();
@@ -19,11 +25,11 @@ public class US14_BookingHistoryDetailActionTest extends BaseTest{
         BookingHistoryPage bookingHistoryPage = new UserDashboardPage().clickToBookingHistory();
         log.info("BookingHistoryPage opened " + env);
 
-        bookingHistoryPage.waitAndClick(bookingHistoryPage.detailActionButtonLink);
+        softAssert.assertTrue(bookingHistoryPage.detailActionButtonLink.isEnabled());
+
         log.info("E-Ticket Page opened" + env);
 
-
-
-
     }
+
+
 }

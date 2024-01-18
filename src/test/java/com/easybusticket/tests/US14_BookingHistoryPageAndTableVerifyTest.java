@@ -4,6 +4,9 @@ import com.easybusticket.pages.BookingHistoryPage;
 import com.easybusticket.pages.HomePage;
 import com.easybusticket.pages.UserDashboardPage;
 import com.easybusticket.pages.UserLoginPage;
+import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.Test;
 
@@ -11,7 +14,9 @@ import org.testng.annotations.Test;
 public class US14_BookingHistoryPageAndTableVerifyTest extends BaseTest {
 
     @Test
-    public void testBookingHistoryAccessFromMenu() { //I should be able to verify that I can access the booking history page from the booking menu
+    @Severity(SeverityLevel.NORMAL)
+    @Description("User should be able to verify that I can access the booking history page from the booking menu")
+    public void testBookingHistoryAccessFromMenu() {
 
         // navigate to the login page
         UserLoginPage userLoginPage = new HomePage().clickToSignIn();
@@ -35,8 +40,11 @@ public class US14_BookingHistoryPageAndTableVerifyTest extends BaseTest {
         log.info("Booking History Page is displayed " + env);
 
     }
+
     @Test
-    public void BookingHistoryInfoTestOnTheTable() {//  The User should be able to view existing ticket information on the reservation history page
+    @Severity(SeverityLevel.NORMAL)
+    @Description("User should be able to view existing ticket information on the reservation history page")
+    public void BookingHistoryInfoTestOnTheTable() {
         //!!! PreContition: There must be a ticket booked already from the page before.
 
         // navigate to the login page

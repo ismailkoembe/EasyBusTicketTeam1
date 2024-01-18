@@ -226,7 +226,7 @@ public class UserDashboardPage extends BasePage {
         return new SupportTicketPage();
     }
 
-
+    @Step("click to Booking dropdown menu and then click to Booking History Option")
     public BookingHistoryPage clickToBookingHistory() {
         waitAndClick(dropDownBooking);
         waitAndClick(bookingHistory);

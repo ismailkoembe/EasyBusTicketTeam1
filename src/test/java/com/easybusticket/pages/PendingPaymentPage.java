@@ -11,11 +11,10 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-import static com.easybusticket.pages.BasePage.env;
 @Slf4j
 public class PendingPaymentPage extends BasePage {
-    public PendingPaymentPage(){
-        PageFactory.initElements(Driver.get("stage"),this);
+    public PendingPaymentPage() {
+        PageFactory.initElements(Driver.get("stage"), this);
     }
 
 
@@ -40,12 +39,12 @@ public class PendingPaymentPage extends BasePage {
     })
     public List<WebElement> tablePendingPaymentHeaderList;
 
-    @FindBy (xpath = "/html/body/div[1]/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr/td[7]/a")
-     public    WebElement detailButton;
+    @FindBy(xpath = "/html/body/div[1]/div[2]/div/div[2]/div/div/div[1]/div/table/tbody/tr/td[7]/a")
+    public WebElement detailButton;
     @FindBy(xpath = "(//tbody//tr/td)")
     public WebElement dataTableNoTicket;
 
-    @FindBy (xpath = "//td [@data-label=\"User\"]")
+    @FindBy(xpath = "//td [@data-label=\"User\"]")
     public WebElement getDataTableWithTicket;
 
 
@@ -60,7 +59,7 @@ public class PendingPaymentPage extends BasePage {
         log.info("verified that the text on the table as expected.");
         softAssert.assertAll();
     }
-
+@Step("Search Ticket with PNR")
     public void getPNRNumberSearchBoxWithTicket() {
         //Searching mit date without Ticket Scenerio with Ticket
         waitAndClick(dateSearchBox);
@@ -71,12 +70,13 @@ public class PendingPaymentPage extends BasePage {
         log.info("verified that the text on the table as expected.");
         softAssert.assertAll();
     }
+
     @Step("verify that the pending payment title is")
-    public void titlePendingPaymentPage(){
+    public void titlePendingPaymentPage() {
 
         String expectedTitle = "Easy Bus Ticket - Pending Payment";
         String actualTitle = Driver.get(env).getTitle();
-        softAssert.assertEquals(actualTitle,expectedTitle);
+        softAssert.assertEquals(actualTitle, expectedTitle);
         log.info("title checked.");
         softAssert.assertAll();
 
@@ -88,7 +88,6 @@ public class PendingPaymentPage extends BasePage {
         log.info("Clicked the detail button to new page asPayment details page");
         return new PaymentDetailsPage();
     }
-
 
 
 }
