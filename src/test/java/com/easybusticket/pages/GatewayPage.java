@@ -220,6 +220,7 @@ public class GatewayPage extends BasePage{
         actions.sendKeys(Keys.PAGE_DOWN).sendKeys(Keys.PAGE_DOWN).perform();
         waitAndClick(addNewUserDataButton);
         actions.sendKeys(Keys.PAGE_DOWN).sendKeys(Keys.PAGE_DOWN).perform();
+        HardWait.hardWait(1000);
         softAssert.assertTrue(textOfBoxFieldName.isDisplayed());
         softAssert.assertTrue(dropDownUserDataInput.isDisplayed());
         softAssert.assertTrue(dropDownUserDataValue.isDisplayed());

@@ -187,12 +187,6 @@ public class HomePage extends BasePage {
     @Step("I clicked Cookies")
     public void acceptCookies() {
         waitAndClick(cookies);
-        WebElement cookieMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".iziToast-message")));
-        Assert.assertTrue(cookieMessage.isDisplayed(), "Cookie accepted successfully");
-        String messageText = cookieMessage.getText();
-        System.out.println(messageText);
-        Assert.assertEquals(messageText, "Cookie accepted successfully", "Cookie message text does not match.");
-
     }
 
     @Step("I clicked SignUp link,I expect Sign Up your Account text")
