@@ -2,7 +2,7 @@
 <suite name="Regression Suit">
     <test name="Regression Test">
         <classes>
-            <class name="com.easybusticket.tests.US07_BlogPageTest"></class>
+            <class name="com.easybusticket.tests.US07_BlogPageTest"/>
         </classes>
     </test>
 </suite>
