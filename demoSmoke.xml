@@ -1,1 +1,12 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="DemoSmokeTest">
+    <test name="DemoSmokeTest">
+        <!--        <parameter name="username" value="your_username"/>-->
+        <!--        <parameter name="password" value="your_password"/>-->
+        <classes>
+            <class name="com.easybusticket.tests.US16_RequestHistoryTest"/>
+            <class name="com.easybusticket.tests.US09_Register"/>
+            <class name="com.easybusticket.tests.US10_UserLoginTest"/>
+        </classes>
+    </test>
+</suite>
