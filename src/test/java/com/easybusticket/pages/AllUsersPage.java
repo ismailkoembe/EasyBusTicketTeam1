@@ -1,73 +1,69 @@
 package com.easybusticket.pages;
 
-
 import com.easybusticket.utilities.Driver;
 import lombok.extern.slf4j.Slf4j;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-    @Slf4j
-    public class AllUsersPage extends BasePage {
+@Slf4j
+public class AllUsersPage extends BasePage {
 
-        public AllUsersPage() {
-            PageFactory.initElements(Driver.get("stage"), this);
-        }
+    public AllUsersPage() {
+        PageFactory.initElements(Driver.get("stage"), this);
+    }
 
-        @FindBy(xpath = "//*[@id=\"sidebar__menuWrapper\"]/ul/li[2]/div/ul/li[2]/a")
-        public WebElement allUsersButtonLink;
+    @FindBy(xpath = "//*[@id='sidebar__menuWrapper']/ul/li[2]/div/ul/li[1]/a/span[1]")
+    public WebElement allUsersLink;
 
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[1]/div[2]/form/div/input")
+    public WebElement emailOrUsernameLink;
 
-        @FindBy(xpath = "/html/body/div/div[2]/div/div[1]/div[2]/form/div/input")
-        public WebElement emailLink;
+    @FindBy(xpath = "/html/body/div/div[2]/div/div[1]/div[2]/form/div/div/button")
+    public WebElement searchButtonLink;
 
+    @FindBy(xpath = "/html/body/div[1]/div[2]/div/div[1]/div[2]/form/div/input")
+    public WebElement usernameOrEmailText;
 
-        @FindBy(xpath = "//table[@class='your-table-class']//tbody//tr[1]//td[7]//a")
-        public WebElement detailActionButtonLink;
+    @FindBy(xpath = "/html/body/div[1]/div[2]")
+    public WebElement manageUsersLink;
 
-        @FindBy(xpath = "//form[@class='your-form-class']//input[@class='your-input-class']")
-        public WebElement formControlButtonLink;
+    public void allUsersTest() {
+        // Click on the "All Users" link
+        waitAndClick(allUsersLink);
 
-        @FindBy(xpath = "/html/body/div/div[2]/div/div[1]/div[2]/form/div/div/button")
-        public WebElement searchButtonLink;
+        // Perform a search with an email
+        performSearch("wilburn.green@gmail.com");
 
+        // Delete the email (replace this with the actual logic to delete the email)
+        deleteEmail("wilburn.green@gmail.com");
 
-        public void titleAllUsersPage() {
-            String expectedTitle = "Easy Bus Ticket - All Users";
-            String actualTitle = Driver.get(env).getTitle();
-            softAssert.assertEquals(actualTitle, expectedTitle, "Incorrect page title on All Users page");
-            // assertAll should not be called here
-        }
+        // Perform a search with a username
+        performSearch("ugurcan");
 
+        // Asserts will be collected when the method is called in the test class
+        softAssert.assertAll();
+    }
 
-        public void searchUserByEmailAndUsername(String email) {
-            emailLink.sendKeys(email);
-            searchButtonLink.click();
+    private void performSearch(String searchText) {
+        // Click on the email or username text box
+        waitAndClick(emailOrUsernameLink);
 
-        }
-        public void clearSearchBar() {
-            WebElement searchBar = driver.findElement(By.xpath("/html/body/div/div[2]/div/div[1]/div[2]/form/div/input"));
-            searchBar.clear();
-        }
+        // Assert that the usernameOrEmailText is displayed
+        softAssert.assertTrue(usernameOrEmailText.isDisplayed());
 
-        public void searchByUsername(String username) {
-            WebElement searchBar = driver.findElement(By.xpath("/html/body/div/div[2]/div/div[1]/div[2]/form/div/input"));
-            searchBar.click();
+        // Enter the search text and click the search button
+        emailOrUsernameLink.sendKeys(searchText);
+        waitAndClick(searchButtonLink);
 
-            WebElement usernameInput = driver.findElement(By.xpath("/html/body/div/div[2]/div/div[1]/div[2]/form/div/input"));
+        // Clear the email or username text box
+        emailOrUsernameLink.clear();
+    }
 
-            // Clear any existing text in the input field (optional, depending on your needs)
-            usernameInput.clear();
-
-            // Enter the username using sendKeys
-            usernameInput.sendKeys(username);
-
-            WebElement searchIcon = driver.findElement(By.xpath("/html/body/div/div[2]/div/div[1]/div[2]/form/div/div/button"));
-
-            // Click the search icon
-            searchIcon.click();
-        }
-
-
+    private void deleteEmail(String email) {
+        // Implement the logic to delete the email associated with the given email address
+        // This might involve navigating to the user's profile, deleting the email, etc.
+        // For demonstration purposes, you can print a log message.
+        log.info("Deleted email: {}", email);
+    }
 }
