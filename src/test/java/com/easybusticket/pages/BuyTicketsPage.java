@@ -45,7 +45,7 @@ public class BuyTicketsPage extends BasePage{
     public WebElement dateOfJourneyMenu;
 
     // Day of journey has selected
-    @FindBy(xpath = "(//*[@class='ui-state-default'])[23]")
+    @FindBy(xpath = "(//*[@class='ui-state-default'])[21]")
     public WebElement dayOfJourney;
 
     // Find tickets button
@@ -103,6 +103,7 @@ public class BuyTicketsPage extends BasePage{
         Actions actions = new Actions(driver);
         actions.sendKeys(Keys.PAGE_DOWN)
                 .perform();
+        HardWait.hardWait(3000);
     }
 
     @Step("Select seat no")
@@ -128,11 +129,13 @@ public class BuyTicketsPage extends BasePage{
             int clickElementIndex = random.nextInt(allSeats.size());
             WebElement selectedSeat = allSeats.get(clickElementIndex);
             waitAndClick(selectedSeat);
+
         }
     }
 
     @Step("Gender is select")
     public void selectGender() {
+        HardWait.hardWait(2000);
         waitAndClick(femaleCheckBox);
         waitAndClick(continueButtonToPay);
         waitAndClick(confirmButtonToPay1);
@@ -140,11 +143,12 @@ public class BuyTicketsPage extends BasePage{
 
     @Step("Click pay now button")
     public void payNow() {
+
         actions.sendKeys(Keys.PAGE_DOWN)
                .sendKeys(Keys.PAGE_DOWN).perform();
         waitAndClick(payNowButton1);
         waitAndClick(confirmButtonToPay2);
-
+        HardWait.hardWait(2000);
         actions.sendKeys(Keys.PAGE_DOWN)
                .sendKeys(Keys.PAGE_DOWN).perform();
         waitAndClick(payNowButton2);
@@ -164,7 +168,7 @@ public class BuyTicketsPage extends BasePage{
                 .sendKeys("572")
                 .perform();
         waitAndClick(payNowButton3);
-
+    HardWait.hardWait(3000);
     }
 
     // print ticket button
