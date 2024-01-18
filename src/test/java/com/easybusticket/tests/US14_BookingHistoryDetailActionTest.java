@@ -22,5 +22,8 @@ public class US14_BookingHistoryDetailActionTest extends BaseTest{
         bookingHistoryPage.waitAndClick(bookingHistoryPage.detailActionButtonLink);
         log.info("E-Ticket Page opened" + env);
 
+
+
+
     }
 }

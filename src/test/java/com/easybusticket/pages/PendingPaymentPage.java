@@ -1,6 +1,7 @@
 package com.easybusticket.pages;
 
 import com.easybusticket.utilities.Driver;
+import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -70,7 +71,7 @@ public class PendingPaymentPage extends BasePage {
         log.info("verified that the text on the table as expected.");
         softAssert.assertAll();
     }
-
+    @Step("verify that the pending payment title is")
     public void titlePendingPaymentPage(){
 
         String expectedTitle = "Easy Bus Ticket - Pending Payment";
@@ -81,9 +82,10 @@ public class PendingPaymentPage extends BasePage {
 
     }
 
-
+    @Step("click detail button on pending page")
     public PaymentDetailsPage clickToDetailButton() {
         waitAndClick(detailButton);
+        log.info("Clicked the detail button to new page asPayment details page");
         return new PaymentDetailsPage();
     }
 
