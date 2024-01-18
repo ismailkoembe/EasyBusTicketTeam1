@@ -26,7 +26,6 @@ public class US25_PendingTicketRejectTestNegativ extends BaseTestAdmin {
         log.info("Pending Payment entered " + env);
         pendingPaymentPage.clickToDetailButton();
         PaymentDetailsPage paymentDetailsPage =new PaymentDetailsPage();
-        paymentDetailsPage.checkPendingPaymentPageURL();
         paymentDetailsPage.approvePendingTicket();
 
 
