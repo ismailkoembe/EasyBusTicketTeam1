@@ -81,6 +81,4 @@ public class SeatLayoutsPage extends BasePage{
 
     }
 
-
-
 }
