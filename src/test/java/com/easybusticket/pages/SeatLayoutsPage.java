@@ -57,7 +57,6 @@ public class SeatLayoutsPage extends BasePage{
 
         layoutTextBoxUpdate.clear();
         layoutTextBoxUpdate.sendKeys(faker.numerify("##"));
-
         waitAndClick(updateButton);
 
     }
