@@ -50,8 +50,6 @@ public class SeatLayoutsPage extends BasePage{
 
     }
 
-
-
     public void updateLayout(){
 
         waitAndClick(penIcon);
@@ -69,7 +67,6 @@ public class SeatLayoutsPage extends BasePage{
         waitAndClick(deleteIcon);
         waitAndClick(deleteButton);
 
-
     }
 
     public void titleCheckTest() {
@@ -80,7 +77,5 @@ public class SeatLayoutsPage extends BasePage{
         softAssert.assertAll();
 
     }
-
-
 
 }
