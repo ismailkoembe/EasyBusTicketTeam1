@@ -72,6 +72,15 @@ public class SeatLayoutsPage extends BasePage{
 
     }
 
+    public void titleCheckTest() {
+
+        String expectedTitle = "Add Seat Layout";
+        String actualTitle = Driver.get(env).getTitle();
+        softAssert.assertEquals(actualTitle, expectedTitle);
+        softAssert.assertAll();
+
+    }
+
 
 
 }
