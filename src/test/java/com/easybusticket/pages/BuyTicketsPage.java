@@ -44,7 +44,7 @@ public class BuyTicketsPage extends BasePage{
     public WebElement dateOfJourneyMenu;
 
     // Day of journey has selected
-    @FindBy(xpath = "(//*[@class='ui-state-default'])[23]")
+    @FindBy(xpath = "(//*[@class='ui-state-default'])[26]")
     public WebElement dayOfJourney;
 
     // Find tickets button
