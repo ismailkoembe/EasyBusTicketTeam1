@@ -9,6 +9,9 @@ import io.qameta.allure.SeverityLevel;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.annotations.Test;
+
+import static com.easybusticket.pages.BasePage.driver;
+
 @Slf4j
 public class US08_VisitorContactPage extends BaseTest {
 
@@ -56,6 +59,12 @@ public class US08_VisitorContactPage extends BaseTest {
         // The visitor should enter the necessary information in the "Name, E-mail, Subject and Message"
         // section and click on the "Send Us a Message" button and submit the form
         contactPage.fillTheContactForm();
+
+        //Visitor should be Map display
+        softAssert.assertTrue(contactPage.labelMap.isDisplayed());
+        log.info("Map  displayed ");
+        softAssert.assertAll();
+
     }
 
 }

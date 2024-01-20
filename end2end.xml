@@ -2,7 +2,10 @@
 <suite name="End2End Suit">
     <test name="End2End Test">
         <packages>
-            <package name="com.easybusticket.tests"/>
+            <package name="com.easybusticket"/>
         </packages>
+        <classes>
+            <class name="com.easybusticket.tests.US08_VisitorContactPage"></class>
+        </classes>
     </test>
 </suite>
