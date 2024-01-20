@@ -88,9 +88,9 @@ public class ContactPage extends BasePage {
                 .sendKeys(Keys.TAB)
                 .sendKeys(faker.internet().emailAddress())
                 .sendKeys(Keys.TAB)
-                .sendKeys(faker.letterify("bag"))
+                .sendKeys(faker.letterify("Lost Bag"))
                 .sendKeys(Keys.TAB)
-                .sendKeys(faker.letterify("loss"))
+                .sendKeys(faker.letterify("My bag was lost on expedition 234532. A red medium-sized bag"))
                 .sendKeys(Keys.PAGE_DOWN)
                 .perform();
         sendUsMessageButton.click();
