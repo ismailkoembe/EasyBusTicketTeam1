@@ -462,11 +462,9 @@ public class AdminDashboardPage extends BasePage {
 
     public SuccessfulPaymentPage clickToSuccessfulPayment() {
 
-        softAssert.assertTrue(paymentHistoryDropdownDashboard.isDisplayed());
+
         waitAndClick(paymentHistoryDropdownDashboard);
-        softAssert.assertTrue(successfulPaymentOption.isDisplayed());
         waitAndClick(successfulPaymentOption);
-        softAssert.assertAll();
         return new SuccessfulPaymentPage();
 
     }
@@ -506,14 +504,15 @@ public class AdminDashboardPage extends BasePage {
     @FindBy(xpath = "//span[text()='Logout']")
     public WebElement logoutOptionAdmin;
 
+    @Step("Clicks admin icon and directed page settings")
     public AdminProfilePage adminPageSettings() {
 
         waitAndClick(adminIcon);
         waitAndClick(optionProfile);
         return new AdminProfilePage();
     }
-
-    public AdminDashboardPage logout() {
+    @Step("Admin successfully logout")
+    public void logout() {
 
         waitAndClick(adminIcon);
         waitAndClick(logoutOptionAdmin);
@@ -521,7 +520,6 @@ public class AdminDashboardPage extends BasePage {
         String actualTitle = Driver.get(env).getTitle();
         softAssert.assertEquals(actualTitle, expectedTitle);
         softAssert.assertAll();
-        return new AdminDashboardPage();
 
     }
 

@@ -1,6 +1,9 @@
 package com.easybusticket.tests;
 
 import com.easybusticket.pages.*;
+import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.Test;
 @Slf4j
@@ -9,6 +12,9 @@ public class US13_BookingTest extends BaseTest{
     // The user is directed to the User Dashboard on the home page.
     // The reservation menu and the items below are displayed on the User Dashboard page.
     @Test
+    @Severity(value = SeverityLevel.CRITICAL)
+    @Description("The user directed to Buy Ticket Page")
+
     public void BookingTest(){
         UserDashboardPage userDashboardPage = new HomePage().clickToSignIn().login();
 
@@ -35,7 +41,7 @@ public class US13_BookingTest extends BaseTest{
         softAssert.assertAll();
 
         userDashboardPage.clickToBuyTicketsButton();
-        log.info("bilet alma sayfasina yonlendirildi "+env);
+        log.info("The user directed to Buy Ticket Page ");
     }
 
 }

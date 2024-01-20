@@ -3,6 +3,7 @@ package com.easybusticket.tests;
 import com.easybusticket.pages.AdminDashboardPage;
 import com.easybusticket.pages.AdminPage;
 import com.easybusticket.pages.GatewayPage;
+import com.easybusticket.utilities.HardWait;
 import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
@@ -30,6 +31,7 @@ public class US27_AdminManualGateway extends BaseTestAdmin{
         gatewayPage.manualGatewayActivationTest();
         log.info("Checked the buttons");
         log.info("There is no delete button in method edit");
+        HardWait.hardWait(3000);
         adminDashboardPage.logout();
     }
 

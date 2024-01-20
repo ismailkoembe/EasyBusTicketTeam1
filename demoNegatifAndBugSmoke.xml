@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="NegatifAndBugSmokeTest">
+    <test name="Negatif And Bug Smoke Test">
+        <!--        <parameter name="username" value="your_username"/>-->
+        <!--        <parameter name="password" value="your_password"/>-->
+
+        <classes>
+            <class name="com.easybusticket.tests.US25_PendingTicketRejectTestNegativ"/>
+            <class name="com.easybusticket.tests.US21_NegativeAdminLogin"/>
+            <class name="com.easybusticket.tests.US10_UserLoginRememberMeTest"/>
+        </classes>
+    </test>
+</suite>

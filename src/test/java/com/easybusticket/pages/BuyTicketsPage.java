@@ -1,6 +1,7 @@
 package com.easybusticket.pages;
 import com.easybusticket.utilities.Driver;
 import com.easybusticket.utilities.HardWait;
+import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -44,7 +45,7 @@ public class BuyTicketsPage extends BasePage{
     public WebElement dateOfJourneyMenu;
 
     // Day of journey has selected
-    @FindBy(xpath = "(//*[@class='ui-state-default'])[23]")
+    @FindBy(xpath = "(//*[@class='ui-state-default'])[21]")
     public WebElement dayOfJourney;
 
     // Find tickets button
@@ -58,14 +59,6 @@ public class BuyTicketsPage extends BasePage{
     // female gender box
     @FindBy(xpath = "//label[@for='female']")
     public WebElement femaleCheckBox;
-
-    // Seats availables list
-    @FindBy(xpath = "//span[@class='seat']")
-    public List<WebElement> listSeatsAvailable;
-
-    // Seats reserved list
-    @FindBy(xpath = "//span[@class='seat selected']")
-    public List<WebElement> listSeatsReserved;
 
     // continue button
     @FindBy(xpath = "//button[@class='book-bus-btn']")
@@ -96,7 +89,7 @@ public class BuyTicketsPage extends BasePage{
     public WebElement payNowButton3;
 
 
-
+    @Step("Select route")
     public void fillTheFindTicketsForm() {
 
         waitAndClick(dropDownPickupPoint);
@@ -110,7 +103,10 @@ public class BuyTicketsPage extends BasePage{
         Actions actions = new Actions(driver);
         actions.sendKeys(Keys.PAGE_DOWN)
                 .perform();
+        HardWait.hardWait(3000);
     }
+
+    @Step("Select seat no")
     public void selectSeat() {
 
         // Tüm koltukları içeren liste
@@ -133,24 +129,33 @@ public class BuyTicketsPage extends BasePage{
             int clickElementIndex = random.nextInt(allSeats.size());
             WebElement selectedSeat = allSeats.get(clickElementIndex);
             waitAndClick(selectedSeat);
+
         }
     }
+
+    @Step("Gender is select")
     public void selectGender() {
+        HardWait.hardWait(2000);
         waitAndClick(femaleCheckBox);
         waitAndClick(continueButtonToPay);
         waitAndClick(confirmButtonToPay1);
     }
+
+    @Step("Click pay now button")
     public void payNow() {
+
         actions.sendKeys(Keys.PAGE_DOWN)
                .sendKeys(Keys.PAGE_DOWN).perform();
         waitAndClick(payNowButton1);
         waitAndClick(confirmButtonToPay2);
-
+        HardWait.hardWait(2000);
         actions.sendKeys(Keys.PAGE_DOWN)
                .sendKeys(Keys.PAGE_DOWN).perform();
         waitAndClick(payNowButton2);
 
     }
+
+    @Step("Fill the card information")
     public void fillTheCardInformations() {
         actions.sendKeys(Keys.PAGE_DOWN).perform();
         waitAndClick(nameOnCard);
@@ -163,17 +168,14 @@ public class BuyTicketsPage extends BasePage{
                 .sendKeys("572")
                 .perform();
         waitAndClick(payNowButton3);
-
+    HardWait.hardWait(3000);
     }
 
     // print ticket button
     @FindBy(xpath = "//i[@class='las la-print']")
     public WebElement printButton;
 
-    // download ticket button
-    @FindBy(xpath = "//button[@class='cmn-btn btn-download']")
-    public WebElement downloadButton;
-
+    @Step("Print ticket button is clicks")
     public void printTicket() {
 
         waitAndClick(printButton);
@@ -183,12 +185,5 @@ public class BuyTicketsPage extends BasePage{
 
         log.info("Ticket is ready to download");
     }
-    /*
-    public void printTicket() {
 
-        waitAndClick(printButton);
-        Assert.assertTrue(downloadButton.isDisplayed());
-        log.info("ticket is ready to download");
-
-    }*/
 }
