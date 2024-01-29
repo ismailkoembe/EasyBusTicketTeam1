@@ -3,12 +3,10 @@ package com.easybusticket.pages;
 import com.easybusticket.utilities.Driver;
 import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 
 @Slf4j
@@ -185,8 +183,9 @@ public class HomePage extends BasePage {
     public RegisterPage register = new RegisterPage();
 
     @Step("I clicked Cookies")
-    public void acceptCookies() {
+    public HomePage acceptCookies() {
         waitAndClick(cookies);
+        return this;
     }
 
     @Step("I clicked SignUp link,I expect Sign Up your Account text")
@@ -251,20 +250,22 @@ public class HomePage extends BasePage {
     }
 
     @Step("Scroll down to the bottom of the Page")
-    public void scrollToBottom() {
+    public HomePage scrollToBottom() {
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight);");
+        return this;
     }
 
     @Step("verify the visibility and enable of the footer")
-    public void footerTestVisilibityTest() {
+    public HomePage footerTestVisilibityTest() {
 
         //verify the visibility and enable of the footer
         softAssert.assertTrue(footerSection.isDisplayed());
         log.info(" Footer section is displayed and enabled " + env);
+        return this;
     }
 
     @Step(" verify the visibility of the social media items")
-    public void footerSocialMediaItemsVisibilityAndEnable() {
+    public HomePage footerSocialMediaItemsVisibilityAndEnable() {
         // verify the visibility of the social media items
         softAssert.assertTrue(getTwitterIconFooter.isEnabled());
         softAssert.assertTrue(getFacebookIconFooter.isEnabled());
@@ -272,10 +273,11 @@ public class HomePage extends BasePage {
         softAssert.assertTrue(getInstagramIconFooter.isEnabled());
         log.info(" Social Media and social media icons are displayed and enabled " + env);
         softAssert.assertAll();
+        return this;
     }
 
     @Step("verify the visibility of Useful Links section")
-    public void footerUsefulLinksItemsVisibilityAndEnable() {
+    public HomePage footerUsefulLinksItemsVisibilityAndEnable() {
 
         //verify the visibility of Useful Links section
         softAssert.assertTrue(footerUsefulLinks.isDisplayed());
@@ -286,10 +288,11 @@ public class HomePage extends BasePage {
         log.info("Useful Links are displayed and enabled " + env);
 
         softAssert.assertAll();
+        return this;
     }
 
     @Step("verify the visibility of footer policies section")
-    public void footerPoliciesSectionVisibilityAndEnable() {
+    public HomePage footerPoliciesSectionVisibilityAndEnable() {
         //verify the visibility of footer policies section
         softAssert.assertTrue(footerPolicies.isEnabled());
         softAssert.assertTrue(getPrivacyPolicyTitleFooter.isEnabled());
@@ -297,10 +300,11 @@ public class HomePage extends BasePage {
         softAssert.assertTrue(getTicketPoliciesFooter.isEnabled());
         log.info("Policies Section are displayed and enabled " + env);
         softAssert.assertAll();
+        return this;
     }
 
     @Step("verify the visibility of contact Info section")
-    public void footerContactInfoSectionVisibilityAndEnable() {
+    public HomePage footerContactInfoSectionVisibilityAndEnable() {
         //verify the visibility of contact Info section
         softAssert.assertTrue(footerContactInfo.isDisplayed());
         softAssert.assertTrue(footerContactInfoAdresse.isDisplayed());
@@ -308,19 +312,22 @@ public class HomePage extends BasePage {
         softAssert.assertTrue(footerEmailAdresseLink.isEnabled());
         log.info(" Contact Info Informatons are displayed, Phone and Email link are enabled" + env);
         softAssert.assertAll();
+        return this;
     }
 
 
 
     @FindBy(xpath = "//*[text()='Every Journey is an Adventure, Every Ticket is a Story']")
     public WebElement homePageText;
+
     @Step("Go to url and check text")
-    public void websiteTest() {
+    public HomePage websiteTest() {
         acceptCookies();
         String expectedTitle = "Every Journey is an Adventure, Every Ticket is a Story";
         String actualTitle = homePageText.getText();
-        Assert.assertEquals(actualTitle,expectedTitle);
+        Assert.assertEquals(actualTitle, expectedTitle);
         log.info("text is visible");
+        return this;
     }
 }
 

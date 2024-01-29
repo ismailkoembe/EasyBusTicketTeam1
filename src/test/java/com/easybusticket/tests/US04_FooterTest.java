@@ -44,4 +44,19 @@ public class US04_FooterTest extends BaseTest {
         homePage.footerContactInfoSectionVisibilityAndEnable();
         log.info(" Contact Info Informatons are displayed, Phone and Email link are enabled" + env);
     }
+
+
+    @Test
+    public void testSmth() {
+        new HomePage()
+                .acceptCookies()
+                .scrollToBottom()
+                .footerTestVisilibityTest()
+                .footerSocialMediaItemsVisibilityAndEnable()
+                .footerContactInfoSectionVisibilityAndEnable()
+                .footerSocialMediaItemsVisibilityAndEnable()
+                .footerContactInfoSectionVisibilityAndEnable();
+
+
+    }
 }
